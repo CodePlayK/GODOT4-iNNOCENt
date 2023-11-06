@@ -1,0 +1,106 @@
+[gd_scene load_steps=17 format=3 uid="uid://d7avri3s6byy"]
+
+[ext_resource type="Script" path="res://core/room/common/pole/pole.gd" id="1_eat4v"]
+[ext_resource type="Shader" path="res://core/common/shader/outline.gdshader" id="1_xxbtc"]
+[ext_resource type="Texture2D" uid="uid://bx7m38jelwh4m" path="res://core/room/room_1/resource/world.png" id="2_rfsll"]
+[ext_resource type="Texture2D" uid="uid://4imqf7eb5xsm" path="res://core/room/room_1/resource/world-animated-rope2.png" id="3_tib1w"]
+[ext_resource type="Script" path="res://core/component/ObjDialogueDefault.gd" id="4_01bvt"]
+[ext_resource type="Script" path="res://core/component/HighlightOutLine.gd" id="4_7oxqh"]
+[ext_resource type="Resource" uid="uid://cch55wakcq4ip" path="res://test/dialogue/pole.dialogue" id="5_kiind"]
+[ext_resource type="Script" path="res://core/component/InteractLock.gd" id="7_hk8t6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1dvr"]
+size = Vector2(29, 187)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8w4pn"]
+shader = ExtResource("1_xxbtc")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw6iw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qr1y"]
+atlas = ExtResource("3_tib1w")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tp7w"]
+atlas = ExtResource("3_tib1w")
+region = Rect2(40, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6wjc"]
+atlas = ExtResource("3_tib1w")
+region = Rect2(80, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb3wf"]
+atlas = ExtResource("3_tib1w")
+region = Rect2(120, 0, 40, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ysgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qr1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tp7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6wjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb3wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6wjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tp7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Pole" type="Area2D" groups=["mouse_interactable_only"]]
+collision_mask = 0
+script = ExtResource("1_eat4v")
+objs_name = "Pole"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_m1dvr")
+
+[node name="Outline" type="Sprite2D" parent="."]
+modulate = Color(0.878431, 0.0352941, 0.0352941, 1)
+material = SubResource("ShaderMaterial_8w4pn")
+scale = Vector2(0.665, 0.745)
+texture = ExtResource("2_rfsll")
+region_enabled = true
+region_rect = Rect2(1160, 256, 80, 256)
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(0.665, 0.745)
+texture = ExtResource("2_rfsll")
+region_enabled = true
+region_rect = Rect2(1160, 256, 80, 256)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_jw6iw")
+position = Vector2(-14, -49)
+scale = Vector2(0.665, 0.745)
+sprite_frames = SubResource("SpriteFrames_6ysgq")
+autoplay = "default"
+frame_progress = 0.518433
+
+[node name="DialoguePosition" type="Marker2D" parent="."]
+position = Vector2(16, -32)
+
+[node name="HighlightOutLine" type="Node" parent="."]
+script = ExtResource("4_7oxqh")
+
+[node name="ObjDialogueDefault" type="Node" parent="."]
+script = ExtResource("4_01bvt")
+dialogue_resource = ExtResource("5_kiind")
+
+[node name="InteractLock" type="Node" parent="."]
+script = ExtResource("7_hk8t6")

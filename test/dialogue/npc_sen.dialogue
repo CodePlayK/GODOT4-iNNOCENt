@@ -1,0 +1,18 @@
+~ D0_0_0
+森: 鼠标左键降低[color=f88d69]重力[/color]，右键短暂[color=f88d69]无敌[/color]，技能都有冷却哦 
+- 左键=轻功
+- 右键=弹反
+=> END
+
+~ t1
+森: 没毛病 
+- ASDSADADSADSAD
+- ASDASSADASDASD
+- ASDASDDA => t2
+=> END
+
+~ t2
+森: 学废了吗？
+=> END
+~ t0
+"": ""

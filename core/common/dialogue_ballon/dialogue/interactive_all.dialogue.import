@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_10"
+type="Resource"
+uid="uid://c6tvs4yj5xxy6"
+path="res://.godot/imported/interactive_all.dialogue-5526ca1399bf55a00489de83720df335.tres"
+
+[deps]
+
+source_file="res://core/common/dialogue_ballon/dialogue/interactive_all.dialogue"
+dest_files=["res://.godot/imported/interactive_all.dialogue-5526ca1399bf55a00489de83720df335.tres"]
+
+[params]
+
+defaults=true

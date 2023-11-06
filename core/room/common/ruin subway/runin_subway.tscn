@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3ns3syjiqf8y"]
+
+[ext_resource type="Script" path="res://core/room/common/ruin subway/runin_subway.gd" id="1_1k4ma"]
+[ext_resource type="Texture2D" uid="uid://bx7m38jelwh4m" path="res://core/room/room_1/resource/world.png" id="1_6c182"]
+[ext_resource type="Shader" path="res://core/common/shader/outline.gdshader" id="2_08fpa"]
+[ext_resource type="Script" path="res://core/component/ObjDialogueDefault.gd" id="3_a4u4l"]
+[ext_resource type="Script" path="res://core/component/HighlightOutLine.gd" id="3_axlus"]
+[ext_resource type="Resource" uid="uid://c5gpxr550v3ph" path="res://test/dialogue/ruin_subway.dialogue" id="4_x82dg"]
+[ext_resource type="Script" path="res://core/component/InteractLock.gd" id="6_ebtet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yv66o"]
+size = Vector2(240, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eylcd"]
+shader = ExtResource("2_08fpa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="RuninSubway" type="Area2D" groups=["mouse_interactable_only"]]
+script = ExtResource("1_1k4ma")
+objs_name = "ruinsubway"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 39)
+shape = SubResource("RectangleShape2D_yv66o")
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_6c182")
+region_enabled = true
+region_rect = Rect2(1240, 128, 440, 256)
+
+[node name="Outline" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eylcd")
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_6c182")
+region_enabled = true
+region_rect = Rect2(1240, 128, 440, 256)
+
+[node name="DialoguePosition" type="Marker2D" parent="."]
+position = Vector2(59, -46)
+
+[node name="HighlightOutLine" type="Node" parent="."]
+script = ExtResource("3_axlus")
+
+[node name="ObjDialogueDefault" type="Node" parent="."]
+script = ExtResource("3_a4u4l")
+dialogue_resource = ExtResource("4_x82dg")
+
+[node name="InteractLock" type="Node" parent="."]
+script = ExtResource("6_ebtet")

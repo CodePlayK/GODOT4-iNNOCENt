@@ -1,0 +1,43 @@
+{
+	"0": {
+		"StartNode114616": {
+			"name": "StartNode114616",
+			"node_type": 0,
+			"position.x": 634,
+			"position.y": 241,
+			"position_offset.x": 634,
+			"position_offset.y": 241
+		}
+	},
+	"1": {
+		"SignalNode115569": {
+			"name": "SignalNode115569",
+			"node_type": 1,
+			"param_list": [],
+			"position.x": 878,
+			"position.y": 360,
+			"position_offset.x": 878,
+			"position_offset.y": 360,
+			"signal_name": ""
+		},
+		"SignalNode116636": {
+			"name": "SignalNode116636",
+			"node_type": 1,
+			"param_list": [],
+			"position.x": 731,
+			"position.y": 515,
+			"position_offset.x": 731,
+			"position_offset.y": 515,
+			"signal_name": ""
+		}
+	},
+	"connection_list": [],
+	"nodes_type": {
+		"SignalNode115569": 1,
+		"SignalNode116636": 1,
+		"StartNode114616": 0
+	},
+	"run_data": {
+
+	}
+}

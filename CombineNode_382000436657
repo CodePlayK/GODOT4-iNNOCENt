@@ -1,0 +1,119 @@
+{
+	"0": {
+		"StartNode_131533377234": {
+			"index_by_parent": 0,
+			"name": "StartNode_131533377234",
+			"node_type": 0,
+			"position.x": 288.60205078125,
+			"position.y": 280.019195556641,
+			"position_offset.x": 171,
+			"position_offset.y": 261,
+			"timer": "",
+			"title": "Start"
+		}
+	},
+	"1": {
+		"SignalNode_138361704166": {
+			"index_by_parent": 1,
+			"name": "SignalNode_138361704166",
+			"node_type": 1,
+			"position.x": 695.678039550781,
+			"position.y": 154.3447265625,
+			"position_offset.x": 767,
+			"position_offset.y": 77,
+			"props": [
+				[
+					"",
+					4,
+					"312312",
+					1
+				],
+				[
+					"",
+					24,
+					"221",
+					1
+				],
+				[
+					"",
+					4,
+					"3123",
+					1
+				]
+			],
+			"return_type": false,
+			"signal_name": "CutsceneBus.cutscene_talk",
+			"timer": "",
+			"title": "Signal"
+		}
+	},
+	"2": {
+		"SetNode_188223590647": {
+			"index_by_parent": 2,
+			"name": "SetNode_188223590647",
+			"node_type": 2,
+			"position.x": 643.085998535156,
+			"position.y": 349.686553955078,
+			"position_offset.x": 690,
+			"position_offset.y": 363,
+			"prop_name": "CutsceneState.title_able",
+			"props": [
+				[
+					"CutsceneState.title_able",
+					1,
+					0,
+					"123213",
+					1
+				],
+				[
+					"CutsceneState.title_able",
+					1,
+					0,
+					"123",
+					1
+				]
+			],
+			"timer": "",
+			"title": "Set"
+		}
+	},
+	"connection_list": [
+		{
+			"from_node": "StartNode_131533377234",
+			"from_port": 0,
+			"to_node": "SignalNode_138361704166",
+			"to_port": 0
+		},
+		{
+			"from_node": "StartNode_131533377234",
+			"from_port": 0,
+			"to_node": "SetNode_188223590647",
+			"to_port": 0
+		}
+	],
+	"connection_list_with_out_side": [],
+	"graph_positon": [
+		-171.806762695313,
+		-101.752700805664,
+		0.683013379573822
+	],
+	"nodes_type": {
+		"SetNode_188223590647": 2,
+		"SignalNode_138361704166": 1,
+		"StartNode_131533377234": 0
+	},
+	"run_data": {
+		"StartNode_131533377234": [
+			[
+				"SignalNode_138361704166",
+				1,
+				0
+			],
+			[
+				"SetNode_188223590647",
+				2,
+				0
+			]
+		]
+	}
+}

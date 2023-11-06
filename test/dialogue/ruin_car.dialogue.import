@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_10"
+type="Resource"
+uid="uid://c7iylpt6oguvh"
+path="res://.godot/imported/ruin_car.dialogue-749c401b9e43c55fcb48d0c0e465112e.tres"
+
+[deps]
+
+source_file="res://test/dialogue/ruin_car.dialogue"
+dest_files=["res://.godot/imported/ruin_car.dialogue-749c401b9e43c55fcb48d0c0e465112e.tres"]
+
+[params]
+
+defaults=true

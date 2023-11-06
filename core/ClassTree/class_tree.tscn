@@ -1,0 +1,134 @@
+[gd_scene load_steps=32 format=3 uid="uid://w6uc6ogg4v6"]
+
+[ext_resource type="Script" path="res://core/ClassTree/ClassTree.gd" id="1_dp6yx"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcStateManager.gd" id="2_8lcbc"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcCutsceneBaseState.gd" id="3_o8v2p"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcState_0.gd" id="4_wjo21"]
+[ext_resource type="Script" path="res://core/global/NpcState.gd" id="5_3chti"]
+[ext_resource type="PackedScene" uid="uid://bq1w2fqfgdvt" path="res://core/common/dialogue_ballon/dialogue_balloon.tscn" id="5_cuqe2"]
+[ext_resource type="Script" path="res://core/ClassTree/PlayerInteractiveObj.gd" id="5_h5k0v"]
+[ext_resource type="Script" path="res://core/global/DialogueState.gd" id="6_67v33"]
+[ext_resource type="Script" path="res://core/ClassTree/PlayerInteractiveObj_Npcs.gd" id="6_bgg74"]
+[ext_resource type="Script" path="res://core/ClassTree/Component.gd" id="6_xyxes"]
+[ext_resource type="Script" path="res://core/global/EventBus.gd" id="7_kne4y"]
+[ext_resource type="Script" path="res://core/global/Global.gd" id="8_w37ic"]
+[ext_resource type="Script" path="res://core/global/PlayerState.gd" id="9_lbnbe"]
+[ext_resource type="Script" path="res://core/global/ObjState.gd" id="10_l3la1"]
+[ext_resource type="Script" path="res://core/global/CutsceneState.gd" id="11_8sd0n"]
+[ext_resource type="PackedScene" uid="uid://dls6u3t8iow8i" path="res://core/common/music/music.tscn" id="13_vgjmg"]
+[ext_resource type="Script" path="res://core/ClassTree/Room.gd" id="14_kinn8"]
+[ext_resource type="PackedScene" uid="uid://ch6dodawp5y7b" path="res://core/room/common/debug/debug.tscn" id="14_nynhn"]
+[ext_resource type="Script" path="res://core/component/ObjDialogueDefault.gd" id="17_8l1id"]
+[ext_resource type="Script" path="res://core/ClassTree/Objs.gd" id="17_yspfs"]
+[ext_resource type="Script" path="res://core/component/Move2Player.gd" id="18_0r87k"]
+[ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="18_ngjcp"]
+[ext_resource type="Resource" uid="uid://bx7y0coeb1r0s" path="res://test/dialogue/npc_sen.dialogue" id="19_k1an2"]
+[ext_resource type="Script" path="res://core/component/DialogueInteractState.gd" id="20_irg26"]
+[ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="21_vqy0j"]
+[ext_resource type="Script" path="res://core/component/NpcSaveDataCollector.gd" id="23_pbd5h"]
+[ext_resource type="Script" path="res://core/common/save/npc/npc_save_data.gd" id="25_b8c7h"]
+[ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="25_phxx3"]
+[ext_resource type="Script" path="res://core/component/CutsceneTalk.gd" id="26_untaw"]
+[ext_resource type="Script" path="res://core/component/Door.gd" id="28_q10gp"]
+[ext_resource type="Script" path="res://core/player/PlayerSaveData.gd" id="29_enf0w"]
+
+[node name="ClassTree" type="Node"]
+script = ExtResource("1_dp6yx")
+
+[node name="NpcStateManager" type="Node" parent="."]
+script = ExtResource("2_8lcbc")
+
+[node name="NpcBaseState" type="Node" parent="NpcStateManager"]
+script = ExtResource("3_o8v2p")
+
+[node name="NpcResetState" type="Node" parent="NpcStateManager/NpcBaseState"]
+
+[node name="NpcState_0" type="Node" parent="NpcStateManager/NpcBaseState"]
+script = ExtResource("4_wjo21")
+
+[node name="DialogueBalloon" parent="." instance=ExtResource("5_cuqe2")]
+
+[node name="全局脚本" type="Node" parent="."]
+script = ExtResource("6_xyxes")
+
+[node name="NpcState" type="Node" parent="全局脚本"]
+script = ExtResource("5_3chti")
+
+[node name="DialogueState" type="Node" parent="全局脚本"]
+script = ExtResource("6_67v33")
+
+[node name="EventBus" type="Node" parent="全局脚本"]
+script = ExtResource("7_kne4y")
+
+[node name="Global" type="Node" parent="全局脚本"]
+script = ExtResource("8_w37ic")
+
+[node name="PlayerState" type="Node" parent="全局脚本"]
+script = ExtResource("9_lbnbe")
+
+[node name="ObjState" type="Node" parent="全局脚本"]
+script = ExtResource("10_l3la1")
+
+[node name="CutsceneState" type="Node" parent="全局脚本"]
+script = ExtResource("11_8sd0n")
+
+[node name="Debug" parent="全局脚本" instance=ExtResource("14_nynhn")]
+
+[node name="PlayerInteractiveObj" type="Node" parent="."]
+script = ExtResource("5_h5k0v")
+
+[node name="Npcs" type="Node" parent="PlayerInteractiveObj"]
+script = ExtResource("6_bgg74")
+
+[node name="Objs" type="Node" parent="PlayerInteractiveObj"]
+script = ExtResource("17_yspfs")
+
+[node name="Music" parent="." instance=ExtResource("13_vgjmg")]
+
+[node name="Rooms" type="Node" parent="."]
+script = ExtResource("14_kinn8")
+
+[node name="功能组件" type="Node" parent="."]
+
+[node name="ObjDialogueDefault" type="Node" parent="功能组件"]
+editor_description = "工具：物品在不同场景下的默认对话，具体数据放在DialogueState里面配置"
+script = ExtResource("17_8l1id")
+
+[node name="NpcDialogueDefault" type="Node" parent="功能组件"]
+script = ExtResource("18_ngjcp")
+dialogue_resource = ExtResource("19_k1an2")
+
+[node name="DialogueinteractState" type="Node" parent="功能组件"]
+script = ExtResource("20_irg26")
+
+[node name="HighlightOutLine" type="Node" parent="功能组件"]
+editor_description = "工具：物品在鼠标进出时高亮边缘线"
+
+[node name="Move2Player" type="Node" parent="功能组件"]
+editor_description = "工具：让对象移动到玩家角色附近，并在途中与停止后面朝玩家"
+script = ExtResource("18_0r87k")
+
+[node name="SaveDataCollector" type="Node" parent="功能组件"]
+editor_description = "配置单一对象存档数据的父类"
+script = ExtResource("23_pbd5h")
+
+[node name="NpcSaver" type="Node" parent="功能组件/SaveDataCollector"]
+script = ExtResource("21_vqy0j")
+
+[node name="FaceDirection" type="Node" parent="功能组件"]
+script = ExtResource("25_phxx3")
+
+[node name="CutsceneTalk" type="Node" parent="功能组件"]
+script = ExtResource("26_untaw")
+
+[node name="Door" type="Node" parent="功能组件"]
+script = ExtResource("28_q10gp")
+transition_type = 1
+
+[node name="资源" type="Node" parent="."]
+
+[node name="PlayerSaveData" type="Node" parent="资源"]
+script = ExtResource("29_enf0w")
+
+[node name="NpcSaveData" type="Node" parent="资源"]
+script = ExtResource("25_b8c7h")

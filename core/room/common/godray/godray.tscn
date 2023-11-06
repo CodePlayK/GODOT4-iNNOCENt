@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmqmqrx5uo43d"]
+
+[ext_resource type="Script" path="res://core/room/common/godray/godray.gd" id="1_x05xa"]
+[ext_resource type="Script" path="res://core/room/common/godray/LightArea.gd" id="2_lya7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54sdk"]
+size = Vector2(57.6, 378)
+
+[node name="Godyray" type="Polygon2D"]
+position = Vector2(19, -1)
+polygon = PackedVector2Array(-3, -45, -69, 287, -27, 287, 16, -46)
+script = ExtResource("1_x05xa")
+parallax_move_data = "res://core/room/common/parallax/parallax_move_data.tres"
+
+[node name="LightArea" type="Area2D" parent="."]
+collision_layer = 8388608
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_lya7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightArea"]
+visible = false
+position = Vector2(-26.5, 104)
+shape = SubResource("RectangleShape2D_54sdk")

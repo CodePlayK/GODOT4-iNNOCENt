@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cr0pcr2y8deg4"]
+
+[ext_resource type="FontFile" path="res://addons/Cutscener/resource/DinkieBitmap-9pxDemo.ttf" id="1_dhp2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4603f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eib7n"]
+bg_color = Color(1, 1, 1, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohy8"]
+bg_color = Color(1, 1, 1, 0.392157)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwo4v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_703oh"]
+bg_color = Color(1, 1, 1, 0.415686)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 0.705882)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.176471)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 0.784314)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0.682353)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_dhp2d")
+Button/styles/disabled = SubResource("StyleBoxEmpty_4603f")
+Button/styles/focus = SubResource("StyleBoxFlat_eib7n")
+Button/styles/hover = SubResource("StyleBoxFlat_uohy8")
+Button/styles/normal = SubResource("StyleBoxEmpty_uwo4v")
+Button/styles/pressed = SubResource("StyleBoxFlat_703oh")

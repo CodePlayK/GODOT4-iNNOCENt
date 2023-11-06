@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbdqahb6sd275"]
+
+[ext_resource type="Script" path="res://test/DataBaseConnection.gd" id="1_gdkwq"]
+
+[node name="DataBaseConnection" type="Node2D"]
+script = ExtResource("1_gdkwq")

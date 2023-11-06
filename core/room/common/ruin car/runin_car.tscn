@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://6xxy4n6dr6ec"]
+
+[ext_resource type="Texture2D" uid="uid://bx7m38jelwh4m" path="res://core/room/room_1/resource/world.png" id="1_b61ei"]
+[ext_resource type="Script" path="res://core/room/common/ruin car/runin_car.gd" id="1_ys6af"]
+[ext_resource type="Shader" path="res://core/common/shader/outline.gdshader" id="2_wk5hf"]
+[ext_resource type="Script" path="res://core/component/ObjDialogueDefault.gd" id="3_q48c1"]
+[ext_resource type="Script" path="res://core/component/HighlightOutLine.gd" id="3_x70st"]
+[ext_resource type="Resource" uid="uid://c7iylpt6oguvh" path="res://test/dialogue/ruin_car.dialogue" id="5_nkmdi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqkk1"]
+size = Vector2(150, 43)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mw3v0"]
+shader = ExtResource("2_wk5hf")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="RuinCar" type="Area2D" groups=["mouse_interactable_only"]]
+collision_mask = 0
+script = ExtResource("1_ys6af")
+objs_name = "ruincar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -0.5)
+shape = SubResource("RectangleShape2D_iqkk1")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_b61ei")
+region_enabled = true
+region_rect = Rect2(1240, 448, 200, 64)
+
+[node name="Outline" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mw3v0")
+texture = ExtResource("1_b61ei")
+region_enabled = true
+region_rect = Rect2(1240, 448, 200, 64)
+
+[node name="DialoguePosition" type="Marker2D" parent="."]
+position = Vector2(18, -26)
+
+[node name="HighlightOutLine" type="Node" parent="."]
+script = ExtResource("3_x70st")
+
+[node name="ObjDialogueDefault" type="Node" parent="."]
+script = ExtResource("3_q48c1")
+dialogue_resource = ExtResource("5_nkmdi")

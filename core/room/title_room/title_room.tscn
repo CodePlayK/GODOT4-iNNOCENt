@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://vc3op0llws0n"]
+
+[ext_resource type="Script" path="res://core/room/title_room/title_room.gd" id="1_u80c3"]
+[ext_resource type="Texture2D" uid="uid://dk66rbg1w3qn3" path="res://core/room/title_room/bktest.jpg" id="3_coivj"]
+[ext_resource type="Theme" uid="uid://cr0pcr2y8deg4" path="res://core/room/title_room/title_room.tres" id="4_6rqom"]
+[ext_resource type="Script" path="res://core/room/title_room/TitleScreenCamera.gd" id="4_lbnhy"]
+[ext_resource type="Script" path="res://core/component/ScreenColor.gd" id="6_pnc5c"]
+
+[sub_resource type="Animation" id="Animation_ygpep"]
+resource_name = "RESET"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-1, 235)]
+}
+
+[sub_resource type="Animation" id="Animation_u4eni"]
+resource_name = "start_game"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, -43), Vector2(-1, 235)]
+}
+
+[sub_resource type="Animation" id="Animation_5y1om"]
+resource_name = "to_title"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 235), Vector2(-1, -43)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugklx"]
+_data = {
+"RESET": SubResource("Animation_ygpep"),
+"start_game": SubResource("Animation_u4eni"),
+"to_title": SubResource("Animation_5y1om")
+}
+
+[node name="title_room" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_u80c3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(242.209, 266)
+scale = Vector2(0.260198, 0.228228)
+texture = ExtResource("3_coivj")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 113.0
+offset_right = 260.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = -65.0
+offset_right = 169.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="continue" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_6rqom")
+text = "继续游戏"
+
+[node name="save" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_6rqom")
+text = "保存"
+
+[node name="load" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_6rqom")
+text = "读取存档"
+
+[node name="delete" type="Button" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_6rqom")
+text = "删除存档"
+
+[node name="Camera" type="Node2D" parent="."]
+position = Vector2(-1, 235)
+
+[node name="TitleScreenCamera" type="Camera2D" parent="Camera"]
+unique_name_in_owner = true
+position = Vector2(242, 169)
+zoom = Vector2(3.92, 3.92)
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("4_lbnhy")
+
+[node name="CameraTimer" type="Timer" parent="Camera/TitleScreenCamera"]
+one_shot = true
+autostart = true
+
+[node name="Aniplayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_ugklx")
+}
+autoplay = "RESET"
+
+[node name="ScreenColor" type="Node" parent="."]
+script = ExtResource("6_pnc5c")
+top_ignore_height = 0.8
+
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/delete" to="." method="_on_delete_pressed"]

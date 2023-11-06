@@ -1,0 +1,451 @@
+[gd_scene load_steps=40 format=3 uid="uid://dxserb0b4vxf2"]
+
+[ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
+[ext_resource type="Texture2D" uid="uid://cor80kfuq6tki" path="res://core/player/player.png" id="1_mbkfu"]
+[ext_resource type="Script" path="res://core/player/state_machine/state_manager.gd" id="3_5tfn6"]
+[ext_resource type="Script" path="res://core/player/state_machine/base.gd" id="4_cfiqb"]
+[ext_resource type="Script" path="res://core/player/state_machine/idel.gd" id="5_vfcpx"]
+[ext_resource type="Script" path="res://core/player/state_machine/jump.gd" id="6_i3ary"]
+[ext_resource type="Script" path="res://core/player/state_machine/ground.gd" id="7_dbdva"]
+[ext_resource type="Script" path="res://core/player/state_machine/walk.gd" id="8_m3e85"]
+[ext_resource type="Script" path="res://core/player/state_machine/run.gd" id="9_oqdiy"]
+[ext_resource type="Script" path="res://core/player/state_machine/dash.gd" id="10_otd3s"]
+[ext_resource type="Script" path="res://core/player/state_machine/air.gd" id="11_xgemw"]
+[ext_resource type="Script" path="res://core/player/state_machine/lift.gd" id="12_n7puq"]
+[ext_resource type="Script" path="res://core/player/state_machine/fall.gd" id="13_jcu6v"]
+[ext_resource type="Script" path="res://core/player/state_machine/landing.gd" id="14_ovtxq"]
+[ext_resource type="Script" path="res://core/player/state_machine/interactive.gd" id="15_6i115"]
+[ext_resource type="Script" path="res://core/player/state_machine/climb.gd" id="16_gh0lk"]
+[ext_resource type="Script" path="res://core/player/state_machine/talk.gd" id="17_sh2bg"]
+[ext_resource type="Script" path="res://core/player/state_machine/combat.gd" id="18_3qeih"]
+[ext_resource type="FontFile" uid="uid://cny1vwonlh7gb" path="res://core/resource/font/DinkieBitmap-9pxDemo.ttf" id="18_ayrpq"]
+[ext_resource type="Script" path="res://core/player/state_machine/hard.gd" id="19_lsxjt"]
+[ext_resource type="Script" path="res://core/player/state_machine/behit.gd" id="20_yn2ld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rag0"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(120, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t0nh"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jim08"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(40, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv16p"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(160, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asny8"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(240, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c13w"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(320, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfwh8"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(360, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q2it"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(80, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ysb"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_begba"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(40, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if3h2"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(160, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpk0u"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(200, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya88g"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(240, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27qeo"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(280, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt2fg"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(320, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tlsg"]
+atlas = ExtResource("1_mbkfu")
+region = Rect2(360, 0, 40, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58g15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rag0")
+}],
+"loop": false,
+"name": &"behit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jim08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv16p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asny8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c13w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfwh8")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q2it")
+}],
+"loop": true,
+"name": &"dense",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"double_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ysb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_begba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if3h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpk0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya88g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27qeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt2fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tlsg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"lift",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"run_mad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"wake_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"wake_up_mad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t0nh")
+}],
+"loop": true,
+"name": &"walk_mad",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
+size = Vector2(20, 56)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_emear")
+gravity = 400
+max_gravity = 612
+acceleration_run = 300
+friction = 800
+max_speed_run = 210
+max_speed_walk = 120
+climb_speed = 120
+min_jump_fource = 70
+fast_fall_threshold = 100
+fast_fall_acceleration = 200
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+light_mask = 3
+sprite_frames = SubResource("SpriteFrames_58g15")
+animation = &"dense"
+autoplay = "idle"
+
+[node name="Reflection" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_58g15")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 36)
+shape = SubResource("RectangleShape2D_1p7aw")
+
+[node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
+script = ExtResource("3_5tfn6")
+starting_node = NodePath("base/idle")
+
+[node name="base" type="Node" parent="state_manager"]
+unique_name_in_owner = true
+script = ExtResource("4_cfiqb")
+
+[node name="idle" type="Node" parent="state_manager/base"]
+script = ExtResource("5_vfcpx")
+
+[node name="jump" type="Node" parent="state_manager/base"]
+script = ExtResource("6_i3ary")
+
+[node name="ground" type="Node" parent="state_manager/base"]
+script = ExtResource("7_dbdva")
+
+[node name="walk" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("8_m3e85")
+
+[node name="run" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("9_oqdiy")
+
+[node name="dash" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("10_otd3s")
+
+[node name="air" type="Node" parent="state_manager/base"]
+script = ExtResource("11_xgemw")
+
+[node name="lift" type="Node" parent="state_manager/base/air"]
+script = ExtResource("12_n7puq")
+
+[node name="fall" type="Node" parent="state_manager/base/air"]
+script = ExtResource("13_jcu6v")
+
+[node name="landing" type="Node" parent="state_manager/base/air"]
+script = ExtResource("14_ovtxq")
+
+[node name="interactive" type="Node" parent="state_manager"]
+script = ExtResource("15_6i115")
+
+[node name="climb" type="Node" parent="state_manager/interactive"]
+script = ExtResource("16_gh0lk")
+
+[node name="talk" type="Node" parent="state_manager/interactive"]
+script = ExtResource("17_sh2bg")
+
+[node name="combat" type="Node" parent="state_manager"]
+script = ExtResource("18_3qeih")
+
+[node name="dense" type="Node" parent="state_manager/combat"]
+script = ExtResource("19_lsxjt")
+
+[node name="DenseTimer" type="Timer" parent="state_manager/combat/dense"]
+unique_name_in_owner = true
+wait_time = 0.001
+one_shot = true
+
+[node name="DenseCooldownTimer" type="Timer" parent="state_manager/combat/dense"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="behit" type="Node" parent="state_manager/combat"]
+script = ExtResource("20_yn2ld")
+
+[node name="HitTimer" type="Timer" parent="state_manager/combat/behit"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="StiffTimer" type="Timer" parent="state_manager/combat/behit"]
+wait_time = 0.5
+one_shot = true
+
+[node name="ladderCheck" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+target_position = Vector2(0, 21)
+collision_mask = 4
+
+[node name="blockCheckerLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+rotation = 1.5708
+target_position = Vector2(0, 13.44)
+collide_with_areas = true
+
+[node name="blockCheckerRight" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+rotation = -1.5708
+target_position = Vector2(0, 9.03)
+collide_with_areas = true
+
+[node name="DialoguePosition" type="Marker2D" parent="."]
+
+[node name="TestLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -12.5
+offset_right = 20.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestLabel2" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestLabel3" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="state_manager/combat/dense/DenseTimer" to="state_manager/combat/dense" method="_on_dense_timer_timeout"]
+[connection signal="timeout" from="state_manager/combat/dense/DenseCooldownTimer" to="state_manager/combat/dense" method="_on_dense_cooldown_timer_timeout"]
+[connection signal="timeout" from="state_manager/combat/behit/HitTimer" to="state_manager/combat/behit" method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="state_manager/combat/behit/StiffTimer" to="state_manager/combat/behit" method="_on_stiff_timer_timeout"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerSaveData" load_steps=2 format=3 uid="uid://dh7mbw46np053"]
+
+[ext_resource type="Script" path="res://core/player/PlayerSaveData.gd" id="1_0m6vx"]
+
+[resource]
+script = ExtResource("1_0m6vx")
+player_position = Vector2(0, 0)
+test_txt = ""

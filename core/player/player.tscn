@@ -1,0 +1,479 @@
+[gd_scene load_steps=49 format=3 uid="uid://dxserb0b4vxf2"]
+
+[ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
+[ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_s3ffp"]
+[ext_resource type="Script" path="res://core/player/state_machine/state_manager.gd" id="3_5tfn6"]
+[ext_resource type="SpriteFrames" uid="uid://df0noclsi0k7r" path="res://core/player/animation/player-2.tres" id="3_o7jyy"]
+[ext_resource type="SpriteFrames" uid="uid://b20x1sbpuk3ub" path="res://core/player/animation/player-1.tres" id="3_yowp4"]
+[ext_resource type="Script" path="res://core/player/state_machine/base.gd" id="4_cfiqb"]
+[ext_resource type="Script" path="res://core/player/state_machine/idel.gd" id="5_vfcpx"]
+[ext_resource type="Script" path="res://core/player/state_machine/jump.gd" id="6_i3ary"]
+[ext_resource type="Script" path="res://core/player/state_machine/ground.gd" id="7_dbdva"]
+[ext_resource type="Script" path="res://core/player/state_machine/walk.gd" id="8_m3e85"]
+[ext_resource type="Script" path="res://core/player/state_machine/lightJump.gd" id="8_wvdtr"]
+[ext_resource type="Script" path="res://core/player/state_machine/run.gd" id="9_oqdiy"]
+[ext_resource type="Script" path="res://core/player/state_machine/dash.gd" id="10_otd3s"]
+[ext_resource type="Script" path="res://core/player/state_machine/air.gd" id="11_xgemw"]
+[ext_resource type="Script" path="res://core/player/state_machine/lift.gd" id="12_n7puq"]
+[ext_resource type="Script" path="res://core/player/fastrun.gd" id="13_63inm"]
+[ext_resource type="Script" path="res://core/player/state_machine/fall.gd" id="13_jcu6v"]
+[ext_resource type="Script" path="res://core/player/state_machine/landing.gd" id="14_ovtxq"]
+[ext_resource type="Script" path="res://core/player/state_machine/interactive.gd" id="15_6i115"]
+[ext_resource type="Script" path="res://core/player/state_machine/climb.gd" id="16_gh0lk"]
+[ext_resource type="Script" path="res://core/player/state_machine/talk.gd" id="17_sh2bg"]
+[ext_resource type="Script" path="res://core/player/state_machine/combat.gd" id="18_3qeih"]
+[ext_resource type="FontFile" uid="uid://cth46tmy4cprv" path="res://core/resource/font/DinkieBitmap-9pxDemo.ttf" id="18_ayrpq"]
+[ext_resource type="Script" path="res://core/player/state_machine/hard.gd" id="19_lsxjt"]
+[ext_resource type="Script" path="res://core/player/state_machine/behit.gd" id="20_yn2ld"]
+[ext_resource type="Script" path="res://core/player/state_machine/safed.gd" id="22_vpmtv"]
+[ext_resource type="Script" path="res://core/player/state_machine/damaged.gd" id="23_t1hct"]
+[ext_resource type="Script" path="res://core/player/attack1.gd" id="27_45d83"]
+[ext_resource type="Script" path="res://core/player/UI.gd" id="27_cru4u"]
+[ext_resource type="Script" path="res://core/player/SaveDataCollector.gd" id="31_s4hwe"]
+[ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
+[ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nktfc"]
+shader = ExtResource("2_s3ffp")
+shader_parameter/color = null
+shader_parameter/enable = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
+size = Vector2(34, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcclo"]
+size = Vector2(144, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmv73"]
+size = Vector2(90, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puvyo"]
+size = Vector2(24, 56)
+
+[sub_resource type="Animation" id="Animation_ine36"]
+resource_name = "attack0"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack1", &"attack1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Weapon:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Weapon:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bg4au"]
+_data = {
+"attack0": SubResource("Animation_ine36")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6joe0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4i8i"]
+bg_color = Color(0.0784314, 0.698039, 0.862745, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_odo7y"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_6joe0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_u4i8i")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgghh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh2k1"]
+bg_color = Color(0.345098, 1, 0.776471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_1jd7q"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_dgghh")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_yh2k1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3027"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pc6a4"]
+bg_color = Color(1, 0.34902, 0.34902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_xmfd2"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_i3027")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_pc6a4")
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+platform_wall_layers = 1
+script = ExtResource("1_emear")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+light_mask = 33
+material = SubResource("ShaderMaterial_nktfc")
+position = Vector2(-1.19209e-07, 40)
+scale = Vector2(2.1, 2.1)
+sprite_frames = ExtResource("3_o7jyy")
+animation = &"fastrun"
+autoplay = "idle"
+frame_progress = 0.262702
+offset = Vector2(16.7778, -4.44444)
+
+[node name="Reflection" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("3_yowp4")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 25.5)
+shape = SubResource("RectangleShape2D_1p7aw")
+
+[node name="Weapon" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
+position = Vector2(58, 42.25)
+shape = SubResource("RectangleShape2D_hcclo")
+
+[node name="PlayerLightable" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8388608
+monitorable = false
+script = ExtResource("37_ka7u1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLightable"]
+visible = false
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_rmv73")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+input_pickable = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 36)
+shape = SubResource("RectangleShape2D_puvyo")
+
+[node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
+script = ExtResource("3_5tfn6")
+starting_node = NodePath("base/idle")
+
+[node name="Aniplayer" type="AnimationPlayer" parent="state_manager"]
+libraries = {
+"": SubResource("AnimationLibrary_bg4au")
+}
+speed_scale = 4.0
+
+[node name="base" type="Node" parent="state_manager"]
+unique_name_in_owner = true
+script = ExtResource("4_cfiqb")
+
+[node name="idle" type="Node" parent="state_manager/base"]
+script = ExtResource("5_vfcpx")
+
+[node name="jump" type="Node" parent="state_manager/base"]
+script = ExtResource("6_i3ary")
+
+[node name="ground" type="Node" parent="state_manager/base"]
+script = ExtResource("7_dbdva")
+
+[node name="walk" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("8_m3e85")
+
+[node name="run" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("9_oqdiy")
+
+[node name="fastrun" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("13_63inm")
+
+[node name="dash" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("10_otd3s")
+
+[node name="air" type="Node" parent="state_manager/base"]
+script = ExtResource("11_xgemw")
+
+[node name="lift" type="Node" parent="state_manager/base/air"]
+script = ExtResource("12_n7puq")
+
+[node name="fall" type="Node" parent="state_manager/base/air"]
+script = ExtResource("13_jcu6v")
+
+[node name="landing" type="Node" parent="state_manager/base/air"]
+script = ExtResource("14_ovtxq")
+
+[node name="interactive" type="Node" parent="state_manager/base"]
+script = ExtResource("15_6i115")
+
+[node name="climb" type="Node" parent="state_manager/base/interactive"]
+script = ExtResource("16_gh0lk")
+
+[node name="talk" type="Node" parent="state_manager/base/interactive"]
+script = ExtResource("17_sh2bg")
+is_normal_state = false
+
+[node name="combat" type="Node" parent="state_manager/base"]
+script = ExtResource("18_3qeih")
+is_normal_state = false
+
+[node name="dense" type="Node" parent="state_manager/base/combat"]
+script = ExtResource("19_lsxjt")
+sprite_color = Color(1, 0.6, 0, 1)
+is_normal_state = false
+
+[node name="DenseTimer" type="Timer" parent="state_manager/base/combat/dense"]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
+[node name="DenseCooldownTimer" type="Timer" parent="state_manager/base/combat/dense"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="behit" type="Node" parent="state_manager/base/combat"]
+script = ExtResource("20_yn2ld")
+is_normal_state = false
+
+[node name="behitDenseSafed" type="Node" parent="state_manager/base/combat/behit"]
+script = ExtResource("22_vpmtv")
+sprite_color = Color(0.286275, 1, 0.533333, 1)
+is_normal_state = false
+
+[node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
+script = ExtResource("23_t1hct")
+stiff_time = 0.6
+change_sprite = false
+change_sprite_color = true
+sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
+is_normal_state = false
+
+[node name="StiffTimer" type="Timer" parent="state_manager/base/combat/behit"]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
+[node name="light" type="Node" parent="state_manager/base/combat"]
+script = ExtResource("8_wvdtr")
+i = 6.0
+is_normal_state = false
+
+[node name="lightTimer" type="Timer" parent="state_manager/base/combat/light"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="attack0" type="Node" parent="state_manager/base/combat"]
+script = ExtResource("27_45d83")
+change_sprite = false
+is_normal_state = false
+
+[node name="ladderCheck" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+target_position = Vector2(0, 21)
+collision_mask = 4
+
+[node name="blockCheckerLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+rotation = 1.5708
+target_position = Vector2(4.57764e-05, 13)
+collide_with_areas = true
+
+[node name="blockCheckerRight" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+rotation = -1.5708
+target_position = Vector2(-3.43323e-05, 9)
+collide_with_areas = true
+
+[node name="DialoguePosition" type="Marker2D" parent="."]
+
+[node name="TestLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 9
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gravity" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "重量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TL2" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="TL2"]
+autostart = true
+
+[node name="TestLabel3" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource("27_cru4u")
+
+[node name="DenseCooldownBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 17.0
+offset_bottom = 38.0
+theme = SubResource("Theme_odo7y")
+step = 0.1
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="LightBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -21.0
+offset_top = 11.0
+offset_right = -19.0
+offset_bottom = 38.0
+theme = SubResource("Theme_1jd7q")
+step = 0.1
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="StiffBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 2.0
+theme = SubResource("Theme_xmfd2")
+value = 50.0
+show_percentage = false
+
+[node name="UpdateTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="SaveDataCollector" type="Node" parent="."]
+script = ExtResource("31_s4hwe")
+
+[node name="Saver" type="Node" parent="SaveDataCollector"]
+script = ExtResource("32_xf8id")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="area_entered" from="PlayerLightable" to="PlayerLightable" method="_on_area_entered"]
+[connection signal="area_exited" from="PlayerLightable" to="PlayerLightable" method="_on_area_exited"]
+[connection signal="timeout" from="state_manager/base/combat/dense/DenseTimer" to="state_manager/base/combat/dense" method="_on_dense_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/dense/DenseCooldownTimer" to="state_manager/base/combat/dense" method="_on_dense_cooldown_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDenseSafed" method="_on_stiff_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_stiff_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/light/lightTimer" to="state_manager/base/combat/light" method="_on_light_timer_timeout"]
+[connection signal="timeout" from="TL2/Timer" to="UI" method="_on_timer_timeout"]
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8jym25ahww0b"]
+
+[ext_resource type="Script" path="res://core/room/everything_42.gd" id="1_cr0g2"]
+[ext_resource type="PackedScene" uid="uid://by1nhv0m25ov8" path="res://core/room/transition/transation.tscn" id="2_1mnij"]
+
+[node name="Everything42" type="Node2D"]
+script = ExtResource("1_cr0g2")
+
+[node name="transition" parent="." instance=ExtResource("2_1mnij")]

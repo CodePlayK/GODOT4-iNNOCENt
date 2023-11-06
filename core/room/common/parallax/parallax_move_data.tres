@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ParallaxMoveData" load_steps=2 format=3 uid="uid://o8l2arepyfou"]
+
+[ext_resource type="Script" path="res://core/room/common/parallax/Parallax_move_data.gd" id="1_gh21a"]
+
+[resource]
+script = ExtResource("1_gh21a")
+dic_layers_move_data = {}

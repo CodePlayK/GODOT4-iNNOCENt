@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcmc76n5bvguy"]
+
+[ext_resource type="Texture2D" uid="uid://774e26aob2r4" path="res://core/room/common/fire fly/firfly.png" id="1_bid80"]
+
+[sub_resource type="Gradient" id="Gradient_5m5dh"]
+offsets = PackedFloat32Array(0, 0.363273, 0.642715, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lkw1r"]
+gradient = SubResource("Gradient_5m5dh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6dtt2"]
+lifetime_randomness = 0.46
+emission_shape = 3
+emission_box_extents = Vector3(300, 30, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+color_ramp = SubResource("GradientTexture1D_lkw1r")
+
+[node name="Firefly" type="GPUParticles2D"]
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_6dtt2")
+texture = ExtResource("1_bid80")
+lifetime = 10.0
+randomness = 0.35
+fixed_fps = 2
+visibility_rect = Rect2(-400, -100, 800, 200)
+local_coords = true

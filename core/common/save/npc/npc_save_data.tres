@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NpcSaveData" load_steps=2 format=3 uid="uid://cms6bj7fui7mw"]
+
+[ext_resource type="Script" path="res://core/common/save/npc/npc_save_data.gd" id="1_uhwwx"]
+
+[resource]
+script = ExtResource("1_uhwwx")
+npc_position = Vector2(0, 0)
+npc_face_left = false

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://by4elvum8bxcc"]
+
+[ext_resource type="Texture2D" uid="uid://b4m3miwy82lx7" path="res://test/1f1761376f1248524568b04e5ef6b08c.png" id="1_eggb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di6yj"]
+atlas = ExtResource("1_eggb4")
+region = Rect2(0, 0, 17, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5v7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di6yj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao45p"]
+size = Vector2(95, 237.559)
+
+[node name="SlimCat" type="Area2D" groups=["player_interactable_only"]]
+scale = Vector2(0.531467, 0.573839)
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6.79412, 6.79412)
+sprite_frames = SubResource("SpriteFrames_c5v7d")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 14.2205)
+shape = SubResource("RectangleShape2D_ao45p")

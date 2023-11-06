@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_10"
+type="Resource"
+uid="uid://bx7y0coeb1r0s"
+path="res://.godot/imported/npc_sen.dialogue-343f66508f5527dc4725c0c6945006d1.tres"
+
+[deps]
+
+source_file="res://test/dialogue/npc_sen.dialogue"
+dest_files=["res://.godot/imported/npc_sen.dialogue-343f66508f5527dc4725c0c6945006d1.tres"]
+
+[params]
+
+defaults=true

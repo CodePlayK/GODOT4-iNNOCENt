@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_10"
+type="Resource"
+uid="uid://24esd12vvsix"
+path="res://.godot/imported/pole.dialogue-8b9fe98fff6d1d9f75f993bf7f400a95.tres"
+
+[deps]
+
+source_file="res://core/common/dialogue/obj/pole.dialogue"
+dest_files=["res://.godot/imported/pole.dialogue-8b9fe98fff6d1d9f75f993bf7f400a95.tres"]
+
+[params]
+
+defaults=true

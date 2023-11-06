@@ -1,0 +1,31 @@
+~ C0_0_0_醒来
+膝盖中了一箭的人: test_var现在的值为{{test_var_int}}
+=> END
+~ full_line
+这里是Cutscener: {{test_var_String}}
+=> END
+~ test_var_Vector2
+这里是Cutscener: [test_var_Vector2]此时的值是 : {{test_var_Vector2}}
+=> END
+~ test_var_int
+这里是Cutscener: [test_var_int]此时的值是 : {{test_var_int}}
+=> END
+~ test_var_float
+这里是Cutscener: [test_var_float]此时的值是 : {{test_var_float}}
+=> END
+~ test_var_Array
+这里是Cutscener: [test_var_Array]此时的值是 : {{test_var_Array}}
+=> END
+~ test_var_Dictionary
+这里是Cutscener: [test_var_Dictionary]此时的值是 : {{test_var_Dictionary}}
+=> END
+~ test_var_Resource
+这里是Cutscener: [test_var_Resource]此时的值是 : {{test_var_Resource}}
+=> END
+~ test_choose
+这里是Cutscener: 兔兔这么可爱,我们应该:
+- 摸摸头
+	set test_var_String = "摸摸头"
+- 煮着吃
+	set test_var_String = "煮着吃"
+=> END

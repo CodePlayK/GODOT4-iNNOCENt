@@ -1,0 +1,1727 @@
+{
+	"CombineNode_15444266373814": {
+		"0": {
+			"StartNode_14277109011758": {
+				"index_by_parent": 0,
+				"name": "StartNode_14277109011758",
+				"node_type": 0,
+				"position.x": 70.3981323242188,
+				"position.y": 492.850463867188,
+				"position_offset.x": -890.500366210938,
+				"position_offset.y": 436.96728515625,
+				"timer": "",
+				"title": "Start"
+			}
+		},
+		"1": {
+			"SignalNode_14291336097276": {
+				"index_by_parent": 1,
+				"name": "SignalNode_14291336097276",
+				"node_type": 1,
+				"position.x": 425.264221191406,
+				"position.y": 263.505249023438,
+				"position_offset.x": -318.984893798828,
+				"position_offset.y": 67.6044692993164,
+				"props": [],
+				"return_type": false,
+				"signal_name": "CutsceneBus.disable_all_ineractable",
+				"timer": "",
+				"title": "Signal"
+			},
+			"SignalNode_15243862530306": {
+				"index_by_parent": 2,
+				"name": "SignalNode_15243862530306",
+				"node_type": 1,
+				"position.x": 435.685394287109,
+				"position.y": 332.032257080078,
+				"position_offset.x": -302.201507568359,
+				"position_offset.y": 177.967895507813,
+				"props": [
+					[
+						"",
+						4,
+						"npcsen2",
+						0
+					],
+					[
+						"",
+						4,
+						"idle",
+						0
+					]
+				],
+				"return_type": false,
+				"signal_name": "CutsceneBus.change_npc_state",
+				"timer": "",
+				"title": "Signal"
+			}
+		},
+		"2": {
+			"SetNode_15304579272697": {
+				"index_by_parent": 3,
+				"name": "SetNode_15304579272697",
+				"node_type": 2,
+				"position.x": 433.333984375,
+				"position.y": 458.183898925781,
+				"position_offset.x": -305.988464355469,
+				"position_offset.y": 381.136413574219,
+				"prop_name": "CutsceneState.cutscener_playing",
+				"props": [
+					[
+						"CutsceneState.cutscener_playing",
+						1,
+						0,
+						"1",
+						0
+					]
+				],
+				"timer": "",
+				"title": "Set"
+			}
+		},
+		"connection_list": [
+			{
+				"from_node": "StartNode_14277109011758",
+				"from_port": 0,
+				"to_node": "SignalNode_14291336097276",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_14277109011758",
+				"from_port": 0,
+				"to_node": "SignalNode_15243862530306",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_14277109011758",
+				"from_port": 0,
+				"to_node": "SetNode_15304579272697",
+				"to_port": 0
+			}
+		],
+		"connection_list_with_out_side": [
+			{
+				"from_node": "StartNode_14277109011758",
+				"from_port": 0,
+				"to_node": "SignalNode_14291336097276",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_14277109011758",
+				"from_port": 0,
+				"to_node": "SignalNode_15243862530306",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_14277109011758",
+				"from_port": 0,
+				"to_node": "SetNode_15304579272697",
+				"to_port": 0
+			}
+		],
+		"graph_positon": [
+			-623.328735351563,
+			-221.528213500977,
+			0.62092125415802
+		],
+		"nodes_type": {
+			"SetNode_15304579272697": 2,
+			"SignalNode_14291336097276": 1,
+			"SignalNode_15243862530306": 1,
+			"StartNode_14277109011758": 0
+		},
+		"run_data": {
+			"StartNode_14277109011758": [
+				[
+					"SignalNode_14291336097276",
+					1,
+					0
+				],
+				[
+					"SignalNode_15243862530306",
+					2,
+					0
+				],
+				[
+					"SetNode_15304579272697",
+					3,
+					0
+				]
+			]
+		}
+	},
+	"CombineNode_16447946544627": {
+		"0": {
+			"StartNode_16300105724795": {
+				"index_by_parent": 0,
+				"name": "StartNode_16300105724795",
+				"node_type": 0,
+				"position.x": 645.014221191406,
+				"position.y": 75.0390014648438,
+				"position_offset.x": -827.31103515625,
+				"position_offset.y": -191.515228271484,
+				"timer": "",
+				"title": "Start"
+			}
+		},
+		"1": {
+			"SignalNode_16038532018694": {
+				"CombineNode_16447946544627_props": [
+					[
+						"",
+						4,
+						"npcan",
+						1
+					],
+					[
+						"",
+						24,
+						"res://core/common/dialogue/room/room1.dialogue",
+						1
+					],
+					[
+						"",
+						4,
+						"full_line",
+						1
+					]
+				],
+				"CombineNode_17180775341859_props": [
+					[
+						"",
+						4,
+						"npcsen2",
+						1
+					],
+					[
+						"",
+						24,
+						"res://core/common/dialogue/room/room1.dialogue",
+						1
+					],
+					[
+						"",
+						4,
+						"full_line",
+						1
+					]
+				],
+				"CombineNode_17264577530270_props": [
+					[
+						"",
+						4,
+						"npcan",
+						1
+					],
+					[
+						"",
+						24,
+						"res://core/common/dialogue/room/room1.dialogue",
+						1
+					],
+					[
+						"",
+						4,
+						"full_line",
+						1
+					]
+				],
+				"index_by_parent": 2,
+				"name": "SignalNode_16038532018694",
+				"node_type": 1,
+				"position.x": 675.679870605469,
+				"position.y": 503.895263671875,
+				"position_offset.x": -790.20556640625,
+				"position_offset.y": 327.401062011719,
+				"props": [
+					[
+						"",
+						4,
+						"npcsen2",
+						1
+					],
+					[
+						"",
+						24,
+						"res://core/common/dialogue/room/room1.dialogue",
+						1
+					],
+					[
+						"",
+						4,
+						"full_line",
+						1
+					]
+				],
+				"return_type": false,
+				"signal_name": "CutsceneBus.cutscene_talk",
+				"timer": "",
+				"title": "Signal"
+			}
+		},
+		"2": {
+			"SetNode_16064654272261": {
+				"CombineNode_16447946544627_props": [
+					[
+						"CutsceneState.test_var_String",
+						4,
+						0,
+						"当前的值为:{{test_var_int}}",
+						1
+					]
+				],
+				"CombineNode_17180775341859_props": [
+					[
+						"CutsceneState.test_var_String",
+						4,
+						0,
+						"当前的值为:{{test_var_int}},大于等于20~",
+						1
+					]
+				],
+				"CombineNode_17264577530270_props": [
+					[
+						"CutsceneState.test_var_String",
+						4,
+						0,
+						"当前的值为:{{test_var_int}},小于20~",
+						1
+					]
+				],
+				"index_by_parent": 1,
+				"name": "SetNode_16064654272261",
+				"node_type": 2,
+				"position.x": 693.158447265625,
+				"position.y": 312.5634765625,
+				"position_offset.x": -769.056518554688,
+				"position_offset.y": 95.889518737793,
+				"prop_name": "CutsceneState.test_var_String",
+				"props": [
+					[
+						"CutsceneState.test_var_String",
+						4,
+						0,
+						"嘿嘿嘿",
+						1
+					]
+				],
+				"timer": "",
+				"title": "Set"
+			}
+		},
+		"connection_list": [
+			{
+				"from_node": "StartNode_16300105724795",
+				"from_port": 0,
+				"to_node": "SetNode_16064654272261",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_16300105724795",
+				"from_port": 0,
+				"to_node": "SignalNode_16038532018694",
+				"to_port": 0
+			}
+		],
+		"connection_list_with_out_side": [
+			{
+				"from_node": "StartNode_16300105724795",
+				"from_port": 0,
+				"to_node": "SetNode_16064654272261",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_16300105724795",
+				"from_port": 0,
+				"to_node": "SignalNode_16038532018694",
+				"to_port": 0
+			}
+		],
+		"graph_positon": [
+			-1328.74206542969,
+			-233.315979003906,
+			0.826445937156677
+		],
+		"nodes_type": {
+			"SetNode_16064654272261": 2,
+			"SignalNode_16038532018694": 1,
+			"StartNode_16300105724795": 0
+		},
+		"run_data": {
+			"StartNode_16300105724795": [
+				[
+					"SetNode_16064654272261",
+					1,
+					0
+				],
+				[
+					"SignalNode_16038532018694",
+					2,
+					0
+				]
+			]
+		}
+	},
+	"base": {
+		"0": {
+			"StartNode_15474247258130": {
+				"index_by_parent": 0,
+				"name": "StartNode_15474247258130",
+				"node_type": 0,
+				"position.x": -1094.79614257813,
+				"position.y": 534.690002441406,
+				"position_offset.x": -1993.74194335938,
+				"position_offset.y": 261.712066650391,
+				"timer": "",
+				"title": "Start"
+			}
+		},
+		"1": {
+			"SignalNode_15527380703708": {
+				"index_by_parent": 2,
+				"name": "SignalNode_15527380703708",
+				"node_type": 1,
+				"position.x": -734.974731445313,
+				"position.y": 386.307006835938,
+				"position_offset.x": -1514.8193359375,
+				"position_offset.y": 64.2142181396484,
+				"props": [
+					[
+						"",
+						4,
+						"npcsen2",
+						0
+					],
+					[
+						"",
+						5,
+						"[968.000000,204.000000]",
+						0
+					],
+					[
+						"",
+						3,
+						"2",
+						0
+					]
+				],
+				"return_type": false,
+				"signal_name": "CutsceneBus.move_2_vec2",
+				"timer": "2",
+				"title": "Signal"
+			},
+			"SignalNode_15701192657490": {
+				"index_by_parent": 3,
+				"name": "SignalNode_15701192657490",
+				"node_type": 1,
+				"position.x": -733.0146484375,
+				"position.y": 579.453491210938,
+				"position_offset.x": -1512.21057128906,
+				"position_offset.y": 321.292266845703,
+				"props": [
+					[
+						"",
+						4,
+						"npcsen2",
+						0
+					],
+					[
+						"",
+						3,
+						"2",
+						0
+					],
+					[
+						"",
+						2,
+						"",
+						0
+					]
+				],
+				"return_type": false,
+				"signal_name": "CutsceneBus.move_2_player",
+				"timer": "2",
+				"title": "Signal"
+			},
+			"SignalNode_17621630250836": {
+				"index_by_parent": 5,
+				"name": "SignalNode_17621630250836",
+				"node_type": 1,
+				"position.x": -744.885375976563,
+				"position.y": 891.549621582031,
+				"position_offset.x": -1528.01049804688,
+				"position_offset.y": 736.6923828125,
+				"props": [
+					[
+						"",
+						4,
+						"npcan",
+						0
+					],
+					[
+						"",
+						3,
+						"1",
+						0
+					],
+					[
+						"",
+						2,
+						"100",
+						0
+					]
+				],
+				"return_type": false,
+				"signal_name": "CutsceneBus.move_2_player",
+				"timer": "1",
+				"title": "Signal"
+			},
+			"SignalNode_18090050118646": {
+				"index_by_parent": 1,
+				"name": "SignalNode_18090050118646",
+				"node_type": 1,
+				"position.x": 892.6396484375,
+				"position.y": 613.140380859375,
+				"position_offset.x": 651.536376953125,
+				"position_offset.y": 366.129577636719,
+				"props": [
+					[
+						"",
+						4,
+						"npcan",
+						0
+					],
+					[
+						"",
+						5,
+						"[1200.000000,204.000000]",
+						0
+					],
+					[
+						"",
+						3,
+						"2",
+						0
+					]
+				],
+				"return_type": false,
+				"signal_name": "CutsceneBus.move_2_vec2",
+				"timer": "2",
+				"title": "Signal"
+			},
+			"SignalNode_18896447004772": {
+				"index_by_parent": 1,
+				"name": "SignalNode_18896447004772",
+				"node_type": 1,
+				"position.x": 1639.30395507813,
+				"position.y": 592.21728515625,
+				"position_offset.x": 1645.34692382813,
+				"position_offset.y": 338.280914306641,
+				"props": [],
+				"return_type": false,
+				"signal_name": "CutsceneBus.enable_all_ineractable",
+				"timer": "",
+				"title": "Signal"
+			}
+		},
+		"2": {
+			"SetNode_16722405028692": {
+				"index_by_parent": 4,
+				"name": "SetNode_16722405028692",
+				"node_type": 2,
+				"position.x": -740.036743164063,
+				"position.y": 765.646606445313,
+				"position_offset.x": -1521.55688476563,
+				"position_offset.y": 569.115417480469,
+				"prop_name": "CutsceneState.test_var_int",
+				"props": [
+					[
+						"CutsceneState.test_var_int",
+						2,
+						6,
+						"5",
+						0
+					]
+				],
+				"timer": "",
+				"title": "Set"
+			},
+			"SetNode_18807343209406": {
+				"index_by_parent": 2,
+				"name": "SetNode_18807343209406",
+				"node_type": 2,
+				"position.x": 1645.30407714844,
+				"position.y": 396.21728515625,
+				"position_offset.x": 1653.33312988281,
+				"position_offset.y": 77.40478515625,
+				"prop_name": "CutsceneState.cutscener_playing",
+				"props": [
+					[
+						"CutsceneState.cutscener_playing",
+						1,
+						0,
+						"0",
+						0
+					]
+				],
+				"timer": "",
+				"title": "Set"
+			}
+		},
+		"3": {
+			"ConditionNode_16961950109900": {
+				"index_by_parent": 2,
+				"name": "ConditionNode_16961950109900",
+				"node_type": 3,
+				"position.x": -258.940734863281,
+				"position.y": 684.645629882813,
+				"position_offset.x": -881.217834472656,
+				"position_offset.y": 461.303100585938,
+				"prop_name": "CutsceneState.test_var_int",
+				"props": [
+					[
+						20,
+						"CutsceneState.test_var_int",
+						2,
+						5,
+						"20",
+						0
+					]
+				],
+				"timer": "",
+				"title": "Condition"
+			}
+		},
+		"4": {
+			"EndNode_19112470423968": {
+				"index_by_parent": 3,
+				"name": "EndNode_19112470423968",
+				"node_type": 4,
+				"position.x": 1681.625,
+				"position.y": 741.810485839844,
+				"position_offset.x": 1701.67626953125,
+				"position_offset.y": 537.389526367188,
+				"timer": "",
+				"title": "End"
+			}
+		},
+		"101": {
+			"CombineNode_15444266373814": {
+				"connection_list_with_out_side": [
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "CombineNode_15444266373814",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15527380703708",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15701192657490",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "CombineNode_16447946544627",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SetNode_16722405028692",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "ConditionNode_16961950109900",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 0,
+						"to_node": "CombineNode_17180775341859",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 1,
+						"to_node": "CombineNode_17264577530270",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_17621630250836",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17180775341859",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17264577530270",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SignalNode_18896447004772",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SetNode_18807343209406",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "EndNode_19112470423968",
+						"to_port": 0
+					}
+				],
+				"data_node_name": "CombineNode_15444266373814",
+				"index_by_parent": 1,
+				"name": "CombineNode_15444266373814",
+				"node_type": 101,
+				"position.x": -737.618530273438,
+				"position.y": 241.587280273438,
+				"position_offset.x": -1518.33825683594,
+				"position_offset.y": -128.407836914063,
+				"prop_name": "CutsceneState.title_able",
+				"props": [],
+				"save_file_name": "user://Cutscener/demo/初始化.cnd",
+				"timer": "",
+				"title": "初始化"
+			},
+			"CombineNode_16447946544627": {
+				"connection_list_with_out_side": [
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "CombineNode_15444266373814",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15527380703708",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15701192657490",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "CombineNode_16447946544627",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SetNode_16722405028692",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "ConditionNode_16961950109900",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 0,
+						"to_node": "CombineNode_17180775341859",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 1,
+						"to_node": "CombineNode_17264577530270",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_17621630250836",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17180775341859",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17264577530270",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SignalNode_18896447004772",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SetNode_18807343209406",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "EndNode_19112470423968",
+						"to_port": 0
+					}
+				],
+				"data_node_name": "CombineNode_16447946544627",
+				"index_by_parent": 1,
+				"name": "CombineNode_16447946544627",
+				"node_type": 101,
+				"position.x": -254.84814453125,
+				"position.y": 490.769226074219,
+				"position_offset.x": -875.770629882813,
+				"position_offset.y": 203.253479003906,
+				"prop_name": "CutsceneState.title_able",
+				"props": [
+					[
+						[
+							"#1",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"npcan",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_16447946544627_props",
+							0
+						]
+					],
+					[
+						[
+							"#2",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							24,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"res://core/common/dialogue/room/room1.dialogue",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_16447946544627_props",
+							1
+						]
+					],
+					[
+						[
+							"#3",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"full_line",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_16447946544627_props",
+							2
+						]
+					],
+					[
+						[
+							"#4",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"CutsceneState.test_var_String",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							1
+						],
+						[
+							"当前的值为:{{test_var_int}}",
+							1
+						],
+						[
+							"2",
+							"SetNode_16064654272261",
+							"CombineNode_16447946544627_props",
+							0
+						]
+					]
+				],
+				"save_file_name": "user://Cutscener/demo/对话.cnd",
+				"timer": "",
+				"title": "对话"
+			},
+			"CombineNode_17180775341859": {
+				"connection_list_with_out_side": [
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "CombineNode_15444266373814",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15527380703708",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15701192657490",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "CombineNode_16447946544627",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SetNode_16722405028692",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "ConditionNode_16961950109900",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 0,
+						"to_node": "CombineNode_17180775341859",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 1,
+						"to_node": "CombineNode_17264577530270",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_17621630250836",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17180775341859",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17264577530270",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SignalNode_18896447004772",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SetNode_18807343209406",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "EndNode_19112470423968",
+						"to_port": 0
+					}
+				],
+				"data_node_name": "CombineNode_16447946544627",
+				"index_by_parent": 1,
+				"name": "CombineNode_17180775341859",
+				"node_type": 101,
+				"position.x": 317.421569824219,
+				"position.y": 438.038940429688,
+				"position_offset.x": -114.079277038574,
+				"position_offset.y": 133.069427490234,
+				"prop_name": "CutsceneState.title_able",
+				"props": [
+					[
+						[
+							"#1",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"npcsen2",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_17180775341859_props",
+							0
+						]
+					],
+					[
+						[
+							"#2",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							24,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"res://core/common/dialogue/room/room1.dialogue",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_17180775341859_props",
+							1
+						]
+					],
+					[
+						[
+							"#3",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"full_line",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_17180775341859_props",
+							2
+						]
+					],
+					[
+						[
+							"#4",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"CutsceneState.test_var_String",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							1
+						],
+						[
+							"当前的值为:{{test_var_int}},大于等于20~",
+							1
+						],
+						[
+							"2",
+							"SetNode_16064654272261",
+							"CombineNode_17180775341859_props",
+							0
+						]
+					]
+				],
+				"save_file_name": "user://Cutscener/demo/对话.cnd",
+				"timer": "",
+				"title": "对话"
+			},
+			"CombineNode_17264577530270": {
+				"connection_list_with_out_side": [
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "CombineNode_15444266373814",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15527380703708",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_15701192657490",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "CombineNode_16447946544627",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SetNode_16722405028692",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_15701192657490",
+						"from_port": 0,
+						"to_node": "ConditionNode_16961950109900",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 0,
+						"to_node": "CombineNode_17180775341859",
+						"to_port": 0
+					},
+					{
+						"from_node": "ConditionNode_16961950109900",
+						"from_port": 1,
+						"to_node": "CombineNode_17264577530270",
+						"to_port": 0
+					},
+					{
+						"from_node": "StartNode_15474247258130",
+						"from_port": 0,
+						"to_node": "SignalNode_17621630250836",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17180775341859",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "CombineNode_17264577530270",
+						"from_port": 0,
+						"to_node": "SignalNode_18090050118646",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SignalNode_18896447004772",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "SetNode_18807343209406",
+						"to_port": 0
+					},
+					{
+						"from_node": "SignalNode_18090050118646",
+						"from_port": 0,
+						"to_node": "EndNode_19112470423968",
+						"to_port": 0
+					}
+				],
+				"data_node_name": "CombineNode_16447946544627",
+				"index_by_parent": 2,
+				"name": "CombineNode_17264577530270",
+				"node_type": 101,
+				"position.x": 349.221038818359,
+				"position.y": 706.295288085938,
+				"position_offset.x": -71.7541732788086,
+				"position_offset.y": 490.118743896484,
+				"prop_name": "CutsceneState.title_able",
+				"props": [
+					[
+						[
+							"#1",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"npcan",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_17264577530270_props",
+							0
+						]
+					],
+					[
+						[
+							"#2",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							24,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"res://core/common/dialogue/room/room1.dialogue",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_17264577530270_props",
+							1
+						]
+					],
+					[
+						[
+							"#3",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							0
+						],
+						[
+							"full_line",
+							1
+						],
+						[
+							"1",
+							"SignalNode_16038532018694",
+							"CombineNode_17264577530270_props",
+							2
+						]
+					],
+					[
+						[
+							"#4",
+							1
+						],
+						[
+							20,
+							0
+						],
+						[
+							"CutsceneState.test_var_String",
+							1
+						],
+						[
+							4,
+							1
+						],
+						[
+							0,
+							0
+						],
+						[
+							0,
+							1
+						],
+						[
+							"当前的值为:{{test_var_int}},小于20~",
+							1
+						],
+						[
+							"2",
+							"SetNode_16064654272261",
+							"CombineNode_17264577530270_props",
+							0
+						]
+					]
+				],
+				"save_file_name": "user://Cutscener/demo/对话.cnd",
+				"timer": "",
+				"title": "对话"
+			}
+		},
+		"connection_list": [
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "CombineNode_15444266373814",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SignalNode_15527380703708",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SignalNode_15701192657490",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_15701192657490",
+				"from_port": 0,
+				"to_node": "CombineNode_16447946544627",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SetNode_16722405028692",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_15701192657490",
+				"from_port": 0,
+				"to_node": "ConditionNode_16961950109900",
+				"to_port": 0
+			},
+			{
+				"from_node": "ConditionNode_16961950109900",
+				"from_port": 0,
+				"to_node": "CombineNode_17180775341859",
+				"to_port": 0
+			},
+			{
+				"from_node": "ConditionNode_16961950109900",
+				"from_port": 1,
+				"to_node": "CombineNode_17264577530270",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SignalNode_17621630250836",
+				"to_port": 0
+			},
+			{
+				"from_node": "CombineNode_17180775341859",
+				"from_port": 0,
+				"to_node": "SignalNode_18090050118646",
+				"to_port": 0
+			},
+			{
+				"from_node": "CombineNode_17264577530270",
+				"from_port": 0,
+				"to_node": "SignalNode_18090050118646",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_18090050118646",
+				"from_port": 0,
+				"to_node": "SignalNode_18896447004772",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_18090050118646",
+				"from_port": 0,
+				"to_node": "SetNode_18807343209406",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_18090050118646",
+				"from_port": 0,
+				"to_node": "EndNode_19112470423968",
+				"to_port": 0
+			}
+		],
+		"connection_list_with_out_side": [
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "CombineNode_15444266373814",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SignalNode_15527380703708",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SignalNode_15701192657490",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_15701192657490",
+				"from_port": 0,
+				"to_node": "CombineNode_16447946544627",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SetNode_16722405028692",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_15701192657490",
+				"from_port": 0,
+				"to_node": "ConditionNode_16961950109900",
+				"to_port": 0
+			},
+			{
+				"from_node": "ConditionNode_16961950109900",
+				"from_port": 0,
+				"to_node": "CombineNode_17180775341859",
+				"to_port": 0
+			},
+			{
+				"from_node": "ConditionNode_16961950109900",
+				"from_port": 1,
+				"to_node": "CombineNode_17264577530270",
+				"to_port": 0
+			},
+			{
+				"from_node": "StartNode_15474247258130",
+				"from_port": 0,
+				"to_node": "SignalNode_17621630250836",
+				"to_port": 0
+			},
+			{
+				"from_node": "CombineNode_17180775341859",
+				"from_port": 0,
+				"to_node": "SignalNode_18090050118646",
+				"to_port": 0
+			},
+			{
+				"from_node": "CombineNode_17264577530270",
+				"from_port": 0,
+				"to_node": "SignalNode_18090050118646",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_18090050118646",
+				"from_port": 0,
+				"to_node": "SignalNode_18896447004772",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_18090050118646",
+				"from_port": 0,
+				"to_node": "SetNode_18807343209406",
+				"to_port": 0
+			},
+			{
+				"from_node": "SignalNode_18090050118646",
+				"from_port": 0,
+				"to_node": "EndNode_19112470423968",
+				"to_port": 0
+			}
+		],
+		"graph_positon": [
+			-403.130981445313,
+			-338.061950683594,
+			0.751314461231232
+		],
+		"nodes_type": {
+			"CombineNode_15444266373814": 101,
+			"CombineNode_16447946544627": 101,
+			"CombineNode_17180775341859": 101,
+			"CombineNode_17264577530270": 101,
+			"ConditionNode_16961950109900": 3,
+			"EndNode_19112470423968": 4,
+			"SetNode_16722405028692": 2,
+			"SetNode_18807343209406": 2,
+			"SignalNode_15527380703708": 1,
+			"SignalNode_15701192657490": 1,
+			"SignalNode_17621630250836": 1,
+			"SignalNode_18090050118646": 1,
+			"SignalNode_18896447004772": 1,
+			"StartNode_15474247258130": 0
+		},
+		"run_data": {
+			"CombineNode_17180775341859": [
+				[
+					"SignalNode_18090050118646",
+					1,
+					0
+				]
+			],
+			"CombineNode_17264577530270": [
+				[
+					"SignalNode_18090050118646",
+					1,
+					0
+				]
+			],
+			"ConditionNode_16961950109900": [
+				[
+					"CombineNode_17180775341859",
+					1,
+					0
+				],
+				[
+					"CombineNode_17264577530270",
+					2,
+					1
+				]
+			],
+			"SignalNode_15701192657490": [
+				[
+					"CombineNode_16447946544627",
+					1,
+					0
+				],
+				[
+					"ConditionNode_16961950109900",
+					2,
+					0
+				]
+			],
+			"SignalNode_18090050118646": [
+				[
+					"SignalNode_18896447004772",
+					1,
+					0
+				],
+				[
+					"SetNode_18807343209406",
+					2,
+					0
+				],
+				[
+					"EndNode_19112470423968",
+					3,
+					0
+				]
+			],
+			"StartNode_15474247258130": [
+				[
+					"CombineNode_15444266373814",
+					1,
+					0
+				],
+				[
+					"SignalNode_15527380703708",
+					2,
+					0
+				],
+				[
+					"SignalNode_15701192657490",
+					3,
+					0
+				],
+				[
+					"SetNode_16722405028692",
+					4,
+					0
+				],
+				[
+					"SignalNode_17621630250836",
+					5,
+					0
+				]
+			]
+		}
+	}
+}

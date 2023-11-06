@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_10"
+type="Resource"
+uid="uid://dcahpsnmq0lyu"
+path="res://.godot/imported/ruin_subway.dialogue-6f2bd49a2fe9f11a3645c3054616f123.tres"
+
+[deps]
+
+source_file="res://core/common/dialogue/obj/ruin_subway.dialogue"
+dest_files=["res://.godot/imported/ruin_subway.dialogue-6f2bd49a2fe9f11a3645c3054616f123.tres"]
+
+[params]
+
+defaults=true

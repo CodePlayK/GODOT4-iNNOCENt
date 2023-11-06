@@ -1,0 +1,270 @@
+[gd_scene load_steps=39 format=3 uid="uid://dhq6qeci27rfd"]
+
+[ext_resource type="Script" path="res://core/npcs/an/npc_AN.gd" id="1_o5m3r"]
+[ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_soqxa"]
+[ext_resource type="Texture2D" uid="uid://bniobx4l4iw7u" path="res://core/npcs/an/animation/an.png" id="3_6o4y2"]
+[ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="3_l7cds"]
+[ext_resource type="Resource" uid="uid://bvaugbl60edin" path="res://test/dialogue/npc_an.dialogue" id="4_yvsgw"]
+[ext_resource type="Script" path="res://core/component/DialogueInteractState.gd" id="5_04t0i"]
+[ext_resource type="Script" path="res://core/component/Move2Vec2.gd" id="5_xmqx8"]
+[ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="6_3lqi8"]
+[ext_resource type="Script" path="res://core/component/Move2Player.gd" id="7_gg1nx"]
+[ext_resource type="Theme" uid="uid://c3gcusv0manb6" path="res://core/common/dialogue_ballon/resource/dialogue_balloon.tres" id="7_lt54b"]
+[ext_resource type="Script" path="res://core/npcs/an/AnSaveDataCollector.gd" id="8_kc52x"]
+[ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="9_0fx0o"]
+[ext_resource type="Script" path="res://test/StateTest.gd" id="11_aqph1"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcStateManager.gd" id="13_3cvpl"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcBase.gd" id="14_r7oti"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcGround.gd" id="15_8aq8x"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcIdle.gd" id="16_edcgn"]
+[ext_resource type="Script" path="res://core/component/CutsceneTalk.gd" id="18_f7p27"]
+[ext_resource type="Script" path="res://core/npcs/sen/talk.gd" id="19_cg4d7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlcg1"]
+size = Vector2(23, 53)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyfwm"]
+shader = ExtResource("2_soqxa")
+shader_parameter/color = null
+shader_parameter/enable = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkd7c"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(0, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mcf1"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(80, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fojpq"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(160, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n13op"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(240, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg8co"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(320, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84213"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(400, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj7ji"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(480, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aewck"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(560, 0, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyoqi"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(0, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ko4e"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(80, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrm27"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(160, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f2g4"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(240, 32, 80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnuxd"]
+atlas = ExtResource("3_6o4y2")
+region = Rect2(320, 32, 80, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wcnb1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkd7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mcf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fojpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n13op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg8co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84213")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj7ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aewck")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyoqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ko4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrm27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f2g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnuxd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa07g"]
+size = Vector2(7.22, 18.58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mu2l"]
+size = Vector2(170, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_657i8"]
+size = Vector2(31, 65)
+
+[node name="Npc_An" type="Area2D" groups=["player_interactable_only"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_o5m3r")
+npc_name = "Npc_An"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.5, 37.5)
+shape = SubResource("RectangleShape2D_xlcg1")
+
+[node name="base" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_jyfwm")
+position = Vector2(0, 28)
+scale = Vector2(1.7, 1.7)
+sprite_frames = SubResource("SpriteFrames_wcnb1")
+animation = &"walk"
+autoplay = "idle"
+offset = Vector2(7.33333, 6)
+
+[node name="Weapon" type="Area2D" parent="."]
+position = Vector2(4.18323, 9.50734)
+collision_layer = 256
+collision_mask = 0
+input_pickable = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
+position = Vector2(16.5491, 3.68471)
+scale = Vector2(1.46913, 0.836577)
+shape = SubResource("RectangleShape2D_pa07g")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(67, 31.5)
+shape = SubResource("RectangleShape2D_2mu2l")
+
+[node name="Panel" type="Panel" parent="PlayerDetection/CollisionShape2D"]
+visible = false
+offset_left = -85.0
+offset_top = -33.0
+offset_right = 85.0
+offset_bottom = 34.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 33)
+shape = SubResource("RectangleShape2D_657i8")
+
+[node name="DialoguePosition" type="Marker2D" parent="."]
+position = Vector2(10, 13)
+
+[node name="Move2Player" type="Node" parent="."]
+script = ExtResource("7_gg1nx")
+distance = 50
+
+[node name="Move2Vec2" type="Node" parent="."]
+script = ExtResource("5_xmqx8")
+
+[node name="NpcDialogueDefault" type="Node" parent="."]
+script = ExtResource("3_l7cds")
+dialogue_resource = ExtResource("4_yvsgw")
+
+[node name="DialogueinteractState" type="Node" parent="."]
+script = ExtResource("5_04t0i")
+
+[node name="CutsceneTalk" type="Node" parent="."]
+script = ExtResource("18_f7p27")
+
+[node name="FaceDirection" type="Node" parent="."]
+script = ExtResource("6_3lqi8")
+
+[node name="test" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -13.0
+offset_right = 57.0
+offset_bottom = -1.0
+theme = ExtResource("7_lt54b")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "asd"
+horizontal_alignment = 1
+
+[node name="StateTest" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -26.0
+offset_right = 57.0
+offset_bottom = -14.0
+theme = ExtResource("7_lt54b")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "asd"
+horizontal_alignment = 1
+script = ExtResource("11_aqph1")
+
+[node name="Timer" type="Timer" parent="StateTest"]
+autostart = true
+
+[node name="SaveDataCollector" type="Node" parent="."]
+script = ExtResource("8_kc52x")
+
+[node name="NpcSaver" type="Node" parent="SaveDataCollector"]
+script = ExtResource("9_0fx0o")
+
+[node name="NpcStateManager" type="Node" parent="."]
+script = ExtResource("13_3cvpl")
+
+[node name="base" type="Node" parent="NpcStateManager"]
+script = ExtResource("14_r7oti")
+
+[node name="ground" type="Node" parent="NpcStateManager/base"]
+script = ExtResource("15_8aq8x")
+
+[node name="idle" type="Node" parent="NpcStateManager/base/ground"]
+script = ExtResource("16_edcgn")
+enable_player_detection = true
+enable_self = true
+
+[node name="talk" type="Node" parent="NpcStateManager/base/ground"]
+script = ExtResource("19_cg4d7")
+player_interact_lock = true
+
+[connection signal="timeout" from="StateTest/Timer" to="StateTest" method="_on_timer_timeout"]

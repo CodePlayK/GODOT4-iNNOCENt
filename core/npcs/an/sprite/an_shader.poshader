@@ -1,0 +1,10 @@
+[pixelover]
+
+version="0.14.3.2"
+
+[shader]
+
+object_name="小安"
+object_path="D:/Create/iNNOCENt/GODOT/iNNOCENt/core/npcs/an/sprite/an_shader.poshader"
+shader_indexed=true
+shader_outline_size=0.0

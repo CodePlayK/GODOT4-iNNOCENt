@@ -32,12 +32,11 @@ func change_state(new_state: NpcsBaseState) -> void:
 		print_a_to_b(current_state.name,new_state.name)
 		current_state = new_state
 		new_state.load_var()
-		npc.on_combat = new_state.on_combat
+		npc.on_combat = new_state.on_combat_real
 		npc.on_fighting = new_state.on_fighting
-		npc.enable_player_detection = new_state.enable_player_detection
-		npc.enable_self = new_state.enable_self
-		npc.enable_weapon = new_state.enable_weapon
-		npc.player_interact_lock = new_state.player_interact_lock
+		npc.enable_player_detection(new_state.enable_player_detection)
+		npc.enable_self( new_state.enable_self)
+		npc.enable_weapon ( new_state.enable_weapon)
 		var temp_state=await new_state.enter()
 		process_begin = true
 		if temp_state:
@@ -108,14 +107,15 @@ func print_a_to_b(a,b):
 	var actual_string = format_string % [current_state.npc.get_name(),a, b]
 	var actual_string1 = format_string1 % [a, b]
 	state_test.set_text(actual_string1)
-	Debug.dprint(actual_string)
+	#Debug.dprint(actual_string)
 	return actual_string
 
 func common_state():
 	if !npc or npc.on_talk:return
 	if npc.on_combat :
 		if npc.global_position.x>npc.patrol_right.global_position.x or npc.global_position.x<npc.patrol_left.global_position.x:
-			state2state(base_state.patrol_state)
+			if current_state!=base_state.attack_state:
+				state2state(base_state.patrol_state)
 	return null		
 
 func state2state(state):
@@ -128,5 +128,5 @@ func signal_state2state(npc_name,state_name):
 	change_state(get_state_by_name(state_name))
 	
 func on_hit(area:Area2D):
-	if current_state not in [base_state.lock_state,base_state.birth_state,base_state.death_state] and current_state.on_combat:
+	if ![base_state.lock_state,base_state.birth_state,base_state.death_state].has(current_state) and current_state.on_combat:
 		change_state(base_state.behit_state)

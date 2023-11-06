@@ -703,6 +703,7 @@ script = ExtResource("14_c3c6i")
 
 [node name="lock" type="Node" parent="NpcStateManager/base"]
 script = ExtResource("24_y7547")
+on_combat = true
 
 [node name="ground" type="Node" parent="NpcStateManager/base"]
 script = ExtResource("15_uns6d")

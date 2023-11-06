@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://cr0pcr2y8deg4"]
 
-[ext_resource type="FontFile" path="res://addons/Cutscener/resource/DinkieBitmap-9pxDemo.ttf" id="1_dhp2d"]
+[ext_resource type="FontFile" uid="uid://c8gyef5jmus64" path="res://addons/Cutscener/resource/DinkieBitmap-9pxDemo.ttf" id="1_dhp2d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4603f"]
 

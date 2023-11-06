@@ -80,7 +80,6 @@ func pre_enter() -> bool:
 	return true
 	
 func load_var() -> bool:
-	Debug.dprinterr(npc.name)
 	on_combat_real=on_combat
 	on_fighting_real=on_fighting
 	enable_player_detection_real=enable_player_detection

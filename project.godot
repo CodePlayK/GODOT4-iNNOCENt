@@ -12,6 +12,8 @@ config_version=5
 
 config/name="iNNOCENt"
 run/main_scene="res://addons/Cutscener/main/main.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="GODOT4-iNNOCENt"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"

@@ -15,11 +15,13 @@ var on_ready=false
 @export var patrol_right:Marker2D
 ##巡逻范围左边界
 @export var patrol_left:Marker2D
+
+
 var current_state
 var on_combat:bool=false
 var on_fighting:bool=false:
 	set(f):
-		on_combat = f
+		on_fighting = f
 		if self.name.is_empty():return
 		if f:
 			if !PlayerState.player_on_fighting.has(self.name):

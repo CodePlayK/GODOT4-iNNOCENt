@@ -20,5 +20,6 @@ func physics_process(delta: float):
 func exit(state:BaseState):
 	super.exit(state)
 	PlayerState.attaking=false
+	aniplayer.stop()
 	pass
 	

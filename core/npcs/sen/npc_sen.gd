@@ -12,7 +12,7 @@ func enable_all_interact(flag):
 	enable_player_detection(flag)
 
 func enable_player_detection(flag):
-	Debug.dprintinfo("[%s][%s][%s][%s]全局统治锁定检测player-[%s]" %[current_state,self.name,str(on_combat),str(on_fighting),str(flag)])
+	# Debug.dprintinfo("[%s][%s][%s][%s]全局统治锁定检测player-[%s]" %[current_state,self.name,str(on_combat),str(on_fighting),str(flag)])
 	player_detection.set_deferred("monitoring",flag)
 	player_detection.set_deferred("monitorable",flag)
 	

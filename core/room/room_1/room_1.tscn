@@ -2564,25 +2564,26 @@ starting_state1 = "idle"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
 
-[node name="Npc_Sen" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
+[node name="Npc_Sen2" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
 unique_name_in_owner = true
 process_mode = 1
 modulate = Color(0.482353, 0.482353, 0.482353, 1)
 light_mask = 3
 position = Vector2(167, 187)
 starting_state = "idle"
-starting_state1 = "lock"
+starting_state1 = "patrol"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
 
-[node name="Npc_Sen2" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
+[node name="Npc_Sen" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
 unique_name_in_owner = true
 process_mode = 1
+visible = false
 modulate = Color(0.482353, 0.482353, 0.482353, 1)
 light_mask = 3
 position = Vector2(-123, 187)
 starting_state = "idle"
-starting_state1 = "patrol"
+starting_state1 = "lock"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
 

@@ -12,7 +12,7 @@ var current_state: BaseState
 var all_states: Array
 
 func change_state(new_state: BaseState) -> void:        
-	if null!=current_state and current_state!=new_state and new_state.pre_enter():
+	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
 		current_state.exit(new_state)
 		PlayerState.last2_state=PlayerState.last_state
 		PlayerState.last_state=current_state
@@ -77,7 +77,7 @@ func print_a_to_b(a,b):
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	#Debug.dprintinfo(actual_string)
+	Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 

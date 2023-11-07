@@ -71,7 +71,7 @@ func init(all_states) -> void:
 		if "death"==state_name:death_state=state
 		if "birth"==state_name:birth_state=state
 		if "lock"==state_name:lock_state=state
-		if "talk"==state_name:lock_state=state
+		if "talk"==state_name:talk_state=state
 	connect_signal()
 	
 	

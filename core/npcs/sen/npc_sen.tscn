@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://1ojr7jjsjear"]
+[gd_scene load_steps=91 format=3 uid="uid://1ojr7jjsjear"]
 
 [ext_resource type="Script" path="res://core/npcs/sen/npc_sen.gd" id="1_iqm4t"]
 [ext_resource type="PackedScene" uid="uid://bp1610uuwvi47" path="res://core/room/common/marker/marker.tscn" id="3_7uqv5"]
@@ -471,6 +471,9 @@ size = Vector2(35, 65)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_al6ae"]
 size = Vector2(7.22, 18.58)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7qej"]
+size = Vector2(98, 18)
+
 [sub_resource type="Animation" id="Animation_lwrtt"]
 length = 0.001
 tracks/0/type = "value"
@@ -619,8 +622,9 @@ material = SubResource("ShaderMaterial_1kn7a")
 position = Vector2(0, 26)
 scale = Vector2(2, 1.995)
 sprite_frames = SubResource("SpriteFrames_wcnb1")
-animation = &"chase"
+animation = &"idle"
 autoplay = "lock"
+frame = 4
 centered = false
 offset = Vector2(-32, -12.7104)
 
@@ -637,9 +641,16 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
-visible = false
 position = Vector2(36, 39)
 shape = SubResource("RectangleShape2D_al6ae")
+
+[node name="AttackRange" type="Area2D" parent="Weapon"]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/AttackRange"]
+position = Vector2(19, 34)
+shape = SubResource("RectangleShape2D_v7qej")
 
 [node name="DialoguePosition" parent="." instance=ExtResource("3_7uqv5")]
 position = Vector2(17, 0)

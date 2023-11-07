@@ -27,7 +27,6 @@ func state_change():
 	if abs(PlayerState.player_global_position.x-npc.global_position.x)>attack_range:
 		state_manager.state2state(chase_state) 
 
-
 func exit(NpcsBaseState):
 	tween.kill()
 	#aniplayer.stop()
@@ -38,5 +37,5 @@ func on_hit(area):
 		PlayerState.player_be_hitting=true
 	
 func physics_process(delta: float):
-	if PlayerState.dense_success_flag:
+	if npc.attack_range.has_overlapping_areas() and PlayerState.dense_success_flag:
 		return behit_state

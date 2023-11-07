@@ -46,7 +46,6 @@ func enter():
 	tween.chain().tween_interval(wait_time_t)
 	tween.parallel().tween_callback(npc.base.set_animation.bind(idle_state.name))
 	tween.chain().tween_callback(rand)
-	pass
 
 func rand():
 	patrol_distance_t=patrol_distance*randf_range(patrol_distance_rand.x,patrol_distance_rand.y)
@@ -65,4 +64,4 @@ func exit(state:NpcsBaseState):
 	speed_map_2_animation.is_enable=false
 	if tween:
 		tween.kill()
-	pass
+

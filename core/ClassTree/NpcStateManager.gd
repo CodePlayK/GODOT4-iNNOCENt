@@ -32,7 +32,7 @@ func change_state(new_state: NpcsBaseState) -> void:
 		print_a_to_b(current_state.name,new_state.name)
 		current_state = new_state
 		new_state.load_var()
-		npc.on_combat = new_state.on_combat_real
+		npc.on_combat = new_state.on_combat
 		npc.on_fighting = new_state.on_fighting
 		npc.enable_player_detection(new_state.enable_player_detection)
 		npc.enable_self( new_state.enable_self)

@@ -2578,7 +2578,6 @@ patrol_left = NodePath("../../Marker/PortrolLeftMarker")
 [node name="Npc_Sen" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
 unique_name_in_owner = true
 process_mode = 1
-visible = false
 modulate = Color(0.482353, 0.482353, 0.482353, 1)
 light_mask = 3
 position = Vector2(-123, 187)
@@ -2760,6 +2759,7 @@ theme_override_font_sizes/font_size = 10
 shortcut = ExtResource("30_1vnyp")
 
 [node name="change_room" type="Button" parent="CanvasLayer/Control/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("27_lkbv0")
 theme_override_font_sizes/font_size = 10

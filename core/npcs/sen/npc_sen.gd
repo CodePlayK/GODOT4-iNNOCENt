@@ -2,6 +2,7 @@ extends Npcs
 class_name NpcSen
 @onready var weapon: Area2D = $Weapon
 @onready var player_detection: Area2D = $PlayerDetection
+@onready var attack_range: Area2D = $Weapon/AttackRange
 
 func _ready() -> void:
 	super._ready()

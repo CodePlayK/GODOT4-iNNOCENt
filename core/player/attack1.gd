@@ -1,4 +1,5 @@
 extends CombatState
+@onready var attack_timer: Timer = $attackTimer
 
 func pre_enter() -> bool:
 	if !PlayerState.attaking:
@@ -14,12 +15,11 @@ func enter():
 	await aniplayer.animation_finished
 	return PlayerState.get_last_normal_state()	
 
-func physics_process(delta: float):	
-		return null
-
 func exit(state:BaseState):
 	super.exit(state)
-	PlayerState.attaking=false
 	aniplayer.stop()
-	pass
-	
+	player.weapon.monitorable = false
+	attack_timer.start(aniplayer.current_animation.length())
+
+func _on_attack_timer_timeout() -> void:
+	PlayerState.attaking=false

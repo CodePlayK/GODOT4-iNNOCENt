@@ -28,8 +28,9 @@ var last2_state:BaseState
 var current_state:BaseState:
 	set(state):
 		current_state=state
+		if state==player_state_history.back():return
 		player_state_history.push_back(state)
-		if player_state_history.size()>10:
+		if player_state_history.size()>20:
 			player_state_history.pop_front()
 
 var ability_lock:bool=false

@@ -164,7 +164,7 @@ func is_player_blocked()->bool:
 	return false
 func play_animation():
 	player.animations.play(self.get_name())
-	player.reflection.play(self.get_name())
+	#player.reflection.play(self.get_name())
 
 func change_animation_color(flag:bool=false):
 	player.animations.material.set_shader_parameter("color",sprite_color)

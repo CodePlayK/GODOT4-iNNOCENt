@@ -2085,7 +2085,6 @@ range_item_cull_mask = 1024
 [node name="Parallax" type="Node2D" parent="."]
 z_index = 1
 script = ExtResource("7_lmsci")
-parallax_layer_speed_2_5 = -15
 
 [node name="ParallaxLayer_0" type="Node2D" parent="Parallax"]
 
@@ -2808,7 +2807,6 @@ libraries = {
 }
 
 [node name="CutscenerRunner" parent="CutsceneManager/CutsceneBaseState" instance=ExtResource("47_dxuou")]
-cutscener_data = "D:/Create/iNNOCENt/GODOT/iNNOCENt/test/cutscener/1.crd"
 
 [node name="CutscenerRunner2" parent="CutsceneManager/CutsceneBaseState" instance=ExtResource("47_dxuou")]
 position = Vector2(170, 54)

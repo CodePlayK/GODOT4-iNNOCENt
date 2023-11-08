@@ -1,5 +1,7 @@
 extends BaseState
 class_name PlayerAttackState
+@export var next_attack:PlayerAttackState
+var next_able:bool = false
 
 func physics_process(delta: float) -> BaseState:
 	move = get_movement_input_x()

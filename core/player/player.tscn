@@ -548,7 +548,7 @@ is_normal_state = false
 
 [node name="DenseTimer" type="Timer" parent="state_manager/base/combat/dense"]
 unique_name_in_owner = true
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true
 
 [node name="DenseCooldownTimer" type="Timer" parent="state_manager/base/combat/dense"]
@@ -716,9 +716,9 @@ script = ExtResource("27_cru4u")
 
 [node name="DenseCooldownBar" type="ProgressBar" parent="UI"]
 modulate = Color(1, 1, 1, 0.854902)
-offset_left = 15.0
+offset_left = 29.0
 offset_top = 11.0
-offset_right = 17.0
+offset_right = 31.0
 offset_bottom = 38.0
 theme = SubResource("Theme_odo7y")
 step = 0.1
@@ -728,9 +728,9 @@ show_percentage = false
 
 [node name="LightBar" type="ProgressBar" parent="UI"]
 modulate = Color(1, 1, 1, 0.854902)
-offset_left = -21.0
+offset_left = -29.0
 offset_top = 11.0
-offset_right = -19.0
+offset_right = -27.0
 offset_bottom = 38.0
 theme = SubResource("Theme_1jd7q")
 step = 0.1

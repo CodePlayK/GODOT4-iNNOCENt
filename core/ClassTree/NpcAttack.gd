@@ -38,4 +38,4 @@ func on_hit(area):
 	
 func physics_process(delta: float):
 	if npc.attack_range.has_overlapping_areas() and PlayerState.dense_success_flag:
-		return behit_state
+		return behithard_state

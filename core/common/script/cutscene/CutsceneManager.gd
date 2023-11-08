@@ -15,7 +15,7 @@ func change_state(new_state: CutsceneBaseState) -> void:
 		if !current_state==cutscene_base_state:
 			current_state.exit()
 		last_state=current_state
-		print_a_to_b(current_state.name,new_state.name)
+		print_state_change(current_state.name,new_state.name)
 		current_state = new_state
 		current_state=current_state
 		current_state.enter()
@@ -44,7 +44,7 @@ func get_childen_node(node:Node):
 		if child:
 			get_childen_node(child)
 			
-func print_a_to_b(a,b):
+func print_state_change(a,b):
 	var format_string = "过场状态机切换: [%s] --> [%s]"
 	var actual_string = format_string % [a, b]
 	Debug.dprintinfo(actual_string)

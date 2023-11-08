@@ -2,7 +2,6 @@ extends behit
 @onready var stiff_timer= $"../StiffTimer"
 @export var stiff_time=.3
 
-
 func enter():
 	super.enter()
 	player.hitbox.monitoring=false

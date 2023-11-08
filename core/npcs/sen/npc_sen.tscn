@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://1ojr7jjsjear"]
+[gd_scene load_steps=96 format=3 uid="uid://1ojr7jjsjear"]
 
 [ext_resource type="Script" path="res://core/npcs/sen/npc_sen.gd" id="1_iqm4t"]
 [ext_resource type="PackedScene" uid="uid://bp1610uuwvi47" path="res://core/room/common/marker/marker.tscn" id="3_7uqv5"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://daa5ujnpwnls1" path="res://core/room/common/speed map 2 animation/speed_map_2_animation.tscn" id="23_eihms"]
 [ext_resource type="Script" path="res://core/npcs/sen/birth.gd" id="23_kjt01"]
 [ext_resource type="Script" path="res://core/npcs/sen/lock.gd" id="24_y7547"]
+[ext_resource type="Script" path="res://core/npcs/sen/behithard.gd" id="26_taqfw"]
+[ext_resource type="Script" path="res://core/npcs/sen/UI.gd" id="31_vxg0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsl88"]
 size = Vector2(23, 53)
@@ -474,6 +476,20 @@ size = Vector2(7.22, 18.58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7qej"]
 size = Vector2(98, 18)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ie3eo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e5dv"]
+bg_color = Color(1, 0.34902, 0.34902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_1xaih"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_ie3eo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_3e5dv")
+
 [sub_resource type="Animation" id="Animation_lwrtt"]
 length = 0.001
 tracks/0/type = "value"
@@ -590,6 +606,7 @@ collision_mask = 2
 script = ExtResource("1_iqm4t")
 starting_state = "lock"
 starting_state1 = "idle"
+life = 5
 npc_name = "Npc_Sen"
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -655,6 +672,18 @@ shape = SubResource("RectangleShape2D_v7qej")
 [node name="DialoguePosition" parent="." instance=ExtResource("3_7uqv5")]
 position = Vector2(17, 0)
 
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource("31_vxg0w")
+
+[node name="StiffBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 2.0
+theme = SubResource("Theme_1xaih")
+value = 50.0
+show_percentage = false
+
 [node name="Move2Player" type="Node" parent="."]
 script = ExtResource("7_mynjv")
 distance = 50
@@ -676,6 +705,7 @@ script = ExtResource("7_vtyhr")
 script = ExtResource("8_frfwb")
 
 [node name="test" type="Label" parent="."]
+visible = false
 offset_left = -55.0
 offset_top = -13.0
 offset_right = 57.0
@@ -693,6 +723,7 @@ script = ExtResource("9_v62ej")
 script = ExtResource("10_iomob")
 
 [node name="StateTest" type="Label" parent="."]
+visible = false
 offset_left = -55.0
 offset_top = -26.0
 offset_right = 57.0
@@ -704,7 +735,6 @@ horizontal_alignment = 1
 script = ExtResource("13_ubcqf")
 
 [node name="Timer" type="Timer" parent="StateTest"]
-autostart = true
 
 [node name="NpcStateManager" type="Node" parent="."]
 script = ExtResource("13_t5ncq")
@@ -749,11 +779,16 @@ one_shot = true
 
 [node name="attack" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("21_v6bep")
+attack_range = null
 on_combat = true
 on_fighting = true
 enable_player_detection = true
+enable_self = null
+enable_weapon = null
 player_interact_lock = true
 change_sprite = false
+change_sprite_color = null
+sprite_color = null
 
 [node name="aniplayer" type="AnimationPlayer" parent="NpcStateManager/base/combat/attack"]
 libraries = {
@@ -763,17 +798,31 @@ speed_scale = 2.0
 
 [node name="behit" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("21_wdcd6")
-back_distance = 30.0
-life = 3
+back_distance = 20.0
 on_combat = true
 on_fighting = true
 enable_player_detection = true
 player_interact_lock = true
+change_sprite = false
 change_sprite_color = true
 sprite_color = Color(1, 1, 1, 1)
 
+[node name="behithard" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("26_taqfw")
+back_distance = 50.0
+stiff_time = 0.5
+froze_time = 0.5
+on_combat = true
+on_fighting = true
+enable_player_detection = true
+player_interact_lock = true
+change_sprite = false
+change_sprite_color = true
+sprite_color = Color(1, 0.188235, 0.141176, 1)
+
 [node name="death" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("22_m7hy0")
+on_combat = true
 
 [node name="birth" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("23_kjt01")
@@ -783,5 +832,4 @@ script = ExtResource("21_cjrf4")
 
 [node name="SpeedMap2Animation" parent="." instance=ExtResource("23_eihms")]
 
-[connection signal="timeout" from="StateTest/Timer" to="StateTest" method="_on_timer_timeout"]
 [connection signal="timeout" from="NpcStateManager/base/combat/chase/Timer" to="NpcStateManager/base/combat/chase" method="_on_timer_timeout"]

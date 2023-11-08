@@ -1,13 +1,11 @@
 class_name AirState
 extends BaseState
 
-
 func input(event: InputEvent) -> BaseState:
-	if Input.is_action_just_pressed("jump") and Global.double_jump_flag:
-		Global.double_jump_flag=false
+	if Input.is_action_just_pressed("jump") and PlayerState.double_jump_able:
+		PlayerState.double_jump_able=false
 		return double_jump_state
 	return null
-
 
 func physics_process(delta: float) -> BaseState:
 	if is_on_ladder() and Input.is_action_pressed("jump"):
@@ -26,9 +24,4 @@ func physics_process(delta: float) -> BaseState:
 	player.set_up_direction(Vector2.UP)
 	player.move_and_slide()
 	player.velocity=min_jump_force(player.velocity,delta)
-	if player.is_on_floor():
-		return landing_state
-	else:
-		if player.velocity.y>0:
-			return fall_state
 	return null

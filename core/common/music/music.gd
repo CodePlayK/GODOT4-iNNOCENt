@@ -27,6 +27,9 @@ var SE_dic={
  "slash5":[preload("res://core/resource/sound/SE/slash5.mp3")],
  "slash6":[preload("res://core/resource/sound/SE/slash6.mp3")],
  "slash7":[preload("res://core/resource/sound/SE/slash7.mp3")],
+ "punch":[preload("res://core/resource/sound/SE/punch.mp3")],
+ "cut-body":[preload("res://core/resource/sound/SE/cut-body.mp3" )],
+ "knife-stab":[preload("res://core/resource/sound/SE/knife-stab.mp3")],
 }
 #资源，声量，是否在切换场景时停止
 var SE_LOOP_dic={

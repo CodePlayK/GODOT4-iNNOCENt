@@ -8,7 +8,6 @@ func enter():
 	player.hitbox.monitoring=false
 	EventBus._play_SE("steel_clash")
 	stiff_timer.start(stiff_time)
-	return
 
 func _on_stiff_timer_timeout():
 	if state_manager.current_state!=self:return

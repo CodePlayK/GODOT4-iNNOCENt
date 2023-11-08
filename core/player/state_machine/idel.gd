@@ -3,7 +3,7 @@ extends BaseState
 
 func enter():
 	super.enter()
-	Global.double_jump_flag=true
+	PlayerState.double_jump_able=true
 	return null
 func input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light"):

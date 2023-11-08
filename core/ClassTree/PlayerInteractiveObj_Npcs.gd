@@ -5,6 +5,7 @@ const clazz_name = "Npcs"
 @onready var states: Node = $NpcStateManager
 ##主sprite
 @onready var base: AnimatedSprite2D = $base
+@onready var ui: Node2D = $UI
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
 @export var starting_state:String
@@ -15,8 +16,7 @@ var on_ready=false
 @export var patrol_right:Marker2D
 ##巡逻范围左边界
 @export var patrol_left:Marker2D
-
-
+@export var life:int
 var current_state
 var on_combat:bool=false
 var on_fighting:bool=false:
@@ -26,7 +26,9 @@ var on_fighting:bool=false:
 		if f:
 			if !PlayerState.player_on_fighting.has(self.name):
 				PlayerState.player_on_fighting[self.name] = self
+				ui.stiff_bar.show()
 		else :
+			ui.stiff_bar.hide()
 			PlayerState.player_on_fighting.erase(self.name)
 @export var npc_name:String
 var face_left:bool

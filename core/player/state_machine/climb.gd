@@ -3,15 +3,13 @@ extends InteractiveState
 var was_on_air:bool =false
 
 func exit(state:BaseState) -> void:
-	Global.double_jump_flag=true
+	PlayerState.double_jump_able=true
 	if is_on_ladder():
-		Global.double_jump_flag=false
+		PlayerState.double_jump_able=false
 	super.exit(state)
 
 
 func physics_process(delta: float) -> BaseState:
-
-
 	move=get_movement_input_x()
 	player_faced(move)
 	apply_acceleration_run(move,delta)

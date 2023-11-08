@@ -12,14 +12,11 @@ func _ready():
 	dense_cooldown_bar.max_value=dense_cooldown_timer.wait_time
 	light_bar.max_value=light_timer.wait_time
 	stiff_bar.max_value=stiff_timer.wait_time
-	pass 
 
 func _process(delta):
 	dense_cooldown_bar.value=dense_cooldown_timer.time_left
 	light_bar.value=light_timer.time_left
 	stiff_bar.value=stiff_timer.time_left
-	pass
 
 func _on_timer_timeout() -> void:
 	tl_2.text=str(int(tl_2.text)+1)
-	pass # Replace with function body.

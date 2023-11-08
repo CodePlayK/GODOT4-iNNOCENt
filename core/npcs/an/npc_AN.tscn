@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://dhq6qeci27rfd"]
+[gd_scene load_steps=43 format=3 uid="uid://dhq6qeci27rfd"]
 
 [ext_resource type="Script" path="res://core/npcs/an/npc_AN.gd" id="1_o5m3r"]
 [ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_soqxa"]
+[ext_resource type="Script" path="res://core/npcs/sen/UI.gd" id="2_vgu6s"]
 [ext_resource type="Texture2D" uid="uid://bniobx4l4iw7u" path="res://core/npcs/an/animation/an.png" id="3_6o4y2"]
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="3_l7cds"]
 [ext_resource type="Resource" uid="uid://bvaugbl60edin" path="res://test/dialogue/npc_an.dialogue" id="4_yvsgw"]
@@ -19,6 +20,20 @@
 [ext_resource type="Script" path="res://core/ClassTree/NpcIdle.gd" id="16_edcgn"]
 [ext_resource type="Script" path="res://core/component/CutsceneTalk.gd" id="18_f7p27"]
 [ext_resource type="Script" path="res://core/npcs/sen/talk.gd" id="19_cg4d7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3027"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pc6a4"]
+bg_color = Color(1, 0.34902, 0.34902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_oc8oy"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_i3027")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_pc6a4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlcg1"]
 size = Vector2(23, 53)
@@ -146,6 +161,18 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_o5m3r")
 npc_name = "Npc_An"
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource("2_vgu6s")
+
+[node name="StiffBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 2.0
+theme = SubResource("Theme_oc8oy")
+value = 50.0
+show_percentage = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=60 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_s3ffp"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://core/player/state_machine/landing.gd" id="14_ovtxq"]
 [ext_resource type="Script" path="res://core/player/state_machine/interactive.gd" id="15_6i115"]
 [ext_resource type="Script" path="res://core/player/state_machine/climb.gd" id="16_gh0lk"]
+[ext_resource type="Script" path="res://core/player/toptrans.gd" id="17_d13l0"]
 [ext_resource type="Script" path="res://core/player/state_machine/talk.gd" id="17_sh2bg"]
 [ext_resource type="Script" path="res://core/player/state_machine/combat.gd" id="18_3qeih"]
 [ext_resource type="FontFile" uid="uid://cth46tmy4cprv" path="res://core/resource/font/DinkieBitmap-9pxDemo.ttf" id="18_ayrpq"]
@@ -29,7 +30,11 @@
 [ext_resource type="Script" path="res://core/player/state_machine/damaged.gd" id="23_t1hct"]
 [ext_resource type="Script" path="res://core/player/attack1.gd" id="27_45d83"]
 [ext_resource type="Script" path="res://core/player/UI.gd" id="27_cru4u"]
+[ext_resource type="Script" path="res://core/player/attack0.gd" id="28_xf5em"]
+[ext_resource type="Script" path="res://core/player/attack.gd" id="29_orn37"]
+[ext_resource type="Script" path="res://core/player/attack2.gd" id="30_r8cot"]
 [ext_resource type="Script" path="res://core/player/SaveDataCollector.gd" id="31_s4hwe"]
+[ext_resource type="Script" path="res://core/player/attack3.gd" id="32_l8rk1"]
 [ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
 
@@ -42,7 +47,16 @@ shader_parameter/enable = false
 size = Vector2(34, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcclo"]
-size = Vector2(144, 25.5)
+size = Vector2(131, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0gxe"]
+size = Vector2(125, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c13kx"]
+size = Vector2(184, 32.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2kyg"]
+size = Vector2(110, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmv73"]
 size = Vector2(90, 78)
@@ -52,6 +66,70 @@ size = Vector2(24, 56)
 
 [sub_resource type="Animation" id="Animation_ine36"]
 resource_name = "attack0"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack0", &"attack0"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Weapon:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Weapon:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapon/attack0:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_0acqj"]
+resource_name = "attack1"
 length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -101,15 +179,158 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapon/attack1:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_xgok5"]
+resource_name = "attack2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack2", &"attack1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Weapon:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Weapon:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapon/attack2:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6efy6"]
+resource_name = "attack3"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack3", &"attack3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Weapon:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Weapon:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapon/attack3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg4au"]
 _data = {
-"attack0": SubResource("Animation_ine36")
+"attack0": SubResource("Animation_ine36"),
+"attack1": SubResource("Animation_0acqj"),
+"attack2": SubResource("Animation_xgok5"),
+"attack3": SubResource("Animation_6efy6")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6joe0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmu8e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4i8i"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d02gq"]
 bg_color = Color(0.0784314, 0.698039, 0.862745, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -118,12 +339,12 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_odo7y"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_6joe0")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_u4i8i")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_fmu8e")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_d02gq")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgghh"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqmd1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh2k1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exo4c"]
 bg_color = Color(0.345098, 1, 0.776471, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -132,12 +353,12 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_1jd7q"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_dgghh")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_yh2k1")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_uqmd1")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_exo4c")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3027"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx3nq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pc6a4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxn1"]
 bg_color = Color(1, 0.34902, 0.34902, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
@@ -146,23 +367,53 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_xmfd2"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_i3027")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_pc6a4")
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 platform_wall_layers = 1
 script = ExtResource("1_emear")
 
+[node name="Rays" type="Node2D" parent="."]
+z_index = 1
+
+[node name="ladderChecker" type="RayCast2D" parent="Rays"]
+position = Vector2(0, 43)
+target_position = Vector2(0, 21)
+collision_mask = 4
+
+[node name="blockCheckerLeft" type="RayCast2D" parent="Rays"]
+position = Vector2(0, 43)
+rotation = 1.5708
+target_position = Vector2(4.57764e-05, 13)
+collide_with_areas = true
+
+[node name="blockCheckerRight" type="RayCast2D" parent="Rays"]
+position = Vector2(0, 43)
+rotation = -1.5708
+target_position = Vector2(-3.43323e-05, 9)
+collide_with_areas = true
+
+[node name="groundChecker" type="RayCast2D" parent="Rays"]
+position = Vector2(0, 43)
+target_position = Vector2(0, 1000)
+collide_with_areas = true
+
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 light_mask = 33
 material = SubResource("ShaderMaterial_nktfc")
-position = Vector2(-1.19209e-07, 40)
+position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack1"
+animation = &"attack3"
 autoplay = "idle"
+frame = 2
 offset = Vector2(16.7778, -4.44444)
+
+[node name="UpdateTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
 
 [node name="Reflection" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -181,9 +432,27 @@ collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
-position = Vector2(58, 42.25)
+[node name="attack0" type="CollisionShape2D" parent="Weapon"]
+visible = false
+position = Vector2(51.5, 42.25)
 shape = SubResource("RectangleShape2D_hcclo")
+disabled = true
+
+[node name="attack1" type="CollisionShape2D" parent="Weapon"]
+visible = false
+position = Vector2(48.5, 42.25)
+shape = SubResource("RectangleShape2D_v0gxe")
+disabled = true
+
+[node name="attack2" type="CollisionShape2D" parent="Weapon"]
+visible = false
+position = Vector2(33, 46.625)
+shape = SubResource("RectangleShape2D_c13kx")
+
+[node name="attack3" type="CollisionShape2D" parent="Weapon"]
+position = Vector2(56, 28.5)
+shape = SubResource("RectangleShape2D_s2kyg")
+disabled = true
 
 [node name="PlayerLightable" type="Area2D" parent="."]
 collision_layer = 0
@@ -203,6 +472,7 @@ input_pickable = false
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_puvyo")
 
@@ -241,17 +511,21 @@ script = ExtResource("13_63inm")
 [node name="dash" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("10_otd3s")
 
+[node name="landing" type="Node" parent="state_manager/base/ground"]
+script = ExtResource("14_ovtxq")
+is_normal_state = false
+
 [node name="air" type="Node" parent="state_manager/base"]
 script = ExtResource("11_xgemw")
 
 [node name="lift" type="Node" parent="state_manager/base/air"]
 script = ExtResource("12_n7puq")
 
+[node name="toptrans" type="Node" parent="state_manager/base/air"]
+script = ExtResource("17_d13l0")
+
 [node name="fall" type="Node" parent="state_manager/base/air"]
 script = ExtResource("13_jcu6v")
-
-[node name="landing" type="Node" parent="state_manager/base/air"]
-script = ExtResource("14_ovtxq")
 
 [node name="interactive" type="Node" parent="state_manager/base"]
 script = ExtResource("15_6i115")
@@ -314,35 +588,49 @@ unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
 
-[node name="attack0" type="Node" parent="state_manager/base/combat"]
-script = ExtResource("27_45d83")
+[node name="attack" type="Node" parent="state_manager/base/combat"]
+script = ExtResource("29_orn37")
+
+[node name="attack0" type="Node" parent="state_manager/base/combat/attack"]
+script = ExtResource("28_xf5em")
+to_next_attack_threshold = 0.2
 change_sprite = false
 is_normal_state = false
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack0"]
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack0"]
 one_shot = true
 
-[node name="ladderCheck" type="RayCast2D" parent="."]
-position = Vector2(0, 43)
-target_position = Vector2(0, 21)
-collision_mask = 4
+[node name="attack1" type="Node" parent="state_manager/base/combat/attack"]
+script = ExtResource("27_45d83")
+to_next_attack_threshold = 0.2
+change_sprite = false
+is_normal_state = false
 
-[node name="blockCheckerLeft" type="RayCast2D" parent="."]
-position = Vector2(0, 43)
-rotation = 1.5708
-target_position = Vector2(4.57764e-05, 13)
-collide_with_areas = true
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack1"]
+one_shot = true
 
-[node name="blockCheckerRight" type="RayCast2D" parent="."]
-position = Vector2(0, 43)
-rotation = -1.5708
-target_position = Vector2(-3.43323e-05, 9)
-collide_with_areas = true
+[node name="attack3" type="Node" parent="state_manager/base/combat/attack"]
+script = ExtResource("32_l8rk1")
+to_next_attack_threshold = 0.2
+change_sprite = false
+is_normal_state = false
+
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack3"]
+one_shot = true
+
+[node name="attack2" type="Node" parent="state_manager/base/combat/attack"]
+script = ExtResource("30_r8cot")
+change_sprite = false
+is_normal_state = false
+
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack2"]
+one_shot = true
 
 [node name="DialoguePosition" type="Marker2D" parent="."]
 
 [node name="TestLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -459,10 +747,6 @@ theme = SubResource("Theme_xmfd2")
 value = 50.0
 show_percentage = false
 
-[node name="UpdateTimer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-
 [node name="SaveDataCollector" type="Node" parent="."]
 script = ExtResource("31_s4hwe")
 
@@ -470,6 +754,7 @@ script = ExtResource("31_s4hwe")
 script = ExtResource("32_xf8id")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]
 [connection signal="area_entered" from="PlayerLightable" to="PlayerLightable" method="_on_area_entered"]
 [connection signal="area_exited" from="PlayerLightable" to="PlayerLightable" method="_on_area_exited"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseTimer" to="state_manager/base/combat/dense" method="_on_dense_timer_timeout"]
@@ -477,6 +762,8 @@ script = ExtResource("32_xf8id")
 [connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDenseSafed" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightTimer" to="state_manager/base/combat/light" method="_on_light_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/attack0/attackTimer" to="state_manager/base/combat/attack0" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/attack/attack0/attackTimer" to="state_manager/base/combat/attack/attack0" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/attack/attack1/attackTimer" to="state_manager/base/combat/attack/attack1" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/attack/attack3/attackTimer" to="state_manager/base/combat/attack/attack3" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/attack/attack2/attackTimer" to="state_manager/base/combat/attack/attack2" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="TL2/Timer" to="UI" method="_on_timer_timeout"]
-[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

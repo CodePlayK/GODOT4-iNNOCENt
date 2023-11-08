@@ -7,7 +7,9 @@ class_name PlayerStateManager
 @onready var test_label=%TestLabel
 @onready var base_state:BaseState=%base
 @onready var aniplayer: AnimationPlayer = $Aniplayer
-
+var to_attack1:bool
+var to_attack2:bool
+var to_attack3:bool
 var current_state: BaseState
 var all_states: Array
 
@@ -16,9 +18,12 @@ func change_state(new_state: BaseState) -> void:
 		current_state.exit(new_state)
 		PlayerState.last2_state=PlayerState.last_state
 		PlayerState.last_state=current_state
-		print_a_to_b(current_state.name,new_state.name)
+		print_state_change(current_state.name,new_state.name)
 		current_state = new_state
 		PlayerState.current_state=current_state
+		if new_state.is_animation_play():
+			new_state.play_animation()
+		new_state.change_animation_color(new_state.change_sprite_color)
 		var temp_state= await current_state.enter()
 		if temp_state:
 			change_state(temp_state)
@@ -72,18 +77,17 @@ func get_childen_node(node:Node):
 		if child:
 			get_childen_node(child)
 			
-func print_a_to_b(a,b):
+func print_state_change(a,b):
 	var format_string = "「Player」状态机切换: [%s] --> [%s]"
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	Debug.dprintinfo(actual_string)
+	#Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 
 func _on_player_tree_exiting():
 	change_state(base_state.idle_state)
-	pass 
 
 func _on_player_control_lock(state):
 	if state:

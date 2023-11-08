@@ -1,13 +1,14 @@
 extends GroundState
+
 func enter():
 	super.enter()
 	EventBus._play_SE_LOOP("running-in-grass",true,1)
-	Global.double_jump_flag=true
+	PlayerState.double_jump_able=true
 	return null
+	
 func exit(state:BaseState):
 	super.exit(state)
 	EventBus._play_SE_LOOP("running-in-grass",false)
-	pass
 
 func physics_process(delta: float) -> BaseState:
 	move = get_movement_input_x()

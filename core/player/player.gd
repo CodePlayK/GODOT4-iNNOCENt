@@ -23,18 +23,18 @@ class_name Player extends CharacterBody2D
 ##最低跳跃速度
 @export var min_jump_fource:=70
 @onready var dialogue_position=$DialoguePosition
-
 var dialogue_names:Array =["伊芙利特","伊芙芙"]
-
 var on_ready=false
 var start_position
 
 @onready var animations: = $Sprite
 @onready var reflection: = $Reflection
 @onready var states: = $state_manager
-@onready var ladderChecker:=$ladderCheck
-@onready var blockCheckerLeft:=$blockCheckerLeft
-@onready var blockCheckerRight:=$blockCheckerRight
+@onready var ladder_checker: RayCast2D = $Rays/ladderChecker
+@onready var ground_checker: RayCast2D = $Rays/groundChecker
+@onready var block_checker_left: RayCast2D = $Rays/blockCheckerLeft
+@onready var block_checker_right: RayCast2D = $Rays/blockCheckerRight
+
 @onready var player_camera = $PlayerCamera
 @onready var hitbox: Area2D = $Hitbox
 @onready var weapon: Area2D = $Weapon
@@ -123,6 +123,8 @@ func get_dialogue_position():
 
 func _on_update_timer_timeout():
 	PlayerState.player_global_position=global_position
+	if ground_checker.is_colliding():
+		PlayerState.current_height = ground_checker.get_collision_point().y - global_position.y
 	pass 
 
 func is_player_interact_being_locked():

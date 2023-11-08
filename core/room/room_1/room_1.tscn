@@ -2570,8 +2570,7 @@ process_mode = 1
 modulate = Color(0.482353, 0.482353, 0.482353, 1)
 light_mask = 3
 position = Vector2(167, 187)
-starting_state = "idle"
-starting_state1 = "patrol"
+starting_state = "birth"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
 
@@ -2590,6 +2589,7 @@ patrol_left = NodePath("../../Marker/PortrolLeftMarker")
 script = ExtResource("31_0wd47")
 
 [node name="Timer" type="Timer" parent="Parallax/ParallaxLayer_5/Test"]
+wait_time = 5.0
 
 [node name="ParallaxLayer_6" type="Node2D" parent="Parallax"]
 

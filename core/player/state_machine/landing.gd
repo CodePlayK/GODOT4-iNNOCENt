@@ -1,11 +1,31 @@
-extends AirState
+extends GroundState
+func input(event: InputEvent) -> BaseState:
+	return null
 
+func is_animation_play():
+	if PlayerState.max_height>200 and !PlayerState.last_state is PlayerAttackState:
+		return true
+	return false
 
-func process(delta: float) -> BaseState:
-	if Input.is_action_just_pressed("jump"):
-		return jump_state
-	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-		if Input.is_action_pressed("run"):
-			return run_state
-		return walk_state
+func enter() -> BaseState:
+	if PlayerState.max_height>200 and !PlayerState.last_state is PlayerAttackState:
+		await player.animations.animation_finished
 	return idle_state
+
+func physics_process(delta: float) -> BaseState:
+	move = get_movement_input_x()
+	if !player.is_on_floor() and player.velocity.y<=0:
+		return lift_state
+	if player.velocity.y>0:
+		return fall_state
+	player_faced(move)
+	apply_gravity(delta)
+	if move==0 or is_player_change_moving_direction():
+		apply_friction(delta)
+	else:
+		apply_acceleration_walk(move,delta)
+	player.set_velocity(player.velocity)
+	player.set_up_direction(Vector2.UP)
+	player.move_and_slide()
+	min_jump_force(player.velocity,delta)
+	return null

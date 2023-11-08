@@ -16,13 +16,21 @@ func dprint(txt):
 	
 func dprinterr(txt):
 	time = str(Time.get_ticks_msec())
-	printerr("["+time+"] "+str(txt))
-	debug_printer.append_text("\n["+time+"] [color=ff241ae5]"+str(txt)+"[/color]")
+	var text = "["+time+"] [color=ff241ae5]"+str(txt)+"[/color]"
+	print_rich(text)
+	debug_printer.append_text("\n"+text)
+		
+func dprintwarn(txt):
+	time = str(Time.get_ticks_msec())
+	var text = "["+time+"] [color=ffff19]"+str(txt)+"[/color]"
+	print_rich(text)
+	debug_printer.append_text("\n"+text)
 		
 func dprintinfo(txt):
 	time = str(Time.get_ticks_msec())
-	print("["+time+"] "+str(txt))
-	debug_printer.append_text("\n["+time+"] [color=1ee6d2]"+str(txt)+"[/color]")
+	var text = "["+time+"] [color=1ee6d2]"+str(txt)+"[/color]"
+	print_rich(text)
+	debug_printer.append_text("\n"+text)
 
 func _on_printer_mouse_entered():
 	debug_printer.grab_focus()

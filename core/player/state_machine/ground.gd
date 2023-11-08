@@ -5,7 +5,7 @@ extends BaseState
 var edge_jump_flag=true
 func enter():
 	super.enter()
-	Global.double_jump_flag=true
+	PlayerState.double_jump_able=true
 	return null
 
 func input(event: InputEvent) -> BaseState:

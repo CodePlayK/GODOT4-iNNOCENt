@@ -8,6 +8,7 @@ class_name NpcsBaseState
 @onready var chase_state: NpcsBaseState
 @onready var attack_state: NpcsBaseState
 @onready var behit_state: NpcsBaseState
+@onready var behithard_state: NpcsBaseState
 @onready var death_state: NpcsBaseState
 @onready var birth_state: NpcsBaseState
 @onready var lock_state: NpcsBaseState
@@ -15,40 +16,15 @@ class_name NpcsBaseState
 @export_category("当前状态配置")
 ##当前state是否属于战斗状态(玩家不可与me交互)
 @export var on_combat:bool = false
-var on_combat_real:bool = false:
-	set(f):
-		on_combat_real = f
 @export var on_fighting:bool = false
-var on_fighting_real:bool = false:
-	set(f):
-		on_fighting_real = f
 ##当前state启用npc的对player检测,比如寻敌
 @export var enable_player_detection:bool
-var enable_player_detection_real:bool:
-	set(flag):
-		enable_player_detection_real=flag
-		npc.enable_player_detection(flag)
 ##当前state启用npc自身的检测
 @export var enable_self:bool
-var enable_self_real:bool:
-	set(flag):
-		enable_self_real=flag
-		npc.enable_self(flag)
 ##当前state启用npc的武器的碰撞检测		
 @export var enable_weapon:bool
-var enable_weapon_real:bool:
-	set(flag):
-		enable_weapon_real=flag
-		npc.enable_weapon(flag)
 ##当前state是否锁定player与可交互obj的交互		
 @export var player_interact_lock:bool
-var player_interact_lock_real:bool:
-	set(flag):
-		player_interact_lock_real=flag
-		if flag:
-			PlayerState.add_player_lock_interact_obj(npc)
-		else:
-			PlayerState.remove_player_lock_interact_obj(npc)
 ##当前状态是否要转换sprite
 @export var change_sprite:bool=true
 ##当前状态是否要颜色覆盖sprite
@@ -59,35 +35,24 @@ var npc:Npcs
 var state_manager:NpcStateManager
 ##初始化事件
 func init(all_states) -> void:
-	for state in all_states:
-		var state_name =state.get_name()
-		if "idle"==state_name:idle_state=state
-		if "ground"==state_name:ground_state=state
-		if "patrol"==state_name:patrol_state=state
-		if "combat"==state_name:combat_state=state
-		if "chase"==state_name:chase_state=state
-		if "attack"==state_name:attack_state=state
-		if "behit"==state_name:behit_state=state
-		if "death"==state_name:death_state=state
-		if "birth"==state_name:birth_state=state
-		if "lock"==state_name:lock_state=state
-		if "talk"==state_name:talk_state=state
+	load_all_state(all_states)
 	connect_signal()
 	
-	
+##根据名字载入所有状态
+func load_all_state(all_states:Array):
+	for state in all_states:
+		var state_name =state.get_name()
+		var prop_list = get_property_list()
+		for i in prop_list.size():
+			if i > 18:
+				var prop_name:String = prop_list[i].name
+				if prop_name.begins_with(state_name):
+					set(prop_name,state)	
+
 ##进入该状态的方法，每次进入都会执行，在pre_physics_process之前进行
 func pre_enter() -> bool:
 	return true
 	
-func load_var() -> bool:
-	on_combat_real=on_combat
-	on_fighting_real=on_fighting
-	enable_player_detection_real=enable_player_detection
-	enable_self_real=enable_self
-	enable_weapon_real=enable_weapon
-	player_interact_lock_real=player_interact_lock
-	return true
-
 ##进入该状态的方法，每次进入都会执行，在pre_physics_process之前进行
 func enter() -> NpcsBaseState:
 	if change_sprite:play_animation()
@@ -142,7 +107,6 @@ func change_animation_color(flag:bool=false):
 		npc.base.pause()
 	else:
 		npc.base.play()
-		
 
 ##判断玩家与当前npc的相对左右位置,右=1,左=-1	
 func get_relative_position_x_2_player()->int:

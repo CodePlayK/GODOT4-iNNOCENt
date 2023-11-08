@@ -21,8 +21,13 @@ class_name BaseState
 @onready var behitDamaged_state: BaseState
 @onready var light_state: BaseState
 @onready var talk_state: BaseState
-@onready var attack0_state: BaseState
 @onready var fastrun_state: BaseState
+@onready var attack0_state: BaseState
+@onready var attack1_state: BaseState
+@onready var attack2_state: BaseState
+@onready var attack3_state: BaseState
+@onready var toptrans_state: BaseState
+
 ##当前状态是否要转换sprite
 @export var change_sprite:bool=true
 ##当前状态是否要颜色覆盖sprite
@@ -31,17 +36,17 @@ class_name BaseState
 @export var sprite_color:Color
 ##当前state是否为普通state,即能够在hit或者dense等临时状态后切回
 @export var is_normal_state:bool=true
-
 var is_normal_state_real:bool=true:
 	set(flag):
 		is_normal_state_real=flag
 		if !flag:
-			PlayerState.player_un_naormal_state.push_back(self)
+			PlayerState.player_unnormal_state.push_back(self)
 ##将要赋予的角色
 var player: Player
 var move:int
 var state_manager:PlayerStateManager
 var aniplayer:AnimationPlayer
+
 ##初始化事件
 func init(all_states) -> void:
 	var property_list:Array[Dictionary] = self.get_script().get_script_property_list()
@@ -64,14 +69,15 @@ func load_var():
 	
 ##进入该状态的方法，每次进入都会执行，在pre_physics_process之前进行
 func enter() -> BaseState:
-	if change_sprite:play_animation()
-	change_animation_color(change_sprite_color)
 	return null
 	
 #退出该状态的方法，每次进入都会执行，在physics_process之后进行
 func exit(state:BaseState):
 	pass
-	
+
+func is_animation_play()-> bool:
+	return change_sprite
+
 #有输入事件的方法,不确定与物理帧方法的顺序。慎用
 func input(event: InputEvent) -> BaseState:
 	return null
@@ -129,8 +135,8 @@ func min_jump_force(velocity:Vector2,delta)->Vector2:
 		velocity.y=-player.jump_speed/player.click_jump_force_limit
 	return velocity
 func is_on_ladder()->bool:
-	if not player.ladderChecker.is_colliding():return false
-	var clollider=player.ladderChecker.get_collider()
+	if not player.ladder_checker.is_colliding():return false
+	var clollider=player.ladder_checker.get_collider()
 	return true
 func get_movement_input_x() -> int:
 	var a= Input.get_axis("move_left","move_right")
@@ -159,9 +165,10 @@ func get_player_faced_direction():
 	else:
 		return 1
 func is_player_blocked()->bool:
-	if player.blockCheckerRight.is_colliding() or player.blockCheckerLeft.is_colliding():
+	if player.block_checker_right.is_colliding() or player.block_checker_right.is_colliding():
 		return true
 	return false
+	
 func play_animation():
 	player.animations.play(self.get_name())
 	#player.reflection.play(self.get_name())

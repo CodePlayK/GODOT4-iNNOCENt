@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=61 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_s3ffp"]
@@ -37,6 +37,57 @@
 [ext_resource type="Script" path="res://core/player/attack3.gd" id="32_l8rk1"]
 [ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmu8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d02gq"]
+bg_color = Color(0.0784314, 0.698039, 0.862745, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_odo7y"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_fmu8e")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_d02gq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqmd1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exo4c"]
+bg_color = Color(0.345098, 1, 0.776471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_1jd7q"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_uqmd1")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_exo4c")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx3nq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxn1"]
+bg_color = Color(1, 0.34902, 0.34902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_xmfd2"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lubfn"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+anti_aliasing = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nktfc"]
 shader = ExtResource("2_s3ffp")
@@ -328,52 +379,58 @@ _data = {
 "attack3": SubResource("Animation_6efy6")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmu8e"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d02gq"]
-bg_color = Color(0.0784314, 0.698039, 0.862745, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_odo7y"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_fmu8e")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_d02gq")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqmd1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exo4c"]
-bg_color = Color(0.345098, 1, 0.776471, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_1jd7q"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_uqmd1")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_exo4c")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx3nq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxn1"]
-bg_color = Color(1, 0.34902, 0.34902, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_xmfd2"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 platform_wall_layers = 1
 script = ExtResource("1_emear")
+
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource("27_cru4u")
+
+[node name="DenseCooldownBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = 29.0
+offset_top = 11.0
+offset_right = 31.0
+offset_bottom = 38.0
+theme = SubResource("Theme_odo7y")
+step = 0.1
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="LightBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -29.0
+offset_top = 11.0
+offset_right = -27.0
+offset_bottom = 38.0
+theme = SubResource("Theme_1jd7q")
+step = 0.1
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="StiffBar" type="ProgressBar" parent="UI"]
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 2.0
+theme = SubResource("Theme_xmfd2")
+value = 50.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+visible = false
+modulate = Color(1, 1, 1, 0.854902)
+offset_left = -17.0
+offset_top = -7.0
+offset_right = 17.0
+offset_bottom = -5.0
+theme = SubResource("Theme_xmfd2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lubfn")
+value = 50.0
+show_percentage = false
 
 [node name="Rays" type="Node2D" parent="."]
 z_index = 1
@@ -408,7 +465,6 @@ scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
 animation = &"attack3"
 autoplay = "idle"
-frame = 2
 offset = Vector2(16.7778, -4.44444)
 
 [node name="UpdateTimer" type="Timer" parent="."]
@@ -553,7 +609,7 @@ one_shot = true
 
 [node name="DenseCooldownTimer" type="Timer" parent="state_manager/base/combat/dense"]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 1.4
 one_shot = true
 
 [node name="behit" type="Node" parent="state_manager/base/combat"]
@@ -591,8 +647,9 @@ one_shot = true
 [node name="attack" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("29_orn37")
 
-[node name="attack0" type="Node" parent="state_manager/base/combat/attack"]
+[node name="attack0" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("28_xf5em")
+next_attack = NodePath("../attack1")
 to_next_attack_threshold = 0.2
 change_sprite = false
 is_normal_state = false
@@ -600,18 +657,22 @@ is_normal_state = false
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack0"]
 one_shot = true
 
-[node name="attack1" type="Node" parent="state_manager/base/combat/attack"]
+[node name="attack1" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("27_45d83")
+next_attack = NodePath("../attack3")
 to_next_attack_threshold = 0.2
+sound_name = "slash1"
 change_sprite = false
 is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack1"]
 one_shot = true
 
-[node name="attack3" type="Node" parent="state_manager/base/combat/attack"]
+[node name="attack3" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("32_l8rk1")
+next_attack = NodePath("../attack2")
 to_next_attack_threshold = 0.2
+sound_name = "slash1"
 change_sprite = false
 is_normal_state = false
 
@@ -620,6 +681,7 @@ one_shot = true
 
 [node name="attack2" type="Node" parent="state_manager/base/combat/attack"]
 script = ExtResource("30_r8cot")
+ani_name = "slash4"
 change_sprite = false
 is_normal_state = false
 
@@ -710,42 +772,6 @@ theme_override_font_sizes/font_size = 10
 text = "测试"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="UI" type="Node2D" parent="."]
-script = ExtResource("27_cru4u")
-
-[node name="DenseCooldownBar" type="ProgressBar" parent="UI"]
-modulate = Color(1, 1, 1, 0.854902)
-offset_left = 29.0
-offset_top = 11.0
-offset_right = 31.0
-offset_bottom = 38.0
-theme = SubResource("Theme_odo7y")
-step = 0.1
-value = 50.0
-fill_mode = 3
-show_percentage = false
-
-[node name="LightBar" type="ProgressBar" parent="UI"]
-modulate = Color(1, 1, 1, 0.854902)
-offset_left = -29.0
-offset_top = 11.0
-offset_right = -27.0
-offset_bottom = 38.0
-theme = SubResource("Theme_1jd7q")
-step = 0.1
-value = 50.0
-fill_mode = 3
-show_percentage = false
-
-[node name="StiffBar" type="ProgressBar" parent="UI"]
-modulate = Color(1, 1, 1, 0.854902)
-offset_left = -10.0
-offset_right = 10.0
-offset_bottom = 2.0
-theme = SubResource("Theme_xmfd2")
-value = 50.0
-show_percentage = false
 
 [node name="SaveDataCollector" type="Node" parent="."]
 script = ExtResource("31_s4hwe")

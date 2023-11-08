@@ -21,12 +21,20 @@ func change_state(new_state: BaseState) -> void:
 		print_state_change(current_state.name,new_state.name)
 		current_state = new_state
 		PlayerState.current_state=current_state
+		new_state.load_var()
 		if new_state.is_animation_play():
 			new_state.play_animation()
 		new_state.change_animation_color(new_state.change_sprite_color)
 		var temp_state= await current_state.enter()
 		if temp_state:
 			change_state(temp_state)
+			
+func load_var(new_state):
+	pass
+			
+func init_var(state):
+	if !state.is_normal_state:
+		PlayerState.player_unnormal_state.push_back(state)
 
 func init(player: Player) -> void:
 	EventBus.player_control_lock.connect(_on_player_control_lock)
@@ -38,6 +46,7 @@ func init(player: Player) -> void:
 		state.aniplayer = aniplayer
 		state.init(all_states)
 		state.init_var()
+		init_var(state)
 	current_state=starting_state
 	PlayerState.player_state_history.push_back(base_state.idle_state)
 	change_state(starting_state)
@@ -82,7 +91,7 @@ func print_state_change(a,b):
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	#Debug.dprintinfo(actual_string)
+	Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 

@@ -26,7 +26,6 @@ class_name Player extends CharacterBody2D
 var dialogue_names:Array =["伊芙利特","伊芙芙"]
 var on_ready=false
 var start_position
-
 @onready var animations: = $Sprite
 @onready var reflection: = $Reflection
 @onready var states: = $state_manager
@@ -34,10 +33,11 @@ var start_position
 @onready var ground_checker: RayCast2D = $Rays/groundChecker
 @onready var block_checker_left: RayCast2D = $Rays/blockCheckerLeft
 @onready var block_checker_right: RayCast2D = $Rays/blockCheckerRight
-
+@onready var ui: Node2D = $UI
 @onready var player_camera = $PlayerCamera
 @onready var hitbox: Area2D = $Hitbox
 @onready var weapon: Area2D = $Weapon
+
 
 func _ready() -> void:
 	EventBus.get_player_position.connect(_on_get_player_position)
@@ -49,6 +49,7 @@ func _ready() -> void:
 	states.init(self)
 	reflection.hide()
 	on_ready=true
+	PlayerState.on_player_ready(self)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !on_ready or event is InputEventMouseMotion:

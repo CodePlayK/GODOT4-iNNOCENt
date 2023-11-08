@@ -7,6 +7,7 @@ extends Node
 @onready var stiff_timer=%StiffTimer
 @onready var stiff_bar=$StiffBar
 @onready var tl_2: Label = %TL2
+@onready var health_bar: ProgressBar = $HealthBar
 
 func _ready():
 	dense_cooldown_bar.max_value=dense_cooldown_timer.wait_time

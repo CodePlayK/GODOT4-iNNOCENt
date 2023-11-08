@@ -1,5 +1,6 @@
 ##玩家状态
 extends Node
+var player:Player
 ##玩家操控锁
 var player_control_lcok:bool=false
 ##面朝左
@@ -13,9 +14,21 @@ var player_z_index={
 	"Bedroom":0
 }
 ##玩家正处于在战斗中[chase,attack]
-var is_player_on_fighting:bool=false
+var is_player_on_fighting:bool=false:
+	set(f):
+		is_player_on_fighting = f
+		if player:
+			player.ui.health_bar.visible = f
+			
 ##正在与玩家战斗的对象{对象名,对象}
 var player_on_fighting:Dictionary
+var max_health:int = 10
+var health:int = 10:
+	set(h):
+		if h <= 0:h = max_health
+		health = h
+		if player:
+			player.ui.health_bar.value = health
 ##玩家状态历史
 var player_state_history:Array=[]
 ##不允许回退的状态list
@@ -106,3 +119,7 @@ func remove_player_lock_interact_obj(obj):
 	if !player_lock_interact_obj.keys().has(obj.name):
 		return
 	player_lock_interact_obj.erase(obj.name)
+
+func on_player_ready(player1:Player):
+	player = player1
+	player.ui.health_bar.max_value = max_health

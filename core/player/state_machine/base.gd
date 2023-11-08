@@ -36,11 +36,6 @@ class_name BaseState
 @export var sprite_color:Color
 ##当前state是否为普通state,即能够在hit或者dense等临时状态后切回
 @export var is_normal_state:bool=true
-var is_normal_state_real:bool=true:
-	set(flag):
-		is_normal_state_real=flag
-		if !flag:
-			PlayerState.player_unnormal_state.push_back(self)
 ##将要赋予的角色
 var player: Player
 var move:int
@@ -61,8 +56,7 @@ func pre_enter() -> bool:
 	
 ##在init之后执行的方法,只会在初始化时执行一次,适用于state的静态标记变量	
 func init_var():
-	is_normal_state_real=is_normal_state
-	
+	pass
 ##在pre_enter之后在enter之前的方法,每次进入都会重新赋值,适用于state切换时的动态标记变量
 func load_var():
 	pass

@@ -4,6 +4,7 @@ extends behit
 
 func enter():
 	super.enter()
+	PlayerState.health-=1
 	player.hitbox.monitoring=false
 	EventBus._play_SE("be_hit_by_body")
 	stiff_timer.start(stiff_time)

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs0t6itc4e6sp"]
+
+[ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="1_dbjgp"]
+[ext_resource type="Script" path="res://core/room/common/vfx/sword_wind/sword_wind.gd" id="1_mugx2"]
+[ext_resource type="Texture2D" uid="uid://c1ccg3fvud8ai" path="res://core/resource/Asset/The SwordMaster v1.2/The SwordMaster/me-sword-wind.png" id="2_sbnlt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p44w"]
+size = Vector2(62.7381, 39.0476)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4nvo"]
+shader = ExtResource("1_dbjgp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/enable = true
+shader_parameter/colored = false
+shader_parameter/mix_modulate = true
+shader_parameter/mix_modulate_strength = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utk0x"]
+atlas = ExtResource("2_sbnlt")
+region = Rect2(0, 0, 90, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu4dn"]
+atlas = ExtResource("2_sbnlt")
+region = Rect2(90, 0, 90, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thnkt"]
+atlas = ExtResource("2_sbnlt")
+region = Rect2(180, 0, 90, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ghjn"]
+atlas = ExtResource("2_sbnlt")
+region = Rect2(270, 0, 90, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqefk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utk0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu4dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thnkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ghjn")
+}],
+"loop": true,
+"name": &"sword-wind",
+"speed": 15.0
+}]
+
+[node name="SwordWind" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_mugx2")
+
+[node name="SwordWind" type="CollisionShape2D" parent="."]
+position = Vector2(45.125, 41)
+scale = Vector2(2.1, 2.1)
+shape = SubResource("RectangleShape2D_3p44w")
+
+[node name="base" type="AnimatedSprite2D" parent="."]
+light_mask = 0
+material = SubResource("ShaderMaterial_b4nvo")
+position = Vector2(35, 54)
+scale = Vector2(2.1, 2.1)
+sprite_frames = SubResource("SpriteFrames_hqefk")
+animation = &"sword-wind"
+autoplay = "sword-wind"
+frame_progress = 0.988256

@@ -1,5 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=89 format=3 uid="uid://df0noclsi0k7r"]
+[gd_resource type="SpriteFrames" load_steps=90 format=3 uid="uid://df0noclsi0k7r"]
 
+[ext_resource type="Texture2D" uid="uid://b8qri04670jb1" path="res://core/resource/Asset/The SwordMaster v1.2/The SwordMaster/me-slasht.png" id="2_c7scn"]
 [ext_resource type="Texture2D" uid="uid://6ryvhvob5qlm" path="res://core/resource/Asset/The SwordMaster v1.2/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_p4myf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqjyt"]
@@ -66,24 +67,24 @@ region = Rect2(270, 370, 90, 37)
 atlas = ExtResource("2_p4myf")
 region = Rect2(360, 370, 90, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r017n"]
-atlas = ExtResource("2_p4myf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ikmc"]
+atlas = ExtResource("2_c7scn")
 region = Rect2(0, 333, 90, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwmgs"]
-atlas = ExtResource("2_p4myf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgic8"]
+atlas = ExtResource("2_c7scn")
 region = Rect2(90, 333, 90, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pg67r"]
-atlas = ExtResource("2_p4myf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g8mv"]
+atlas = ExtResource("2_c7scn")
 region = Rect2(180, 333, 90, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4n7rq"]
-atlas = ExtResource("2_p4myf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr3b8"]
+atlas = ExtResource("2_c7scn")
 region = Rect2(270, 333, 90, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjgg1"]
-atlas = ExtResource("2_p4myf")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4dxa"]
+atlas = ExtResource("2_c7scn")
 region = Rect2(360, 333, 90, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qotaw"]
@@ -374,7 +375,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3wvuo")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack0",
 "speed": 5.0
 }, {
@@ -391,7 +392,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uk18c")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack1",
 "speed": 5.0
 }, {
@@ -411,27 +412,27 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7d42e")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack2",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r017n")
+"texture": SubResource("AtlasTexture_4ikmc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dwmgs")
+"texture": SubResource("AtlasTexture_mgic8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pg67r")
+"texture": SubResource("AtlasTexture_2g8mv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4n7rq")
+"texture": SubResource("AtlasTexture_fr3b8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mjgg1")
+"texture": SubResource("AtlasTexture_f4dxa")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack3",
 "speed": 5.0
 }, {

@@ -98,12 +98,12 @@ func after_physics_process(delta: float)->BaseState:
 ##玩家面朝方向
 func player_faced(moves):
 	if moves < 0:
-		player.animations.scale.x = -abs(player.animations.scale.x)
+		player.base.scale.x = -abs(player.base.scale.x)
 		player.weapon.scale.x=-abs(player.weapon.scale.x)
 		PlayerState.face_left=true
 	elif moves > 0:
 		player.weapon.scale.x=abs(player.weapon.scale.x)
-		player.animations.scale.x = abs(player.animations.scale.x)
+		player.base.scale.x = abs(player.base.scale.x)
 		PlayerState.face_left=false
 
 ##重力		
@@ -154,7 +154,7 @@ func get_palyer_move_direction_x()->int:
 		else :
 			return -1
 func get_player_faced_direction():
-	if player.animations.flip_h == false:
+	if player.base.flip_h == false:
 		return -1
 	else:
 		return 1
@@ -164,13 +164,13 @@ func is_player_blocked()->bool:
 	return false
 	
 func play_animation():
-	player.animations.play(self.get_name())
+	player.base.play(self.get_name())
 	#player.reflection.play(self.get_name())
 
 func change_animation_color(flag:bool=false):
-	player.animations.material.set_shader_parameter("color",sprite_color)
-	player.animations.material.set_shader_parameter("enable",flag)
+	player.base.material.set_shader_parameter("color",sprite_color)
+	player.base.material.set_shader_parameter("colored",flag)
 	if flag:
-		player.animations.pause()
+		player.base.pause()
 	else:
-		player.animations.play()
+		player.base.play()

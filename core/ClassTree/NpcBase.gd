@@ -102,7 +102,7 @@ func play_animation():
 
 func change_animation_color(flag:bool=false):
 	npc.base.material.set_shader_parameter("color",sprite_color)
-	npc.base.material.set_shader_parameter("enable",flag)
+	npc.base.material.set_shader_parameter("colored",flag)
 	if flag:
 		npc.base.pause()
 	else:

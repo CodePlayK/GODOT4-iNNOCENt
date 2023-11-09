@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dhq6qeci27rfd"]
+[gd_scene load_steps=50 format=3 uid="uid://dhq6qeci27rfd"]
 
 [ext_resource type="Script" path="res://core/npcs/an/npc_AN.gd" id="1_o5m3r"]
 [ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_soqxa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="3_l7cds"]
 [ext_resource type="Resource" uid="uid://bvaugbl60edin" path="res://test/dialogue/npc_an.dialogue" id="4_yvsgw"]
 [ext_resource type="Script" path="res://core/component/DialogueInteractState.gd" id="5_04t0i"]
+[ext_resource type="Texture2D" uid="uid://c8rgcfsokceb2" path="res://core/resource/Asset/DARK - FX Pack/Sprite Sheets/All.png" id="5_qwt4w"]
 [ext_resource type="Script" path="res://core/component/Move2Vec2.gd" id="5_xmqx8"]
 [ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="6_3lqi8"]
 [ext_resource type="Script" path="res://core/component/Move2Player.gd" id="7_gg1nx"]
@@ -42,6 +43,7 @@ size = Vector2(23, 53)
 shader = ExtResource("2_soqxa")
 shader_parameter/color = null
 shader_parameter/enable = null
+shader_parameter/mix_modulate = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkd7c"]
 atlas = ExtResource("3_6o4y2")
@@ -147,6 +149,51 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y44ba"]
+shader = ExtResource("2_soqxa")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/enable = true
+shader_parameter/mix_modulate = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvi7o"]
+atlas = ExtResource("5_qwt4w")
+region = Rect2(0, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1nm2"]
+atlas = ExtResource("5_qwt4w")
+region = Rect2(82, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxv77"]
+atlas = ExtResource("5_qwt4w")
+region = Rect2(164, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctqse"]
+atlas = ExtResource("5_qwt4w")
+region = Rect2(246, 0, 82, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5cxx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvi7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1nm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxv77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctqse")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit1",
+"speed": 15.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa07g"]
 size = Vector2(7.22, 18.58)
 
@@ -190,6 +237,12 @@ sprite_frames = SubResource("SpriteFrames_wcnb1")
 animation = &"walk"
 autoplay = "idle"
 offset = Vector2(7.33333, 6)
+
+[node name="HitFX" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_y44ba")
+position = Vector2(-8, 30)
+sprite_frames = SubResource("SpriteFrames_5cxx8")
+animation = &"hit1"
 
 [node name="Weapon" type="Area2D" parent="."]
 position = Vector2(4.18323, 9.50734)

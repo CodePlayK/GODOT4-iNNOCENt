@@ -47,7 +47,7 @@ func pre_physics_process(delta: float)->NpcBaseState:
 func after_physics_process(delta: float)->NpcBaseState:
 	return null
 func get_npc_faced_direction():
-	if obj.animations.flip_h == false:
+	if obj.base.flip_h == false:
 		return -1
 	else:
 		return 1

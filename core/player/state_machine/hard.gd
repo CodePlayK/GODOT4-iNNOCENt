@@ -10,6 +10,7 @@ func pre_enter() -> bool:
 		
 func enter():
 	super.enter()
+	state_manager.attack_reset = false
 	PlayerState.dense_flag=true
 	PlayerState.denseable_flag=false
 	dense_timer.start()
@@ -22,6 +23,7 @@ func physics_process(delta: float):
 
 func exit(state:BaseState):
 	super.exit(state)
+	state_manager.attack_reset = true
 	dense_timer.stop()
 	PlayerState.dense_flag=false
 		

@@ -26,7 +26,7 @@ class_name Player extends CharacterBody2D
 var dialogue_names:Array =["伊芙利特","伊芙芙"]
 var on_ready=false
 var start_position
-@onready var animations: = $Sprite
+@onready var base: = $Sprite
 @onready var reflection: = $Reflection
 @onready var states: = $state_manager
 @onready var ladder_checker: RayCast2D = $Rays/ladderChecker
@@ -103,12 +103,12 @@ func _on_get_player_position():
 	
 func _on_player_face_left(state) -> void:
 	if state:
-		animations.scale.x = -abs(animations.scale.x)
+		base.scale.x = -abs(base.scale.x)
 		weapon.set_scale(Vector2(-1,1))
 		PlayerState.face_left=true
 	else:
 		weapon.set_scale(Vector2(1,1))
-		animations.scale.x = abs(animations.scale.x)
+		base.scale.x = abs(base.scale.x)
 		PlayerState.face_left=false
 	pass
 
@@ -149,4 +149,3 @@ func is_player_on_fighting():
 
 func _on_tree_exiting() -> void:
 	PlayerState.player_state_history.clear()
-	pass # Replace with function body.

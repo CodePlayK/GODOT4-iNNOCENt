@@ -8,7 +8,7 @@ func is_animation_play():
 func enter() -> BaseState:
 	super.enter()
 	if !player.is_on_floor() and player.velocity.y <= 0:
-		await player.animations.animation_finished
+		await player.base.animation_finished
 		return fall_state
 	elif player.is_on_floor():
 		return idle_state

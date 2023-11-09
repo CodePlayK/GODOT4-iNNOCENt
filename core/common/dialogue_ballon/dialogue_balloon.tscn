@@ -48,6 +48,9 @@ animations = [{
 shader = ExtResource("2_rwi5q")
 shader_parameter/color = null
 shader_parameter/enable = true
+shader_parameter/colored = true
+shader_parameter/mix_modulate = false
+shader_parameter/mix_modulate_strength = 1.0
 
 [node name="DialogueBalloon" type="Node2D"]
 light_mask = 1024

@@ -1,6 +1,7 @@
 extends Node2D
-@onready var npc_sen: NpcSen = %Npc_Sen
 @onready var npcs: Node2D = $"../Npcs"
+@onready var npc_sen: NpcSen = $"../Npcs/Npc_Sen"
+
 @onready var portrol_right_marker: Marker = $"../Marker/PortrolRightMarker"
 @onready var portrol_left_marker: Marker = $"../Marker/PortrolLeftMarker"
 const npc_sen_pack = preload("res://core/npcs/sen/npc_sen.tscn")

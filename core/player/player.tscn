@@ -1,13 +1,16 @@
-[gd_scene load_steps=61 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=65 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="2_s3ffp"]
+[ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="2_tctxi"]
 [ext_resource type="Script" path="res://core/player/state_machine/state_manager.gd" id="3_5tfn6"]
+[ext_resource type="Script" path="res://core/player/FX.gd" id="3_12nqg"]
 [ext_resource type="SpriteFrames" uid="uid://df0noclsi0k7r" path="res://core/player/animation/player-2.tres" id="3_o7jyy"]
 [ext_resource type="SpriteFrames" uid="uid://b20x1sbpuk3ub" path="res://core/player/animation/player-1.tres" id="3_yowp4"]
 [ext_resource type="Script" path="res://core/player/state_machine/base.gd" id="4_cfiqb"]
 [ext_resource type="Script" path="res://core/player/state_machine/idel.gd" id="5_vfcpx"]
 [ext_resource type="Script" path="res://core/player/state_machine/jump.gd" id="6_i3ary"]
+[ext_resource type="PackedScene" uid="uid://cs0t6itc4e6sp" path="res://core/room/common/vfx/sword_wind/sword_wind.tscn" id="7_42htv"]
 [ext_resource type="Script" path="res://core/player/state_machine/ground.gd" id="7_dbdva"]
 [ext_resource type="Script" path="res://core/player/state_machine/walk.gd" id="8_m3e85"]
 [ext_resource type="Script" path="res://core/player/state_machine/lightJump.gd" id="8_wvdtr"]
@@ -36,6 +39,7 @@
 [ext_resource type="Script" path="res://core/player/SaveDataCollector.gd" id="31_s4hwe"]
 [ext_resource type="Script" path="res://core/player/attack3.gd" id="32_l8rk1"]
 [ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
+[ext_resource type="Script" path="res://core/player/listener.gd" id="36_s8yav"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmu8e"]
@@ -92,7 +96,10 @@ anti_aliasing = false
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nktfc"]
 shader = ExtResource("2_s3ffp")
 shader_parameter/color = null
-shader_parameter/enable = false
+shader_parameter/enable = true
+shader_parameter/colored = false
+shader_parameter/mix_modulate = true
+shader_parameter/mix_modulate_strength = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
 size = Vector2(34, 77)
@@ -100,11 +107,11 @@ size = Vector2(34, 77)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcclo"]
 size = Vector2(131, 25.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0gxe"]
-size = Vector2(125, 25.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjact"]
+size = Vector2(146, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c13kx"]
-size = Vector2(184, 32.75)
+size = Vector2(184, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s2kyg"]
 size = Vector2(110, 65)
@@ -256,7 +263,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"attack2", &"attack1"]
+"values": [&"attack2", &"attack2"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -368,7 +375,21 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.1, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, true, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["SwordWind"],
+"method": &"launch_obj"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg4au"]
@@ -383,6 +404,14 @@ _data = {
 collision_layer = 2
 platform_wall_layers = 1
 script = ExtResource("1_emear")
+
+[node name="Light" parent="." instance=ExtResource("2_tctxi")]
+visible = false
+position = Vector2(0, -43)
+scale = Vector2(2.1, 2.1)
+max_bright = 1.7
+min_bright = 0.684
+trans_time = 0.2
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource("27_cru4u")
@@ -463,9 +492,17 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack3"
+animation = &"attack2"
 autoplay = "idle"
 offset = Vector2(16.7778, -4.44444)
+
+[node name="FX" type="Node2D" parent="."]
+position = Vector2(0, -4)
+script = ExtResource("3_12nqg")
+time = 0.378
+
+[node name="SwordWind" parent="FX" instance=ExtResource("7_42htv")]
+visible = false
 
 [node name="UpdateTimer" type="Timer" parent="."]
 wait_time = 0.05
@@ -483,36 +520,34 @@ position = Vector2(-1, 25.5)
 shape = SubResource("RectangleShape2D_1p7aw")
 
 [node name="Weapon" type="Area2D" parent="."]
+position = Vector2(0, 3)
 collision_layer = 8
 collision_mask = 0
+input_pickable = false
 monitoring = false
-monitorable = false
 
 [node name="attack0" type="CollisionShape2D" parent="Weapon"]
 visible = false
 position = Vector2(51.5, 42.25)
 shape = SubResource("RectangleShape2D_hcclo")
-disabled = true
 
 [node name="attack1" type="CollisionShape2D" parent="Weapon"]
 visible = false
-position = Vector2(48.5, 42.25)
-shape = SubResource("RectangleShape2D_v0gxe")
-disabled = true
+position = Vector2(57, 37)
+shape = SubResource("RectangleShape2D_mjact")
 
 [node name="attack2" type="CollisionShape2D" parent="Weapon"]
 visible = false
-position = Vector2(33, 46.625)
+position = Vector2(33, 43.5)
 shape = SubResource("RectangleShape2D_c13kx")
 
 [node name="attack3" type="CollisionShape2D" parent="Weapon"]
 position = Vector2(56, 28.5)
 shape = SubResource("RectangleShape2D_s2kyg")
-disabled = true
 
 [node name="PlayerLightable" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 8388608
+collision_mask = 0
 monitorable = false
 script = ExtResource("37_ka7u1")
 
@@ -541,6 +576,7 @@ libraries = {
 "": SubResource("AnimationLibrary_bg4au")
 }
 speed_scale = 4.0
+movie_quit_on_finish = true
 
 [node name="base" type="Node" parent="state_manager"]
 unique_name_in_owner = true
@@ -650,7 +686,8 @@ script = ExtResource("29_orn37")
 [node name="attack0" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("28_xf5em")
 next_attack = NodePath("../attack1")
-to_next_attack_threshold = 0.2
+after_attack_stiff_time = 0.0
+listen_next_attack_time = 0.5
 change_sprite = false
 is_normal_state = false
 
@@ -659,8 +696,9 @@ one_shot = true
 
 [node name="attack1" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("27_45d83")
-next_attack = NodePath("../attack3")
-to_next_attack_threshold = 0.2
+next_attack = NodePath("../attack2")
+after_attack_stiff_time = 0.0
+listen_next_attack_time = 0.5
 sound_name = "slash1"
 change_sprite = false
 is_normal_state = false
@@ -668,24 +706,32 @@ is_normal_state = false
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack1"]
 one_shot = true
 
-[node name="attack3" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
+[node name="attack2" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
+script = ExtResource("30_r8cot")
+next_attack = NodePath("../attack3")
+after_attack_stiff_time = 0.1
+sound_name = "slash4"
+change_sprite = false
+is_normal_state = false
+
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack2"]
+one_shot = true
+
+[node name="attack3" type="Node" parent="state_manager/base/combat/attack"]
 script = ExtResource("32_l8rk1")
-next_attack = NodePath("../attack2")
-to_next_attack_threshold = 0.2
-sound_name = "slash1"
+after_attack_stiff_time = 0.3
+listen_next_attack_time = 0.2
+sound_name = "slash2"
 change_sprite = false
 is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack3"]
 one_shot = true
 
-[node name="attack2" type="Node" parent="state_manager/base/combat/attack"]
-script = ExtResource("30_r8cot")
-ani_name = "slash4"
-change_sprite = false
-is_normal_state = false
+[node name="listener" type="Node" parent="state_manager"]
+script = ExtResource("36_s8yav")
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack2"]
+[node name="Timer" type="Timer" parent="state_manager/listener"]
 one_shot = true
 
 [node name="DialoguePosition" type="Marker2D" parent="."]
@@ -788,8 +834,5 @@ script = ExtResource("32_xf8id")
 [connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDenseSafed" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightTimer" to="state_manager/base/combat/light" method="_on_light_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/attack/attack0/attackTimer" to="state_manager/base/combat/attack/attack0" method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/attack/attack1/attackTimer" to="state_manager/base/combat/attack/attack1" method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/attack/attack3/attackTimer" to="state_manager/base/combat/attack/attack3" method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/attack/attack2/attackTimer" to="state_manager/base/combat/attack/attack2" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="state_manager/listener/Timer" to="state_manager/listener" method="_on_timer_timeout"]
 [connection signal="timeout" from="TL2/Timer" to="UI" method="_on_timer_timeout"]

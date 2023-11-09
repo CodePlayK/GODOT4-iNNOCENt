@@ -6,6 +6,8 @@ const clazz_name = "Npcs"
 ##主sprite
 @onready var base: AnimatedSprite2D = $base
 @onready var ui: Node2D = $UI
+@onready var hit_fx: Node2D = $HitFX
+
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
 @export var starting_state:String

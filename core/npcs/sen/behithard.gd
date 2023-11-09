@@ -6,8 +6,7 @@ func connect_signal():
 func on_hit(area:Area2D):
 	if state_manager.current_state != self:
 		return
-	EventBus._play_SE("knife-stab")
+	npc.hit_fx.play_fx(fx_name,"knife-stab")
 	npc.life -= 1
-	print(npc.life)
 	if npc.life<=0:
 		state_manager.state2state(death_state)

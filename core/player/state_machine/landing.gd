@@ -9,7 +9,7 @@ func is_animation_play():
 
 func enter() -> BaseState:
 	if PlayerState.max_height>150 and !PlayerState.last_state is PlayerAttackState:
-		await player.animations.animation_finished
+		await player.base.animation_finished
 	return idle_state
 
 func physics_process(delta: float) -> BaseState:

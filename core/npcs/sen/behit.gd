@@ -4,10 +4,10 @@ var tween:Tween
 @export var back_distance:float
 @export var stiff_time:float = .2
 @export var froze_time:float = 0
-
+@export var fx_name:String
 func enter():
 	super.enter()
-	EventBus._play_SE("knife-stab")
+	npc.hit_fx.play_fx(fx_name,"knife-stab")
 	npc.life-=1
 	var npc_global_position_x:float=npc.global_position.x
 	tween=npc.create_tween()

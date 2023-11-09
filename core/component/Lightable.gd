@@ -14,10 +14,10 @@ func _process(delta: float) -> void:
 		last_bright=area.get_overlapping_areas()[0].bright
 		last_state=true
 		EventBus._change_player_light(last_bright)
-		#Debug.dprintinfo("「Player」灯光亮度变化："+str(last_bright))
+		Debug.dprintinfo("「Player」灯光亮度变化："+str(last_bright))
 	elif !area.has_overlapping_areas() and last_state:
 		EventBus._change_player_light(0.0)	
-		#Debug.dprintinfo("「Player」灯光亮度变化：0.0")
+		Debug.dprintinfo("「Player」灯光亮度变化：0.0")
 		last_state=false	
 		
 func _on_area_entered(area: Area2D) -> void:

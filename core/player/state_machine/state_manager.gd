@@ -7,9 +7,10 @@ class_name PlayerStateManager
 @onready var test_label=%TestLabel
 @onready var base_state:BaseState=%base
 @onready var aniplayer: AnimationPlayer = $Aniplayer
-var to_attack1:bool
-var to_attack2:bool
-var to_attack3:bool
+@onready var listener: Node = $listener
+
+var attack_reset:bool = true
+var to_attack_next:bool = true
 var current_state: BaseState
 var all_states: Array
 
@@ -68,6 +69,8 @@ func physics_process(delta: float) -> void:
 		change_state(new_state)
 		
 func input(event: InputEvent) -> void:
+	if listener.enable:
+		if listener.input(event):return
 	var new_state
 	if current_state:
 		new_state = current_state.input(event)
@@ -106,7 +109,7 @@ func _on_player_control_lock(state):
 		
 func common_state():
 	if PlayerState.player_control_lcok:return null
-	if Input.is_action_just_pressed("attack"):
+	if attack_reset and Input.is_action_just_pressed("attack"):
 		#Debug.dprinterr("[Player][common_state]切换到[light_state]")
 		return base_state.attack0_state
 	if Input.is_action_just_pressed("light"):
@@ -121,5 +124,5 @@ func common_state():
 	return null		
 
 func state2state(state,from_state):
-	#Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
+	Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
 	change_state(state)

@@ -1,14 +1,19 @@
-[gd_scene load_steps=96 format=3 uid="uid://1ojr7jjsjear"]
+[gd_scene load_steps=120 format=3 uid="uid://1ojr7jjsjear"]
 
 [ext_resource type="Script" path="res://core/npcs/sen/npc_sen.gd" id="1_iqm4t"]
+[ext_resource type="Shader" path="res://core/npcs/sen/npc_sen.gdshader" id="2_o3k7m"]
+[ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="3_3h2e4"]
 [ext_resource type="PackedScene" uid="uid://bp1610uuwvi47" path="res://core/room/common/marker/marker.tscn" id="3_7uqv5"]
+[ext_resource type="Texture2D" uid="uid://c8rgcfsokceb2" path="res://core/resource/Asset/DARK - FX Pack/Sprite Sheets/All.png" id="3_aodjv"]
 [ext_resource type="Texture2D" uid="uid://c3dfde5sf73jf" path="res://test/anima/character1.png" id="3_mp0pq"]
 [ext_resource type="Script" path="res://core/component/CutsceneTalk.gd" id="4_506sk"]
 [ext_resource type="Script" path="res://core/component/Move2Vec2.gd" id="4_nhi13"]
+[ext_resource type="Script" path="res://core/component/HitFX.gd" id="4_r0xrn"]
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="5_uuy47"]
 [ext_resource type="Resource" uid="uid://bx7y0coeb1r0s" path="res://test/dialogue/npc_sen.dialogue" id="6_ll5gf"]
 [ext_resource type="Script" path="res://core/component/Move2Player.gd" id="7_mynjv"]
 [ext_resource type="Script" path="res://core/component/DialogueInteractState.gd" id="7_vtyhr"]
+[ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="8_47q7l"]
 [ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="8_frfwb"]
 [ext_resource type="Theme" uid="uid://c3gcusv0manb6" path="res://core/common/dialogue_ballon/resource/dialogue_balloon.tres" id="8_pkxgj"]
 [ext_resource type="Script" path="res://core/npcs/sen/SenSaveDataCollector.gd" id="9_v62ej"]
@@ -32,37 +37,22 @@
 [ext_resource type="Script" path="res://core/npcs/sen/behithard.gd" id="26_taqfw"]
 [ext_resource type="Script" path="res://core/npcs/sen/UI.gd" id="31_vxg0w"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5i1y"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsl88"]
 size = Vector2(23, 53)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inw0b"]
 size = Vector2(182, 65)
 
-[sub_resource type="Shader" id="Shader_i8pp1"]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-uniform vec4 color:source_color;
-uniform bool enable;
-varying flat vec4 modulate;
-void vertex() {
-	modulate = COLOR;
-}
-
-void fragment() {
-	if (enable){
-	// Place fragment code here.
-	vec4 old_color=texture(TEXTURE,UV);
-	vec4 new_color=color;
-	new_color.a=old_color.a*new_color.a;
-	COLOR=new_color*modulate;}
-}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1kn7a"]
 resource_local_to_scene = true
-shader = SubResource("Shader_i8pp1")
-shader_parameter/color = null
-shader_parameter/enable = null
+shader = ExtResource("2_o3k7m")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/enable = true
+shader_parameter/colored = false
+shader_parameter/mix_modulate = true
+shader_parameter/mix_modulate_strength = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbm1k"]
 atlas = ExtResource("3_mp0pq")
@@ -358,6 +348,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_73jeo")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"death",
@@ -465,6 +458,169 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cehfv"]
+shader = ExtResource("3_3h2e4")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/enable = true
+shader_parameter/colored = true
+shader_parameter/mix_modulate = false
+shader_parameter/mix_modulate_strength = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvi7o"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(0, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1nm2"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(82, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxv77"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(164, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctqse"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(246, 0, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2pp6"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(0, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgcpk"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(82, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_571dx"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(164, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ori3i"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(246, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjxyf"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(328, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6e3h"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(410, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qahu"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(492, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s85hv"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(574, 195, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ls5d"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(0, 325, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpxin"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(82, 325, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j88kx"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(164, 325, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6anmi"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(246, 325, 82, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1wbi"]
+atlas = ExtResource("3_aodjv")
+region = Rect2(328, 325, 82, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bklh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvi7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1nm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxv77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctqse")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit1",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2pp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgcpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_571dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ori3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjxyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6e3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qahu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s85hv")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit2",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ls5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpxin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j88kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6anmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1wbi")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit3",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_657i8"]
@@ -601,6 +757,7 @@ _data = {
 }
 
 [node name="Npc_Sen" type="Area2D" groups=["player_interactable_only"]]
+material = SubResource("ShaderMaterial_b5i1y")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_iqm4t")
@@ -639,11 +796,24 @@ material = SubResource("ShaderMaterial_1kn7a")
 position = Vector2(0, 26)
 scale = Vector2(2, 1.995)
 sprite_frames = SubResource("SpriteFrames_wcnb1")
-animation = &"idle"
+animation = &"death"
 autoplay = "lock"
-frame = 4
 centered = false
 offset = Vector2(-32, -12.7104)
+
+[node name="HitFX" type="Node2D" parent="."]
+script = ExtResource("4_r0xrn")
+
+[node name="base" type="AnimatedSprite2D" parent="HitFX"]
+light_mask = 32768
+material = SubResource("ShaderMaterial_cehfv")
+position = Vector2(0, 32)
+scale = Vector2(1.5, 1)
+sprite_frames = SubResource("SpriteFrames_3bklh")
+animation = &"hit3"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(-15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -658,6 +828,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
+visible = false
 position = Vector2(36, 39)
 shape = SubResource("RectangleShape2D_al6ae")
 
@@ -666,11 +837,14 @@ collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/AttackRange"]
+visible = false
 position = Vector2(19, 34)
 shape = SubResource("RectangleShape2D_v7qej")
 
 [node name="DialoguePosition" parent="." instance=ExtResource("3_7uqv5")]
 position = Vector2(17, 0)
+
+[node name="Light" parent="." instance=ExtResource("8_47q7l")]
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource("31_vxg0w")
@@ -779,16 +953,11 @@ one_shot = true
 
 [node name="attack" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("21_v6bep")
-attack_range = null
 on_combat = true
 on_fighting = true
 enable_player_detection = true
-enable_self = null
-enable_weapon = null
 player_interact_lock = true
 change_sprite = false
-change_sprite_color = null
-sprite_color = null
 
 [node name="aniplayer" type="AnimationPlayer" parent="NpcStateManager/base/combat/attack"]
 libraries = {
@@ -799,6 +968,7 @@ speed_scale = 2.0
 [node name="behit" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("21_wdcd6")
 back_distance = 20.0
+fx_name = "hit1"
 on_combat = true
 on_fighting = true
 enable_player_detection = true
@@ -807,18 +977,19 @@ change_sprite = false
 change_sprite_color = true
 sprite_color = Color(1, 1, 1, 1)
 
-[node name="behithard" type="Node" parent="NpcStateManager/base/combat"]
+[node name="behithard" type="Node" parent="NpcStateManager/base/combat/behit"]
 script = ExtResource("26_taqfw")
 back_distance = 50.0
 stiff_time = 0.5
 froze_time = 0.5
+fx_name = "hit3"
 on_combat = true
 on_fighting = true
 enable_player_detection = true
 player_interact_lock = true
 change_sprite = false
 change_sprite_color = true
-sprite_color = Color(1, 0.188235, 0.141176, 1)
+sprite_color = Color(1, 0, 0, 1)
 
 [node name="death" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("22_m7hy0")

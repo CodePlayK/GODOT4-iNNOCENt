@@ -2603,6 +2603,7 @@ npc_name = "Npc_Sen2"
 [node name="Npc_Sen" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
 unique_name_in_owner = true
 process_mode = 1
+visible = false
 modulate = Color(0.482353, 0.482353, 0.482353, 1)
 light_mask = 3
 material = null
@@ -2611,6 +2612,7 @@ starting_state = "birth"
 starting_state1 = "lock"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
+life = 5
 
 [node name="Test" type="Node2D" parent="Parallax/ParallaxLayer_5"]
 script = ExtResource("31_0wd47")

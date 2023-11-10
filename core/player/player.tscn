@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://core/player/state_machine/run.gd" id="9_oqdiy"]
 [ext_resource type="Script" path="res://core/player/Hitbox.gd" id="10_2hk8c"]
 [ext_resource type="Script" path="res://core/player/state_machine/dash.gd" id="10_otd3s"]
-[ext_resource type="Script" path="res://core/player/Weapons.gd" id="11_s7w4i"]
+[ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/weapon/weapons.tscn" id="11_ivbbt"]
 [ext_resource type="Script" path="res://core/player/state_machine/air.gd" id="11_xgemw"]
 [ext_resource type="Script" path="res://core/player/state_machine/lift.gd" id="12_n7puq"]
 [ext_resource type="Script" path="res://core/player/fastrun.gd" id="13_63inm"]
@@ -112,7 +112,7 @@ size = Vector2(90, 78)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puvyo"]
 size = Vector2(24, 56)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxm7i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60p17"]
 size = Vector2(184.75, 29.75)
 
 [sub_resource type="Animation" id="Animation_ine36"]
@@ -213,7 +213,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../Weapons:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -234,6 +234,23 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapons")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_xgok5"]
@@ -265,7 +282,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../Weapons:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -286,6 +303,23 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapons")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_6efy6"]
@@ -329,6 +363,35 @@ tracks/2/keys = {
 "method": &"launch_obj"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Weapons")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapons/attack3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg4au"]
 _data = {
@@ -343,7 +406,7 @@ collision_layer = 2
 platform_wall_layers = 1
 script = ExtResource("1_emear")
 acceleration_dash = 14000
-max_speed_dash = 1000
+max_speed_dash = 800
 
 [node name="Light" parent="." instance=ExtResource("2_tctxi")]
 visible = false
@@ -434,7 +497,6 @@ scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
 animation = &"attack0"
 autoplay = "idle"
-frame = 2
 offset = Vector2(16.7778, -4.44444)
 
 [node name="FX" type="Node2D" parent="."]
@@ -482,33 +544,27 @@ visible = false
 position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_puvyo")
 
-[node name="Weapons" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-script = ExtResource("11_s7w4i")
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+[node name="Weapons" parent="." instance=ExtResource("11_ivbbt")]
 
 [node name="attack0" type="CollisionShape2D" parent="Weapons"]
 position = Vector2(58.5, 45.5)
-shape = SubResource("RectangleShape2D_bxm7i")
+shape = SubResource("RectangleShape2D_60p17")
 disabled = true
 
 [node name="attack1" type="CollisionShape2D" parent="Weapons"]
 position = Vector2(65.25, 40.25)
-shape = SubResource("RectangleShape2D_bxm7i")
+shape = SubResource("RectangleShape2D_60p17")
 disabled = true
 
 [node name="attack2" type="CollisionShape2D" parent="Weapons"]
 position = Vector2(33.625, 46.125)
-shape = SubResource("RectangleShape2D_bxm7i")
+shape = SubResource("RectangleShape2D_60p17")
 disabled = true
 
 [node name="attack3" type="CollisionShape2D" parent="Weapons"]
-visible = false
 position = Vector2(33, 37)
-shape = SubResource("RectangleShape2D_bxm7i")
+shape = SubResource("RectangleShape2D_60p17")
+disabled = true
 
 [node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
 script = ExtResource("3_5tfn6")

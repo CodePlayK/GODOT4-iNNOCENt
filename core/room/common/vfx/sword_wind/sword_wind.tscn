@@ -55,13 +55,13 @@ animations = [{
 collision_layer = 8
 collision_mask = 0
 monitoring = false
-monitorable = false
 script = ExtResource("1_mugx2")
 
 [node name="SwordWind" type="CollisionShape2D" parent="."]
 position = Vector2(45.125, 41)
 scale = Vector2(2.1, 2.1)
 shape = SubResource("RectangleShape2D_3p44w")
+disabled = true
 
 [node name="base" type="AnimatedSprite2D" parent="."]
 light_mask = 0

@@ -40,6 +40,7 @@ func input(event: InputEvent) -> BaseState:
 	return null		
 
 func enter():
+	player.weapon.disable_rect()
 	super.enter()
 	to_next_attack = false
 	move = 0
@@ -74,6 +75,7 @@ func physics_process(delta: float) -> BaseState:
 func exit(state:BaseState):
 	super.exit(state)
 	aniplayer.stop()
+	player.weapon.disable_rect()
 	#player.weapon.set_deferred("monitorable" , false)
 	attack_timer.stop()
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时

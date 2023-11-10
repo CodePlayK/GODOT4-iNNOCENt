@@ -19,12 +19,12 @@ func launch_obj(fx_name:String):
 	if PlayerState.face_left:
 		side=-1
 	var fx_data =  fx_dic[fx_name]
-	var obj:Area2D = fx_data[0].duplicate(8)
+	var obj:Area2D = fx_data[0].duplicate()
 	#var material = fx_data[0].base.material.duplicate()
 	#obj.base.material=material
-	obj.monitorable = true
 	obj.scale.x = side*abs(obj.scale.x)
 	add_child(obj)
+	obj.enables()
 	obj.show()
 	var tween = obj.create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -32,5 +32,6 @@ func launch_obj(fx_name:String):
 	tween.tween_property(obj,"global_position",Vector2(obj.global_position.x+fx_data[1]*side,obj.global_position.y),fx_data[2])
 	await tween.finished
 	tween.kill()
+	obj.disable()
 	obj.queue_free()
 	

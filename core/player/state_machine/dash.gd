@@ -12,8 +12,9 @@ func pre_enter() -> bool:
 func enter():
 	super.enter()
 	timer.start(dash_cooldown)
+	EventBus._play_SE("lazer",1,-15)
 	enable = false
-	player.hitbox.monitorable = false
+	player.hitbox.disable_hit()
 	current_dash_time = dash_time
 	return null
 
@@ -44,8 +45,8 @@ func physics_process(delta: float) -> BaseState:
 
 func exit(state:BaseState):
 	super.exit(state)
-	player.hitbox.monitorable = true
 	player.velocity.x = 0
+	player.hitbox.enable_hit()
 
 func _on_timer_timeout() -> void:
 	enable = true

@@ -117,6 +117,8 @@ func common_state():
 	if Input.is_action_just_pressed("dense")&&PlayerState.denseable_flag:
 		#Debug.dprinterr("[Player][common_state]切换到[dense_state]")
 		return base_state.dense_state
+	if Input.is_action_just_pressed("dash"):
+		return base_state.dash_state
 	return null		
 
 func state2state(state,from_state):

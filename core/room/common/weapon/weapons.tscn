@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddpp81a4o3kqg"]
+
+[ext_resource type="Script" path="res://core/player/Weapons.gd" id="1_dmtp2"]
+
+[node name="Weapons" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_dmtp2")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true

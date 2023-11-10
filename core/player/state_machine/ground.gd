@@ -10,8 +10,6 @@ func enter():
 func input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light"):
 		return jump_state
-	if Input.is_action_just_pressed("dash"):
-		return dash_state
 	if player.is_on_floor() :
 		if Input.is_action_pressed("run"):
 			if PlayerState.is_player_on_fighting:

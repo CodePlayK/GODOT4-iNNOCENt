@@ -4,7 +4,14 @@ var player:Player
 ##玩家操控锁
 var player_control_lcok:bool=false
 ##面朝左
-var face_left:bool=false
+var face_left:bool=false:
+	set(f):
+		face_left = f
+		if f:
+			face_left_normalize = -1
+		else :
+			face_left_normalize = 1
+var face_left_normalize:int=1
 ##玩家是否可以进行交互
 var player_interact_being_locked:bool=false
 ##玩家交互锁对象{对象名,对象}

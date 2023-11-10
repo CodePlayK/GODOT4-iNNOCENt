@@ -39,9 +39,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5i1y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsl88"]
-size = Vector2(23, 53)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inw0b"]
 size = Vector2(182, 65)
 
@@ -272,7 +269,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1jx8d")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -632,6 +629,9 @@ size = Vector2(7.22, 18.58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7qej"]
 size = Vector2(98, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsl88"]
+size = Vector2(23, 53)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ie3eo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e5dv"]
@@ -696,10 +696,10 @@ tracks/1/path = NodePath("../../../../Weapon/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.26, 0.2601),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.13),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(19, 34), Vector2(19, 34)]
+"values": [Vector2(19, 34)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -708,19 +708,19 @@ tracks/2/path = NodePath("../../../../Weapon/CollisionShape2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.26, 0.2601),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.13),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(13.6, 1), Vector2(13.6, 1)]
+"values": [Vector2(13.6, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("../../../../Weapon:monitorable")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.26, 0.4),
+"times": PackedFloat32Array(0, 0.13, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -739,15 +739,35 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("../../../../Weapon:monitoring")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.26, 0.4),
+"times": PackedFloat32Array(0, 0.13, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [false],
+"method": &"enable_weapon"
+}, {
+"args": [true],
+"method": &"enable_weapon"
+}, {
+"args": [false],
+"method": &"enable_weapon"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ti863"]
@@ -763,17 +783,8 @@ collision_mask = 2
 script = ExtResource("1_iqm4t")
 starting_state = "lock"
 starting_state1 = "idle"
-life = 5
+life = 100
 npc_name = "Npc_Sen"
-
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1.5, 37.5)
-shape = SubResource("RectangleShape2D_wsl88")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_layer = 268435456
@@ -796,8 +807,9 @@ material = SubResource("ShaderMaterial_1kn7a")
 position = Vector2(0, 26)
 scale = Vector2(2, 1.995)
 sprite_frames = SubResource("SpriteFrames_wcnb1")
-animation = &"death"
+animation = &"attack"
 autoplay = "lock"
+frame = 2
 centered = false
 offset = Vector2(-32, -12.7104)
 
@@ -816,28 +828,27 @@ frame_progress = 1.0
 offset = Vector2(-15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-0.5, 31.5)
 shape = SubResource("RectangleShape2D_657i8")
 
 [node name="Weapon" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 256
+collision_layer = 256
+collision_mask = 0
 input_pickable = false
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
-visible = false
-position = Vector2(36, 39)
+position = Vector2(19, 34)
+scale = Vector2(13.6, 1)
 shape = SubResource("RectangleShape2D_al6ae")
 
 [node name="AttackRange" type="Area2D" parent="Weapon"]
 collision_layer = 0
-collision_mask = 256
+collision_mask = 512
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/AttackRange"]
-visible = false
 position = Vector2(19, 34)
 shape = SubResource("RectangleShape2D_v7qej")
 
@@ -845,6 +856,14 @@ shape = SubResource("RectangleShape2D_v7qej")
 position = Vector2(17, 0)
 
 [node name="Light" parent="." instance=ExtResource("8_47q7l")]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.5, 37.5)
+shape = SubResource("RectangleShape2D_wsl88")
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource("31_vxg0w")
@@ -879,7 +898,6 @@ script = ExtResource("7_vtyhr")
 script = ExtResource("8_frfwb")
 
 [node name="test" type="Label" parent="."]
-visible = false
 offset_left = -55.0
 offset_top = -13.0
 offset_right = 57.0
@@ -897,7 +915,6 @@ script = ExtResource("9_v62ej")
 script = ExtResource("10_iomob")
 
 [node name="StateTest" type="Label" parent="."]
-visible = false
 offset_left = -55.0
 offset_top = -26.0
 offset_right = 57.0
@@ -968,6 +985,8 @@ speed_scale = 2.0
 [node name="behit" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("21_wdcd6")
 back_distance = 20.0
+froze_time = 0.1
+protect_time = 0.5
 fx_name = "hit1"
 on_combat = true
 on_fighting = true
@@ -977,11 +996,16 @@ change_sprite = false
 change_sprite_color = true
 sprite_color = Color(1, 1, 1, 1)
 
-[node name="behithard" type="Node" parent="NpcStateManager/base/combat/behit"]
+[node name="ProtectTimer" type="Timer" parent="NpcStateManager/base/combat/behit"]
+wait_time = 0.001
+one_shot = true
+
+[node name="behithard" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("26_taqfw")
 back_distance = 50.0
-stiff_time = 0.5
+stiff_time = 1.0
 froze_time = 0.5
+protect_time = 0.0
 fx_name = "hit3"
 on_combat = true
 on_fighting = true
@@ -990,6 +1014,9 @@ player_interact_lock = true
 change_sprite = false
 change_sprite_color = true
 sprite_color = Color(1, 0, 0, 1)
+
+[node name="ProtectTimer" type="Timer" parent="NpcStateManager/base/combat/behithard"]
+one_shot = true
 
 [node name="death" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("22_m7hy0")
@@ -1004,3 +1031,5 @@ script = ExtResource("21_cjrf4")
 [node name="SpeedMap2Animation" parent="." instance=ExtResource("23_eihms")]
 
 [connection signal="timeout" from="NpcStateManager/base/combat/chase/Timer" to="NpcStateManager/base/combat/chase" method="_on_timer_timeout"]
+[connection signal="timeout" from="NpcStateManager/base/combat/behit/ProtectTimer" to="NpcStateManager/base/combat/behit" method="_on_protect_timer_timeout"]
+[connection signal="timeout" from="NpcStateManager/base/combat/behithard/ProtectTimer" to="NpcStateManager/base/combat/behithard" method="_on_protect_timer_timeout"]

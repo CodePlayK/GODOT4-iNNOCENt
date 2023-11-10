@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=90 format=3 uid="uid://df0noclsi0k7r"]
+[gd_resource type="SpriteFrames" load_steps=96 format=3 uid="uid://df0noclsi0k7r"]
 
 [ext_resource type="Texture2D" uid="uid://b8qri04670jb1" path="res://core/resource/Asset/The SwordMaster v1.2/The SwordMaster/me-slasht.png" id="2_c7scn"]
 [ext_resource type="Texture2D" uid="uid://6ryvhvob5qlm" path="res://core/resource/Asset/The SwordMaster v1.2/The SwordMaster/Sword Master Sprite Sheet 90x37.png" id="2_p4myf"]
@@ -110,6 +110,30 @@ region = Rect2(360, 407, 90, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1j56t"]
 atlas = ExtResource("2_p4myf")
 region = Rect2(450, 407, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6275l"]
+atlas = ExtResource("2_p4myf")
+region = Rect2(0, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bjiw"]
+atlas = ExtResource("2_p4myf")
+region = Rect2(90, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wowd7"]
+atlas = ExtResource("2_p4myf")
+region = Rect2(180, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw33m"]
+atlas = ExtResource("2_p4myf")
+region = Rect2(270, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y00lw"]
+atlas = ExtResource("2_p4myf")
+region = Rect2(360, 444, 90, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxkdh"]
+atlas = ExtResource("2_p4myf")
+region = Rect2(450, 444, 90, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtpiq"]
 atlas = ExtResource("2_p4myf")
@@ -469,10 +493,28 @@ animations = [{
 "name": &"climb",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6275l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bjiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wowd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw33m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y00lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxkdh")
+}],
 "loop": true,
 "name": &"dash",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,

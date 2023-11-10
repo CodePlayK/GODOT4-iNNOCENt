@@ -5,6 +5,8 @@ func input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump") and PlayerState.double_jump_able:
 		PlayerState.double_jump_able=false
 		return double_jump_state
+	elif Input.is_action_just_pressed("dash"):
+		return dash_state
 	return null
 
 func physics_process(delta: float) -> BaseState:

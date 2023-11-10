@@ -118,8 +118,12 @@ func apply_acceleration_run(v,delta):
 	player.velocity.x=move_toward(player.velocity.x,player.max_speed_run*v,player.acceleration_run*delta)
 func apply_acceleration_walk(v,delta):
 	player.velocity.x=move_toward(player.velocity.x,player.max_speed_walk*v,player.acceleration_run*delta)
+func apply_acceleration_custom(v,scale_to_walk,delta):
+	player.velocity.x=move_toward(player.velocity.x,player.max_speed_walk*v*scale_to_walk,player.acceleration_run*delta)
 func apply_acceleration_fastrun(v,delta):
 	player.velocity.x=move_toward(player.velocity.x,player.max_speed_fast_run*v,player.acceleration_run*delta)
+func apply_acceleration_dash(v,delta):
+	player.velocity.x=move_toward(player.velocity.x,player.max_speed_dash*v,player.acceleration_dash*delta)
 func apply_climb_acceleration_y(delta):
 	player.velocity.y=move_toward(player.velocity.y,-player.max_speed_run,player.climb_speed*delta)
 func apply_climb_acceleration_x(delta):

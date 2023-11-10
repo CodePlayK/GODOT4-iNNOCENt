@@ -1,8 +1,7 @@
 class_name GroundState
 extends BaseState
-
-
 var edge_jump_flag=true
+
 func enter():
 	super.enter()
 	PlayerState.double_jump_able=true

@@ -37,7 +37,6 @@ func load_var(new_state:NpcsBaseState):
 	npc.enable_player_detection(new_state.enable_player_detection)
 	npc.enable_self(new_state.enable_self)
 	npc.enable_weapon (new_state.enable_weapon)
-	npc.enable_weapon (new_state.enable_weapon)
 	if new_state.player_interact_lock:
 		PlayerState.add_player_lock_interact_obj(npc)
 	else:
@@ -116,6 +115,8 @@ func print_state_change(a,b):
 ##在物理方法中
 func common_state():
 	if !npc or npc.on_talk:return
+	if npc.being_hit and ![base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
+		state2state(base_state.behit_state)
 	if npc.on_combat :
 		if npc.global_position.x>npc.patrol_right.global_position.x or npc.global_position.x<npc.patrol_left.global_position.x:
 			if current_state!=base_state.attack_state:
@@ -134,7 +135,7 @@ func signal_state2state(npc_name,state_name):
 
 ##受击事件	
 func on_hit(area:Area2D):
-	if ![base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
+	if area.enable and ![base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
 		change_state(base_state.behit_state)
 		
 ##根据名字获取状态

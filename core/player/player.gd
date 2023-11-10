@@ -1,12 +1,16 @@
 ##玩家控制对象
 class_name Player extends CharacterBody2D
+@export_category("配置")
 @export var dead_switch: bool=true
 ##重力
+@export_group("运动")
 @export var gravity: int=800
 ##最大y速度
 @export var max_velocity_y: int=800
 ##run加速度
 @export var acceleration_run: int=400
+@export var acceleration_dash: int=700
+@export var max_speed_dash: int=700
 ##摩擦力
 @export var friction: int=800
 ##最大run速度
@@ -36,7 +40,7 @@ var start_position
 @onready var ui: Node2D = $UI
 @onready var player_camera = $PlayerCamera
 @onready var hitbox: Area2D = $Hitbox
-@onready var weapon: Area2D = $Weapon
+@onready var weapon: Area2D = $Weapons
 
 
 func _ready() -> void:

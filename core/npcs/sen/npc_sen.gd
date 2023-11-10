@@ -20,6 +20,6 @@ func enable_self(flag):
 	set_deferred("monitoring",flag)
 	set_deferred("monitorable",flag)
 	
-func enable_weapon(flag):
+func enable_weapon(flag:bool):
 	weapon.set_deferred("monitoring",flag)
 	weapon.set_deferred("monitorable",flag)

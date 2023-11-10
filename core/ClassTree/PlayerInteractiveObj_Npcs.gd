@@ -20,6 +20,7 @@ var on_ready=false
 @export var patrol_left:Marker2D
 @export var life:int
 var current_state
+var being_hit:bool = false
 var on_combat:bool=false
 var on_fighting:bool=false:
 	set(f):

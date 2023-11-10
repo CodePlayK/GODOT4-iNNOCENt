@@ -8,9 +8,8 @@ class_name PlayerStateManager
 @onready var base_state:BaseState=%base
 @onready var aniplayer: AnimationPlayer = $Aniplayer
 @onready var listener: Node = $listener
-
+##重置攻击到attack0
 var attack_reset:bool = true
-var to_attack_next:bool = true
 var current_state: BaseState
 var all_states: Array
 
@@ -94,7 +93,7 @@ func print_state_change(a,b):
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	Debug.dprintinfo(actual_string)
+	#Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 
@@ -118,11 +117,13 @@ func common_state():
 	if Input.is_action_just_pressed("dense")&&PlayerState.denseable_flag:
 		#Debug.dprinterr("[Player][common_state]切换到[dense_state]")
 		return base_state.dense_state
-	if PlayerState.player_be_hitting and !PlayerState.dense_flag and !PlayerState.dense_success_flag:
-		#Debug.dprinterr("[Player][common_state]切换到[behitDamaged_state]")
-		return base_state.behitDamaged_state
 	return null		
 
 func state2state(state,from_state):
-	Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
+	#Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
 	change_state(state)
+
+func on_hit(obj):
+	if !PlayerState.dense_flag and !PlayerState.dense_success_flag:
+		#Debug.dprinterr("[Player][common_state]切换到[behitDamaged_state]")
+		change_state(base_state.behitDamaged_state)

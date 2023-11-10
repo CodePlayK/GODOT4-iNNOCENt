@@ -43,7 +43,9 @@ size = Vector2(23, 53)
 shader = ExtResource("2_soqxa")
 shader_parameter/color = null
 shader_parameter/enable = null
+shader_parameter/colored = null
 shader_parameter/mix_modulate = true
+shader_parameter/mix_modulate_strength = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkd7c"]
 atlas = ExtResource("3_6o4y2")
@@ -153,7 +155,9 @@ animations = [{
 shader = ExtResource("2_soqxa")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/enable = true
+shader_parameter/colored = null
 shader_parameter/mix_modulate = true
+shader_parameter/mix_modulate_strength = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvi7o"]
 atlas = ExtResource("5_qwt4w")
@@ -223,7 +227,7 @@ show_percentage = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1.5, 37.5)

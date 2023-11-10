@@ -4,11 +4,20 @@ var tween:Tween
 @export var back_distance:float
 @export var stiff_time:float = .2
 @export var froze_time:float = 0
+@export var protect_time:float = .2
 @export var fx_name:String
+@onready var protect_timer: Timer = $ProtectTimer
+var enable:bool = true
+		
+func pre_enter() -> bool:
+	return true
+	
 func enter():
 	super.enter()
-	npc.hit_fx.play_fx(fx_name,"knife-stab")
+	npc.being_hit = false
+	enable = false
 	npc.life-=1
+	npc.hit_fx.play_fx(fx_name,"knife-stab")
 	var npc_global_position_x:float=npc.global_position.x
 	tween=npc.create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -25,4 +34,8 @@ func enter():
 	return chase_state
 	
 func exit(state:NpcsBaseState):
+	enable = true
 	tween.kill()
+
+func _on_protect_timer_timeout() -> void:
+	enable = true

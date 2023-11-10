@@ -6,7 +6,7 @@ extends NpcsCombatState
 var tween:Tween
 
 func connect_signal():
-	weapon.area_entered.connect(on_hit)
+	#weapon.area_entered.connect(on_hit)
 	return
 
 func pre_enter() -> bool:
@@ -28,14 +28,15 @@ func state_change():
 		state_manager.state2state(chase_state) 
 
 func exit(NpcsBaseState):
-	tween.kill()
-	#aniplayer.stop()
 	npc.enable_weapon(false)
+	aniplayer.stop()
+	tween.kill()
 	
 func on_hit(area):
 	if state_manager.current_state==self:
 		PlayerState.player_be_hitting=true
 	
 func physics_process(delta: float):
-	if npc.attack_range.has_overlapping_areas() and PlayerState.dense_success_flag:
-		return behithard_state
+	if npc.attack_range.has_overlapping_areas():
+		if PlayerState.dense_success_flag:
+			return behithard_state

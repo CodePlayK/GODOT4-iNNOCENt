@@ -125,7 +125,9 @@ func state2state(state,from_state):
 	#Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
 	change_state(state)
 
-func on_hit(obj):
+func on_hit(obj:Area2D):
+	if !obj.enable:return
+	PlayerState.player_be_hitting=true
 	if !PlayerState.dense_flag and !PlayerState.dense_success_flag:
 		#Debug.dprinterr("[Player][common_state]切换到[behitDamaged_state]")
 		change_state(base_state.behitDamaged_state)

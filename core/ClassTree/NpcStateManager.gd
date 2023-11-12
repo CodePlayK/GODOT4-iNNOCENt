@@ -4,7 +4,7 @@ class_name NpcStateManager
 @onready var state_test: Label = $"../StateTest"
 @onready var base_state: NpcsBaseState = $base
 @onready var npc: Npcs = $".."
-@onready var hitbox: Area2D = $"../Hitbox"
+@onready var hurt_box: Area2D = $"../HurtBox"
 var current_state: NpcsBaseState:
 	set(state):
 		current_state = state
@@ -13,10 +13,10 @@ var all_states: Array
 var pre_start_state:NpcsBaseState
 var start_state:NpcsBaseState
 var process_begin:bool=false
-
+var current_damage:float = 0.0
 func _ready() -> void:
 	EventBus.change_npc_state.connect(signal_state2state)
-	hitbox.area_entered.connect(on_hit)
+	#hurt_box.area_entered.connect(on_hit)
 
 func change_state(new_state: NpcsBaseState) -> void:        
 	if null!=current_state and current_state!=new_state and new_state.pre_enter():
@@ -136,6 +136,7 @@ func signal_state2state(npc_name,state_name):
 ##受击事件	
 func on_hit(area:Area2D):
 	if area.enable and ![base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
+		current_damage = area.damage
 		change_state(base_state.behit_state)
 		
 ##根据名字获取状态

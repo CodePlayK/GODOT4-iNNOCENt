@@ -31,6 +31,7 @@ var dialogue_names:Array =["伊芙利特","伊芙芙"]
 var on_ready=false
 var start_position
 @onready var base: = $Sprite
+@onready var front_base: = $TopSprite
 @onready var reflection: = $Reflection
 @onready var states: = $state_manager
 @onready var ladder_checker: RayCast2D = $Rays/ladderChecker
@@ -39,8 +40,8 @@ var start_position
 @onready var block_checker_right: RayCast2D = $Rays/blockCheckerRight
 @onready var ui: Node2D = $UI
 @onready var player_camera = $PlayerCamera
-@onready var hitbox: Area2D = $Hitbox
-@onready var weapon: Area2D = $Weapons
+@onready var hit_box: Area2D = $HitBox
+@onready var hurt_box: Area2D = $HurtBox
 
 
 func _ready() -> void:
@@ -108,10 +109,10 @@ func _on_get_player_position():
 func _on_player_face_left(state) -> void:
 	if state:
 		base.scale.x = -abs(base.scale.x)
-		weapon.set_scale(Vector2(-1,1))
+		hit_box.set_scale(Vector2(-1,1))
 		PlayerState.face_left=true
 	else:
-		weapon.set_scale(Vector2(1,1))
+		hit_box.set_scale(Vector2(1,1))
 		base.scale.x = abs(base.scale.x)
 		PlayerState.face_left=false
 	pass

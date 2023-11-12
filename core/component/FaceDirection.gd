@@ -4,7 +4,7 @@ class_name FaceDirection
 @onready var base = $"../base"
 @onready var dialogue_position = $"../DialoguePosition"
 @onready var player_detection: Area2D = $"../PlayerDetection"
-@onready var weapon: Area2D = $"../Weapon"
+@onready var hit_box: Area2D = $"../HitBox"
 @onready var hit_fx: Node2D = $"../HitFX"
 var node_list:Array[Node2D]
 #控制对象的面朝方向
@@ -19,7 +19,7 @@ func connect_signal():
 	
 func _obj_set_face_left(name,left_flag:bool=false):
 	if name!=obj.name: return null
-	node_list=[hit_fx,weapon,player_detection,base]
+	node_list=[hit_fx,hit_box,player_detection,base]
 	for node in node_list:
 		if !node:continue
 		if left_flag:

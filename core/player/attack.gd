@@ -3,6 +3,8 @@ extends BaseState
 class_name PlayerAttackState
 ##下一段攻击
 @export_category("配置")
+@export_group("伤害")
+@export var damage:float = 1.0
 @export_group("基础配置")
 @export var next_attack:PlayerAttackState
 ##在经过攻击时长多少比例后,可以切换到下一攻击
@@ -18,6 +20,7 @@ class_name PlayerAttackState
 @export_group("运动配置")
 ##攻击状态中是否允许移动
 @export var moveable:bool = true
+@export var change_face_able:bool = true
 ##攻击状态中的移动速度比率:相对于行走速度
 @export_range(0,2.0) var move_speed_scale_to_walk:float = 1.0
 ##实际的攻击动画耗时,包括僵直
@@ -37,10 +40,16 @@ func input(event: InputEvent) -> BaseState:
 	if event.is_action_pressed("attack"):
 		if attack_timer.time_left>(attack_timer.wait_time+after_attack_stiff_time)*to_next_attack_threshold:
 			to_next_attack = true
+	if moveable:
+		if player.is_on_floor() and(Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light")):
+			player.set_up_direction(Vector2.UP)
+			player.velocity.y = -player.jump_speed
+		move = get_movement_input_x()
 	return null		
 
 func enter():
-	player.weapon.disable_rect()
+	player.hit_box.disable_shape()
+	player.hit_box.damage = damage
 	super.enter()
 	to_next_attack = false
 	move = 0
@@ -50,12 +59,8 @@ func enter():
 	aniplayer.play(ani_name)
 
 func physics_process(delta: float) -> BaseState:
-	if moveable:
-		if player.is_on_floor() and(Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light")):
-			player.set_up_direction(Vector2.UP)
-			player.velocity.y = -player.jump_speed
-		move = get_movement_input_x()
-	player_faced(move)
+	if change_face_able:
+		player_faced(move)	
 	apply_gravity(delta)
 	if move==0 or is_player_change_moving_direction() :
 		apply_friction(delta)
@@ -75,8 +80,8 @@ func physics_process(delta: float) -> BaseState:
 func exit(state:BaseState):
 	super.exit(state)
 	aniplayer.stop()
-	player.weapon.disable_rect()
-	#player.weapon.set_deferred("monitorable" , false)
+	player.hit_box.disable_shape()
+	player.hit_box.damage = 0
 	attack_timer.stop()
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时
 	#开启监听
@@ -88,6 +93,7 @@ func exit(state:BaseState):
 		state_manager.attack_reset = true
 		PlayerState.attaking = false
 		
+##是否在攻击动画结束后,且在listener中监听结束前按下攻击		
 func listen_next_attck(event):
 	if event.is_action_pressed("attack"):
 		return true

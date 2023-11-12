@@ -25,17 +25,20 @@ var is_player_on_fighting:bool=false:
 	set(f):
 		is_player_on_fighting = f
 		if player:
-			player.ui.health_bar.visible = f
-			
+			player.ui.player_on_fighting_changed(f)
+
 ##正在与玩家战斗的对象{对象名,对象}
 var player_on_fighting:Dictionary
 var max_health:int = 10
+var last_health:int = 10
 var health:int = 10:
 	set(h):
+		last_health = health
 		if h <= 0:h = max_health
 		health = h
 		if player:
-			player.ui.health_bar.value = health
+			player.ui.on_health_changed()
+
 ##玩家状态历史
 var player_state_history:Array=[]
 ##不允许回退的状态list
@@ -45,6 +48,7 @@ var player_global_position:Vector2:
 	set(v2):
 		player_global_position = v2
 		CutsceneState.player_position = v2
+var player_screen_position:Vector2
 var max_height:float
 var current_height:float:
 	set(f):
@@ -130,3 +134,4 @@ func remove_player_lock_interact_obj(obj):
 func on_player_ready(player1:Player):
 	player = player1
 	player.ui.health_bar.max_value = max_health
+	player.ui.health_bar_back.max_value = max_health

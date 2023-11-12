@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://1ojr7jjsjear"]
+[gd_scene load_steps=122 format=3 uid="uid://1ojr7jjsjear"]
 
 [ext_resource type="Script" path="res://core/npcs/sen/npc_sen.gd" id="1_iqm4t"]
 [ext_resource type="Shader" path="res://core/npcs/sen/npc_sen.gdshader" id="2_o3k7m"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://core/component/HitFX.gd" id="4_r0xrn"]
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="5_uuy47"]
 [ext_resource type="Resource" uid="uid://bx7y0coeb1r0s" path="res://test/dialogue/npc_sen.dialogue" id="6_ll5gf"]
+[ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="7_cgs5h"]
 [ext_resource type="Script" path="res://core/component/Move2Player.gd" id="7_mynjv"]
 [ext_resource type="Script" path="res://core/component/DialogueInteractState.gd" id="7_vtyhr"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="8_47q7l"]
@@ -18,6 +19,7 @@
 [ext_resource type="Theme" uid="uid://c3gcusv0manb6" path="res://core/common/dialogue_ballon/resource/dialogue_balloon.tres" id="8_pkxgj"]
 [ext_resource type="Script" path="res://core/npcs/sen/SenSaveDataCollector.gd" id="9_v62ej"]
 [ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="10_iomob"]
+[ext_resource type="PackedScene" uid="uid://cssd4crw3cmet" path="res://core/room/common/hurt box/HurtBox.tscn" id="10_oklkp"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcStateManager.gd" id="13_t5ncq"]
 [ext_resource type="Script" path="res://test/StateTest.gd" id="13_ubcqf"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcBase.gd" id="14_c3c6i"]
@@ -651,7 +653,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../Weapon/CollisionShape2D:position")
+tracks/0/path = NodePath("../../../../HitBox/CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -663,7 +665,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../../../Weapon/CollisionShape2D:scale")
+tracks/1/path = NodePath("../../../../HitBox/CollisionShape2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -692,7 +694,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../../../Weapon/CollisionShape2D:position")
+tracks/1/path = NodePath("../../../../HitBox/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -704,7 +706,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../../../Weapon/CollisionShape2D:scale")
+tracks/2/path = NodePath("../../../../HitBox/CollisionShape2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -715,47 +717,23 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("../../../../Weapon:monitorable")
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../base:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.13, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../../../../base:animation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"attack", &"idle"]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/path = NodePath("../../../../Weapon:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.13, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../../../..")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.22, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -809,7 +787,6 @@ scale = Vector2(2, 1.995)
 sprite_frames = SubResource("SpriteFrames_wcnb1")
 animation = &"attack"
 autoplay = "lock"
-frame = 2
 centered = false
 offset = Vector2(-32, -12.7104)
 
@@ -831,37 +808,38 @@ offset = Vector2(-15, 0)
 position = Vector2(-0.5, 31.5)
 shape = SubResource("RectangleShape2D_657i8")
 
-[node name="Weapon" type="Area2D" parent="."]
+[node name="HitBox" parent="." instance=ExtResource("7_cgs5h")]
 collision_layer = 256
-collision_mask = 0
-input_pickable = false
-monitoring = false
-monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
-position = Vector2(19, 34)
-scale = Vector2(13.6, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(36, 39)
 shape = SubResource("RectangleShape2D_al6ae")
 
-[node name="AttackRange" type="Area2D" parent="Weapon"]
+[node name="AttackRange" type="Area2D" parent="HitBox"]
 collision_layer = 0
 collision_mask = 512
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/AttackRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox/AttackRange"]
 position = Vector2(19, 34)
 shape = SubResource("RectangleShape2D_v7qej")
 
 [node name="DialoguePosition" parent="." instance=ExtResource("3_7uqv5")]
+visible = false
 position = Vector2(17, 0)
 
 [node name="Light" parent="." instance=ExtResource("8_47q7l")]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HurtBox" parent="." node_paths=PackedStringArray("signal_node_list", "shape_list") instance=ExtResource("10_oklkp")]
 collision_layer = 0
 collision_mask = 8
+monitorable = false
+signal_node_list = [NodePath("../NpcStateManager"), NodePath("../NpcStateManager/base/combat/behithard")]
+shape_list = [NodePath("CollisionShape2D")]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.5, 37.5)
 shape = SubResource("RectangleShape2D_wsl88")
 
@@ -869,6 +847,7 @@ shape = SubResource("RectangleShape2D_wsl88")
 script = ExtResource("31_vxg0w")
 
 [node name="StiffBar" type="ProgressBar" parent="UI"]
+visible = false
 modulate = Color(1, 1, 1, 0.854902)
 offset_left = -10.0
 offset_right = 10.0

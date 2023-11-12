@@ -2,11 +2,9 @@ extends NpcsCombatState
 @onready var player_detection: Area2D = $"../../../../PlayerDetection"
 @export var attack_range:float=40
 @onready var aniplayer: AnimationPlayer = $aniplayer
-@onready var weapon: Area2D = $"../../../../Weapon"
 var tween:Tween
 
 func connect_signal():
-	#weapon.area_entered.connect(on_hit)
 	return
 
 func pre_enter() -> bool:

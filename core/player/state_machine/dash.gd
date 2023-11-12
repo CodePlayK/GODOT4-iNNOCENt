@@ -14,7 +14,7 @@ func enter():
 	timer.start(dash_cooldown)
 	EventBus._play_SE("lazer",1,-15)
 	enable = false
-	player.hitbox.disable_hit()
+	player.hurt_box.disable_hit()
 	current_dash_time = dash_time
 	return null
 
@@ -46,7 +46,7 @@ func physics_process(delta: float) -> BaseState:
 func exit(state:BaseState):
 	super.exit(state)
 	player.velocity.x = 0
-	player.hitbox.enable_hit()
+	player.hurt_box.enable_hit()
 
 func _on_timer_timeout() -> void:
 	enable = true

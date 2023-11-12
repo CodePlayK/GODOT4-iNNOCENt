@@ -229,6 +229,7 @@ unique_name_in_owner = true
 position = Vector2(-55.914, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Balloon/VB/MC/HB/MC/PointerLeft/ScreenCheckerL"]
+visible = false
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("8_cn6xi")
 
@@ -251,6 +252,7 @@ unique_name_in_owner = true
 position = Vector2(58.0645, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Balloon/VB/MC/HB/MC2/PointerRight/ScreenCheckerR"]
+visible = false
 scale = Vector2(0.48, 0.48)
 texture = ExtResource("8_cn6xi")
 

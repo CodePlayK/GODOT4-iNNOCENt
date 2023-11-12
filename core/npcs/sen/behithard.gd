@@ -9,13 +9,14 @@ var tween:Tween
 var enable:bool = true
 
 func connect_signal():
-	state_manager.hitbox.area_entered.connect(on_hit)
+	pass
+	#state_manager.hurt_box.area_entered.connect(on_hit)
 	
 func on_hit(area:Area2D):
-	if state_manager.current_state != self:
+	if state_manager.current_state != self or !area.enable:
 		return
 	npc.hit_fx.play_fx(fx_name,"knife-stab")
-	npc.life -= 1
+	npc.life-=area.damage
 	if npc.life<=0:
 		state_manager.state2state(death_state)
 		
@@ -34,7 +35,7 @@ func enter():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.chain().tween_property(npc,"global_position",Vector2(npc_global_position_x-back_distance*get_relative_position_x_2_player(),npc.global_position.y),stiff_time)
-	if npc.life==0:
+	if npc.life<=0:
 		tween.chain().tween_interval(.5)
 		await tween.finished
 		tween.kill()
@@ -45,6 +46,7 @@ func enter():
 	return chase_state
 	
 func exit(state:NpcsBaseState):
+	state_manager.current_damage = 0
 	tween.kill()
 	
 func _on_protect_timer_timeout() -> void:

@@ -1,8 +1,8 @@
 extends Npcs
 class_name NpcSen
-@onready var weapon: Area2D = $Weapon
+@onready var hit_box: Area2D = $HitBox
 @onready var player_detection: Area2D = $PlayerDetection
-@onready var attack_range: Area2D = $Weapon/AttackRange
+@onready var attack_range: Area2D = $HitBox/AttackRange
 
 func _ready() -> void:
 	super._ready()
@@ -21,5 +21,6 @@ func enable_self(flag):
 	set_deferred("monitorable",flag)
 	
 func enable_weapon(flag:bool):
-	weapon.set_deferred("monitoring",flag)
-	weapon.set_deferred("monitorable",flag)
+	hit_box.set_enable(flag)
+	#hit_box.set_deferred("monitoring",flag)
+	#hit_box.set_deferred("monitorable",flag)

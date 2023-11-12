@@ -24,7 +24,7 @@ func launch_obj(fx_name:String):
 	#obj.base.material=material
 	obj.scale.x = side*abs(obj.scale.x)
 	add_child(obj)
-	obj.enables()
+	obj.enable_shape()
 	obj.show()
 	var tween = obj.create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -32,6 +32,6 @@ func launch_obj(fx_name:String):
 	tween.tween_property(obj,"global_position",Vector2(obj.global_position.x+fx_data[1]*side,obj.global_position.y),fx_data[2])
 	await tween.finished
 	tween.kill()
-	obj.disable()
+	obj.disable_shape()
 	obj.queue_free()
 	

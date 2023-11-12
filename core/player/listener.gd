@@ -12,7 +12,7 @@ func listen_to_state(to_state1:BaseState,trigger1:Callable,time:float,from_state
 	from_state = from_state1
 	trigger = trigger1
 	timer.start(time)
-	state_manager.attack_reset = false	
+	state_manager.attack_reset = false#重置攻击状态
 	enable = true
 	
 func input(event: InputEvent) -> bool:

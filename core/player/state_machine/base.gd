@@ -99,11 +99,13 @@ func after_physics_process(delta: float)->BaseState:
 func player_faced(moves):
 	if moves < 0:
 		player.base.scale.x = -abs(player.base.scale.x)
-		player.weapon.scale.x=-abs(player.weapon.scale.x)
+		player.front_base.scale.x = -abs(player.front_base.scale.x)
+		player.hit_box.scale.x=-abs(player.hit_box.scale.x)
 		PlayerState.face_left=true
 	elif moves > 0:
-		player.weapon.scale.x=abs(player.weapon.scale.x)
+		player.hit_box.scale.x=abs(player.hit_box.scale.x)
 		player.base.scale.x = abs(player.base.scale.x)
+		player.front_base.scale.x = abs(player.front_base.scale.x)
 		PlayerState.face_left=false
 
 ##重力		
@@ -169,6 +171,7 @@ func is_player_blocked()->bool:
 	
 func play_animation():
 	player.base.play(self.get_name())
+	player.front_base.play(self.get_name())
 	#player.reflection.play(self.get_name())
 
 func change_animation_color(flag:bool=false):

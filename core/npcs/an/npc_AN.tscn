@@ -225,11 +225,11 @@ theme = SubResource("Theme_oc8oy")
 value = 50.0
 show_percentage = false
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.5, 37.5)
 shape = SubResource("RectangleShape2D_xlcg1")
 
@@ -248,7 +248,7 @@ position = Vector2(-8, 30)
 sprite_frames = SubResource("SpriteFrames_5cxx8")
 animation = &"hit1"
 
-[node name="Weapon" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
 position = Vector2(4.18323, 9.50734)
 collision_layer = 256
 collision_mask = 0
@@ -256,7 +256,7 @@ input_pickable = false
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(16.5491, 3.68471)
 scale = Vector2(1.46913, 0.836577)
 shape = SubResource("RectangleShape2D_pa07g")
@@ -304,6 +304,7 @@ script = ExtResource("18_f7p27")
 script = ExtResource("6_3lqi8")
 
 [node name="test" type="Label" parent="."]
+visible = false
 offset_left = -55.0
 offset_top = -13.0
 offset_right = 57.0
@@ -314,6 +315,7 @@ text = "asd"
 horizontal_alignment = 1
 
 [node name="StateTest" type="Label" parent="."]
+visible = false
 offset_left = -55.0
 offset_top = -26.0
 offset_right = 57.0

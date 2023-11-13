@@ -12,17 +12,18 @@ var trainingroom_doctor_flip_h:bool
 var dic_on_player={
 	"Npc_Sen":false,
 	"Npc_An":false,
-	"NPC_Silence":false
+	"NPC_BloodKing":false
 }
 var dic_dialogue_side_left={
 	"Npc_Sen":false,
 	"Npc_An":false,
-	"NPC_Silence":true
+	"NPC_BloodKing":true
 }
 
 enum NPC{
 	SEN,
-	AN
+	AN,
+	BLOODKING,
 }
 
 var NpcCacheExportNodes:Dictionary={

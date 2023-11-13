@@ -16,7 +16,7 @@ func listen_to_state(to_state1:BaseState,trigger1:Callable,time:float,from_state
 	enable = true
 	
 func input(event: InputEvent) -> bool:
-	if !enable and !PlayerState.attaking:return false
+	if !enable and !PlayerState.attacking:return false
 	if trigger.call(event):
 		print("监听切换到[%s]",to_state)
 		if to_state:
@@ -28,7 +28,7 @@ func input(event: InputEvent) -> bool:
 	return false
 	
 func _on_timer_timeout() -> void:
-	PlayerState.attaking = false
+	PlayerState.attacking = false
 	reset()
 
 func reset():

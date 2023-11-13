@@ -1,7 +1,6 @@
 extends Node
 ##[必须挂载于obj根节点]让obj追踪玩家,并在距离小于等于diatance时停止追踪
 class_name ChasePlayer
-@onready var base = $"../base"
 @onready var obj = $".."
 ##追踪停止距离
 @export var distance:int

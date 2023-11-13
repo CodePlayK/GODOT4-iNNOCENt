@@ -4,7 +4,6 @@ extends Component
 ##[必须挂载于Npc对象根目录/要求有名为「DialoguePosition」的Mark2d] 只能由玩家接触选中的物体，在不同场景下的默认对话，具体数据放在DialogueState里面配置
 class_name NpcDialogueDefault
 @onready var obj:PlayerInteractiveObj = $".."
-@onready var base = $"../base"
 ##dialogue_resourced
 @export var dialogue_resource:DialogueResource
 @onready var dialogue_position = $"../DialoguePosition"

@@ -2,25 +2,26 @@ extends Node
 ##[必须挂载于目标储存对象根节点,必须有单一saver子节点] 配置单一对象存档数据的父类，只负责数据组装与属性赋值
 class_name SaveDataCollector
 @onready var npc = $".."
-@onready var base = $"../base"
 var saver
 signal save
 signal preset
 var dic_save_data:Dictionary
 
-func _ready():
+func _ready() -> void:
+	npc.ready.connect(on_obj_ready)
+
+func on_obj_ready():
 	saver=get_children()[0]
 	saver.load_save.connect(_load_save)
 	EventBus.save_game.connect(_pre_save_game)
 	_preset()
-	pass 
 	
 ##初始化数据	
 func _preset():
 	custom_data()
 	dic_save_data["position_x"]=npc.position.x
 	dic_save_data["position_y"]=npc.position.y
-	dic_save_data["npc_face_left"]=base.scale.x
+	dic_save_data["npc_face_left"]=npc.animation.scale.x
 	preset.emit()
 	pass
 	
@@ -29,7 +30,7 @@ func _pre_save_game():
 	custom_data()
 	dic_save_data["position_x"]=npc.position.x
 	dic_save_data["position_y"]=npc.position.y
-	dic_save_data["npc_face_left"]=base.scale.x
+	dic_save_data["npc_face_left"]=npc.animation.scale.x
 	save.emit()
 	pass
 	

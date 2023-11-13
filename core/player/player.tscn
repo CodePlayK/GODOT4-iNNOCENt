@@ -757,9 +757,9 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack3"
+animation = &"attack0"
 autoplay = "idle"
-frame = 4
+frame = 1
 offset = Vector2(16.7778, -4.44444)
 
 [node name="TopSprite" type="AnimatedSprite2D" parent="."]
@@ -771,9 +771,9 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack3"
+animation = &"attack0"
 autoplay = "idle"
-frame = 4
+frame = 1
 offset = Vector2(16.7778, -4.44444)
 
 [node name="FX" type="Node2D" parent="."]
@@ -962,7 +962,6 @@ is_normal_state = false
 script = ExtResource("23_t1hct")
 stiff_time = 0.6
 protect_time = 0.5
-change_sprite = false
 change_sprite_color = true
 sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
 is_normal_state = false
@@ -999,7 +998,6 @@ damage = 2.0
 next_attack = NodePath("../attack1")
 after_attack_stiff_time = 0.0
 listen_next_attack_time = 0.5
-change_sprite = false
 is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack0"]
@@ -1013,7 +1011,6 @@ after_attack_stiff_time = 0.0
 listen_next_attack_time = 0.2
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
-change_sprite = false
 is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack1"]
@@ -1026,7 +1023,6 @@ next_attack = NodePath("../attack3")
 after_attack_stiff_time = 0.1
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
-change_sprite = false
 is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack2"]
@@ -1040,7 +1036,6 @@ listen_next_attack_time = 0.2
 sound_name = "slash2"
 change_face_able = false
 move_speed_scale_to_walk = 0.1
-change_sprite = false
 is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack3"]

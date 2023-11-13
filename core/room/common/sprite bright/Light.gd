@@ -1,6 +1,6 @@
 extends Area2D
 ##[必须挂载于Player根节点] Player专有灯光亮度控制
-@onready var obj = $".."
+@export var obj:Node2D = $".."
 @export_range(1.0,50) var max_bright = 7.0
 @export_range(0.0,5) var min_bright = 0.0
 @export_range(0,5.0) var trans_time = .2 

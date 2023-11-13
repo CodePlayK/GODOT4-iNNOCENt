@@ -29,7 +29,7 @@ class_name BaseState
 @onready var toptrans_state: BaseState
 
 ##当前状态是否要转换sprite
-@export var change_sprite:bool=true
+@export var change_animation:bool=true
 ##当前状态是否要颜色覆盖sprite
 @export var change_sprite_color:bool=false
 ##要覆盖sprite的颜色
@@ -40,8 +40,7 @@ class_name BaseState
 var player: Player
 var move:int
 var state_manager:PlayerStateManager
-var aniplayer:AnimationPlayer
-
+var aniplayer
 ##初始化事件
 func init(all_states) -> void:
 	var property_list:Array[Dictionary] = self.get_script().get_script_property_list()
@@ -70,7 +69,7 @@ func exit(state:BaseState):
 	pass
 
 func is_animation_play()-> bool:
-	return change_sprite
+	return change_animation
 
 #有输入事件的方法,不确定与物理帧方法的顺序。慎用
 func input(event: InputEvent) -> BaseState:

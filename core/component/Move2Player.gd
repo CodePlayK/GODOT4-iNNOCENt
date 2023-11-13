@@ -1,7 +1,6 @@
 extends Component
 ##[必须挂载于npc对象下] 对象移动到玩家角色附近，并在途中与停止后面朝玩家
 class_name Move2Player
-@onready var base = $"../base"
 @onready var obj = $".."
 ##停止移动的距离玩家距离
 @export var distance:int
@@ -18,7 +17,7 @@ func connect_signal():
 func _move_2_player(name:String,time:float=1,distance_t:int = 0):
 	if distance_t==0:distance_t = distance
 	if name!=obj.obj_name:return null
-	base.animation="walk"
+	obj.aniplayer.play("walk")
 	obj.enable_all_interact(false)
 	if PlayerState.player_global_position<obj.global_position :
 		EventBus._obj_set_face_left(obj.name,true)
@@ -38,5 +37,5 @@ func _move_2_player(name:String,time:float=1,distance_t:int = 0):
 	else :
 		EventBus._obj_set_face_left(obj.name,true)
 	obj.enable_all_interact(true)
-	base.animation="idle"
+	obj.aniplayer.play("idle")
 	pass

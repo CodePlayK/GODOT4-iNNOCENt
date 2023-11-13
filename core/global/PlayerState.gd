@@ -77,7 +77,7 @@ var denseable_flag:bool=true
 ##弹反结果的标记
 var dense_success_flag:bool=false
 ##是否正在攻击
-var attaking:bool=false
+var attacking:bool=false
 ##能够轻化
 var lightable_flag:bool=true
 var light_flag:bool=false

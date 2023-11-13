@@ -3,7 +3,6 @@ extends Node
 class_name CutsceneTalk
 @onready var obj = $".."
 @onready var dialogue_position = $"../DialoguePosition"
-@onready var base = $"../base"
 var left_side_balloon:bool=false
 
 func _ready():

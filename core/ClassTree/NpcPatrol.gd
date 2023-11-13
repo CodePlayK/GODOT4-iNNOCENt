@@ -36,15 +36,15 @@ func enter():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.chain().tween_interval(.5)
 	tween.chain().tween_property(npc,"global_position",Vector2(base_position+patrol_distance_t,npc.get_position().y),patrol_time_t)
-	tween.parallel().tween_callback(npc.base.set_animation.bind(self.name))
+	tween.parallel().tween_callback(npc.aniplayer.play.bind(self.name))
 	tween.parallel().tween_callback(EventBus._obj_set_face_left.bind(npc.name,face_flag))
 	tween.chain().tween_interval(wait_time_t)
-	tween.parallel().tween_callback(npc.base.set_animation.bind(idle_state.name))
+	tween.parallel().tween_callback(npc.aniplayer.play.bind(idle_state.name))
 	tween.chain().tween_property(npc,"global_position",Vector2(base_position,npc.get_position().y),patrol_time_t)
 	tween.parallel().tween_callback(EventBus._obj_set_face_left.bind(npc.name,!face_flag))
-	tween.parallel().tween_callback(npc.base.set_animation.bind(self.name))
+	tween.parallel().tween_callback(npc.aniplayer.play.bind(self.name))
 	tween.chain().tween_interval(wait_time_t)
-	tween.parallel().tween_callback(npc.base.set_animation.bind(idle_state.name))
+	tween.parallel().tween_callback(npc.aniplayer.play.bind(idle_state.name))
 	tween.chain().tween_callback(rand)
 
 func rand():
@@ -55,9 +55,9 @@ func rand():
 func physics_process(delta: float):
 	if npc.player_detection.has_overlapping_bodies():
 		if get_npc_faced_direction()==1 and npc.global_position.x + 40 >= npc.patrol_right.global_position.x:
-			return attack_state
+			return attack0_state
 		elif get_npc_faced_direction()==-1 and npc.global_position.x - 40 <= npc.patrol_right.global_position.x:
-			return attack_state
+			return attack0_state
 		return chase_state
 
 func exit(state:NpcsBaseState):

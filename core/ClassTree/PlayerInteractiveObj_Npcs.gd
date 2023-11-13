@@ -4,9 +4,12 @@ const clazz_name = "Npcs"
 ##npc的状态机管理器
 @onready var states: Node = $NpcStateManager
 ##主sprite
-@onready var base: AnimatedSprite2D = $base
+@onready var animation: Node2D = $Animation
+@onready var vfx: Sprite2D = $Animation/vfx
+@onready var base: Sprite2D = %base
 @onready var ui: Node2D = $UI
-@onready var hit_fx: Node2D = $HitFX
+@onready var hurt_fx: Node2D = $Animation/HurtFX
+@onready var aniplayer: AnimationPlayer = $Animation/aniplayer
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)

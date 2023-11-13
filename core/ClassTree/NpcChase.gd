@@ -30,7 +30,7 @@ func physics_process(delta: float):
 				timer.start()
 	
 func _on_timer_timeout() -> void:
-	state_manager.state2state(attack_state)
+	state_manager.state2state(attack0_state)
 
 func exit(NpcsBaseState):
 	timer.stop()

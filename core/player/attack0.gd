@@ -1,7 +1,7 @@
 extends PlayerAttackState
 
 func pre_enter() -> bool:
-	if !PlayerState.attaking:
+	if !PlayerState.attacking:
 		return true
 	else:
 		return false

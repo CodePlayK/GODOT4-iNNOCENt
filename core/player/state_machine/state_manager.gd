@@ -6,8 +6,9 @@ class_name PlayerStateManager
 @onready var starting_state: BaseState = starting_node
 @onready var test_label=%TestLabel
 @onready var base_state:BaseState=%base
-@onready var aniplayer: AnimationPlayer = $Aniplayer
 @onready var listener: Node = $listener
+@onready var aniplayer: AnimationPlayer = $Aniplayer
+
 ##重置攻击到attack0
 var attack_reset:bool = true
 var current_state: BaseState
@@ -43,7 +44,7 @@ func init(player: Player) -> void:
 	for state:BaseState in all_states:
 		state.player = player
 		state.state_manager=self
-		state.aniplayer = aniplayer
+		state.aniplayer=aniplayer
 		state.init(all_states)
 		state.init_var()
 		init_var(state)

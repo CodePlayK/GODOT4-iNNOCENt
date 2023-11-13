@@ -6,7 +6,7 @@ bg_color = Color(1, 1, 1, 0.631373)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbrjb"]
 
 [resource]
-default_font_size = 10
+default_font_size = 11
 Label/colors/font_color = Color(0, 0, 0, 1)
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_w0i7t")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_gbrjb")

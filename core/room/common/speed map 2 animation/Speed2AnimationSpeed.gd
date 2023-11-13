@@ -2,7 +2,6 @@ extends Node
 ##[必须挂载于obj根节点]将obj的速度映射到sprite的播放速度上
 class_name SpeedMap2Animation
 @onready var obj= $".."
-@onready var base: AnimatedSprite2D = $"../base"
 ##映射到的最大速度
 @export var map_max:float
 ##映射到的最低速度
@@ -22,10 +21,13 @@ var speed_max:float
 var speed_min:float
 
 func _ready() -> void:
+	obj.ready.connect(on_obj_ready)
+
+func on_obj_ready():
 	last_pos=obj.global_position.x
 	is_enable=false
 	is_ready=true
-	base_scale=base.speed_scale
+	base_scale=obj.aniplayer.speed_scale
 	timer.start()
 	
 func _physics_process(delta: float) -> void:
@@ -37,8 +39,8 @@ func get_speed():
 		last_pos=obj.global_position.x
 		return
 	if !is_enable:
-		if base.speed_scale!=base_scale:
-			base.speed_scale=base_scale
+		if obj.aniplayer.speed_scale!=base_scale:
+			obj.aniplayer.speed_scale=base_scale
 		last_enable=false
 		last_pos=obj.global_position.x
 		return
@@ -53,7 +55,7 @@ func get_speed():
 		if speed_min!=min(speed_min,speed):
 			speed_min=min(speed_min,speed)
 	var target_scale=remap(speed,speed_min,speed_max,map_min,map_max)
-	base.set_speed_scale(target_scale)
+	obj.aniplayer.set_speed_scale(target_scale)
 	last_enable=true
 	last_pos=obj.global_position.x
 	#Debug.dprintinfo(str(speed)+"|"+str(speed_min)+"|"+str(speed_max)+"|"+str(+target_scale))

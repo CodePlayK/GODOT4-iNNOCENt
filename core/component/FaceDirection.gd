@@ -1,7 +1,6 @@
 extends Component
 class_name FaceDirection
-@onready var obj = $".."
-@onready var base = $"../base"
+@onready var obj: Area2D = $"../.."
 @onready var dialogue_position = $"../DialoguePosition"
 @onready var player_detection: Area2D = $"../PlayerDetection"
 @onready var hit_box: Area2D = $"../HitBox"
@@ -16,10 +15,13 @@ func init_var():
 
 func connect_signal():
 	EventBus.obj_set_face_left.connect(_obj_set_face_left)
+
+func set_faced(left_flag:bool=false):
+	_obj_set_face_left(obj.name,left_flag)
 	
 func _obj_set_face_left(name,left_flag:bool=false):
 	if name!=obj.name: return null
-	node_list=[hit_fx,hit_box,player_detection,base]
+	node_list=[hit_fx,hit_box,player_detection,obj.animation]
 	for node in node_list:
 		if !node:continue
 		if left_flag:

@@ -1,7 +1,6 @@
 extends Component
 ##[必须挂载于npc对象下] 对象移动到玩家角色附近，并在途中与停止后面朝玩家
 class_name Move2Vec2
-@onready var base = $"../base"
 @onready var obj = $".."
 ##停止移动的距离玩家距离
 @export var distance:int
@@ -17,7 +16,7 @@ func connect_signal():
 
 func _move_2_vec2(name:String,pos:Vector2,time:float=1):
 	if name!=obj.obj_name:return null
-	base.animation="walk"
+	obj.aniplayer.play("walk")
 	obj.enable_all_interact(false)
 	if pos<obj.global_position :
 		EventBus._obj_set_face_left(obj.name,true)
@@ -33,5 +32,5 @@ func _move_2_vec2(name:String,pos:Vector2,time:float=1):
 	tween.tween_property(obj,"global_position",temp_v,time)
 	await tween.finished
 	obj.enable_all_interact(true)
-	base.animation="idle"
+	obj.aniplayer.play("idle")
 	pass

@@ -1,14 +1,12 @@
 extends NpcsCombatState
 @onready var player_detection: Area2D = $"../../../../PlayerDetection"
 @export var attack_range:float=40
-@onready var aniplayer: AnimationPlayer = $aniplayer
 var tween:Tween
 
 func connect_signal():
 	return
 
 func pre_enter() -> bool:
-	change_sprite=false
 	return true
 	
 func enter():
@@ -16,7 +14,7 @@ func enter():
 	#PlayerState.add_player_lock_interact_obj(npc)
 	tween=npc.create_tween()
 	tween.set_loops()
-	tween.chain().tween_callback(aniplayer.play.bind("attack1"))
+	tween.chain().tween_callback(aniplayer.play.bind("attack0"))
 	tween.chain().tween_interval(.25)
 	tween.chain().tween_interval(1)
 	tween.chain().tween_callback(state_change)

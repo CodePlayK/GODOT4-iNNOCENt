@@ -5,6 +5,8 @@ class_name NpcStateManager
 @onready var base_state: NpcsBaseState = $base
 @onready var npc: Npcs = $".."
 @onready var hurt_box: Area2D = $"../HurtBox"
+@onready var aniplayer: AnimationPlayer = $"../Animation/aniplayer"
+
 var current_state: NpcsBaseState:
 	set(state):
 		current_state = state
@@ -45,11 +47,13 @@ func load_var(new_state:NpcsBaseState):
 func init(npc1) -> void:
 	EventBus.running_obj.connect(on_running_obj)
 	get_all_state(self)
-	#Debug.dprintinfo("[%s]NPC载入所有state." %npc.name)
+	Debug.dprintinfo("[%s]NPC载入所有state." %npc.name)
 	for state in all_states:
 		state.npc = npc1
 		state.state_manager=self
+		state.aniplayer=npc.aniplayer
 		state.init(all_states)
+		state.init_var()
 		current_state=pre_start_state
 	change_state(start_state)
 
@@ -109,7 +113,7 @@ func print_state_change(a,b):
 	var actual_string = format_string % [current_state.npc.get_name(),a, b]
 	var actual_string1 = format_string1 % [a, b]
 	state_test.set_text(actual_string1)
-	#Debug.dprint(actual_string)
+	Debug.dprint(actual_string)
 	return actual_string
 
 ##在物理方法中
@@ -119,7 +123,7 @@ func common_state():
 		state2state(base_state.behit_state)
 	if npc.on_combat :
 		if npc.global_position.x>npc.patrol_right.global_position.x or npc.global_position.x<npc.patrol_left.global_position.x:
-			if current_state!=base_state.attack_state:
+			if current_state!=base_state.attack0_state:
 				state2state(base_state.patrol_state)
 	return null		
 

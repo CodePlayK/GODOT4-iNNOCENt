@@ -6,14 +6,19 @@ class_name NpcsBaseState
 @onready var patrol_state: NpcsBaseState
 @onready var combat_state: NpcsBaseState
 @onready var chase_state: NpcsBaseState
-@onready var attack_state: NpcsBaseState
+@onready var attack0_state: NpcsBaseState
+@onready var attack1_state: NpcsBaseState
+@onready var attack2_state: NpcsBaseState
+@onready var attack3_state: NpcsBaseState
 @onready var behit_state: NpcsBaseState
 @onready var behithard_state: NpcsBaseState
 @onready var death_state: NpcsBaseState
 @onready var birth_state: NpcsBaseState
 @onready var lock_state: NpcsBaseState
 @onready var talk_state: NpcsBaseState
+@onready var dodge_state: NpcsBaseState
 @export_category("当前状态配置")
+@export_group("变量配置")
 ##当前state是否属于战斗状态(玩家不可与me交互)
 @export var on_combat:bool = false
 @export var on_fighting:bool = false
@@ -25,12 +30,16 @@ class_name NpcsBaseState
 @export var enable_weapon:bool
 ##当前state是否锁定player与可交互obj的交互		
 @export var player_interact_lock:bool
+@export_group("动画配置")
 ##当前状态是否要转换sprite
-@export var change_sprite:bool=true
+@export var change_animation:bool=true
+@export var animation_name:String
+@export var animation_backward:bool=false
 ##当前状态是否要颜色覆盖sprite
 @export var change_sprite_color:bool=false
 ##要覆盖sprite的颜色
 @export var sprite_color:Color
+var aniplayer: AnimationPlayer
 var npc:Npcs
 var state_manager:NpcStateManager
 ##初始化事件
@@ -53,9 +62,12 @@ func load_all_state(all_states:Array):
 func pre_enter() -> bool:
 	return true
 	
+func init_var():
+	pass
+	
 ##进入该状态的方法，每次进入都会执行，在pre_physics_process之前进行
 func enter() -> NpcsBaseState:
-	if change_sprite:play_animation()
+	if change_animation:play_animation()
 	change_animation_color(change_sprite_color)
 	return null
 	
@@ -98,15 +110,23 @@ func get_npc_faced_direction():
 		return 1
 		
 func play_animation():
-	npc.base.play(self.get_name())
-
+	var ani
+	if animation_name:
+		ani = animation_name
+	else :
+		ani = self.name
+	if animation_backward:
+		npc.aniplayer.play_backwards(ani)
+	else :
+		npc.aniplayer.play(ani)
+		
 func change_animation_color(flag:bool=false):
 	npc.base.material.set_shader_parameter("color",sprite_color)
 	npc.base.material.set_shader_parameter("colored",flag)
 	if flag:
-		npc.base.pause()
+		npc.aniplayer.pause()
 	else:
-		npc.base.play()
+		npc.aniplayer.play(npc.aniplayer.current_animation)
 
 ##判断玩家与当前npc的相对左右位置,右=1,左=-1	
 func get_relative_position_x_2_player()->int:

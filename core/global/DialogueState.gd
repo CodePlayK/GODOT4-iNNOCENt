@@ -29,6 +29,10 @@ var dic_npc_an={
 	"NA":"DNA",
 	"0_0_0":"D0_0_0"
 }
+var dic_npc_bloodking={
+	"NA":"DNA",
+	"0_0_0":"D0_0_0"
+}
 
 var dic_dialogue_position={
 	
@@ -40,7 +44,8 @@ var dic_dialogue_obj_index={
 	"ruinsubway":dic_ruin_subway,
 	"npcsen":dic_npc_sen,
 	"npcsen2":dic_npc_sen,
-	"npcan":dic_npc_an
+	"npcan":dic_npc_an,
+	"npcbloodking":dic_npc_bloodking,
 }
 
 func get_current_cutscene_dialogue_line(obj_name):

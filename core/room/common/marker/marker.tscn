@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://core/room/common/marker/marker.gd" id="1_c757l"]
 [ext_resource type="Texture2D" uid="uid://cccd0yunpk8u6" path="res://test/mark.png" id="1_gue2a"]
 
-[node name="PortrolRightMarker" type="Marker2D"]
+[node name="Marker" type="Marker2D"]
 gizmo_extents = 133.1
 script = ExtResource("1_c757l")
 

@@ -54,7 +54,7 @@ func enter():
 	to_next_attack = false
 	move = 0
 	attack_timer.start(aniplayer.get_animation(ani_name).length/aniplayer.speed_scale+after_attack_stiff_time)
-	PlayerState.attaking=true
+	PlayerState.attacking=true
 	EventBus._play_SE(sound_name)
 	aniplayer.play(ani_name)
 
@@ -91,7 +91,7 @@ func exit(state:BaseState):
 	#如果没有配置下一段攻击,且没有执行切换下一段,重置攻击
 	elif !to_next_attack  and !next_attack:
 		state_manager.attack_reset = true
-		PlayerState.attaking = false
+		PlayerState.attacking = false
 		
 ##是否在攻击动画结束后,且在listener中监听结束前按下攻击		
 func listen_next_attck(event):
@@ -108,6 +108,6 @@ func _on_attack_timer_timeout() -> void:
 		state_manager.state2state(next_attack,self)
 	else:#否则为结束攻击,切换到上一个正常状态,重置攻击状态
 		state_manager.state2state(PlayerState.get_last_normal_state(),self)	
-		PlayerState.attaking=false
+		PlayerState.attacking=false
 		state_manager.attack_reset = true
 	

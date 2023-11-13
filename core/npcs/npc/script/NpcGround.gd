@@ -1,0 +1,3 @@
+extends NpcsBaseState
+class_name NpcsGroundState
+

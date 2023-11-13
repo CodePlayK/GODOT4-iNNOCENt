@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ddxrp2f528bd5"
+path="res://.godot/imported/The Blood King.aseprite-12634980e54baddc7c09825650bc9357.res"
+
+[deps]
+
+source_file="res://core/npcs/blood king/The Blood King/The Blood King.aseprite"
+dest_files=["res://.godot/imported/The Blood King.aseprite-12634980e54baddc7c09825650bc9357.res"]
+
+[params]
+

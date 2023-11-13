@@ -1,7 +1,5 @@
 extends Npcs
 class_name NpcSen
-@onready var hit_box: Area2D = $HitBox
-@onready var player_detection: Area2D = $PlayerDetection
 @onready var attack_range: Area2D = $HitBox/AttackRange
 
 func _ready() -> void:

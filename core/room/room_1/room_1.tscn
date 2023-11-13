@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://ceekqjitbldg0"]
+[gd_scene load_steps=100 format=3 uid="uid://ceekqjitbldg0"]
 
 [ext_resource type="Texture2D" uid="uid://bx7m38jelwh4m" path="res://core/room/room_1/resource/world.png" id="1_4x3q3"]
 [ext_resource type="Script" path="res://core/room/room_1/room_1.gd" id="1_tq5ce"]
@@ -14,7 +14,6 @@
 [ext_resource type="Shader" path="res://core/common/shader/wave.gdshader" id="7_kdwcv"]
 [ext_resource type="Script" path="res://core/room/common/parallax/Parallax_sqlite.gd" id="7_lmsci"]
 [ext_resource type="Shader" path="res://core/common/shader/color_sprit.gdshader" id="8_6bbdy"]
-[ext_resource type="PackedScene" uid="uid://1ojr7jjsjear" path="res://core/npcs/sen/npc_sen.tscn" id="8_edm4c"]
 [ext_resource type="Texture2D" uid="uid://xu6if2bekord" path="res://core/room/room_1/resource/background.png" id="8_mf66d"]
 [ext_resource type="PackedScene" uid="uid://d7avri3s6byy" path="res://core/room/common/pole/pole.tscn" id="9_03t8n"]
 [ext_resource type="Texture2D" uid="uid://dfotrlsuciexx" path="res://core/room/room_1/resource/world-animated-rope1.png" id="10_h0hq5"]
@@ -30,10 +29,10 @@
 [ext_resource type="PackedScene" uid="uid://cw4so074a2l01" path="res://core/room/common/door/door.tscn" id="21_3qib5"]
 [ext_resource type="Script" path="res://core/component/Door.gd" id="22_1ddsn"]
 [ext_resource type="PackedScene" uid="uid://dcmc76n5bvguy" path="res://core/room/common/fire fly/firefly.tscn" id="26_s2lkq"]
+[ext_resource type="PackedScene" uid="uid://c67d7gy1g6tty" path="res://core/npcs/npc/npc.tscn" id="26_sk6hw"]
 [ext_resource type="Theme" uid="uid://cr0pcr2y8deg4" path="res://core/room/title_room/title_room.tres" id="27_lkbv0"]
 [ext_resource type="PackedScene" uid="uid://tkfxwcgyooyj" path="res://core/room/common/fallen from top/fallen_from_top.tscn" id="27_yhypk"]
 [ext_resource type="Script" path="res://core/common/script/cutscene/CutsceneManager.gd" id="28_cwfy7"]
-[ext_resource type="PackedScene" uid="uid://d3c7xwsjs7cg1" path="res://core/npcs/blood king/blood_king.tscn" id="28_ggaid"]
 [ext_resource type="Script" path="res://core/room/room_1/room1_FallenLeave.gd" id="28_hfu2y"]
 [ext_resource type="Script" path="res://core/common/script/cutscene/CutsceneBase.gd" id="29_0cmih"]
 [ext_resource type="Shortcut" uid="uid://cyskp3bmqgf3a" path="res://core/common/short cut/esc.tres" id="30_1vnyp"]
@@ -2547,41 +2546,8 @@ script = ExtResource("31_xwi51")
 
 [node name="Npcs" type="Node2D" parent="Parallax/ParallaxLayer_5"]
 
-[node name="Npc_Sen2" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
-unique_name_in_owner = true
-process_mode = 1
-modulate = Color(0.482353, 0.482353, 0.482353, 1)
-light_mask = 3
-material = null
-position = Vector2(167, 187)
-starting_state = "birth"
-patrol_right = NodePath("../../Marker/PortrolRightMarker")
-patrol_left = NodePath("../../Marker/PortrolLeftMarker")
-npc_name = "Npc_Sen2"
-
-[node name="Npc_Sen" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("8_edm4c")]
-unique_name_in_owner = true
-process_mode = 1
-modulate = Color(0.482353, 0.482353, 0.482353, 1)
-light_mask = 3
-material = null
-position = Vector2(604, 189)
-starting_state = "birth"
-starting_state1 = "patrol"
-patrol_right = NodePath("../../Marker/PortrolRightMarker")
-patrol_left = NodePath("../../Marker/PortrolLeftMarker")
-
-[node name="BloodKing" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("28_ggaid")]
-process_mode = 1
-visible = false
-light_mask = 3
-position = Vector2(1059, 185)
-collision_layer = 4
-starting_state = "base"
-starting_state1 = "idle"
-patrol_right = NodePath("../../Marker/PortrolRightMarker")
-patrol_left = NodePath("../../Marker/PortrolLeftMarker")
-life = 1000
+[node name="Npc" parent="Parallax/ParallaxLayer_5/Npcs" instance=ExtResource("26_sk6hw")]
+position = Vector2(151, 184)
 
 [node name="Player" parent="Parallax/ParallaxLayer_5" instance=ExtResource("3_yf427")]
 unique_name_in_owner = true

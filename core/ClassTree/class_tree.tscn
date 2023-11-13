@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://w6uc6ogg4v6"]
 
 [ext_resource type="Script" path="res://core/ClassTree/ClassTree.gd" id="1_dp6yx"]
-[ext_resource type="Script" path="res://core/ClassTree/NpcStateManager.gd" id="2_8lcbc"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/NpcStateManager.gd" id="2_8lcbc"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcCutsceneBaseState.gd" id="3_o8v2p"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcState_0.gd" id="4_wjo21"]
 [ext_resource type="Script" path="res://core/global/NpcState.gd" id="5_3chti"]

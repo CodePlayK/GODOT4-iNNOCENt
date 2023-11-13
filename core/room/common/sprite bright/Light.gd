@@ -1,6 +1,6 @@
 extends Area2D
 ##[必须挂载于Player根节点] Player专有灯光亮度控制
-@export var obj:Node2D = $".."
+@onready var master: Node = %Master
 @export_range(1.0,50) var max_bright = 7.0
 @export_range(0.0,5) var min_bright = 0.0
 @export_range(0,5.0) var trans_time = .2 
@@ -10,13 +10,9 @@ var last_bright:float=1.0
 var bright:float:
 	set(f):
 		bright = f
-		obj.base.material.set_shader_parameter("mix_modulate_strength",f*max_bright)
+		master.obj.base.material.set_shader_parameter("mix_modulate_strength",f*max_bright)
 		
-func _ready() -> void:
-	obj.ready.connect(init)
-
-
-func init():
+func on_master_ready(obj) -> void:
 	bright = min_bright
 
 func _process(delta: float) -> void:
@@ -31,7 +27,7 @@ func _process(delta: float) -> void:
 func change_bright(bright1:float):
 	bright = bright1
 	return
-	var tween = obj.base.create_tween()
+	var tween = master.obj.base.create_tween()
 	tween.tween_property(self,"bright",bright1,trans_time)
 	await tween.finished
 	tween.kill()

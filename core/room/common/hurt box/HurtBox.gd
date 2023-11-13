@@ -8,8 +8,9 @@ class_name HurtBox
 var real_node_list:Array[Node]
 ##受伤的范围
 @export var shape_list:Array[CollisionShape2D]
-func _ready() -> void:
-	if owner is Player:
+
+func on_master_ready(master) -> void:
+	if master.obj is Player:
 		real_node_list = signal_node_list
 		return
 	if signal_node_list.is_empty():return

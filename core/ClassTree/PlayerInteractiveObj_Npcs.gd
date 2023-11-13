@@ -10,6 +10,8 @@ const clazz_name = "Npcs"
 @onready var ui: Node2D = $UI
 @onready var hurt_fx: Node2D = $Animation/HurtFX
 @onready var aniplayer: AnimationPlayer = $Animation/aniplayer
+@onready var player_detection: Area2D = $Area/PlayerDetection
+@onready var hit_box: HitBox = $Area/HitBox
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
@@ -48,7 +50,6 @@ func _init() -> void:
 func _ready() -> void:
 	super._ready()
 	self.tree_exiting.connect(_tree_exiting)
-	states.init(self)
 	on_ready=true
 
 func _unhandled_input(event: InputEvent) -> void:

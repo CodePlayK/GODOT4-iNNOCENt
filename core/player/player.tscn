@@ -1,7 +1,8 @@
-[gd_scene load_steps=82 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=83 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Shader" path="res://test/shader/get_screen_position.gdshader" id="2_ivk8k"]
+[ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="2_tctxi"]
 [ext_resource type="Script" path="res://core/player/state_machine/state_manager.gd" id="3_5tfn6"]
 [ext_resource type="Script" path="res://core/player/FX.gd" id="3_12nqg"]
@@ -630,6 +631,10 @@ script = ExtResource("1_emear")
 acceleration_dash = 14000
 max_speed_dash = 800
 
+[node name="Master" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_lm5ts")
+
 [node name="ScreenVec2" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_f1h48")
 position = Vector2(0, 33)
@@ -759,7 +764,6 @@ scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
 animation = &"attack0"
 autoplay = "idle"
-frame = 1
 offset = Vector2(16.7778, -4.44444)
 
 [node name="TopSprite" type="AnimatedSprite2D" parent="."]
@@ -773,7 +777,6 @@ scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
 animation = &"attack0"
 autoplay = "idle"
-frame = 1
 offset = Vector2(16.7778, -4.44444)
 
 [node name="FX" type="Node2D" parent="."]

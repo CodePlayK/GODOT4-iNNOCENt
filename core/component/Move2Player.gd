@@ -1,11 +1,14 @@
 extends Component
 ##[必须挂载于npc对象下] 对象移动到玩家角色附近，并在途中与停止后面朝玩家
 class_name Move2Player
-@onready var obj = $".."
+var obj
 ##停止移动的距离玩家距离
 @export var distance:int
 var left_side_balloon:bool=false
 var temp_v:Vector2
+
+func on_master_ready(master):
+	obj = master.obj
 
 func init_var():
 	clazz_name="Move2Player"

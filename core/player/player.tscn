@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=82 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Shader" path="res://test/shader/get_screen_position.gdshader" id="2_ivk8k"]
@@ -9,7 +9,6 @@
 [ext_resource type="SpriteFrames" uid="uid://df0noclsi0k7r" path="res://core/player/animation/player-2.tres" id="3_o7jyy"]
 [ext_resource type="SpriteFrames" uid="uid://b20x1sbpuk3ub" path="res://core/player/animation/player-1.tres" id="3_yowp4"]
 [ext_resource type="Script" path="res://core/player/state_machine/base.gd" id="4_cfiqb"]
-[ext_resource type="Script" path="res://core/player/ShowBehindObj.gd" id="5_bio73"]
 [ext_resource type="Script" path="res://core/player/state_machine/idel.gd" id="5_vfcpx"]
 [ext_resource type="Script" path="res://core/player/state_machine/jump.gd" id="6_i3ary"]
 [ext_resource type="Script" path="res://core/player/state_machine/ground.gd" id="7_dbdva"]
@@ -676,6 +675,7 @@ show_percentage = false
 [node name="LightCooldownBar" type="ProgressBar" parent="UI/LightBar"]
 modulate = Color(1, 1, 1, 0.854902)
 show_behind_parent = true
+layout_mode = 0
 offset_right = 2.0
 offset_bottom = 27.0
 theme = SubResource("Theme_1jd7q")
@@ -711,6 +711,7 @@ show_percentage = false
 modulate = Color(1, 1, 1, 0.854902)
 show_behind_parent = true
 light_mask = 0
+layout_mode = 0
 offset_right = 34.0
 offset_bottom = 2.0
 theme = SubResource("Theme_o685y")
@@ -774,9 +775,6 @@ animation = &"attack3"
 autoplay = "idle"
 frame = 4
 offset = Vector2(16.7778, -4.44444)
-
-[node name="ShowBehindObj" type="Node" parent="."]
-script = ExtResource("5_bio73")
 
 [node name="FX" type="Node2D" parent="."]
 position = Vector2(0, -4)

@@ -2087,8 +2087,8 @@ position = Vector2(0, -1)
 range_item_cull_mask = 1024
 
 [node name="BaseLight" type="PointLight2D" parent="Lights"]
-position = Vector2(2243.5, 172)
-scale = Vector2(157.156, 31.75)
+position = Vector2(1872.5, 172)
+scale = Vector2(180.344, 31.75)
 energy = 0.62
 blend_mode = 2
 range_item_cull_mask = 5

@@ -1,7 +1,5 @@
 extends Npcs
 class_name NpcSen
-@onready var attack_range: Area2D = $HitBox/AttackRange
-
 func _ready() -> void:
 	super._ready()
 			

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://1gnqyhcqvikn"
+path="res://.godot/imported/sen.ase-e328403f38529f411f50298c80ddb4cf.res"
+
+[deps]
+
+source_file="res://core/npcs/sen/sen.ase"
+dest_files=["res://.godot/imported/sen.ase-e328403f38529f411f50298c80ddb4cf.res"]
+
+[params]
+

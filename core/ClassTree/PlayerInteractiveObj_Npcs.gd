@@ -12,6 +12,8 @@ const clazz_name = "Npcs"
 @onready var aniplayer: AnimationPlayer = $Animation/aniplayer
 @onready var player_detection: Area2D = $Area/PlayerDetection
 @onready var hit_box: HitBox = $Area/HitBox
+@onready var face_direction: FaceDirection = $Component/FaceDirection
+@onready var attack_range: Area2D = $Area/HitBox/AttackRange
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
@@ -28,15 +30,16 @@ var current_state
 var being_hit:bool = false
 var on_combat:bool=false
 var on_fighting:bool=false:
+	
 	set(f):
 		on_fighting = f
 		if self.name.is_empty():return
 		if f:
 			if !PlayerState.player_on_fighting.has(self.name):
 				PlayerState.player_on_fighting[self.name] = self
-				ui.stiff_bar.show()
+				ui.health_bar.show()
 		else :
-			ui.stiff_bar.hide()
+			ui.health_bar.hide()
 			PlayerState.player_on_fighting.erase(self.name)
 @export var npc_name:String
 var face_left:bool

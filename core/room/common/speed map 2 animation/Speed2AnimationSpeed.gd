@@ -1,7 +1,7 @@
 extends Node
 ##[必须挂载于obj根节点]将obj的速度映射到sprite的播放速度上
 class_name SpeedMap2Animation
-@onready var obj= $".."
+var obj
 ##映射到的最大速度
 @export var map_max:float
 ##映射到的最低速度
@@ -20,10 +20,8 @@ var delta1:float
 var speed_max:float
 var speed_min:float
 
-func _ready() -> void:
-	obj.ready.connect(on_obj_ready)
-
-func on_obj_ready():
+func on_master_ready(master):
+	obj = master.obj
 	last_pos=obj.global_position.x
 	is_enable=false
 	is_ready=true

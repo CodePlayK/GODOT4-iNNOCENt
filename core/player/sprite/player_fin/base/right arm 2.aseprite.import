@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bmtj1s7kdaqvn"
+path="res://.godot/imported/right arm 2.aseprite-3a93b06b93ac6eaf03c9818fef27fc7c.res"
+
+[deps]
+
+source_file="res://core/player/sprite/player_fin/base/right arm 2.aseprite"
+dest_files=["res://.godot/imported/right arm 2.aseprite-3a93b06b93ac6eaf03c9818fef27fc7c.res"]
+
+[params]
+

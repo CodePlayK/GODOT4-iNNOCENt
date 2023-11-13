@@ -22,11 +22,9 @@
 [ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="10_iomob"]
 [ext_resource type="PackedScene" uid="uid://cssd4crw3cmet" path="res://core/room/common/hurt box/HurtBox.tscn" id="10_oklkp"]
 [ext_resource type="Script" path="res://test/StateTest.gd" id="13_ubcqf"]
-[ext_resource type="Script" path="res://core/npcs/npc/script/NpcGround.gd" id="15_uns6d"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcIdle.gd" id="16_1v31o"]
 [ext_resource type="Resource" uid="uid://dbk2n3os0stgc" path="res://core/common/dialogue/npc/npc_sen.dialogue" id="16_yoc5b"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcPatrol.gd" id="17_xgmff"]
-[ext_resource type="Script" path="res://core/npcs/sen/combat.gd" id="19_htgw1"]
 [ext_resource type="Script" path="res://core/npcs/sen/talk.gd" id="20_7kpc5"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcChase.gd" id="20_eghd0"]
 [ext_resource type="Script" path="res://core/component/ChasePlayer.gd" id="21_cjrf4"]
@@ -39,6 +37,8 @@
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcStateManager.gd" id="25_5854f"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcBase.gd" id="26_a8ab2"]
 [ext_resource type="Script" path="res://core/npcs/sen/behithard.gd" id="26_taqfw"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/NpcGround.gd" id="28_orl7y"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/combat.gd" id="31_isf1q"]
 [ext_resource type="Script" path="res://core/npcs/sen/UI.gd" id="31_vxg0w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5i1y"]
@@ -1941,7 +1941,7 @@ script = ExtResource("24_y7547")
 on_combat = true
 
 [node name="ground" type="Node" parent="NpcStateManager/base"]
-script = ExtResource("15_uns6d")
+script = ExtResource("28_orl7y")
 
 [node name="idle" type="Node" parent="NpcStateManager/base/ground"]
 script = ExtResource("16_1v31o")
@@ -1953,7 +1953,7 @@ player_interact_lock = true
 animation_name = "idle"
 
 [node name="combat" type="Node" parent="NpcStateManager/base"]
-script = ExtResource("19_htgw1")
+script = ExtResource("31_isf1q")
 
 [node name="patrol" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("17_xgmff")

@@ -24,7 +24,7 @@ func state_change():
 		state_manager.state2state(chase_state) 
 
 func exit(NpcsBaseState):
-	npc.enable_weapon(false)
+	npc.enable_hitbox(false)
 	aniplayer.stop()
 	tween.kill()
 	

@@ -1,4 +1,5 @@
 extends Npcs
+@onready var speed_map_2_animation: SpeedMap2Animation = $Component/SpeedMap2Animation
 
 func enable_all_interact(flag):
 	if on_combat or on_fighting:return

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://5y1bj2eifl5b"
+path="res://.godot/imported/icon.aseprite-ff321cbdfcbe03f20ce0e770cee7376b.res"
+
+[deps]
+
+source_file="res://test/cutscener/icon.aseprite"
+dest_files=["res://.godot/imported/icon.aseprite-ff321cbdfcbe03f20ce0e770cee7376b.res"]
+
+[params]
+

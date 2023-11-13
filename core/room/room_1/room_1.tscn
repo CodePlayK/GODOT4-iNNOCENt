@@ -2546,8 +2546,14 @@ script = ExtResource("31_xwi51")
 
 [node name="Npcs" type="Node2D" parent="Parallax/ParallaxLayer_5"]
 
-[node name="Npc" parent="Parallax/ParallaxLayer_5/Npcs" instance=ExtResource("26_sk6hw")]
+[node name="Npc" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("26_sk6hw")]
 position = Vector2(151, 184)
+starting_state = "lock"
+starting_state1 = "patrol"
+patrol_right = NodePath("../../Marker/PortrolRightMarker")
+patrol_left = NodePath("../../Marker/PortrolLeftMarker")
+life = 10
+npc_name = "npc_sen"
 
 [node name="Player" parent="Parallax/ParallaxLayer_5" instance=ExtResource("3_yf427")]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c67d7gy1g6tty"]
+[gd_scene load_steps=69 format=3 uid="uid://c67d7gy1g6tty"]
 
 [ext_resource type="Script" path="res://core/npcs/npc/script/npc.gd" id="1_g6t10"]
 [ext_resource type="Script" path="res://core/npcs/npc/Vpn.gd" id="2_h4pdk"]
@@ -16,9 +16,20 @@
 [ext_resource type="Script" path="res://core/component/Move2Player.gd" id="14_tru0n"]
 [ext_resource type="Script" path="res://core/component/Move2Vec2.gd" id="15_hj362"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcStateManager.gd" id="15_ndyhn"]
+[ext_resource type="PackedScene" uid="uid://daa5ujnpwnls1" path="res://core/room/common/speed map 2 animation/speed_map_2_animation.tscn" id="16_a1iqk"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcBase.gd" id="16_mwrjq"]
 [ext_resource type="Script" path="res://core/npcs/npc/lock.gd" id="18_ftub0"]
 [ext_resource type="Script" path="res://core/npcs/npc/idle.gd" id="19_nrhnv"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/NpcGround.gd" id="20_0llaa"]
+[ext_resource type="Script" path="res://core/npcs/npc/talk.gd" id="21_yd7ml"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/combat.gd" id="22_yywp6"]
+[ext_resource type="Script" path="res://core/npcs/npc/patrol.gd" id="23_6aimc"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcChase.gd" id="24_2kstu"]
+[ext_resource type="Script" path="res://core/ClassTree/NpcAttack.gd" id="25_0uwlt"]
+[ext_resource type="Script" path="res://core/npcs/sen/behit.gd" id="26_l8w5l"]
+[ext_resource type="Script" path="res://core/npcs/sen/behithard.gd" id="27_o7vwc"]
+[ext_resource type="Script" path="res://core/npcs/sen/death.gd" id="28_vkblv"]
+[ext_resource type="Script" path="res://core/npcs/sen/birth.gd" id="29_68fjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coq3i"]
 size = Vector2(32, 55)
@@ -1157,6 +1168,9 @@ size = Vector2(21, 55)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhbum"]
 size = Vector2(50, 56)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dicu1"]
+size = Vector2(155, 56)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07upf"]
 size = Vector2(157, 76)
 
@@ -1262,11 +1276,21 @@ shape = SubResource("RectangleShape2D_x6a11")
 [node name="HitBox" parent="Area" instance=ExtResource("7_qdiri")]
 
 [node name="attack0" type="CollisionShape2D" parent="Area/HitBox"]
-visible = false
 position = Vector2(25, 38)
 shape = SubResource("RectangleShape2D_vhbum")
 
+[node name="AttackRange" type="Area2D" parent="Area/HitBox"]
+collision_layer = 0
+collision_mask = 512
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/HitBox/AttackRange"]
+position = Vector2(47.5, 38)
+shape = SubResource("RectangleShape2D_dicu1")
+
 [node name="PlayerDetection" type="Area2D" parent="Area"]
+collision_layer = 268435456
+collision_mask = 2
 
 [node name="playerDetectionShape" type="CollisionShape2D" parent="Area/PlayerDetection"]
 position = Vector2(46.5, 28)
@@ -1286,6 +1310,8 @@ distance = 50
 [node name="Move2Vec2" type="Node" parent="Component"]
 script = ExtResource("15_hj362")
 
+[node name="SpeedMap2Animation" parent="Component" instance=ExtResource("16_a1iqk")]
+
 [node name="NpcStateManager" type="Node" parent="."]
 script = ExtResource("15_ndyhn")
 
@@ -1295,7 +1321,106 @@ script = ExtResource("16_mwrjq")
 [node name="lock" type="Node" parent="NpcStateManager/base"]
 script = ExtResource("18_ftub0")
 
-[node name="idle" type="Node" parent="NpcStateManager/base"]
+[node name="ground" type="Node" parent="NpcStateManager/base"]
+script = ExtResource("20_0llaa")
+
+[node name="idle" type="Node" parent="NpcStateManager/base/ground"]
 script = ExtResource("19_nrhnv")
+enable_self = true
+
+[node name="talk" type="Node" parent="NpcStateManager/base/ground"]
+script = ExtResource("21_yd7ml")
+
+[node name="combat" type="Node" parent="NpcStateManager/base"]
+script = ExtResource("22_yywp6")
+
+[node name="patrol" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("23_6aimc")
+patrol_distance = null
+patrol_distance_rand = null
+patrol_time = null
+patrol_time_rand = null
+wait_time = null
+wait_time_rand = null
+on_combat = true
+on_fighting = null
+enable_player_detection = true
+enable_self = null
+enable_weapon = null
+player_interact_lock = null
+change_animation = null
+animation_name = "run"
+animation_backward = null
+change_sprite_color = null
+sprite_color = null
+
+[node name="chase" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("24_2kstu")
+chase_speed = 299.605
+on_combat = true
+on_fighting = true
+enable_player_detection = true
+player_interact_lock = true
+animation_name = "run"
+
+[node name="Timer" type="Timer" parent="NpcStateManager/base/combat/chase"]
+wait_time = 0.01
+one_shot = true
+
+[node name="attack0" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("25_0uwlt")
+on_combat = true
+on_fighting = true
+enable_player_detection = true
+player_interact_lock = true
+change_animation = false
+
+[node name="behit" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("26_l8w5l")
+back_distance = 20.0
+froze_time = 0.1
+protect_time = 0.5
+fx_name = "hit1"
+on_combat = true
+on_fighting = true
+enable_player_detection = true
+player_interact_lock = true
+change_animation = false
+change_sprite_color = true
+sprite_color = Color(1, 1, 1, 1)
+
+[node name="ProtectTimer" type="Timer" parent="NpcStateManager/base/combat/behit"]
+wait_time = 0.001
+one_shot = true
+
+[node name="behithard" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("27_o7vwc")
+back_distance = 50.0
+stiff_time = 1.0
+froze_time = 0.5
+protect_time = 0.0
+fx_name = "hit3"
+on_combat = true
+on_fighting = true
+enable_player_detection = true
+player_interact_lock = true
+change_animation = false
+change_sprite_color = true
+sprite_color = Color(1, 0, 0, 1)
+
+[node name="ProtectTimer" type="Timer" parent="NpcStateManager/base/combat/behithard"]
+one_shot = true
+
+[node name="death" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("28_vkblv")
+on_combat = true
+
+[node name="birth" type="Node" parent="NpcStateManager/base/combat"]
+script = ExtResource("29_68fjw")
+animation_name = "death"
+animation_backward = true
 
 [connection signal="ready" from="." to="Master" method="_on_npc_ready"]
+[connection signal="timeout" from="NpcStateManager/base/combat/chase/Timer" to="NpcStateManager/base/combat/chase" method="_on_timer_timeout"]
+[connection signal="timeout" from="NpcStateManager/base/combat/behit/ProtectTimer" to="NpcStateManager/base/combat/behit" method="_on_protect_timer_timeout"]
+[connection signal="timeout" from="NpcStateManager/base/combat/behithard/ProtectTimer" to="NpcStateManager/base/combat/behithard" method="_on_protect_timer_timeout"]

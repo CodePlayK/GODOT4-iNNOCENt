@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dvl1h5f7sxlka"
+path="res://.godot/imported/an.ase-685d7408743477a3969e5836f76be13d.res"
+
+[deps]
+
+source_file="res://core/npcs/an/animation/an.ase"
+dest_files=["res://.godot/imported/an.ase-685d7408743477a3969e5836f76be13d.res"]
+
+[params]
+

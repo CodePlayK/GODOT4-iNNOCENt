@@ -34,6 +34,7 @@ class_name NpcsBaseState
 ##当前状态是否要转换sprite
 @export var change_animation:bool=true
 @export var animation_name:String
+var animation_name_real
 @export var animation_backward:bool=false
 ##当前状态是否要颜色覆盖sprite
 @export var change_sprite_color:bool=false
@@ -111,15 +112,14 @@ func get_npc_faced_direction():
 		return 1
 ##播放动画		
 func play_animation():
-	var ani
 	if animation_name:
-		ani = animation_name
+		animation_name_real = animation_name
 	else :
-		ani = self.name
+		animation_name_real = self.name
 	if animation_backward:
-		npc.aniplayer.play_backwards(ani)
+		npc.aniplayer.play_backwards(animation_name_real)
 	else :
-		npc.aniplayer.play(ani)
+		npc.aniplayer.play(animation_name_real)
 ##染色		
 func change_animation_color(flag:bool=false):
 	npc.base.material.set_shader_parameter("color",sprite_color)

@@ -1,0 +1,801 @@
+{ "frames": [
+   {
+    "filename": "Samurai Re-design 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 1.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 2.aseprite",
+    "frame": { "x": 192, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 3.aseprite",
+    "frame": { "x": 384, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 4.aseprite",
+    "frame": { "x": 576, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 5.aseprite",
+    "frame": { "x": 768, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 6.aseprite",
+    "frame": { "x": 960, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 7.aseprite",
+    "frame": { "x": 1152, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 8.aseprite",
+    "frame": { "x": 1344, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 9.aseprite",
+    "frame": { "x": 0, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 10.aseprite",
+    "frame": { "x": 192, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 11.aseprite",
+    "frame": { "x": 384, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 12.aseprite",
+    "frame": { "x": 576, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 13.aseprite",
+    "frame": { "x": 768, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 14.aseprite",
+    "frame": { "x": 960, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 15.aseprite",
+    "frame": { "x": 1152, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 16.aseprite",
+    "frame": { "x": 1344, "y": 192, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 17.aseprite",
+    "frame": { "x": 0, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 18.aseprite",
+    "frame": { "x": 192, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 19.aseprite",
+    "frame": { "x": 384, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 20.aseprite",
+    "frame": { "x": 576, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 75
+   },
+   {
+    "filename": "Samurai Re-design 21.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 22.aseprite",
+    "frame": { "x": 768, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 23.aseprite",
+    "frame": { "x": 960, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 24.aseprite",
+    "frame": { "x": 1152, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 25.aseprite",
+    "frame": { "x": 1344, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 26.aseprite",
+    "frame": { "x": 0, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 27.aseprite",
+    "frame": { "x": 192, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 28.aseprite",
+    "frame": { "x": 384, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 29.aseprite",
+    "frame": { "x": 576, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 30.aseprite",
+    "frame": { "x": 768, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 31.aseprite",
+    "frame": { "x": 960, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 32.aseprite",
+    "frame": { "x": 1152, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 33.aseprite",
+    "frame": { "x": 1344, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 34.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 35.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 36.aseprite",
+    "frame": { "x": 192, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 37.aseprite",
+    "frame": { "x": 384, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 38.aseprite",
+    "frame": { "x": 576, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 39.aseprite",
+    "frame": { "x": 768, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 40.aseprite",
+    "frame": { "x": 960, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 41.aseprite",
+    "frame": { "x": 1152, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 42.aseprite",
+    "frame": { "x": 1344, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 43.aseprite",
+    "frame": { "x": 0, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 44.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 45.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 46.aseprite",
+    "frame": { "x": 768, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 47.aseprite",
+    "frame": { "x": 960, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 48.aseprite",
+    "frame": { "x": 1152, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 49.aseprite",
+    "frame": { "x": 1344, "y": 384, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 50.aseprite",
+    "frame": { "x": 960, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 51.aseprite",
+    "frame": { "x": 1152, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 52.aseprite",
+    "frame": { "x": 1344, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 53.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 54.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 55.aseprite",
+    "frame": { "x": 192, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 56.aseprite",
+    "frame": { "x": 384, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 57.aseprite",
+    "frame": { "x": 576, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 58.aseprite",
+    "frame": { "x": 768, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 59.aseprite",
+    "frame": { "x": 960, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 60.aseprite",
+    "frame": { "x": 1152, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 61.aseprite",
+    "frame": { "x": 1344, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 62.aseprite",
+    "frame": { "x": 0, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 63.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 64.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 65.aseprite",
+    "frame": { "x": 192, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 66.aseprite",
+    "frame": { "x": 384, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 67.aseprite",
+    "frame": { "x": 576, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 68.aseprite",
+    "frame": { "x": 1152, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 69.aseprite",
+    "frame": { "x": 1344, "y": 576, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 70.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 71.aseprite",
+    "frame": { "x": 768, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 72.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 73.aseprite",
+    "frame": { "x": 768, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 74.aseprite",
+    "frame": { "x": 0, "y": 768, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 75.aseprite",
+    "frame": { "x": 960, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 76.aseprite",
+    "frame": { "x": 1152, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 77.aseprite",
+    "frame": { "x": 1344, "y": 960, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 78.aseprite",
+    "frame": { "x": 0, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 79.aseprite",
+    "frame": { "x": 192, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 80.aseprite",
+    "frame": { "x": 384, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 81.aseprite",
+    "frame": { "x": 576, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 82.aseprite",
+    "frame": { "x": 768, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 83.aseprite",
+    "frame": { "x": 960, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 84.aseprite",
+    "frame": { "x": 1152, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 85.aseprite",
+    "frame": { "x": 1344, "y": 1152, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   },
+   {
+    "filename": "Samurai Re-design 86.aseprite",
+    "frame": { "x": 0, "y": 1344, "w": 192, "h": 192 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 192, "h": 192 },
+    "sourceSize": { "w": 192, "h": 192 },
+    "duration": 85
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "npc_sen.png",
+  "format": "RGBA8888",
+  "size": { "w": 1536, "h": 1536 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 1, "to": 12, "direction": "forward" },
+   { "name": "run", "from": 13, "to": 20, "direction": "forward" },
+   { "name": "attack", "from": 21, "to": 44, "direction": "forward" },
+   { "name": "attack1", "from": 45, "to": 63, "direction": "forward" },
+   { "name": "death", "from": 64, "to": 86, "direction": "forward" }
+  ]
+ }
+}

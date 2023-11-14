@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffectConfig" load_steps=2 format=3 uid="uid://36u1j1wphgdd"]
+
+[ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="1_d8lk8"]
+
+[resource]
+script = ExtResource("1_d8lk8")
+start_time = 0.0
+se_name = ""
+se_speed = 0.0
+se_pitch = 0.0

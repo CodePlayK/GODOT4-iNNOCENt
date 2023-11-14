@@ -1,4 +1,4 @@
-extends Node
+extends Component
 ##[必须挂载于obj根节点]将obj的速度映射到sprite的播放速度上
 class_name SpeedMap2Animation
 var obj
@@ -12,7 +12,6 @@ var obj
 
 var target_scale
 var last_pos
-var is_ready:bool
 var is_enable:bool
 var last_enable:bool
 var base_scale:float
@@ -25,9 +24,16 @@ func on_master_ready(master):
 	last_pos=obj.global_position.x
 	is_enable=false
 	is_ready=true
-	base_scale=obj.aniplayer.speed_scale
 	timer.start()
+
+func set_enabel(flag:bool):
+	if flag:
+		base_scale=obj.states.animation_speed
+	#else :
+		#obj.aniplayer.speed_scale = base_scale
+	is_enable = flag
 	
+
 func _physics_process(delta: float) -> void:
 	delta1=delta
 	pass
@@ -37,8 +43,8 @@ func get_speed():
 		last_pos=obj.global_position.x
 		return
 	if !is_enable:
-		if obj.aniplayer.speed_scale!=base_scale:
-			obj.aniplayer.speed_scale=base_scale
+		#if obj.aniplayer.speed_scale!=base_scale:
+			#obj.aniplayer.speed_scale=base_scale
 		last_enable=false
 		last_pos=obj.global_position.x
 		return
@@ -61,4 +67,3 @@ func get_speed():
 
 func _on_timer_timeout() -> void:
 	get_speed()
-	pass # Replace with function body.

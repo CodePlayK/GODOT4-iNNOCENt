@@ -1,6 +1,6 @@
 extends Node2D
 @onready var npcs: Node2D = $"../Npcs"
-@onready var npc_sen: NpcSen = $"../Npcs/Npc_Sen"
+@onready var npc: Area2D = $"../Npcs/Npc"
 
 @onready var portrol_right_marker: Marker = $"../Marker/PortrolRightMarker"
 @onready var portrol_left_marker: Marker = $"../Marker/PortrolLeftMarker"
@@ -23,12 +23,14 @@ func _on_timer_timeout() -> void:
 	#var material = npc_sen.base.material.duplicate()
 	#npc_sen.base.material=material
 
-	var sen = npc_sen.duplicate(8)
+	var sen = npc.duplicate(8)
 	sen.global_position.x=randf_range(portrol_left_marker.global_position.x,portrol_right_marker.global_position.x)
 	#sen.patrol_right = npc_sen.patrol_right
 	#sen.patrol_left = npc_sen.patrol_left
-	var material = npc_sen.base.material.duplicate()
-	npc_sen.base.material=material
+	var material = npc.base.material.duplicate()
+	npc.base.material=material
+	var materialv = npc.vfx.material.duplicate()
+	npc.vfx.material=materialv
 	await RenderingServer.frame_post_draw
 	npcs.add_child(sen)
 	EventBus._running_obj(sen.name)

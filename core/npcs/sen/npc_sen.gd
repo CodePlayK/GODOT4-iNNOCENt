@@ -18,5 +18,3 @@ func enable_self(flag):
 	
 func enable_weapon(flag:bool):
 	hit_box.set_enable(flag)
-	#hit_box.set_deferred("monitoring",flag)
-	#hit_box.set_deferred("monitorable",flag)

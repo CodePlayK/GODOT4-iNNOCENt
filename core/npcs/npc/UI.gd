@@ -1,4 +1,4 @@
-extends Node
+extends Component
 @onready var health_bar: ProgressBar = $healthBar
 var obj
 

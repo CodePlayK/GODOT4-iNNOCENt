@@ -22,16 +22,11 @@ func enter():
 	dense_cooldown_timer.start(dense_cooldown)
 	return null	
 
-func physics_process(delta: float):	
-	if PlayerState.player_be_hitting:
-		return behitDenseSafed_state
-
 func exit(state:BaseState):
 	super.exit(state)
 	state_manager.attack_reset = true
 	dense_timer.stop()
 	PlayerState.dense_flag=false
-
 		
 func _on_dense_timer_timeout():
 	state_manager.state2state(PlayerState.get_last_normal_state(),self)
@@ -40,3 +35,8 @@ func _on_dense_cooldown_timer_timeout():
 	PlayerState.denseable_flag=true
 	player.max_velocity_y=player.max_velocity_y/dense_gravity_scale
 	player.gravity=player.gravity/dense_gravity_scale
+
+func on_hurt(area):
+	if state_manager.current_state!=self:return
+	if area.enable:
+		state_manager.state2state(behitDenseSafed_state,self)

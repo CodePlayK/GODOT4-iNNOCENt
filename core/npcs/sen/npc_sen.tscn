@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://1ojr7jjsjear"]
+[gd_scene load_steps=135 format=3 uid="uid://1ojr7jjsjear"]
 
 [ext_resource type="Script" path="res://core/npcs/sen/npc_sen.gd" id="1_iqm4t"]
 [ext_resource type="Texture2D" uid="uid://vybbr2dtasip" path="res://core/npcs/sen/ase/npc_sen_body.png" id="2_awtqe"]
@@ -25,71 +25,37 @@
 [ext_resource type="Script" path="res://core/ClassTree/NpcIdle.gd" id="16_1v31o"]
 [ext_resource type="Resource" uid="uid://dbk2n3os0stgc" path="res://core/common/dialogue/npc/npc_sen.dialogue" id="16_yoc5b"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcPatrol.gd" id="17_xgmff"]
-[ext_resource type="Script" path="res://core/npcs/sen/talk.gd" id="20_7kpc5"]
 [ext_resource type="Script" path="res://core/ClassTree/NpcChase.gd" id="20_eghd0"]
 [ext_resource type="Script" path="res://core/component/ChasePlayer.gd" id="21_cjrf4"]
-[ext_resource type="Script" path="res://core/ClassTree/NpcAttack.gd" id="21_v6bep"]
-[ext_resource type="Script" path="res://core/npcs/sen/behit.gd" id="21_wdcd6"]
-[ext_resource type="Script" path="res://core/npcs/sen/death.gd" id="22_m7hy0"]
 [ext_resource type="PackedScene" uid="uid://daa5ujnpwnls1" path="res://core/room/common/speed map 2 animation/speed_map_2_animation.tscn" id="23_eihms"]
-[ext_resource type="Script" path="res://core/npcs/sen/birth.gd" id="23_kjt01"]
 [ext_resource type="Script" path="res://core/npcs/sen/lock.gd" id="24_y7547"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcStateManager.gd" id="25_5854f"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcBase.gd" id="26_a8ab2"]
-[ext_resource type="Script" path="res://core/npcs/sen/behithard.gd" id="26_taqfw"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcGround.gd" id="28_orl7y"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/talk.gd" id="30_eo62q"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/combat.gd" id="31_isf1q"]
 [ext_resource type="Script" path="res://core/npcs/sen/UI.gd" id="31_vxg0w"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/NpcAttack.gd" id="34_k85ym"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/behit.gd" id="35_vgmec"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/behithard.gd" id="36_35p1l"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/death.gd" id="37_m12wr"]
+[ext_resource type="Script" path="res://core/npcs/npc/script/birth.gd" id="38_jnr3p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5i1y"]
 
-[sub_resource type="Shader" id="Shader_bvy8s"]
-code = "shader_type canvas_item;
-uniform vec4 color:source_color;
-uniform bool enable;
-uniform bool colored;
-uniform bool mix_modulate = true;
-varying flat vec4 modulate;
-uniform float mix_modulate_strength = 1.0;
-
-void vertex() {
-	modulate = COLOR;
-}
-
-void fragment() {
-	vec4 new_color = COLOR;
-	if (enable){
-	// Place fragment code here.
-	vec4 old_color=texture(TEXTURE,UV);
-
-	if (colored){
-		new_color = color;
-		new_color.a=old_color.a*new_color.a*modulate.a;	
-		COLOR=new_color;
-	};
-		
-	if (mix_modulate&&!colored){
-		COLOR=new_color*modulate*mix_modulate_strength;
-		COLOR.a=old_color.a;
-	};
-}
-}
-"
-metadata/_edit_res_path = "res://core/npcs/sen/npc_sen.tscn::Shader_qhepx"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4v5s1"]
-shader = SubResource("Shader_bvy8s")
-shader_parameter/color = null
-shader_parameter/enable = true
-shader_parameter/colored = null
-shader_parameter/mix_modulate = true
-shader_parameter/mix_modulate_strength = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2h052"]
 shader = ExtResource("3_3h2e4")
 shader_parameter/color = null
 shader_parameter/enable = true
-shader_parameter/colored = null
+shader_parameter/colored = false
+shader_parameter/mix_modulate = true
+shader_parameter/mix_modulate_strength = 1.436
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2h052"]
+shader = ExtResource("3_3h2e4")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/enable = true
+shader_parameter/colored = false
 shader_parameter/mix_modulate = true
 shader_parameter/mix_modulate_strength = 7.505
 
@@ -1716,7 +1682,6 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_iqm4t")
 starting_state = "lock"
-starting_state1 = "idle"
 life = 100
 npc_name = "Npc_Sen"
 
@@ -1813,7 +1778,6 @@ frame_progress = 1.0
 offset = Vector2(-15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-0.5, 31.5)
 shape = SubResource("RectangleShape2D_657i8")
 
@@ -1843,6 +1807,8 @@ visible = false
 position = Vector2(17, 0)
 
 [node name="Light" parent="." instance=ExtResource("8_47q7l")]
+max_bright = 7.674
+min_bright = 0.729
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("signal_node_list", "shape_list") instance=ExtResource("10_oklkp")]
 collision_layer = 0
@@ -1948,7 +1914,7 @@ script = ExtResource("16_1v31o")
 enable_self = true
 
 [node name="talk" type="Node" parent="NpcStateManager/base/ground"]
-script = ExtResource("20_7kpc5")
+script = ExtResource("30_eo62q")
 player_interact_lock = true
 animation_name = "idle"
 
@@ -1975,15 +1941,11 @@ wait_time = 0.01
 one_shot = true
 
 [node name="attack0" type="Node" parent="NpcStateManager/base/combat"]
-script = ExtResource("21_v6bep")
-on_combat = true
-on_fighting = true
-enable_player_detection = true
-player_interact_lock = true
+script = ExtResource("34_k85ym")
 change_animation = false
 
 [node name="behit" type="Node" parent="NpcStateManager/base/combat"]
-script = ExtResource("21_wdcd6")
+script = ExtResource("35_vgmec")
 back_distance = 20.0
 froze_time = 0.1
 protect_time = 0.5
@@ -2001,7 +1963,7 @@ wait_time = 0.001
 one_shot = true
 
 [node name="behithard" type="Node" parent="NpcStateManager/base/combat"]
-script = ExtResource("26_taqfw")
+script = ExtResource("36_35p1l")
 back_distance = 50.0
 stiff_time = 1.0
 froze_time = 0.5
@@ -2019,11 +1981,11 @@ sprite_color = Color(1, 0, 0, 1)
 one_shot = true
 
 [node name="death" type="Node" parent="NpcStateManager/base/combat"]
-script = ExtResource("22_m7hy0")
+script = ExtResource("37_m12wr")
 on_combat = true
 
 [node name="birth" type="Node" parent="NpcStateManager/base/combat"]
-script = ExtResource("23_kjt01")
+script = ExtResource("38_jnr3p")
 animation_name = "death"
 animation_backward = true
 

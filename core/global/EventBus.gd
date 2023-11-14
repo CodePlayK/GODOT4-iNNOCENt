@@ -73,8 +73,8 @@ func _turn_on_off_light(state):
 func _play_SE_LOOP(SE_LOOP_name,state=true,speed=1.0,effect_volume=0.0):
 	play_SE_LOOP.emit(SE_LOOP_name,state,speed,effect_volume)
 	
-func _play_SE(SE_name,speed=1.0,effect_volume=0.0):
-	play_SE.emit(SE_name,speed,effect_volume)
+func _play_SE(SE_name,speed=1.0,effect_volume=0.0,owner_name:String="NA",state:bool = true):
+	play_SE.emit(SE_name,speed,effect_volume,owner_name,state)
 	
 func _play_BGM(BGM_name,state=true,speed=1.0,effect_volume=0.0):
 	play_BGM.emit(BGM_name,state,speed,effect_volume)

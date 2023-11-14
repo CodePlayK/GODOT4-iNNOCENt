@@ -18,7 +18,7 @@ func listen_to_state(to_state1:BaseState,trigger1:Callable,time:float,from_state
 func input(event: InputEvent) -> bool:
 	if !enable and !PlayerState.attacking:return false
 	if trigger.call(event):
-		print("监听切换到[%s]",to_state)
+		#print("监听切换到[%s]",to_state)
 		if to_state:
 			state_manager.state2state(to_state,to_state)
 			reset()

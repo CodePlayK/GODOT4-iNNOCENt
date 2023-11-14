@@ -1,23 +1,19 @@
 extends Node
-@onready var obj: Area2D = $".."
 var direction_objs
-
+var obj
 func _ready() -> void:
-	obj.ready.connect(on_obj_ready)
-	
+	owner.ready.connect(on_obj_ready)
+
 func on_obj_ready():
+	obj = owner
 	direction_objs =[
-	obj.hurt_fx,
-	obj.hit_box,
-	obj.player_detection,
-	obj.animation,
+	owner.animation,
 	]
-	get_all_children(obj)
+	get_all_children(owner)
 	
 func get_all_children(node:Node):
 	for child in node.get_children():
-		for m_name in child.get_method_list():
-			if m_name.name == "on_master_ready":
-				child.call(m_name.name,self)
+		if child.has_method("on_master_ready"):
+			child.call("on_master_ready",self)
 		if child:
 			get_all_children(child)

@@ -24,6 +24,7 @@ func launch_obj(fx_name:String):
 	#obj.base.material=material
 	obj.scale.x = side*abs(obj.scale.x)
 	add_child(obj)
+	obj.on_master_ready(1)
 	obj.set_enable(true)
 	obj.show()
 	var tween = obj.create_tween()

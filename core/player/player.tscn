@@ -172,7 +172,7 @@ shader_parameter/color = null
 shader_parameter/enable = true
 shader_parameter/colored = false
 shader_parameter/mix_modulate = true
-shader_parameter/mix_modulate_strength = 1.0
+shader_parameter/mix_modulate_strength = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3p44w"]
 size = Vector2(62.7381, 39.0476)
@@ -645,8 +645,9 @@ visible = false
 position = Vector2(0, -43)
 scale = Vector2(2.1, 2.1)
 max_bright = 1.7
-min_bright = 0.684
-trans_time = 0.2
+min_bright = 0.541
+trans_time = 0.5
+vfx_colored = true
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource("27_cru4u")
@@ -831,7 +832,7 @@ position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_rmv73")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("signal_node_list", "shape_list") instance=ExtResource("10_lcjil")]
-signal_node_list = [NodePath("../state_manager")]
+signal_node_list = [NodePath("../state_manager"), NodePath("../state_manager/base/combat/dense")]
 shape_list = [NodePath("CollisionShape2D")]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -963,8 +964,8 @@ is_normal_state = false
 
 [node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("23_t1hct")
-stiff_time = 0.6
-protect_time = 0.5
+stiff_time = 0.07
+protect_time = 0.0
 change_sprite_color = true
 sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
 is_normal_state = false
@@ -994,6 +995,9 @@ one_shot = true
 
 [node name="attack" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("29_orn37")
+
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack"]
+one_shot = true
 
 [node name="attack0" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("28_xf5em")

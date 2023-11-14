@@ -13,7 +13,8 @@ func on_master_ready(master):
 func init_var():
 	clazz_name="Move2Player"
 	FATHER_CLASS_NAME="Npcs"
-	
+
+
 func connect_signal():
 	EventBus.move_2_player.connect(_move_2_player)
 

@@ -40,6 +40,12 @@ process_mode = 3
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="SE"]
 
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="SE"]
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="SE"]
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="SE"]
+
 [node name="SE_LOOP" type="Node" parent="."]
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SE_LOOP"]

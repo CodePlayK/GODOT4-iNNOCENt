@@ -1,6 +1,6 @@
 extends Control
-@onready var npc_an: Area2D = %Npc_An
-@onready var npc_sen: NpcSen = %Npc_Sen
+#@onready var npc_an: Area2D = %Npc_An
+#@onready var npc_sen: NpcSen = %Npc_Sen
 @onready var npcs: Node2D = $"../../Parallax/ParallaxLayer_5/Npcs"
 
 @onready var marker_2: Marker = $"../../Parallax/ParallaxLayer_5/Marker/CutsceneCameraMarker/Marker2"

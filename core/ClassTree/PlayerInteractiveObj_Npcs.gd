@@ -10,16 +10,19 @@ const clazz_name = "Npcs"
 @onready var ui: Node2D = $UI
 @onready var hurt_fx: Node2D = $Animation/HurtFX
 @onready var aniplayer: AnimationPlayer = $Animation/aniplayer
-@onready var player_detection: Area2D = $Area/PlayerDetection
-@onready var hit_box: HitBox = $Area/HitBox
+@onready var player_detection: Area2D = %Area/PlayerDetection
+@onready var hit_box: HitBox = %Area/HitBox
 @onready var face_direction: FaceDirection = $Component/FaceDirection
-@onready var attack_range: Area2D = $Area/HitBox/AttackRange
+@onready var attack_range: Area2D = %Area/HitBox/AttackRange
+@onready var sound_effect: SoundEffect = $Component/SoundEffect
+@onready var light: Area2D = $Animation/Area/Light
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
 @export var starting_state:String
+@export var running_state:String
 ##初始化时进入的第二个节点(真正运行的第一个状态)
-@export var starting_state1:String
+#@export var starting_state1:String
 var on_ready=false
 ##巡逻范围右边界
 @export var patrol_right:Marker2D
@@ -29,8 +32,8 @@ var on_ready=false
 var current_state
 var being_hit:bool = false
 var on_combat:bool=false
+var attacking:bool = false	
 var on_fighting:bool=false:
-	
 	set(f):
 		on_fighting = f
 		if self.name.is_empty():return

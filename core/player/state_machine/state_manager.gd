@@ -14,7 +14,9 @@ var attack_reset:bool = true
 var current_state: BaseState
 var all_states: Array
 
-func change_state(new_state: BaseState) -> void:        
+func change_state(new_state: BaseState) -> void:
+	if new_state == base_state.behit_state:
+		pass
 	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
 		current_state.exit(new_state)
 		PlayerState.last2_state=PlayerState.last_state
@@ -94,7 +96,7 @@ func print_state_change(a,b):
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	#Debug.dprintinfo(actual_string)
+	Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 
@@ -126,8 +128,9 @@ func state2state(state,from_state):
 	#Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
 	change_state(state)
 
-func on_hit(obj:Area2D):
-	if !obj.enable:return
+func on_hurt(obj:Area2D):
+	if !obj.enable:
+		return
 	PlayerState.player_be_hitting=true
 	if !PlayerState.dense_flag and !PlayerState.dense_success_flag:
 		#Debug.dprinterr("[Player][common_state]切换到[behitDamaged_state]")

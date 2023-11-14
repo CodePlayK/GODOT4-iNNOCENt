@@ -4,6 +4,7 @@ extends Node
 @onready var SE_LOOP= $SE_LOOP
 @onready var BGM= $BGM
 var lock=false
+var index = 1
 #BGM
 var BGM_dic={
  "piano_happy":[preload("res://core/resource/sound/BGM/daily/piano-happy.mp3")],
@@ -70,23 +71,51 @@ func _preset(room):
 func _on_play_BGM_daily(bgm_name):
 	BGMPlayer.set_stream(BGM_dic.get(bgm_name))
 	BGMPlayer.play()
-func _on_play_SE(effect_name,speed:float=1.0,effect_volume:float=0.0):
-	if Global.playing_transition&&!effect_name in playable_on_transition:
-		#Debug.dprint("该声效无法在过场中播放-%s" %effect_name)
-		return
+	
+func _on_play_SE(effect_name,speed:float=1.0,effect_volume:float=0.0,owner_name:String="NA",state:bool = true):
+	if lock:return
 	if !SE_dic.has(effect_name):
-		#Debug.dprint("未找到该SE-%s" %effect_name)
+		#Debug.dprint("未找到该SE_LOOP-%s"%effect_name)
 		return
-	for se_player in SE_player.values():
-		if !se_player.is_playing():
-			se_player.set_stream(SE_dic.get(effect_name)[0])
-			se_player.set_pitch_scale(speed)
-			se_player.set_volume_db(effect_volume)
-			if SE_dic.get(effect_name).size()>1&&effect_volume==0:
-				se_player.set_volume_db(SE_dic.get(effect_name)[1])
-			se_player.play()
-			#Debug.dprint("播放一次性音效-%s" %effect_name)
-			break 
+	var k_name = owner_name+"|"+effect_name
+	if state:
+		if SE_player.has(k_name) :
+			if SE_player[k_name].playing:
+				set_se_audio_player(effect_name,k_name,speed,effect_volume)	
+				#Debug.dprint("播放已有[播放中]音效:%s" %k_name)
+			else:
+				SE_player[k_name].set_stream(SE_dic.get(effect_name)[0])
+				set_se_audio_player(effect_name,k_name,speed,effect_volume)	
+				SE_player[k_name].play()
+				#Debug.dprint("播放已有[停止中]音效:%s" %k_name)
+		else:
+			for se_key in SE_player.keys():
+				if !SE_player[se_key].playing:
+					SE_player[k_name]=SE_player[se_key]
+					SE_player[k_name].set_stream(SE_dic.get(effect_name)[0])
+					set_se_audio_player(effect_name,k_name,speed,effect_volume)	
+					SE_player[k_name].play()
+					SE_player.erase(se_key)
+					#Debug.dprint("播放新音效:%s" %k_name)
+					break
+		#Debug.dprint("播放循环音效-%s" %effect_name)
+	else:
+		if SE_player.has(k_name):
+			index+=1
+			SE_player["NA-"+str(index)]=SE_player[k_name]
+			SE_player[k_name].stop()
+			SE_player.erase(k_name)
+			#Debug.dprint("停止音效:%s" %k_name)
+			#Debug.dprint("停止循环音效-%s" %)
+		else:
+			#Debug.dprint("未找到要停止的SE！-%s" %effect_name)
+			pass
+	#Debug.dprinterr(str(SE_player.keys()))		
+			
+			
+			
+			
+			
 func _on_play_SE_LOOP(effect_name,state:bool=true,speed:float=1.0,effect_volume:float=0.0):
 	if lock:return
 	if !SE_LOOP_dic.has(effect_name):
@@ -115,7 +144,7 @@ func _on_play_SE_LOOP(effect_name,state:bool=true,speed:float=1.0,effect_volume:
 			SE_LOOP_player[effect_name].stop()
 			SE_LOOP_player["NA-"+str(effect_name)]=SE_LOOP_player[effect_name]
 			SE_LOOP_player.erase(effect_name)
-			#Debug.dprint("停止循环音效-%s" %effect_name)
+			#Debug.dprint("停止循环音效-%s" %)
 		else:
 			#Debug.dprint("未找到要停止的SE_LOOP！-%s" %effect_name)
 			pass
@@ -153,3 +182,9 @@ func set_se_loop_audio_player(effect_name,speed:float=1.0,effect_volume:float=0.
 	if SE_LOOP_dic.get(effect_name).size()>1 and effect_volume==0:
 		SE_LOOP_player[effect_name].set_volume_db(SE_LOOP_dic.get(effect_name)[1])	
 	pass
+func set_se_audio_player(effect_name,k_name,speed:float=1.0,effect_volume:float=0.0):
+	SE_player[k_name].set_pitch_scale(speed)
+	SE_player[k_name].set_volume_db(effect_volume)
+	if SE_dic.get(effect_name).size()>1 and effect_volume==0:
+		SE_player[k_name].set_volume_db(SE_dic.get(effect_name)[1])	
+	SE_player[k_name].play()

@@ -1,4 +1,5 @@
 extends Node
+class_name Master
 @onready var obj: Node = $".."
 var direction =[
 

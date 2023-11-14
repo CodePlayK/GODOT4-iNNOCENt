@@ -28,7 +28,7 @@ func init_var():
 func enter():
 	super.enter()
 	var face_flag=false
-	speed_map_2_animation.is_enable=true
+	speed_map_2_animation.set_enabel(true)
 	base_position=npc.get_position().x
 	rand()
 	if !npc.patrol_right or !npc.patrol_left:
@@ -67,7 +67,7 @@ func physics_process(delta: float):
 		return chase_state
 
 func exit(state:NpcsBaseState):
-	speed_map_2_animation.is_enable=false
+	speed_map_2_animation.set_enabel(false)
 	if tween:
 		tween.kill()
 

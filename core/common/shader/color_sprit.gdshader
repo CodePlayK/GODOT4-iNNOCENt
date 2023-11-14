@@ -4,7 +4,7 @@ uniform bool enable;
 uniform bool colored;
 uniform bool mix_modulate = true;
 varying flat vec4 modulate;
-uniform float mix_modulate_strength = 1.0;
+uniform float mix_modulate_strength: hint_range(-2.0, 3.0) = 1.0;
 
 void vertex() {
 	modulate = COLOR;
@@ -17,8 +17,8 @@ void fragment() {
 	vec4 old_color=texture(TEXTURE,UV);
 
 	if (colored){
-		new_color = color;
-		new_color.a=old_color.a*new_color.a*modulate.a;	
+		new_color = color*mix_modulate_strength;
+		new_color.a=old_color.a*modulate.a;	
 		COLOR=new_color;
 	};
 		

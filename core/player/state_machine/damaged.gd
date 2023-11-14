@@ -24,6 +24,8 @@ func exit(state:BaseState):
 	super.exit(state)
 	stiff_timer.stop()
 	protect_timer.start(protect_time)
+	if protect_time == 0:
+		enable = true
 
 func _on_timer_timeout() -> void:
 	enable = true

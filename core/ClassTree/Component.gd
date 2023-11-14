@@ -5,7 +5,6 @@ class_name Component
 var clazz_name = "Component"
 ##父类的类型限定配置
 var FATHER_CLASS_NAME:String
-
 var enable:bool=false
 var is_ready:bool=false
 
@@ -24,13 +23,13 @@ func connect_signal():
 	pass
 	
 func _ready() -> void:
-	check_father()
-	if !enable:return
+	#check_father()
+	#if !enable:return
 	load_var()
 	connect_signal()
 	ready()
 	is_ready=true
-	
+
 func ready():
 	pass
 	
@@ -38,14 +37,14 @@ func load_var():
 	pass
 
 func _physics_process(delta: float) -> void:
-	if !enable or !is_ready:return
+	if !is_ready:return
 	physics_process(delta)
 	
 func physics_process(delta: float):
 	pass
 
 func _process(delta: float) -> void:
-	if !enable or !is_ready:return
+	if !is_ready:return
 	process(delta)
 		
 func process(delta: float):

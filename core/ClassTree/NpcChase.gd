@@ -14,7 +14,7 @@ func init_var():
 func enter():
 	super.enter()
 	chase_speed_r=chase_speed*randf_range(.8,1.2)
-	speed_map_2_animation.is_enable=true
+	speed_map_2_animation.set_enabel(true)
 	
 func physics_process(delta: float):
 	if abs(PlayerState.player_global_position.x-npc.global_position.x)>lost_distance:return patrol_state
@@ -40,4 +40,4 @@ func _on_timer_timeout() -> void:
 
 func exit(NpcsBaseState):
 	timer.stop()
-	speed_map_2_animation.is_enable=false
+	speed_map_2_animation.set_enabel(false)

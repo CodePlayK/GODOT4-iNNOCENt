@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://hf3gno3q5tbw"]
+
+[ext_resource type="Script" path="res://core/room/common/weight machine/weight machine.gd" id="1_vxxj6"]
+[ext_resource type="Script" path="res://core/room/common/weight machine/WeightResource.gd" id="2_qsriy"]
+
+[sub_resource type="Resource" id="Resource_tn77p"]
+script = ExtResource("2_qsriy")
+value = 3.95
+custom_weight_scale = 3.75
+real_weight = 1.0
+fuct = Callable()
+
+[sub_resource type="Resource" id="Resource_ulcn0"]
+script = ExtResource("2_qsriy")
+value = 4.675
+custom_weight_scale = 1.0
+real_weight = 1.0
+fuct = Callable()
+
+[node name="WeightMachine" type="Node"]
+script = ExtResource("1_vxxj6")
+weight_list = Array[ExtResource("2_qsriy")]([SubResource("Resource_tn77p"), SubResource("Resource_ulcn0")])
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

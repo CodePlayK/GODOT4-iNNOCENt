@@ -2549,7 +2549,7 @@ script = ExtResource("31_xwi51")
 
 [node name="Npc" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("26_sk6hw")]
 position = Vector2(151, 184)
-starting_state = "lock"
+starting_state = "idle"
 running_state = "birth"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")

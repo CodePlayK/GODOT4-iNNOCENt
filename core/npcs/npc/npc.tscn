@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://c67d7gy1g6tty"]
+[gd_scene load_steps=86 format=3 uid="uid://c67d7gy1g6tty"]
 
 [ext_resource type="Script" path="res://core/npcs/npc/script/npc.gd" id="1_g6t10"]
 [ext_resource type="Script" path="res://core/npcs/npc/Vpn.gd" id="2_h4pdk"]
@@ -36,6 +36,11 @@
 [ext_resource type="Script" path="res://core/npcs/npc/script/death.gd" id="28_vkblv"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/birth.gd" id="29_68fjw"]
 [ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="29_yrcng"]
+[ext_resource type="PackedScene" uid="uid://hf3gno3q5tbw" path="res://core/room/common/weight machine/weight machine.tscn" id="33_b7575"]
+[ext_resource type="Resource" uid="uid://cj7nvouyscuqc" path="res://core/room/common/weight machine/player_position_weight.tres" id="34_w7wsg"]
+[ext_resource type="Script" path="res://core/npcs/npc/to_player_distance_weight.gd" id="35_g235w"]
+[ext_resource type="Resource" uid="uid://cqccl8yu0v50g" path="res://core/room/common/weight machine/player_attack_weight.tres" id="35_nm7d6"]
+[ext_resource type="Script" path="res://core/npcs/npc/PlayerAttackWeight.gd" id="37_4rvvm"]
 [ext_resource type="Script" path="res://core/npcs/sen/SenSaveDataCollector.gd" id="37_o17vs"]
 [ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="38_nil6j"]
 
@@ -1421,6 +1426,25 @@ animation_speed = 1.5
 sound_config = Array[ExtResource("29_yrcng")]([SubResource("Resource_h5cdf"), SubResource("Resource_62245")])
 
 [node name="attackTimer" type="Timer" parent="NpcStateManager/base/combat/_attack/attack0"]
+
+[node name="WeightMachine" parent="NpcStateManager/base/combat/_attack/attack0" instance=ExtResource("33_b7575")]
+weight_list = Array[Resource("res://core/room/common/weight machine/Weight.gd")]([ExtResource("34_w7wsg"), ExtResource("35_nm7d6")])
+
+[node name="toPlayerDistanceWeight" type="Node" parent="NpcStateManager/base/combat/_attack/attack0/WeightMachine" node_paths=PackedStringArray("obj", "target_state")]
+script = ExtResource("35_g235w")
+weight = ExtResource("34_w7wsg")
+obj = NodePath("../../../../../../..")
+target_state = NodePath("../..")
+distance_max = 800.0
+distance_min = 20.0
+distance_max_map = 10.0
+distance_min_map = null
+
+[node name="PlayerAttackWeight" type="Node" parent="NpcStateManager/base/combat/_attack/attack0/WeightMachine" node_paths=PackedStringArray("obj", "target_state")]
+script = ExtResource("37_4rvvm")
+weight = ExtResource("35_nm7d6")
+obj = NodePath("../../../../../../..")
+target_state = NodePath("../../../../behit")
 
 [node name="behit" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("26_l8w5l")

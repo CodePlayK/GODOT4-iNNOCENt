@@ -74,7 +74,7 @@ func input(event: InputEvent) -> void:
 	if listener.enable:
 		if listener.input(event):return
 	var new_state
-	var common_input = common_state()
+	var common_input = common_state(event)
 	if common_input:
 		change_state(common_input)
 		return
@@ -113,18 +113,18 @@ func _on_player_control_lock(state):
 	else :
 		change_state(base_state.idle_state)
 		
-func common_state():
+func common_state(event:InputEvent):
 	if PlayerState.player_control_lcok:return null
-	if attack_reset and Input.is_action_just_pressed("attack"):
+	if attack_reset and event.is_action_pressed("attack"):
 		#Debug.dprinterr("[Player][common_state]切换到[light_state]")
 		return base_state.attack0_state
-	if Input.is_action_just_pressed("light"):
+	if event.is_action_pressed("light"):
 		#Debug.dprinterr("[Player][common_state]切换到[light_state]")
 		return base_state.light_state
-	if Input.is_action_just_pressed("dense")&&PlayerState.denseable_flag:
+	if event.is_action_pressed("dense")&&PlayerState.denseable_flag:
 		#Debug.dprinterr("[Player][common_state]切换到[dense_state]")
 		return base_state.dense_state
-	if Input.is_action_just_pressed("dash"):
+	if event.is_action_pressed("dash"):
 		return base_state.dash_state
 	return null		
 

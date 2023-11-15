@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weight" load_steps=2 format=3 uid="uid://cqccl8yu0v50g"]
+
+[ext_resource type="Script" path="res://core/room/common/weight machine/WeightResource.gd" id="1_av6bn"]
+
+[resource]
+script = ExtResource("1_av6bn")
+value = 0.0
+custom_weight_scale = 1.0
+real_weight = 1.0
+fuct = Callable()

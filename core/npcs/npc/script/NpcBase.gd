@@ -145,7 +145,8 @@ func get_relative_position_x_2_player()->int:
 ##[音效1[开始时间,[音效名,速度,音调]],音效2[开始时间,[音效名,速度,音调]]]
 func play_sound(sound_dics:Array[SoundEffectConfig]):
 	for sound_config:SoundEffectConfig in sound_dics:
-		se(sound_config)
+		npc.sound_effect.play_se(sound_config,self)
+		#se(sound_config)
 
 func stop_sound(s_name):
 	for s_config:SoundEffectConfig in sound_config:

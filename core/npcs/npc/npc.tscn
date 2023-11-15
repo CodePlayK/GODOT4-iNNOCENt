@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://c67d7gy1g6tty"]
+[gd_scene load_steps=81 format=3 uid="uid://c67d7gy1g6tty"]
 
 [ext_resource type="Script" path="res://core/npcs/npc/script/npc.gd" id="1_g6t10"]
 [ext_resource type="Script" path="res://core/npcs/npc/Vpn.gd" id="2_h4pdk"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="7_qdiri"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="10_738th"]
 [ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="13_68mjx"]
+[ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="13_jp4cx"]
+[ext_resource type="Resource" uid="uid://dbk2n3os0stgc" path="res://core/common/dialogue/npc/npc_sen.dialogue" id="14_q0htd"]
 [ext_resource type="Script" path="res://core/component/Move2Player.gd" id="14_tru0n"]
 [ext_resource type="Script" path="res://core/component/Move2Vec2.gd" id="15_hj362"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcStateManager.gd" id="15_ndyhn"]
@@ -22,6 +24,7 @@
 [ext_resource type="Script" path="res://core/npcs/npc/lock.gd" id="18_ftub0"]
 [ext_resource type="Script" path="res://core/npcs/npc/idle.gd" id="19_nrhnv"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/NpcGround.gd" id="20_0llaa"]
+[ext_resource type="Script" path="res://core/component/CutsceneTalk.gd" id="20_j0hqf"]
 [ext_resource type="Script" path="res://core/npcs/npc/talk.gd" id="21_yd7ml"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/combat.gd" id="22_yywp6"]
 [ext_resource type="Script" path="res://core/npcs/npc/patrol.gd" id="23_6aimc"]
@@ -33,6 +36,8 @@
 [ext_resource type="Script" path="res://core/npcs/npc/script/death.gd" id="28_vkblv"]
 [ext_resource type="Script" path="res://core/npcs/npc/script/birth.gd" id="29_68fjw"]
 [ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="29_yrcng"]
+[ext_resource type="Script" path="res://core/npcs/sen/SenSaveDataCollector.gd" id="37_o17vs"]
+[ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="38_nil6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coq3i"]
 size = Vector2(32, 55)
@@ -1175,6 +1180,8 @@ se_speed = 1.0
 se_pitch = 1.0
 
 [node name="Npc" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_g6t10")
 starting_state = "patrol"
 
@@ -1323,6 +1330,15 @@ vfx_bright = 2.389
 vfx_color = Color(0, 0.388235, 0.352941, 1)
 vfx_colored = true
 
+[node name="Interaction" type="Node2D" parent="."]
+
+[node name="CutsceneTalk" type="Node" parent="Interaction"]
+script = ExtResource("20_j0hqf")
+
+[node name="NpcDialogueDefault" type="Node" parent="Interaction"]
+script = ExtResource("13_jp4cx")
+dialogue_resource = ExtResource("14_q0htd")
+
 [node name="Component" type="Node" parent="."]
 
 [node name="FaceDirection" type="Node" parent="Component"]
@@ -1360,6 +1376,7 @@ enable_self = true
 [node name="talk" type="Node" parent="NpcStateManager/base/ground"]
 script = ExtResource("21_yd7ml")
 is_normal_state = false
+animation_name = "idle"
 
 [node name="combat" type="Node" parent="NpcStateManager/base"]
 script = ExtResource("22_yywp6")
@@ -1422,7 +1439,6 @@ sprite_color = Color(1, 1, 1, 1)
 sound_config = Array[ExtResource("29_yrcng")]([SubResource("Resource_2pmhk")])
 
 [node name="ProtectTimer" type="Timer" parent="NpcStateManager/base/combat/behit"]
-wait_time = 0.001
 one_shot = true
 
 [node name="behithard" type="Node" parent="NpcStateManager/base/combat"]
@@ -1456,6 +1472,14 @@ script = ExtResource("29_68fjw")
 is_normal_state = false
 animation_name = "death"
 animation_backward = true
+
+[node name="Saver" type="Node" parent="."]
+
+[node name="SaveDataCollector" type="Node" parent="Saver"]
+script = ExtResource("37_o17vs")
+
+[node name="NpcSaver" type="Node" parent="Saver/SaveDataCollector"]
+script = ExtResource("38_nil6j")
 
 [connection signal="ready" from="." to="Master" method="_on_npc_ready"]
 [connection signal="timeout" from="NpcStateManager/base/combat/chase/Timer" to="NpcStateManager/base/combat/chase" method="_on_timer_timeout"]

@@ -1,15 +1,15 @@
 extends Node
 var direction_objs
-var obj
+@onready var obj: Area2D = $".."
 func _ready() -> void:
-	owner.ready.connect(on_obj_ready)
+	obj.ready.connect(on_obj_ready)
 
 func on_obj_ready():
 	obj = owner
 	direction_objs =[
-	owner.animation,
+	obj.animation,
 	]
-	get_all_children(owner)
+	get_all_children(obj)
 	
 func get_all_children(node:Node):
 	for child in node.get_children():

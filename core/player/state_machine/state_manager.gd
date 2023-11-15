@@ -55,9 +55,9 @@ func init(player: Player) -> void:
 	change_state(starting_state)
 
 func physics_process(delta: float) -> void:
-	var temp_state=common_state()
-	if temp_state!=null:
-		change_state(temp_state)
+	#var temp_state=common_state()
+	#if temp_state!=null:
+		#change_state(temp_state)
 	var new_state = current_state.pre_physics_process(delta)
 	if !new_state:
 		new_state = current_state.physics_process(delta)
@@ -74,6 +74,10 @@ func input(event: InputEvent) -> void:
 	if listener.enable:
 		if listener.input(event):return
 	var new_state
+	var common_input = common_state()
+	if common_input:
+		change_state(common_input)
+		return
 	if current_state:
 		new_state = current_state.input(event)
 	if new_state:

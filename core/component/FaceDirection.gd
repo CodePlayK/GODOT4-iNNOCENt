@@ -14,7 +14,6 @@ func on_master_ready(master):
 	node_list = master.direction_objs
 
 func connect_signal():
-
 	EventBus.obj_set_face_left.connect(_obj_set_face_left)
 
 func set_faced(left_flag:bool=false):

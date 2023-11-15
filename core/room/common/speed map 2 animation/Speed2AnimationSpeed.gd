@@ -29,8 +29,6 @@ func on_master_ready(master):
 func set_enabel(flag:bool):
 	if flag:
 		base_scale=obj.states.animation_speed
-	#else :
-		#obj.aniplayer.speed_scale = base_scale
 	is_enable = flag
 	
 
@@ -43,8 +41,6 @@ func get_speed():
 		last_pos=obj.global_position.x
 		return
 	if !is_enable:
-		#if obj.aniplayer.speed_scale!=base_scale:
-			#obj.aniplayer.speed_scale=base_scale
 		last_enable=false
 		last_pos=obj.global_position.x
 		return

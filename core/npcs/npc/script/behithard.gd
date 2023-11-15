@@ -11,7 +11,7 @@ var enable:bool = true
 func on_hurt(area:Area2D):
 	if state_manager.current_state != self or !area.enable:
 		return
-	npc.hurt_fx.play_fx(fx_name,"knife-stab")
+	npc.hurt_fx.play_fx(fx_name)
 	npc.sound_effect.play_se(sound_config[0],self)
 	npc.life-=area.damage
 	if npc.life<=0:
@@ -25,7 +25,7 @@ func enter():
 	enable = false
 	npc.being_hit = false
 	protect_timer.start(protect_time)
-	npc.hurt_fx.play_fx(fx_name,"knife-stab")
+	npc.hurt_fx.play_fx(fx_name)
 	npc.life-=1
 	var npc_global_position_x:float=npc.global_position.x
 	tween=npc.create_tween()

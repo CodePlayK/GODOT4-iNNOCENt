@@ -41,7 +41,6 @@ func _process(delta: float) -> void:
 		last_state=false	
 
 func change_bright(bright1:float):
-	#bright = bright1
 	var tween = obj.base.create_tween()
 	tween.tween_property(self,"bright",bright1,trans_time)
 	await tween.finished

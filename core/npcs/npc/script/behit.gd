@@ -17,7 +17,7 @@ func enter():
 	npc.being_hit = false
 	enable = false
 	npc.life-=state_manager.current_damage
-	npc.hurt_fx.play_fx(fx_name,"knife-stab")
+	npc.hurt_fx.play_fx(fx_name)
 	var npc_global_position_x:float=npc.global_position.x
 	tween=npc.create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)

@@ -20,9 +20,9 @@ const clazz_name = "Npcs"
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
 @export var starting_state:String
+##运行时进入的状态
+@export var starting_state1:String
 @export var running_state:String
-##初始化时进入的第二个节点(真正运行的第一个状态)
-#@export var starting_state1:String
 var on_ready=false
 ##巡逻范围右边界
 @export var patrol_right:Marker2D

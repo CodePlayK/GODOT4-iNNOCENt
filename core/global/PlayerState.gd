@@ -76,8 +76,10 @@ var dense_flag:bool=false
 var denseable_flag:bool=true
 ##弹反结果的标记
 var dense_success_flag:bool=false
-##是否正在攻击
+##是否正在攻击,包含多段攻击,并不代表实际hit中
 var attacking:bool=false
+##不包含多段攻击的冷歇,代表hit
+var hitting:bool=false
 ##能够轻化
 var lightable_flag:bool=true
 var light_flag:bool=false

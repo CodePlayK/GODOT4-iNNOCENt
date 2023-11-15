@@ -24,7 +24,7 @@ func on_master_ready(master) -> void:
 	for node in signal_node_list:
 		NpcState.add_to_export_node_cache(owner,self,node)
 	for node in signal_node_list:
-		real_node_list.append(owner.get_node(NpcState.get_export_node_cache(owner,self,node)))	
+		real_node_list.append(NpcState.get_export_node_cache(owner,self,node))	
 		
 func set_enable(flag:bool,index:int = -1):
 	enable = flag

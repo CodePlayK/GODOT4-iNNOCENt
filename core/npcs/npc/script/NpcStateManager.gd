@@ -20,6 +20,7 @@ var current_state: NpcsBaseState:
 var all_states: Array
 var pre_start_state:NpcsBaseState
 var start_state:NpcsBaseState
+var start1_state:NpcsBaseState
 var running_state:NpcsBaseState
 var process_begin:bool=false
 var attack_reset:bool=false
@@ -71,8 +72,8 @@ func init(npc1) -> void:
 		init_var(state)
 		state.init(all_states)
 		state.init_var()
-		current_state=base_state.death_state
-	change_state(start_state)
+		current_state=start_state
+	change_state(start1_state)
 
 func init_var(state):
 	if !state.is_normal_state:
@@ -127,6 +128,8 @@ func get_all_state(node:Node):
 				running_state=child
 			if npc.starting_state==child.name:
 				start_state=child
+			if npc.starting1_state==child.name:
+				start1_state=child
 		if child:
 			get_all_state(child)
 			
@@ -136,7 +139,7 @@ func print_state_change(a,b):
 	var actual_string = format_string % [current_state.npc.get_name(),a, b]
 	var actual_string1 = format_string1 % [a, b]
 	#state_test.set_text(actual_string1)
-	#Debug.dprint(actual_string)
+	Debug.dprint(actual_string)
 	return actual_string
 
 ##在物理方法中
@@ -162,9 +165,14 @@ func signal_state2state(npc_name,state_name):
 
 ##受击事件	
 func on_hurt(area:Area2D):
-	if area.enable and ![base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
+	if area.enable and ![base_state.dodge_state,base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
 		current_damage = area.damage
 		change_state(base_state.behit_state)
+##受击事件	
+func on_dodge(area:Area2D):
+	var state = npc.dodge_weight_machine.process()
+	if state and ![base_state.dodge_state,base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
+		change_state(state)
 
 ##弹反受击事件	
 func on_behithard(area:Area2D):
@@ -174,6 +182,7 @@ func on_behithard(area:Area2D):
 		
 ##根据名字获取状态
 func get_state_by_name(state_name):
+	if !state_name:return null
 	for state in all_states:
 		if str(state.name).begins_with(state_name):
 			return state

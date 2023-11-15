@@ -1,36 +1,78 @@
 extends Node
 var total_weight:float
 @onready var master: Node = %Master
-@export var weight_list:Array[WeightResource] 
+var weight_list:Array 
+var weight_dic:Dictionary 
+var weight_sum_dic:Dictionary 
 @export var print_debug:bool = true
+@onready var timer: Timer = $Timer
+@export var auto_run:bool = true:
+	set(f):
+		auto_run = f
+		if !timer:return
+		if f:
+			timer.start(1)
+		else:
+			timer.stop()
 @export var total_weight_max:float = 100
-var debug_list:Array
+@export var total_weight_min:float = 10
+var debug_dic:Dictionary
 
 func _ready() -> void:
-	for w in weight_list:
-		debug_list.append(0)
+	for node in get_children():
+		weight_dic[node.name] = []
+		weight_sum_dic[node.name] = 0
+		for w_node in node.get_children():
+			if w_node is Weight:
+				weight_dic[node.name].append(w_node) 
+		debug_dic[node.name]= 0
 
-func process() -> void:
-	if weight_list.is_empty():return
+func get_target_node_weight_sum():
+	total_weight = 0
+	for k in weight_sum_dic.keys():
+		weight_sum_dic[k] = 0
+	for k in weight_dic.keys():
+		for w in weight_dic[k]:
+			await w.process()
+			weight_sum_dic[k] = max(weight_sum_dic[k]+w.weight,0)
+	for k in weight_sum_dic.keys():
+		total_weight+=weight_sum_dic[k]
+		
+func process():
+	if weight_sum_dic.is_empty():return
+	get_target_node_weight_sum()
 	randomize()
-	total_weight=0
 	var weight_sum:float
-	for w in weight_list:
-		if !w:continue
-		total_weight+=w.value * w.custom_weight_scale
-	clamp(total_weight,total_weight,total_weight_max)
-	var fin_i:int
+	if total_weight <= 0:return null
+	total_weight = clamp(total_weight,total_weight_min,total_weight_max)
+	var fin_k:String
 	var target = randf()*total_weight
-	for i in weight_list.size():
-		var v = weight_list[i].value * weight_list[i].custom_weight_scale
+	for k in weight_sum_dic.keys():
+		var v = weight_sum_dic[k]
 		weight_sum+=v
 		if target<weight_sum:
-			fin_i = i
+			fin_k = k
 			break
-	debug_list[fin_i]+=1
+	if fin_k:
+		debug_dic[fin_k]+=1
 	if print_debug:
-		Debug.dprintinfo("[%s]:%s%s" %[master.obj.obj_name,weight_list[fin_i].value,debug_list])
-	#print("%s[%s]%s" %[target,fin_i,weight_list[fin_i].weight])
+		Debug.dprintinfo("[%s][%s]:%s%s%s" %[total_weight,master.obj.obj_name,fin_k,debug_dic,weight_sum_dic])
+	for k in weight_dic.keys():
+		for w in weight_dic[k]:
+			await w.after_process()
+	return master.obj.states.get_state_by_name(fin_k)
+
+func exit():
+	for k in weight_dic.keys():
+		for w in weight_dic[k]:
+			await w.exit()
 
 func _on_timer_timeout() -> void:
 	process()
+
+func get_childen_node(node):
+	for child in node.get_children():
+		if child is Weight:
+			weight_list.append(child)
+		if child:
+			get_childen_node(child)

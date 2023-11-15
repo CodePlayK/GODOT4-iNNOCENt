@@ -55,6 +55,7 @@ func enter():
 	move = 0
 	attack_timer.start(aniplayer.get_animation(ani_name).length/aniplayer.speed_scale+after_attack_stiff_time)
 	PlayerState.attacking=true
+	PlayerState.hitting=true
 	EventBus._play_SE(sound_name)
 	aniplayer.play(ani_name)
 
@@ -83,6 +84,7 @@ func exit(state:BaseState):
 	player.hit_box.disable_shape()
 	player.hit_box.damage = 0
 	attack_timer.stop()
+	PlayerState.hitting=false
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时
 	#开启监听
 	if !to_next_attack and next_attack or !state is PlayerAttackState:
@@ -108,6 +110,5 @@ func _on_attack_timer_timeout() -> void:
 		state_manager.state2state(next_attack,self)
 	else:#否则为结束攻击,切换到上一个正常状态,重置攻击状态
 		state_manager.state2state(PlayerState.get_last_normal_state(),self)	
-		PlayerState.attacking=false
 		state_manager.attack_reset = true
-	
+		PlayerState.attacking = false

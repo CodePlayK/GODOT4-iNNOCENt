@@ -4,7 +4,7 @@ extends Npcs
 func enable_all_interact(flag):
 	if on_combat or on_fighting:return
 	enable_self(flag)
-	enable_player_detection(flag)
+	#enable_player_detection(flag)
 
 func enable_player_detection(flag):
 	player_detection.set_deferred("monitoring",flag)

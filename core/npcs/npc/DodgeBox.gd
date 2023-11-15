@@ -1,8 +1,4 @@
 extends Component
-##受伤盒
-##
-##用于探测是否被武器攻击,当有Area进入时,调用所有signal node list中每个node的on_hurt()方法
-class_name HurtBox
 ##接触后调用所有Node的.on_hurt()方法
 @export var signal_node_list:Array[Node]
 var real_node_list:Array[Node]
@@ -20,10 +16,10 @@ func on_master_ready(master) -> void:
 		NpcState.add_to_export_node_cache(owner,self,node)
 	for node in signal_node_list:
 		real_node_list.append(NpcState.get_export_node_cache(owner,self,node))
-		
+
 func _on_area_entered(area: Area2D) -> void:
 	for node in real_node_list:
-		node.on_hurt(area)
+		node.on_dodge(area)
 ##禁用
 func disable_hit():
 	enable = false

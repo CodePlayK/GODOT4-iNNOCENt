@@ -25,6 +25,7 @@ class_name NpcsAttackState
 @export_range(0,2.0) var move_speed_scale_to_walk:float = 1.0
 ##实际的攻击动画耗时,包括僵直
 @onready var attack_timer: Timer = $attackTimer
+
 ##到下一段攻击
 var to_next_attack:bool = false
 
@@ -43,7 +44,7 @@ func enter():
 	to_next_attack = false
 	attack_timer.start(aniplayer.get_animation(ani_name).length/aniplayer.speed_scale+after_attack_stiff_time)
 	npc.attacking=true
-	aniplayer.play(ani_name)
+	#aniplayer.play(ani_name)
 
 func physics_process(delta: float) -> NpcsBaseState:
 	if (PlayerState.dense_flag or PlayerState.dense_success_flag) and npc.hit_box.has_overlapping_areas():
@@ -68,6 +69,7 @@ func exit(state:NpcsBaseState):
 
 ##攻击动画结束,包括僵直		
 func _on_attack_timer_timeout() -> void:
+	npc.time_2_last_attack_timer.start(4096)
 	#正在攻击动画中按下且有下一段攻击时则直接切换
 	if to_next_attack and next_attack:
 		state_manager.state2state(next_attack)

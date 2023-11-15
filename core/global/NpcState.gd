@@ -44,4 +44,4 @@ func add_to_export_node_cache(root_node:Node,node:Node,export_node:Node):
 		NpcCacheExportNodes[root_node.npc_name]={node.name:{export_node.name:root_node.get_path_to(export_node)}}
 
 func get_export_node_cache(root_node:Node,node:Node,export_node:Node):
-	return NpcCacheExportNodes[root_node.npc_name][node.name][export_node.name]
+	return root_node.get_node(NpcCacheExportNodes[root_node.npc_name][node.name][export_node.name])

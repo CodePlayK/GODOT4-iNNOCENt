@@ -123,6 +123,8 @@ func play_animation():
 	else :
 		animation_name_real = self.name
 	if animation_backward:
+		npc.base.show()
+		npc.vfx.show()
 		npc.aniplayer.play_backwards(animation_name_real)
 	else :
 		npc.aniplayer.play(animation_name_real)

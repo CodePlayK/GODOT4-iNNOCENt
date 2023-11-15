@@ -1,6 +1,7 @@
 extends Node
 var direction_objs
 @onready var obj: Area2D = $".."
+
 func _ready() -> void:
 	obj.ready.connect(on_obj_ready)
 

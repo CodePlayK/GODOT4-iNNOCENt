@@ -16,12 +16,14 @@ const clazz_name = "Npcs"
 @onready var attack_range: Area2D = %Area/HitBox/AttackRange
 @onready var sound_effect: SoundEffect = $Component/SoundEffect
 @onready var light: Area2D = $Animation/Area/Light
+@onready var dodge_weight_machine: Node = $WeightMachine/DodgeWeightMachine
+@onready var time_2_last_attack_timer: Timer = $Timer/time2LastAttackTimer
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
 @export var starting_state:String
 ##运行时进入的状态
-@export var starting_state1:String
+@export var starting1_state:String
 @export var running_state:String
 var on_ready=false
 ##巡逻范围右边界
@@ -32,6 +34,7 @@ var on_ready=false
 var current_state
 var being_hit:bool = false
 var on_combat:bool=false
+var dodgeable:bool = true
 var attacking:bool = false	
 var on_fighting:bool=false:
 	set(f):
@@ -45,7 +48,14 @@ var on_fighting:bool=false:
 			ui.health_bar.hide()
 			PlayerState.player_on_fighting.erase(self.name)
 @export var npc_name:String
-var face_left:bool
+var face_left:bool:
+	set(f):
+		face_left = f
+		if f:
+			face_left_normalozed = -1
+		else :
+			face_left_normalozed = 1
+var face_left_normalozed:int
 
 func _enter_tree() -> void:
 	obj_name=npc_name

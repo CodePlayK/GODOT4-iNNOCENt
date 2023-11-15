@@ -1,12 +1,14 @@
 extends Weight
-@export var weight:WeightResource
-@export var obj:PlayerInteractiveObj
-@export var target_state:NpcsBaseState
 @export var distance_max:float
 @export var distance_min:float
-@export var distance_max_map:float
-@export var distance_min_map:float
 var distance
-func _process(delta: float) -> void:
+@onready var master: Node = %Master
+
+func on_master_ready(m) -> void:
+	obj = master.obj
+	NpcState.add_to_export_node_cache(obj,self,target_state)
+	target_state = NpcState.get_export_node_cache(obj,self,target_state)
+	
+func process() -> void:
 	distance = abs(obj.global_position.x - PlayerState.player.global_position.x)
-	weight.value = clamp(remap(distance,distance_min,distance_max,distance_max_map,distance_min_map),distance_min_map,distance_max_map)
+	weight = clamp(remap(distance,distance_min,distance_max,confirmed_weight,impossible_weight),impossible_weight,confirmed_weight)

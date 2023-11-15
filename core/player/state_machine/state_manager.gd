@@ -100,7 +100,7 @@ func print_state_change(a,b):
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	Debug.dprintinfo(actual_string)
+	#Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 

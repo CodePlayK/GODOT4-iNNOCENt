@@ -6,6 +6,7 @@ var chase_speed_r:float
 @onready var timer: Timer = $Timer
 var speed_map_2_animation
 var face_direction: FaceDirection
+@onready var weight_machine: Node = $WeightMachine
 
 func init_var():
 	speed_map_2_animation = npc.speed_map_2_animation
@@ -24,6 +25,7 @@ func physics_process(delta: float):
 			npc.global_position.x-=chase_speed_r*delta
 			timer.stop()
 		else:
+			#return weight_machine.process()
 			if timer.is_stopped():
 				timer.start()
 	else :
@@ -32,12 +34,16 @@ func physics_process(delta: float):
 			npc.global_position.x+=chase_speed_r*delta
 			timer.stop()
 		else:
+			#return weight_machine.process()
 			if timer.is_stopped():
 				timer.start()
+	return weight_machine.process()
 	
 func _on_timer_timeout() -> void:
+	return
 	state_manager.state2state(attack0_state)
 
 func exit(NpcsBaseState):
 	timer.stop()
+	weight_machine.exit()
 	speed_map_2_animation.set_enabel(false)

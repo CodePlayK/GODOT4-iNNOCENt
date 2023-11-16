@@ -38,15 +38,16 @@ func physics_process(delta: float) -> BaseState:
 	player.set_up_direction(Vector2.UP)
 	player.move_and_slide()
 	if current_dash_time<=0:
-		return walk_state
-	if  player.velocity.x==0:
-		return idle_state
+		return PlayerState.get_last_normal_state()
+	#if  player.velocity.x==0:
+		#return idle_state
 	return null
 
 func exit(state:BaseState):
 	super.exit(state)
 	player.velocity.x = 0
 	player.hurt_box.enable_hit()
+	
 
 func _on_timer_timeout() -> void:
 	enable = true

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AnimeSoundConfig" load_steps=2 format=3 uid="uid://bmge0qpop8p0i"]
+
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeSoundConfig.gd" id="1_dr0sw"]
+
+[resource]
+script = ExtResource("1_dr0sw")
+se_name = ""
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0

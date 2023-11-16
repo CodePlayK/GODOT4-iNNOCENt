@@ -12,6 +12,12 @@ func exit(state:BaseState):
 
 func physics_process(delta: float) -> BaseState:
 	move = get_movement_input_x()
+	if player.is_on_floor() :
+		if Input.is_action_pressed("run"):
+			if PlayerState.is_player_on_fighting:
+				return fastrun_state
+			else :
+				return run_state
 	if !player.is_on_floor() and player.velocity.y<=0:
 		return lift_state
 	if player.velocity.y>0:

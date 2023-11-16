@@ -16,8 +16,9 @@ const clazz_name = "Npcs"
 @onready var attack_range: Area2D = %Area/HitBox/AttackRange
 @onready var sound_effect: SoundEffect = $Component/SoundEffect
 @onready var light: Area2D = $Animation/Area/Light
-@onready var dodge_weight_machine: Node = $WeightMachine/DodgeWeightMachine
 @onready var time_2_last_attack_timer: Timer = $Timer/time2LastAttackTimer
+@onready var patrol_weight_machine: WeightMachine = $WeightMachine/PatrolWeightMachine
+@onready var chase_weight_machine: WeightMachine = $WeightMachine/ChaseWeightMachine
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)

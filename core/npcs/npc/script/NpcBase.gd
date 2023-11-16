@@ -148,17 +148,9 @@ func get_relative_position_x_2_player()->int:
 func play_sound(sound_dics:Array[SoundEffectConfig]):
 	for sound_config:SoundEffectConfig in sound_dics:
 		npc.sound_effect.play_se(sound_config,self)
-		#se(sound_config)
 
 func stop_sound(s_name):
 	for s_config:SoundEffectConfig in sound_config:
 		if s_config.se_name == s_name:
 			EventBus._play_SE(s_config.se_name,s_config.se_speed,s_config.se_pitch,str(npc.get_instance_id()+get_instance_id()),false)		
-
-func se(sound_config):
-	var temp_state=state_manager.current_state.name
-	await get_tree().create_timer(sound_config.start_time).timeout
-	if temp_state == state_manager.current_state.name:
-		EventBus._play_SE(sound_config.se_name,sound_config.se_speed,sound_config.se_pitch,str(npc.get_instance_id()+get_instance_id()))
-		
 #endregion

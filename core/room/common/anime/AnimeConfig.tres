@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AnimeConfig" load_steps=2 format=3 uid="uid://cd3awvptfe05s"]
+
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_13eh8"]
+
+[resource]
+script = ExtResource("1_13eh8")
+animation_name = ""
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[Resource("res://core/room/common/anime/AnimeSoundConfig.gd")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])

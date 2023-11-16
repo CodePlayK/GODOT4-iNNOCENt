@@ -65,8 +65,9 @@ func physics_process(delta: float):
 		elif get_npc_faced_direction()==-1 and npc.global_position.x - 40 <= npc.patrol_right.global_position.x:
 			return attack0_state
 		return chase_state
-
+	return await npc.patrol_weight_machine.process()
 func exit(state:NpcsBaseState):
+	npc.patrol_weight_machine.exit()
 	speed_map_2_animation.set_enabel(false)
 	if tween:
 		tween.kill()

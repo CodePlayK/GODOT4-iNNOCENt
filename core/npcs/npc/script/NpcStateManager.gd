@@ -170,7 +170,7 @@ func on_hurt(area:Area2D):
 		change_state(base_state.behit_state)
 ##受击事件	
 func on_dodge(area:Area2D):
-	var state = npc.dodge_weight_machine.process()
+	var state = npc.chase_weight_machine.process()
 	if state and ![base_state.dodge_state,base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
 		change_state(state)
 

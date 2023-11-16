@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://c67d7gy1g6tty"]
+[gd_scene load_steps=89 format=3 uid="uid://c67d7gy1g6tty"]
 
 [ext_resource type="Script" path="res://core/npcs/npc/script/npc.gd" id="1_g6t10"]
 [ext_resource type="Script" path="res://core/npcs/npc/Vpn.gd" id="2_h4pdk"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c8rgcfsokceb2" path="res://core/resource/Asset/DARK - FX Pack/Sprite Sheets/All.png" id="6_7ppra"]
 [ext_resource type="PackedScene" uid="uid://cssd4crw3cmet" path="res://core/room/common/hurt box/HurtBox.tscn" id="6_vavpv"]
 [ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="7_qdiri"]
+[ext_resource type="PackedScene" uid="uid://bewwlmeborpfh" path="res://core/room/common/anime/anime.tscn" id="9_v1erj"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="10_738th"]
 [ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="13_68mjx"]
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="13_jp4cx"]
@@ -38,9 +39,9 @@
 [ext_resource type="Script" path="res://core/npcs/npc/script/birth.gd" id="29_68fjw"]
 [ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="29_yrcng"]
 [ext_resource type="PackedScene" uid="uid://hf3gno3q5tbw" path="res://core/room/common/weight machine/weight machine.tscn" id="33_b7575"]
-[ext_resource type="Script" path="res://core/npcs/npc/Time2LastAttackWeight.gd" id="34_bf7uj"]
-[ext_resource type="Script" path="res://core/npcs/npc/to_player_distance_weight.gd" id="35_g235w"]
-[ext_resource type="Script" path="res://core/npcs/npc/PlayerAttackWeight.gd" id="37_4rvvm"]
+[ext_resource type="Script" path="res://core/npcs/npc/Weight/Time2LastAttackWeight.gd" id="34_bf7uj"]
+[ext_resource type="Script" path="res://core/npcs/npc/Weight/to_player_distance_weight.gd" id="35_g235w"]
+[ext_resource type="Script" path="res://core/npcs/npc/Weight/PlayerAttackWeight.gd" id="37_4rvvm"]
 [ext_resource type="Script" path="res://core/npcs/sen/SenSaveDataCollector.gd" id="37_o17vs"]
 [ext_resource type="Script" path="res://core/component/NpcSaver.gd" id="38_nil6j"]
 [ext_resource type="Script" path="res://core/npcs/npc/attack1.gd" id="38_rm5q8"]
@@ -63,6 +64,7 @@ ProgressBar/styles/background = SubResource("StyleBoxEmpty_ie3eo")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_3e5dv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awcv3"]
+resource_local_to_scene = true
 shader = ExtResource("3_sp8io")
 shader_parameter/color = Color(0.521569, 0.521569, 0.521569, 1)
 shader_parameter/enable = true
@@ -71,6 +73,7 @@ shader_parameter/mix_modulate = true
 shader_parameter/mix_modulate_strength = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apg6p"]
+resource_local_to_scene = true
 shader = ExtResource("3_sp8io")
 shader_parameter/color = Color(0.262745, 0.890196, 0.8, 1)
 shader_parameter/enable = true
@@ -1225,16 +1228,57 @@ shape = SubResource("RectangleShape2D_coq3i")
 
 [node name="WeightMachine" type="Node" parent="."]
 
-[node name="DodgeWeightMachine" parent="WeightMachine" instance=ExtResource("33_b7575")]
+[node name="ChaseWeightMachine" parent="WeightMachine" instance=ExtResource("33_b7575")]
+print_debug = false
 auto_run = false
+total_weight_min = 1.0
 
-[node name="DodgeWeight" type="Node" parent="WeightMachine/DodgeWeightMachine" node_paths=PackedStringArray("target_state")]
+[node name="attack0" type="Node" parent="WeightMachine/ChaseWeightMachine"]
+
+[node name="Attack0Weight" type="Node" parent="WeightMachine/ChaseWeightMachine/attack0" node_paths=PackedStringArray("target_state")]
+script = ExtResource("35_g235w")
+distance_max = 110.0
+distance_min = 50.0
+target_state = NodePath("../../../../NpcStateManager/base/combat/_attack/attack0")
+confirmed_weight = 7.0
+
+[node name="attack1" type="Node" parent="WeightMachine/ChaseWeightMachine"]
+
+[node name="Attack1Weight" type="Node" parent="WeightMachine/ChaseWeightMachine/attack1" node_paths=PackedStringArray("target_state")]
+script = ExtResource("35_g235w")
+distance_max = 110.0
+distance_min = 20.0
+target_state = NodePath("../../../../NpcStateManager/base/combat/_attack/attack1")
+confirmed_weight = 7.0
+
+[node name="dodge" type="Node" parent="WeightMachine/ChaseWeightMachine"]
+
+[node name="Time2LastAttackWeight" type="Node" parent="WeightMachine/ChaseWeightMachine/dodge" node_paths=PackedStringArray("target_state")]
+script = ExtResource("34_bf7uj")
+time_max = 5.0
+target_state = NodePath("../../../../NpcStateManager/base/ground/talk")
+confirmed_weight = -10.0
+
+[node name="DodgeWeight" type="Node" parent="WeightMachine/ChaseWeightMachine/dodge" node_paths=PackedStringArray("target_state")]
 script = ExtResource("37_4rvvm")
-dodge_distance_max = 100.0
-dodge_distance_min = 10.0
-target_state = NodePath("../../../NpcStateManager/base/combat/dodge")
-confirmed_weight = 70.0
-impossible_weight = 1.0
+dodge_distance_max = 200.0
+dodge_distance_min = 100.0
+target_state = NodePath("../../../../NpcStateManager/base/combat/dodge")
+confirmed_weight = 10.0
+
+[node name="PatrolWeightMachine" parent="WeightMachine" instance=ExtResource("33_b7575")]
+print_debug = false
+auto_run = false
+total_weight_min = 1.0
+
+[node name="dodge" type="Node" parent="WeightMachine/PatrolWeightMachine"]
+
+[node name="DodgeWeight" type="Node" parent="WeightMachine/PatrolWeightMachine/dodge" node_paths=PackedStringArray("target_state")]
+script = ExtResource("37_4rvvm")
+dodge_distance_max = 200.0
+dodge_distance_min = 100.0
+target_state = NodePath("../../../../NpcStateManager/base/combat/dodge")
+confirmed_weight = 10.0
 
 [node name="DialoguePosition" parent="." instance=ExtResource("3_f1vvk")]
 visible = false
@@ -1258,6 +1302,9 @@ position = Vector2(-1, -16)
 scale = Vector2(2.5, 2.5)
 metadata/_edit_group_ = true
 
+[node name="Anime" parent="Animation" node_paths=PackedStringArray("base") instance=ExtResource("9_v1erj")]
+base = NodePath("base")
+
 [node name="base" type="Sprite2D" parent="Animation"]
 unique_name_in_owner = true
 texture_filter = 1
@@ -1266,7 +1313,6 @@ position = Vector2(7, 33)
 texture = ExtResource("2_p0vkg")
 hframes = 8
 vframes = 8
-frame = 12
 metadata/_aseprite_wizard_config_ = {
 "keep_anim_length": false,
 "layer": "",
@@ -1286,7 +1332,7 @@ position = Vector2(7, 33)
 texture = ExtResource("4_j6g6a")
 hframes = 9
 vframes = 8
-frame = 11
+frame = 19
 metadata/_aseprite_wizard_config_ = {
 "keep_anim_length": false,
 "layer": "",
@@ -1468,43 +1514,6 @@ wait_time = 4096.0
 one_shot = true
 autostart = true
 
-[node name="WeightMachine" parent="NpcStateManager/base/combat/chase" instance=ExtResource("33_b7575")]
-auto_run = false
-total_weight_min = 1.0
-
-[node name="attack0" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine"]
-
-[node name="Attack0Weight" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine/attack0" node_paths=PackedStringArray("target_state")]
-script = ExtResource("35_g235w")
-distance_max = 80.0
-distance_min = 50.0
-target_state = NodePath("../../../../_attack/attack0")
-confirmed_weight = 7.0
-
-[node name="attack1" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine"]
-
-[node name="Attack1Weight" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine/attack1" node_paths=PackedStringArray("target_state")]
-script = ExtResource("35_g235w")
-distance_max = 110.0
-distance_min = 50.0
-target_state = NodePath("../../../../_attack/attack1")
-confirmed_weight = 7.0
-
-[node name="dodge" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine"]
-
-[node name="Time2LastAttackWeight" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine/dodge" node_paths=PackedStringArray("target_state")]
-script = ExtResource("34_bf7uj")
-time_max = 5.0
-target_state = NodePath("../../../../../ground/talk")
-confirmed_weight = -10.0
-
-[node name="DodgeWeight" type="Node" parent="NpcStateManager/base/combat/chase/WeightMachine/dodge" node_paths=PackedStringArray("target_state")]
-script = ExtResource("37_4rvvm")
-dodge_distance_max = 200.0
-dodge_distance_min = 100.0
-target_state = NodePath("../../../../dodge")
-confirmed_weight = 10.0
-
 [node name="_attack" type="Node" parent="NpcStateManager/base/combat"]
 script = ExtResource("26_g3n58")
 on_combat = true
@@ -1516,6 +1525,7 @@ is_normal_state = false
 
 [node name="attack0" type="Node" parent="NpcStateManager/base/combat/_attack"]
 script = ExtResource("25_0uwlt")
+after_attack_stiff_time = 0.0
 on_combat = true
 on_fighting = true
 enable_player_detection = true
@@ -1529,11 +1539,12 @@ one_shot = true
 
 [node name="attack1" type="Node" parent="NpcStateManager/base/combat/_attack"]
 script = ExtResource("38_rm5q8")
-after_attack_stiff_time = 0.2
+after_attack_stiff_time = 0.1
 on_combat = true
 on_fighting = true
 player_interact_lock = true
 is_normal_state = false
+animation_speed = 1.5
 sound_config = Array[ExtResource("29_yrcng")]([SubResource("Resource_aat6r")])
 
 [node name="attackTimer" type="Timer" parent="NpcStateManager/base/combat/_attack/attack1"]

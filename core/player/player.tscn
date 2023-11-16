@@ -1,13 +1,13 @@
-[gd_scene load_steps=83 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=88 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
-[ext_resource type="Shader" path="res://test/shader/get_screen_position.gdshader" id="2_ivk8k"]
 [ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="2_tctxi"]
 [ext_resource type="Script" path="res://core/player/state_machine/state_manager.gd" id="3_5tfn6"]
 [ext_resource type="Script" path="res://core/player/FX.gd" id="3_12nqg"]
 [ext_resource type="Script" path="res://test/shader/transparent1.gd" id="3_lk37i"]
 [ext_resource type="SpriteFrames" uid="uid://df0noclsi0k7r" path="res://core/player/animation/player-2.tres" id="3_o7jyy"]
+[ext_resource type="PackedScene" uid="uid://bewwlmeborpfh" path="res://core/room/common/anime/anime.tscn" id="3_s4ej5"]
 [ext_resource type="SpriteFrames" uid="uid://b20x1sbpuk3ub" path="res://core/player/animation/player-1.tres" id="3_yowp4"]
 [ext_resource type="Script" path="res://core/player/state_machine/base.gd" id="4_cfiqb"]
 [ext_resource type="Script" path="res://core/player/state_machine/idel.gd" id="5_vfcpx"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="11_vxaa8"]
 [ext_resource type="Script" path="res://core/player/state_machine/air.gd" id="11_xgemw"]
 [ext_resource type="Script" path="res://core/player/state_machine/lift.gd" id="12_n7puq"]
+[ext_resource type="Script" path="res://core/component/SoundEffect.gd" id="13_3dp3u"]
 [ext_resource type="Script" path="res://core/player/fastrun.gd" id="13_63inm"]
 [ext_resource type="Script" path="res://core/player/state_machine/fall.gd" id="13_jcu6v"]
 [ext_resource type="Script" path="res://core/player/state_machine/landing.gd" id="14_ovtxq"]
@@ -46,91 +47,7 @@
 [ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
 [ext_resource type="Script" path="res://core/player/listener.gd" id="36_s8yav"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1h48"]
-render_priority = 0
-shader = ExtResource("2_ivk8k")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmu8e"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d02gq"]
-bg_color = Color(0.0784314, 0.698039, 0.862745, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_odo7y"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_fmu8e")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_d02gq")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqmd1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exo4c"]
-bg_color = Color(0.345098, 1, 0.776471, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_1jd7q"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_uqmd1")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_exo4c")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bicl"]
-bg_color = Color(0, 0.615686, 0.45098, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx3nq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxn1"]
-bg_color = Color(1, 0.34902, 0.34902, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_xmfd2"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lubfn"]
-bg_color = Color(0, 1, 0, 0.937255)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_top = 1.0
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_o685y"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1i65"]
-bg_color = Color(1, 1, 1, 0.352941)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_top = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn07y"]
-bg_color = Color(1, 0, 0, 0.482353)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_top = 1.0
-anti_aliasing = false
+[ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="41_wirj6"]
 
 [sub_resource type="Shader" id="Shader_ko2lk"]
 code = "shader_type canvas_item;
@@ -221,9 +138,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
-size = Vector2(34, 77)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmv73"]
 size = Vector2(90, 78)
 
@@ -242,13 +156,97 @@ size = Vector2(185, 29.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydvp7"]
 size = Vector2(114, 62)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmu8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d02gq"]
+bg_color = Color(0.0784314, 0.698039, 0.862745, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_odo7y"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_fmu8e")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_d02gq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqmd1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exo4c"]
+bg_color = Color(0.345098, 1, 0.776471, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_1jd7q"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_uqmd1")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_exo4c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bicl"]
+bg_color = Color(0, 0.615686, 0.45098, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx3nq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxn1"]
+bg_color = Color(1, 0.34902, 0.34902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_xmfd2"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lubfn"]
+bg_color = Color(0, 1, 0, 0.937255)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_o685y"]
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1i65"]
+bg_color = Color(1, 1, 1, 0.352941)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn07y"]
+bg_color = Color(1, 0, 0, 0.482353)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+anti_aliasing = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
+size = Vector2(34, 77)
+
 [sub_resource type="Animation" id="Animation_ine36"]
 resource_name = "attack0"
 length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/path = NodePath("../Animation/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -260,7 +258,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/path = NodePath("../Animation/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -272,7 +270,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../HitBox:monitorable")
+tracks/2/path = NodePath("../Area/HitBox:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -284,7 +282,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("../HitBox/attack0:disabled")
+tracks/3/path = NodePath("../Area/HitBox/attack0:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -296,7 +294,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../HitBox")
+tracks/4/path = NodePath("../Area/HitBox")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -313,7 +311,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../TopSprite:frame")
+tracks/5/path = NodePath("../Animation/TopSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -325,7 +323,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TopSprite:animation")
+tracks/6/path = NodePath("../Animation/TopSprite:animation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -341,7 +339,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/path = NodePath("../Animation/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -353,7 +351,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/path = NodePath("../Animation/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -365,7 +363,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../HitBox:monitorable")
+tracks/2/path = NodePath("../Area/HitBox:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -377,7 +375,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("../HitBox/attack1:disabled")
+tracks/3/path = NodePath("../Area/HitBox/attack1:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -389,7 +387,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../HitBox")
+tracks/4/path = NodePath("../Area/HitBox")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -406,7 +404,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../TopSprite:animation")
+tracks/5/path = NodePath("../Animation/TopSprite:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -418,7 +416,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TopSprite:frame")
+tracks/6/path = NodePath("../Animation/TopSprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -434,7 +432,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/path = NodePath("../Animation/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -446,7 +444,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/path = NodePath("../Animation/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -458,7 +456,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../HitBox:monitorable")
+tracks/2/path = NodePath("../Area/HitBox:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -470,7 +468,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("../HitBox/attack2:disabled")
+tracks/3/path = NodePath("../Area/HitBox/attack2:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -482,7 +480,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../HitBox")
+tracks/4/path = NodePath("../Area/HitBox")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -499,7 +497,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../TopSprite:animation")
+tracks/5/path = NodePath("../Animation/TopSprite:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -511,7 +509,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TopSprite:frame")
+tracks/6/path = NodePath("../Animation/TopSprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -527,7 +525,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/path = NodePath("../Animation/Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -539,7 +537,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/path = NodePath("../Animation/Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -551,7 +549,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../FX")
+tracks/2/path = NodePath("../Animation/FX")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -565,7 +563,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../HitBox")
+tracks/3/path = NodePath("../Area/HitBox")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -582,7 +580,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = false
-tracks/4/path = NodePath("../HitBox/attack3:disabled")
+tracks/4/path = NodePath("../Area/HitBox/attack3:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -594,7 +592,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../TopSprite:frame")
+tracks/5/path = NodePath("../Animation/TopSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -606,7 +604,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TopSprite:animation")
+tracks/6/path = NodePath("../Animation/TopSprite:animation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -624,6 +622,34 @@ _data = {
 "attack3": SubResource("Animation_6efy6")
 }
 
+[sub_resource type="Resource" id="Resource_ngj6c"]
+script = ExtResource("41_wirj6")
+start_time = 0.0
+se_name = "slash7"
+se_speed = 1.0
+se_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_yqrky"]
+script = ExtResource("41_wirj6")
+start_time = 0.0
+se_name = "slash1"
+se_speed = 1.0
+se_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_64uwp"]
+script = ExtResource("41_wirj6")
+start_time = 0.0
+se_name = "slash4"
+se_speed = 1.0
+se_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_5kwbh"]
+script = ExtResource("41_wirj6")
+start_time = 0.0
+se_name = "slash2"
+se_speed = 1.0
+se_pitch = 1.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 platform_wall_layers = 1
@@ -635,12 +661,120 @@ max_speed_dash = 800
 unique_name_in_owner = true
 script = ExtResource("2_lm5ts")
 
-[node name="ScreenVec2" type="Node2D" parent="."]
-material = SubResource("ShaderMaterial_f1h48")
-position = Vector2(0, 33)
-script = ExtResource("3_lk37i")
+[node name="Animation" type="Node2D" parent="."]
 
-[node name="Light" parent="." instance=ExtResource("2_tctxi")]
+[node name="Area2D" parent="Animation" instance=ExtResource("3_s4ej5")]
+playing = true
+speed_scale = 1.0
+backward = false
+loop = false
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Animation"]
+light_mask = 33
+material = SubResource("ShaderMaterial_nktfc")
+position = Vector2(0, 38)
+scale = Vector2(2.1, 2.1)
+sprite_frames = ExtResource("3_o7jyy")
+animation = &"attack0"
+autoplay = "idle"
+offset = Vector2(16.7778, -4.44444)
+
+[node name="TopSprite" type="AnimatedSprite2D" parent="Animation"]
+visible = false
+modulate = Color(1, 1, 1, 0.0784314)
+light_mask = 33
+z_index = 10
+material = SubResource("ShaderMaterial_nktfc")
+position = Vector2(0, 38)
+scale = Vector2(2.1, 2.1)
+sprite_frames = ExtResource("3_o7jyy")
+animation = &"attack0"
+autoplay = "idle"
+offset = Vector2(16.7778, -4.44444)
+
+[node name="FX" type="Node2D" parent="Animation"]
+position = Vector2(0, -4)
+script = ExtResource("3_12nqg")
+time = 0.378
+
+[node name="SwordWind" parent="Animation/FX" instance=ExtResource("11_vxaa8")]
+visible = false
+damage = 5.0
+
+[node name="SwordWind" type="CollisionShape2D" parent="Animation/FX/SwordWind"]
+position = Vector2(45.125, 41)
+scale = Vector2(2.1, 2.1)
+shape = SubResource("RectangleShape2D_3p44w")
+disabled = true
+
+[node name="base" type="AnimatedSprite2D" parent="Animation/FX/SwordWind"]
+light_mask = 0
+material = SubResource("ShaderMaterial_b4nvo")
+position = Vector2(35, 54)
+scale = Vector2(2.1, 2.1)
+sprite_frames = SubResource("SpriteFrames_hqefk")
+animation = &"sword-wind"
+autoplay = "sword-wind"
+frame_progress = 0.988256
+
+[node name="Reflection" type="AnimatedSprite2D" parent="Animation"]
+visible = false
+sprite_frames = ExtResource("3_yowp4")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area" type="Node2D" parent="."]
+
+[node name="PlayerLightable" type="Area2D" parent="Area"]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+script = ExtResource("37_ka7u1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/PlayerLightable"]
+visible = false
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_rmv73")
+
+[node name="HurtBox" parent="Area" node_paths=PackedStringArray("signal_node_list", "shape_list") instance=ExtResource("10_lcjil")]
+signal_node_list = [NodePath("../../state_manager"), NodePath("../../state_manager/base/combat/dense")]
+shape_list = [NodePath("CollisionShape2D")]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/HurtBox"]
+visible = false
+position = Vector2(0, 41)
+shape = SubResource("RectangleShape2D_ganra")
+
+[node name="HitBox" parent="Area" instance=ExtResource("11_vxaa8")]
+
+[node name="attack0" type="CollisionShape2D" parent="Area/HitBox"]
+visible = false
+position = Vector2(47.5, 45.5)
+shape = SubResource("RectangleShape2D_gur2b")
+disabled = true
+
+[node name="attack1" type="CollisionShape2D" parent="Area/HitBox"]
+visible = false
+position = Vector2(59.4063, 40.25)
+shape = SubResource("RectangleShape2D_ffvo3")
+disabled = true
+
+[node name="attack2" type="CollisionShape2D" parent="Area/HitBox"]
+visible = false
+position = Vector2(33.5, 46.125)
+shape = SubResource("RectangleShape2D_q6v24")
+disabled = true
+
+[node name="attack3" type="CollisionShape2D" parent="Area/HitBox"]
+visible = false
+position = Vector2(57, 30)
+shape = SubResource("RectangleShape2D_ydvp7")
+disabled = true
+
+[node name="Light" parent="Area" instance=ExtResource("2_tctxi")]
 visible = false
 position = Vector2(0, -43)
 scale = Vector2(2.1, 2.1)
@@ -648,6 +782,20 @@ max_bright = 1.7
 min_bright = 0.541
 trans_time = 0.5
 vfx_colored = true
+
+[node name="Marker" type="Node2D" parent="."]
+
+[node name="ScreenVec2" type="Node2D" parent="Marker"]
+position = Vector2(0, 33)
+script = ExtResource("3_lk37i")
+
+[node name="DialoguePosition" type="Marker2D" parent="Marker"]
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="UpdateTimer" type="Timer" parent="Timer"]
+wait_time = 0.05
+autostart = true
 
 [node name="UI" type="Node2D" parent="."]
 script = ExtResource("27_cru4u")
@@ -732,6 +880,89 @@ one_shot = true
 [node name="HealthBarBackTimer" type="Timer" parent="UI"]
 one_shot = true
 
+[node name="TestLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 9
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gravity" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "重量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TL2" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="UI/TL2"]
+autostart = true
+
+[node name="TestLabel3" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_ayrpq")
+theme_override_font_sizes/font_size = 10
+text = "测试"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Rays" type="Node2D" parent="."]
 z_index = 1
 
@@ -757,120 +988,20 @@ position = Vector2(0, 43)
 target_position = Vector2(0, 1000)
 collide_with_areas = true
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-light_mask = 33
-material = SubResource("ShaderMaterial_nktfc")
-position = Vector2(0, 38)
-scale = Vector2(2.1, 2.1)
-sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack0"
-autoplay = "idle"
-offset = Vector2(16.7778, -4.44444)
-
-[node name="TopSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.0784314)
-light_mask = 33
-z_index = 10
-material = SubResource("ShaderMaterial_nktfc")
-position = Vector2(0, 38)
-scale = Vector2(2.1, 2.1)
-sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack0"
-autoplay = "idle"
-offset = Vector2(16.7778, -4.44444)
-
-[node name="FX" type="Node2D" parent="."]
-position = Vector2(0, -4)
-script = ExtResource("3_12nqg")
-time = 0.378
-
-[node name="SwordWind" parent="FX" instance=ExtResource("11_vxaa8")]
-visible = false
-damage = 5.0
-
-[node name="SwordWind" type="CollisionShape2D" parent="FX/SwordWind"]
-position = Vector2(45.125, 41)
-scale = Vector2(2.1, 2.1)
-shape = SubResource("RectangleShape2D_3p44w")
-disabled = true
-
-[node name="base" type="AnimatedSprite2D" parent="FX/SwordWind"]
-light_mask = 0
-material = SubResource("ShaderMaterial_b4nvo")
-position = Vector2(35, 54)
-scale = Vector2(2.1, 2.1)
-sprite_frames = SubResource("SpriteFrames_hqefk")
-animation = &"sword-wind"
-autoplay = "sword-wind"
-frame_progress = 0.988256
-
-[node name="UpdateTimer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-
-[node name="Reflection" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = ExtResource("3_yowp4")
-animation = &"idle"
-autoplay = "idle"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-1, 25.5)
 shape = SubResource("RectangleShape2D_1p7aw")
 
-[node name="PlayerLightable" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 0
-monitorable = false
-script = ExtResource("37_ka7u1")
+[node name="Component" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLightable"]
-visible = false
-position = Vector2(0, 25)
-shape = SubResource("RectangleShape2D_rmv73")
-
-[node name="HurtBox" parent="." node_paths=PackedStringArray("signal_node_list", "shape_list") instance=ExtResource("10_lcjil")]
-signal_node_list = [NodePath("../state_manager"), NodePath("../state_manager/base/combat/dense")]
-shape_list = [NodePath("CollisionShape2D")]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
-position = Vector2(0, 41)
-shape = SubResource("RectangleShape2D_ganra")
-
-[node name="HitBox" parent="." instance=ExtResource("11_vxaa8")]
-
-[node name="attack0" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2(47.5, 45.5)
-shape = SubResource("RectangleShape2D_gur2b")
-disabled = true
-
-[node name="attack1" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2(59.4063, 40.25)
-shape = SubResource("RectangleShape2D_ffvo3")
-disabled = true
-
-[node name="attack2" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2(33.5, 46.125)
-shape = SubResource("RectangleShape2D_q6v24")
-disabled = true
-
-[node name="attack3" type="CollisionShape2D" parent="HitBox"]
-visible = false
-position = Vector2(57, 30)
-shape = SubResource("RectangleShape2D_ydvp7")
-disabled = true
+[node name="SoundEffect" type="Node" parent="Component"]
+script = ExtResource("13_3dp3u")
 
 [node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
 script = ExtResource("3_5tfn6")
 starting_node = NodePath("base/idle")
+debug_print = true
 
 [node name="Aniplayer" type="AnimationPlayer" parent="state_manager"]
 libraries = {
@@ -964,7 +1095,6 @@ is_normal_state = false
 
 [node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("23_t1hct")
-stiff_time = 0.07
 protect_time = 0.0
 change_sprite_color = true
 sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
@@ -993,59 +1123,77 @@ unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
 
-[node name="attack" type="Node" parent="state_manager/base/combat"]
+[node name="_attack" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("29_orn37")
+damage = null
+to_next_attack_threshold = null
+after_attack_stiff_time = null
+listen_next_attack_time = null
+ani_name = null
+sound_name = null
+moveable = null
+change_face_able = null
+move_speed_scale_to_walk = null
+change_animation = null
+change_sprite_color = null
+sprite_color = null
+is_normal_state = null
+sound_config = null
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack"]
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack"]
 one_shot = true
 
-[node name="attack0" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
+[node name="attack0" type="Node" parent="state_manager/base/combat/_attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("28_xf5em")
 damage = 2.0
 next_attack = NodePath("../attack1")
-after_attack_stiff_time = 0.1
-listen_next_attack_time = 0.5
+after_attack_stiff_time = 0.0
+listen_next_attack_time = 0.2
 is_normal_state = false
+sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_ngj6c")])
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack0"]
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack0"]
 one_shot = true
 
-[node name="attack1" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
+[node name="attack1" type="Node" parent="state_manager/base/combat/_attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("27_45d83")
 damage = 4.0
 next_attack = NodePath("../attack2")
-after_attack_stiff_time = 0.1
+after_attack_stiff_time = 0.0
 listen_next_attack_time = 0.2
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
 is_normal_state = false
+sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_yqrky")])
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack1"]
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack1"]
 one_shot = true
 
-[node name="attack2" type="Node" parent="state_manager/base/combat/attack" node_paths=PackedStringArray("next_attack")]
+[node name="attack2" type="Node" parent="state_manager/base/combat/_attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("30_r8cot")
 damage = 6.0
 next_attack = NodePath("../attack3")
-after_attack_stiff_time = 0.2
+after_attack_stiff_time = 0.1
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
 is_normal_state = false
+sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_64uwp")])
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack2"]
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack2"]
 one_shot = true
 
-[node name="attack3" type="Node" parent="state_manager/base/combat/attack"]
+[node name="attack3" type="Node" parent="state_manager/base/combat/_attack"]
 script = ExtResource("32_l8rk1")
 damage = 10.0
-after_attack_stiff_time = 0.4
+after_attack_stiff_time = 0.3
 listen_next_attack_time = 0.0
 sound_name = "slash2"
 change_face_able = false
 move_speed_scale_to_walk = 0.1
 is_normal_state = false
+sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_5kwbh")])
 
-[node name="attackTimer" type="Timer" parent="state_manager/base/combat/attack/attack3"]
+[node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack3"]
 one_shot = true
 
 [node name="listener" type="Node" parent="state_manager"]
@@ -1054,91 +1202,6 @@ script = ExtResource("36_s8yav")
 [node name="Timer" type="Timer" parent="state_manager/listener"]
 one_shot = true
 
-[node name="DialoguePosition" type="Marker2D" parent="."]
-
-[node name="TestLabel" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -14.0
-offset_right = 20.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 9
-text = "测试"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gravity" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = 2.0
-offset_right = -5.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 10
-text = "重量"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TL2" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -27.0
-offset_right = 20.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 10
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Timer" parent="TL2"]
-autostart = true
-
-[node name="TestLabel3" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -31.0
-offset_right = 20.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 10
-text = "测试"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SaveDataCollector" type="Node" parent="."]
 script = ExtResource("31_s4hwe")
 
@@ -1146,11 +1209,12 @@ script = ExtResource("31_s4hwe")
 script = ExtResource("32_xf8id")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="area_entered" from="Area/PlayerLightable" to="Area/PlayerLightable" method="_on_area_entered"]
+[connection signal="area_exited" from="Area/PlayerLightable" to="Area/PlayerLightable" method="_on_area_exited"]
+[connection signal="timeout" from="Timer/UpdateTimer" to="." method="_on_update_timer_timeout"]
 [connection signal="timeout" from="UI/FightingDelayTimer" to="UI" method="_on_fighting_delay_timer_timeout"]
 [connection signal="timeout" from="UI/HealthBarBackTimer" to="UI" method="_on_health_bar_back_timer_timeout"]
-[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]
-[connection signal="area_entered" from="PlayerLightable" to="PlayerLightable" method="_on_area_entered"]
-[connection signal="area_exited" from="PlayerLightable" to="PlayerLightable" method="_on_area_exited"]
+[connection signal="timeout" from="UI/TL2/Timer" to="UI" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/ground/dash/Timer" to="state_manager/base/ground/dash" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseTimer" to="state_manager/base/combat/dense" method="_on_dense_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseCooldownTimer" to="state_manager/base/combat/dense" method="_on_dense_cooldown_timer_timeout"]
@@ -1160,4 +1224,3 @@ script = ExtResource("32_xf8id")
 [connection signal="timeout" from="state_manager/base/combat/light/lightTimer" to="state_manager/base/combat/light" method="_on_light_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightCooldownTimer" to="state_manager/base/combat/light" method="_on_light_cooldown_timer_timeout"]
 [connection signal="timeout" from="state_manager/listener/Timer" to="state_manager/listener" method="_on_timer_timeout"]
-[connection signal="timeout" from="TL2/Timer" to="UI" method="_on_timer_timeout"]

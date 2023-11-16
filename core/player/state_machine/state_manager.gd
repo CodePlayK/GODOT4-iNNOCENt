@@ -2,6 +2,7 @@ extends Node
 ##[必须挂在于Player下] 玩家状态机
 class_name PlayerStateManager
 @export var starting_node:Node
+@export var debug_print:bool
 @onready var player: Player = $".."
 @onready var starting_state: BaseState = starting_node
 @onready var test_label=%TestLabel
@@ -73,6 +74,7 @@ func physics_process(delta: float) -> void:
 func input(event: InputEvent) -> void:
 	if listener.enable:
 		if listener.input(event):return
+		#listener.input(event)
 	var new_state
 	var common_input = common_state(event)
 	if common_input:
@@ -96,11 +98,12 @@ func get_childen_node(node:Node):
 			get_childen_node(child)
 			
 func print_state_change(a,b):
+	if !debug_print:return
 	var format_string = "「Player」状态机切换: [%s] --> [%s]"
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
-	#Debug.dprintinfo(actual_string)
+	Debug.dprintinfo(actual_string)
 	test_label.text=actual_string1
 	return actual_string
 

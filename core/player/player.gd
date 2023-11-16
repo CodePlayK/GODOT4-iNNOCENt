@@ -26,13 +26,13 @@ class_name Player extends CharacterBody2D
 @export var click_jump_force_limit:=5
 ##最低跳跃速度
 @export var min_jump_fource:=70
-@onready var dialogue_position=$DialoguePosition
+@onready var dialogue_position: Marker2D = $Marker/DialoguePosition
 var dialogue_names:Array =["伊芙利特","伊芙芙"]
 var on_ready=false
 var start_position
-@onready var base: = $Sprite
-@onready var front_base: = $TopSprite
-@onready var reflection: = $Reflection
+@onready var base: AnimatedSprite2D = $Animation/Sprite
+@onready var front_base: AnimatedSprite2D = $Animation/TopSprite
+@onready var reflection: AnimatedSprite2D = $Animation/Reflection
 @onready var states: = $state_manager
 @onready var ladder_checker: RayCast2D = $Rays/ladderChecker
 @onready var ground_checker: RayCast2D = $Rays/groundChecker
@@ -40,8 +40,9 @@ var start_position
 @onready var block_checker_right: RayCast2D = $Rays/blockCheckerRight
 @onready var ui: Node2D = $UI
 @onready var player_camera = $PlayerCamera
-@onready var hit_box: Area2D = $HitBox
-@onready var hurt_box: Area2D = $HurtBox
+@onready var hit_box: HitBox = $Area/HitBox
+@onready var hurt_box: HurtBox = $Area/HurtBox
+@onready var sound_effect: SoundEffect = $Component/SoundEffect
 
 
 func _ready() -> void:

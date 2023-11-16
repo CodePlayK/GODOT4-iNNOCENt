@@ -32,6 +32,11 @@ var SE_dic={
  "cut-body":[preload("res://core/resource/sound/SE/cut-body.mp3" )],
  "knife-stab":[preload("res://core/resource/sound/SE/knife-stab.mp3")],
  "lazer":[preload("res://core/resource/sound/SE/lazer.mp3")],
+ "foot_step": [preload("res://core/resource/sound/SE/footsteps-sneakers-on-tile-running-33003_amTjc1NI.mp3" ),-10,true],
+ "bare_foot_step":[preload( "res://core/resource/sound/SE/19-pasos-nina-ver2-29199_qZzBtE62.mp3" ),-5,true],
+ "forest-ambient":[preload( "res://core/resource/sound/SE/loop/mystic-forest-ambient.mp3" ),-5,false],
+ "wind-in-trees":[preload( "res://core/resource/sound/SE/loop/wind-in-trees.mp3" ),-5,false],
+ "running-in-grass":[preload( "res://core/resource/sound/SE/loop/running-in-grass.mp3" ),-5,true],
 }
 #资源，声量，是否在切换场景时停止
 var SE_LOOP_dic={
@@ -187,4 +192,4 @@ func set_se_audio_player(effect_name,k_name,speed:float=1.0,effect_volume:float=
 	SE_player[k_name].set_volume_db(effect_volume)
 	if SE_dic.get(effect_name).size()>1 and effect_volume==0:
 		SE_player[k_name].set_volume_db(SE_dic.get(effect_name)[1])	
-	SE_player[k_name].play()
+	#SE_player[k_name].play()

@@ -5,7 +5,7 @@ var obj_name = "test"
 @onready var hit_box: HitBox = $HitBox
 			
 func play():
-	anime.play_anime()
+	anime.play_anime("attack")
 
 func _on_button_button_down() -> void:
 	play()

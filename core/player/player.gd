@@ -43,6 +43,8 @@ var start_position
 @onready var hit_box: HitBox = $Area/HitBox
 @onready var hurt_box: HurtBox = $Area/HurtBox
 @onready var sound_effect: SoundEffect = $Component/SoundEffect
+@onready var anime: Anime = $Animation/Anime
+@onready var fx: Node2D = $Animation/FX
 
 
 func _ready() -> void:

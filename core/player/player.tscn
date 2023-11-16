@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=147 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
@@ -9,7 +9,9 @@
 [ext_resource type="SpriteFrames" uid="uid://df0noclsi0k7r" path="res://core/player/animation/player-2.tres" id="3_o7jyy"]
 [ext_resource type="PackedScene" uid="uid://bewwlmeborpfh" path="res://core/room/common/anime/anime.tscn" id="3_s4ej5"]
 [ext_resource type="SpriteFrames" uid="uid://b20x1sbpuk3ub" path="res://core/player/animation/player-1.tres" id="3_yowp4"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="4_2r7s4"]
 [ext_resource type="Script" path="res://core/player/state_machine/base.gd" id="4_cfiqb"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeSoundConfig.gd" id="5_qhscb"]
 [ext_resource type="Script" path="res://core/player/state_machine/idel.gd" id="5_vfcpx"]
 [ext_resource type="Script" path="res://core/player/state_machine/jump.gd" id="6_i3ary"]
 [ext_resource type="Script" path="res://core/player/state_machine/ground.gd" id="7_dbdva"]
@@ -35,6 +37,7 @@
 [ext_resource type="FontFile" uid="uid://cth46tmy4cprv" path="res://core/resource/font/DinkieBitmap-9pxDemo.ttf" id="18_ayrpq"]
 [ext_resource type="Script" path="res://core/player/state_machine/hard.gd" id="19_lsxjt"]
 [ext_resource type="Script" path="res://core/player/state_machine/behit.gd" id="20_yn2ld"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeHitBoxConfig.gd" id="22_t8cpf"]
 [ext_resource type="Script" path="res://core/player/state_machine/safed.gd" id="22_vpmtv"]
 [ext_resource type="Script" path="res://core/player/state_machine/damaged.gd" id="23_t1hct"]
 [ext_resource type="Script" path="res://core/player/attack1.gd" id="27_45d83"]
@@ -48,6 +51,266 @@
 [ext_resource type="Script" path="res://core/player/listener.gd" id="36_s8yav"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
 [ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="41_wirj6"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeFxConfig.gd" id="49_kfo7e"]
+
+[sub_resource type="Resource" id="Resource_j7uql"]
+script = ExtResource("5_qhscb")
+se_name = "slash"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_bxh3r"]
+script = ExtResource("4_2r7s4")
+animation_name = "attack0"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_j7uql")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_1bf2d"]
+script = ExtResource("4_2r7s4")
+animation_name = "attack1"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_355he"]
+script = ExtResource("4_2r7s4")
+animation_name = "attack2"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_7lvg1"]
+script = ExtResource("4_2r7s4")
+animation_name = "attack3"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_yy111"]
+script = ExtResource("4_2r7s4")
+animation_name = "behitDamaged"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_w246x"]
+script = ExtResource("4_2r7s4")
+animation_name = "behitDenseSafed"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_g3kvc"]
+script = ExtResource("4_2r7s4")
+animation_name = "climb"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_pohfn"]
+script = ExtResource("4_2r7s4")
+animation_name = "dash"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_5qiie"]
+script = ExtResource("4_2r7s4")
+animation_name = "dense"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_l65jf"]
+script = ExtResource("4_2r7s4")
+animation_name = "double_jump"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_s085c"]
+script = ExtResource("4_2r7s4")
+animation_name = "fall"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_w5wk7"]
+script = ExtResource("4_2r7s4")
+animation_name = "fastrun"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_4t8ty"]
+script = ExtResource("4_2r7s4")
+animation_name = "idle"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_g4en5"]
+script = ExtResource("4_2r7s4")
+animation_name = "jump"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_8ch2k"]
+script = ExtResource("4_2r7s4")
+animation_name = "landing"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_shs07"]
+script = ExtResource("4_2r7s4")
+animation_name = "lift"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_gk8s2"]
+script = ExtResource("4_2r7s4")
+animation_name = "lightJump"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_6cuqn"]
+script = ExtResource("4_2r7s4")
+animation_name = "run"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_kx7pr"]
+script = ExtResource("4_2r7s4")
+animation_name = "run_mad"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_87kvp"]
+script = ExtResource("4_2r7s4")
+animation_name = "talk"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_ey4vi"]
+script = ExtResource("4_2r7s4")
+animation_name = "toptrans"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_n30ba"]
+script = ExtResource("4_2r7s4")
+animation_name = "wake_up"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_uohmr"]
+script = ExtResource("4_2r7s4")
+animation_name = "wake_up_mad"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_xtf3c"]
+script = ExtResource("4_2r7s4")
+animation_name = "walk"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_tykuy"]
+script = ExtResource("4_2r7s4")
+animation_name = "walk_mad"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = null
 
 [sub_resource type="Shader" id="Shader_ko2lk"]
 code = "shader_type canvas_item;
@@ -622,12 +885,216 @@ _data = {
 "attack3": SubResource("Animation_6efy6")
 }
 
+[sub_resource type="Resource" id="Resource_ocvln"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_6qiw6"]
+script = ExtResource("5_qhscb")
+se_name = "running-in-grass"
+start_frame = 0
+end_frame = 0
+se_speed = 0.7
+se_pitch = 10.0
+stop_on_exit_state = true
+
+[sub_resource type="Resource" id="Resource_7wlf8"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_6qiw6")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_asrmf"]
+script = ExtResource("5_qhscb")
+se_name = "running-in-grass"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = true
+
+[sub_resource type="Resource" id="Resource_clj7s"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_asrmf")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_fk2k2"]
+script = ExtResource("5_qhscb")
+se_name = "NA"
+start_frame = 0
+end_frame = 0
+se_speed = 1.3
+se_pitch = 1.0
+stop_on_exit_state = true
+
+[sub_resource type="Resource" id="Resource_qf5tv"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_fk2k2")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_jnhdx"]
+script = ExtResource("5_qhscb")
+se_name = "lazer"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = -15.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_loi7o"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_jnhdx")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_mmxem"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_1w6hl"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_w5k0p"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("5_qhscb")]([])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_7oppr"]
+script = ExtResource("5_qhscb")
+se_name = "steel_clash"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_bsjdi"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_7oppr")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_mosan"]
+script = ExtResource("5_qhscb")
+se_name = "be_hit_by_body"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_tog1h"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_mosan")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
+[sub_resource type="Resource" id="Resource_gao3c"]
+script = ExtResource("22_t8cpf")
+collision_index = 0
+hit_start_frame = 1
+hit_end_frame = 3
+
+[sub_resource type="Resource" id="Resource_838pa"]
+script = ExtResource("5_qhscb")
+se_name = "slash7"
+start_frame = 1
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = true
+
+[sub_resource type="Resource" id="Resource_7l1iw"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_838pa")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_gao3c")])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
 [sub_resource type="Resource" id="Resource_ngj6c"]
 script = ExtResource("41_wirj6")
 start_time = 0.0
 se_name = "slash7"
 se_speed = 1.0
 se_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_h47wd"]
+script = ExtResource("22_t8cpf")
+collision_index = 1
+hit_start_frame = 0
+hit_end_frame = 2
+
+[sub_resource type="Resource" id="Resource_xl4fv"]
+script = ExtResource("5_qhscb")
+se_name = "slash1"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_78hrk"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_xl4fv")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_h47wd")])
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_yqrky"]
 script = ExtResource("41_wirj6")
@@ -636,12 +1103,67 @@ se_name = "slash1"
 se_speed = 1.0
 se_pitch = 1.0
 
+[sub_resource type="Resource" id="Resource_cj6jy"]
+script = ExtResource("22_t8cpf")
+collision_index = 2
+hit_start_frame = 0
+hit_end_frame = 2
+
+[sub_resource type="Resource" id="Resource_ru668"]
+script = ExtResource("5_qhscb")
+se_name = "slash4"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_y0dw7"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_ru668")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_cj6jy")])
+fx_config = Array[ExtResource("49_kfo7e")]([])
+
 [sub_resource type="Resource" id="Resource_64uwp"]
 script = ExtResource("41_wirj6")
 start_time = 0.0
 se_name = "slash4"
 se_speed = 1.0
 se_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_ds5yf"]
+script = ExtResource("49_kfo7e")
+launch_obj_name = "SwordWind"
+start_frame = 1
+
+[sub_resource type="Resource" id="Resource_y725a"]
+script = ExtResource("22_t8cpf")
+collision_index = 3
+hit_start_frame = 1
+hit_end_frame = 3
+
+[sub_resource type="Resource" id="Resource_gbglk"]
+script = ExtResource("5_qhscb")
+se_name = "slash2"
+start_frame = 1
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_nie2s"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_gbglk")])
+hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_y725a")])
+fx_config = Array[ExtResource("49_kfo7e")]([SubResource("Resource_ds5yf")])
 
 [sub_resource type="Resource" id="Resource_5kwbh"]
 script = ExtResource("41_wirj6")
@@ -663,12 +1185,10 @@ script = ExtResource("2_lm5ts")
 
 [node name="Animation" type="Node2D" parent="."]
 
-[node name="Area2D" parent="Animation" instance=ExtResource("3_s4ej5")]
-playing = true
-speed_scale = 1.0
-backward = false
-loop = false
-hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+[node name="Anime" parent="Animation" node_paths=PackedStringArray("base") instance=ExtResource("3_s4ej5")]
+base = NodePath("../Sprite")
+current_animation = "attack0"
+animes = Array[ExtResource("4_2r7s4")]([SubResource("Resource_bxh3r"), SubResource("Resource_1bf2d"), SubResource("Resource_355he"), SubResource("Resource_7lvg1"), SubResource("Resource_yy111"), SubResource("Resource_w246x"), SubResource("Resource_g3kvc"), SubResource("Resource_pohfn"), SubResource("Resource_5qiie"), SubResource("Resource_l65jf"), SubResource("Resource_s085c"), SubResource("Resource_w5wk7"), SubResource("Resource_4t8ty"), SubResource("Resource_g4en5"), SubResource("Resource_8ch2k"), SubResource("Resource_shs07"), SubResource("Resource_gk8s2"), SubResource("Resource_6cuqn"), SubResource("Resource_kx7pr"), SubResource("Resource_87kvp"), SubResource("Resource_ey4vi"), SubResource("Resource_n30ba"), SubResource("Resource_uohmr"), SubResource("Resource_xtf3c"), SubResource("Resource_tykuy")])
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Animation"]
 light_mask = 33
@@ -676,8 +1196,9 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack0"
+animation = &"attack3"
 autoplay = "idle"
+frame = 3
 offset = Vector2(16.7778, -4.44444)
 
 [node name="TopSprite" type="AnimatedSprite2D" parent="Animation"]
@@ -703,6 +1224,7 @@ visible = false
 damage = 5.0
 
 [node name="SwordWind" type="CollisionShape2D" parent="Animation/FX/SwordWind"]
+visible = false
 position = Vector2(45.125, 41)
 scale = Vector2(2.1, 2.1)
 shape = SubResource("RectangleShape2D_3p44w")
@@ -751,25 +1273,21 @@ shape = SubResource("RectangleShape2D_ganra")
 [node name="HitBox" parent="Area" instance=ExtResource("11_vxaa8")]
 
 [node name="attack0" type="CollisionShape2D" parent="Area/HitBox"]
-visible = false
 position = Vector2(47.5, 45.5)
 shape = SubResource("RectangleShape2D_gur2b")
 disabled = true
 
 [node name="attack1" type="CollisionShape2D" parent="Area/HitBox"]
-visible = false
 position = Vector2(59.4063, 40.25)
 shape = SubResource("RectangleShape2D_ffvo3")
 disabled = true
 
 [node name="attack2" type="CollisionShape2D" parent="Area/HitBox"]
-visible = false
 position = Vector2(33.5, 46.125)
 shape = SubResource("RectangleShape2D_q6v24")
 disabled = true
 
 [node name="attack3" type="CollisionShape2D" parent="Area/HitBox"]
-visible = false
 position = Vector2(57, 30)
 shape = SubResource("RectangleShape2D_ydvp7")
 disabled = true
@@ -1015,6 +1533,7 @@ script = ExtResource("4_cfiqb")
 
 [node name="idle" type="Node" parent="state_manager/base"]
 script = ExtResource("5_vfcpx")
+anime_config = SubResource("Resource_ocvln")
 
 [node name="jump" type="Node" parent="state_manager/base"]
 script = ExtResource("6_i3ary")
@@ -1024,17 +1543,21 @@ script = ExtResource("7_dbdva")
 
 [node name="walk" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("8_m3e85")
+anime_config = SubResource("Resource_7wlf8")
 
 [node name="run" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("9_oqdiy")
+anime_config = SubResource("Resource_clj7s")
 
 [node name="fastrun" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("13_63inm")
+anime_config = SubResource("Resource_qf5tv")
 
 [node name="dash" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("10_otd3s")
 dash_time = 0.2
 is_normal_state = false
+anime_config = SubResource("Resource_loi7o")
 
 [node name="Timer" type="Timer" parent="state_manager/base/ground/dash"]
 one_shot = true
@@ -1048,12 +1571,15 @@ script = ExtResource("11_xgemw")
 
 [node name="lift" type="Node" parent="state_manager/base/air"]
 script = ExtResource("12_n7puq")
+anime_config = SubResource("Resource_mmxem")
 
 [node name="toptrans" type="Node" parent="state_manager/base/air"]
 script = ExtResource("17_d13l0")
+anime_config = SubResource("Resource_1w6hl")
 
 [node name="fall" type="Node" parent="state_manager/base/air"]
 script = ExtResource("13_jcu6v")
+anime_config = SubResource("Resource_w5k0p")
 
 [node name="interactive" type="Node" parent="state_manager/base"]
 script = ExtResource("15_6i115")
@@ -1092,6 +1618,7 @@ is_normal_state = false
 script = ExtResource("22_vpmtv")
 sprite_color = Color(1, 1, 1, 1)
 is_normal_state = false
+anime_config = SubResource("Resource_bsjdi")
 
 [node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("23_t1hct")
@@ -1099,6 +1626,7 @@ protect_time = 0.0
 change_sprite_color = true
 sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
 is_normal_state = false
+anime_config = SubResource("Resource_tog1h")
 
 [node name="ProtectTimer" type="Timer" parent="state_manager/base/combat/behit/behitDamaged"]
 one_shot = true
@@ -1125,20 +1653,6 @@ one_shot = true
 
 [node name="_attack" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("29_orn37")
-damage = null
-to_next_attack_threshold = null
-after_attack_stiff_time = null
-listen_next_attack_time = null
-ani_name = null
-sound_name = null
-moveable = null
-change_face_able = null
-move_speed_scale_to_walk = null
-change_animation = null
-change_sprite_color = null
-sprite_color = null
-is_normal_state = null
-sound_config = null
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack"]
 one_shot = true
@@ -1150,6 +1664,7 @@ next_attack = NodePath("../attack1")
 after_attack_stiff_time = 0.0
 listen_next_attack_time = 0.2
 is_normal_state = false
+anime_config = SubResource("Resource_7l1iw")
 sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_ngj6c")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack0"]
@@ -1164,6 +1679,7 @@ listen_next_attack_time = 0.2
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
 is_normal_state = false
+anime_config = SubResource("Resource_78hrk")
 sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_yqrky")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack1"]
@@ -1177,6 +1693,7 @@ after_attack_stiff_time = 0.1
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
 is_normal_state = false
+anime_config = SubResource("Resource_y0dw7")
 sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_64uwp")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack2"]
@@ -1191,6 +1708,7 @@ sound_name = "slash2"
 change_face_able = false
 move_speed_scale_to_walk = 0.1
 is_normal_state = false
+anime_config = SubResource("Resource_nie2s")
 sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_5kwbh")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack3"]

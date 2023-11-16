@@ -15,10 +15,10 @@ func _process(delta: float) -> void:
 	pass
 
 func launch_obj(fx_name:String):
+	var fx_data =  fx_dic[fx_name]
 	var side:int=1
 	if PlayerState.face_left:
 		side=-1
-	var fx_data =  fx_dic[fx_name]
 	var obj:Area2D = fx_data[0].duplicate()
 	#var material = fx_data[0].base.material.duplicate()
 	#obj.base.material=material

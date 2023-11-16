@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://c67d7gy1g6tty"]
+[gd_scene load_steps=88 format=3 uid="uid://c67d7gy1g6tty"]
 
 [ext_resource type="Script" path="res://core/npcs/npc/script/npc.gd" id="1_g6t10"]
 [ext_resource type="Script" path="res://core/npcs/npc/Vpn.gd" id="2_h4pdk"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://c8rgcfsokceb2" path="res://core/resource/Asset/DARK - FX Pack/Sprite Sheets/All.png" id="6_7ppra"]
 [ext_resource type="PackedScene" uid="uid://cssd4crw3cmet" path="res://core/room/common/hurt box/HurtBox.tscn" id="6_vavpv"]
 [ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="7_qdiri"]
-[ext_resource type="PackedScene" uid="uid://bewwlmeborpfh" path="res://core/room/common/anime/anime.tscn" id="9_v1erj"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="10_738th"]
 [ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="13_68mjx"]
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="13_jp4cx"]
@@ -1301,9 +1300,6 @@ show_percentage = false
 position = Vector2(-1, -16)
 scale = Vector2(2.5, 2.5)
 metadata/_edit_group_ = true
-
-[node name="Anime" parent="Animation" node_paths=PackedStringArray("base") instance=ExtResource("9_v1erj")]
-base = NodePath("base")
 
 [node name="base" type="Sprite2D" parent="Animation"]
 unique_name_in_owner = true

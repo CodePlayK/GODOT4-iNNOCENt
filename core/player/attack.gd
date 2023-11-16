@@ -57,7 +57,7 @@ func enter():
 	PlayerState.attacking=true
 	PlayerState.hitting=true
 	#EventBus._play_SE(sound_name)
-	aniplayer.play(ani_name)
+	#aniplayer.play(ani_name)
 
 func physics_process(delta: float) -> BaseState:
 	if change_face_able:
@@ -80,12 +80,12 @@ func physics_process(delta: float) -> BaseState:
 	
 func exit(state:BaseState):
 	super.exit(state)
-	aniplayer.stop()
+	#aniplayer.stop()
 	player.hit_box.disable_shape()
 	player.hit_box.damage = 0
 	attack_timer.stop()
-	for c in sound_config:
-		stop_sound(c.se_name)
+	#for c in sound_config:
+		#stop_sound(c.se_name)
 	PlayerState.hitting=false
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时
 	#开启监听

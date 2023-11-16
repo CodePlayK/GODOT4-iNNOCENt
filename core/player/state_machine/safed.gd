@@ -5,7 +5,7 @@ extends behit
 func enter():
 	super.enter()
 	PlayerState.dense_success_flag=true
-	EventBus._play_SE("steel_clash")
+	#EventBus._play_SE("steel_clash")
 	stiff_timer.start(stiff_time)
 
 func _on_stiff_timer_timeout():

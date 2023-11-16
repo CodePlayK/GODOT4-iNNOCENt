@@ -36,8 +36,8 @@ class_name BaseState
 @export var sprite_color:Color
 ##当前state是否为普通state,即能够在hit或者dense等临时状态后切回
 @export var is_normal_state:bool=true
-@export_group("音效配置")
-@export var sound_config:Array[SoundEffectConfig]
+@export_category("Anime")
+@export var anime_config:AnimeConfig
 ##将要赋予的角色
 var player: Player
 var move:int
@@ -69,6 +69,12 @@ func enter() -> BaseState:
 #退出该状态的方法，每次进入都会执行，在physics_process之后进行
 func exit(state:BaseState):
 	pass
+
+func common_exit():
+	if anime_config and anime_config.sound_config:
+		for c in anime_config.sound_config:
+			if c.stop_on_exit_state:
+				state_manager.anime.stop_sound(c)
 
 func is_animation_play()-> bool:
 	return change_animation
@@ -171,8 +177,9 @@ func is_player_blocked()->bool:
 	return false
 	
 func play_animation():
-	play_sound(sound_config)
-	player.base.play(self.get_name())
+	player.anime.play_anime(self.get_name())
+	#play_sound(sound_config)
+	#player.base.play(self.get_name())
 	#player.front_base.play(self.get_name())
 
 func change_animation_color(flag:bool=false):
@@ -185,12 +192,23 @@ func change_animation_color(flag:bool=false):
 		
 #region 状态机切换默认音效配置
 ##[音效1[开始时间,[音效名,速度,音调]],音效2[开始时间,[音效名,速度,音调]]]
-func play_sound(sound_dics:Array[SoundEffectConfig]):
-	for sound_config:SoundEffectConfig in sound_dics:
-		player.sound_effect.play_se(sound_config,self)
+#func play_sound(sound_dics:Array[SoundEffectConfig]):
+	#for sound_config:SoundEffectConfig in sound_dics:
+		#player.sound_effect.play_se(sound_config,self)
+#
+#func stop_sound(s_name):
+	#for s_config:SoundEffectConfig in sound_config:
+		#if s_config.se_name == s_name:
+			#EventBus._play_SE(s_config.se_name,s_config.se_speed,s_config.se_pitch,str(player.get_instance_id()+get_instance_id()),false)		
 
-func stop_sound(s_name):
-	for s_config:SoundEffectConfig in sound_config:
-		if s_config.se_name == s_name:
-			EventBus._play_SE(s_config.se_name,s_config.se_speed,s_config.se_pitch,str(player.get_instance_id()+get_instance_id()),false)		
 #endregion
+func get_anime_config():
+	if anime_config:
+		if anime_config.animation_name=="NA":
+			anime_config.animation_name = self.name
+		for se in anime_config.sound_config:
+			se.sound_obj_prefix = se.sound_obj_prefix+str(get_instance_id())
+		return anime_config
+	var anime = AnimeConfig.new()
+	anime.animation_name = self.name
+	return anime

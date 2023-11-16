@@ -9,6 +9,7 @@ class_name PlayerStateManager
 @onready var base_state:BaseState=%base
 @onready var listener: Node = $listener
 @onready var aniplayer: AnimationPlayer = $Aniplayer
+@onready var anime: Anime = $"../Animation/Anime"
 
 ##重置攻击到attack0
 var attack_reset:bool = true
@@ -20,6 +21,7 @@ func change_state(new_state: BaseState) -> void:
 		pass
 	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
 		current_state.exit(new_state)
+		current_state.common_exit()
 		PlayerState.last2_state=PlayerState.last_state
 		PlayerState.last_state=current_state
 		print_state_change(current_state.name,new_state.name)
@@ -27,6 +29,8 @@ func change_state(new_state: BaseState) -> void:
 		PlayerState.current_state=current_state
 		new_state.load_var()
 		if new_state.is_animation_play():
+			if new_state==base_state.attack1_state:
+				pass
 			new_state.play_animation()
 		new_state.change_animation_color(new_state.change_sprite_color)
 		var temp_state= await current_state.enter()
@@ -39,8 +43,9 @@ func load_var(new_state):
 func init_var(state):
 	if !state.is_normal_state:
 		PlayerState.player_unnormal_state.push_back(state)
-
+	anime.animes.append(state.get_anime_config())
 func init(player: Player) -> void:
+	anime.animes.clear()
 	EventBus.player_control_lock.connect(_on_player_control_lock)
 	Debug.dprintinfo("Player载入所有state")
 	get_childen_node(self)
@@ -53,6 +58,7 @@ func init(player: Player) -> void:
 		init_var(state)
 	current_state=starting_state
 	PlayerState.player_state_history.push_back(base_state.idle_state)
+	anime.import()
 	change_state(starting_state)
 
 func physics_process(delta: float) -> void:
@@ -130,7 +136,7 @@ func common_state(event:InputEvent):
 	if event.is_action_pressed("dash"):
 		return base_state.dash_state
 	return null		
-
+	
 func state2state(state,from_state):
 	#Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
 	change_state(state)

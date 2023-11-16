@@ -1,36 +1,97 @@
-[gd_scene load_steps=96 format=3 uid="uid://vvpodc6xs4hq"]
+[gd_scene load_steps=103 format=3 uid="uid://vvpodc6xs4hq"]
 
 [ext_resource type="Script" path="res://test/node_2d.gd" id="1_eu7ss"]
 [ext_resource type="PackedScene" uid="uid://bewwlmeborpfh" path="res://core/room/common/anime/anime.tscn" id="2_npsq6"]
 [ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="2_widvy"]
 [ext_resource type="Script" path="res://test/Master.gd" id="2_xe0p0"]
 [ext_resource type="Theme" uid="uid://cr0pcr2y8deg4" path="res://core/room/title_room/title_room.tres" id="3_4j4h3"]
-[ext_resource type="Script" path="res://core/room/common/anime/AnimeSoundConfig.gd" id="4_c5eqn"]
-[ext_resource type="Script" path="res://core/room/common/anime/AnimeHitBoxConfig.gd" id="6_hp65l"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeHitBoxConfig.gd" id="5_e5b6x"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="5_kedkm"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeSoundConfig.gd" id="6_knx64"]
 [ext_resource type="Texture2D" uid="uid://c5diehsjinyii" path="res://test/Samurai Re-design.png" id="8_2pg8m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edfo2"]
 size = Vector2(182, 111)
 
-[sub_resource type="Resource" id="Resource_idksw"]
-script = ExtResource("4_c5eqn")
-se_name = "slash2"
-start_frame = 1
-end_frame = 12
-se_speed = 1.0
-se_pitch = 1.0
-
-[sub_resource type="Resource" id="Resource_ar5i1"]
-script = ExtResource("6_hp65l")
-collision_index = 1
-hit_start_frame = 4
-hit_end_frame = 5
-
-[sub_resource type="Resource" id="Resource_s7rsg"]
-script = ExtResource("6_hp65l")
+[sub_resource type="Resource" id="Resource_cca51"]
+script = ExtResource("5_e5b6x")
 collision_index = 0
 hit_start_frame = 0
-hit_end_frame = 2
+hit_end_frame = 3
+
+[sub_resource type="Resource" id="Resource_kx8wp"]
+script = ExtResource("5_e5b6x")
+collision_index = 1
+hit_start_frame = 5
+hit_end_frame = 6
+
+[sub_resource type="Resource" id="Resource_gda6r"]
+script = ExtResource("6_knx64")
+se_name = "slash1"
+start_frame = 1
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_pd8e8"]
+script = ExtResource("6_knx64")
+se_name = "slash3"
+start_frame = 6
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_30yp4"]
+script = ExtResource("5_kedkm")
+animation_name = "attack"
+speed_scale = 2.0
+backward = false
+loop = true
+sound_config = Array[ExtResource("6_knx64")]([SubResource("Resource_gda6r"), SubResource("Resource_pd8e8")])
+hitbox_config = Array[ExtResource("5_e5b6x")]([SubResource("Resource_cca51"), SubResource("Resource_kx8wp")])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_44pyh"]
+script = ExtResource("5_kedkm")
+animation_name = "attack1"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("6_knx64")]([])
+hitbox_config = Array[ExtResource("5_e5b6x")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_aewgu"]
+script = ExtResource("5_kedkm")
+animation_name = "death"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("6_knx64")]([])
+hitbox_config = Array[ExtResource("5_e5b6x")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_1djwt"]
+script = ExtResource("5_kedkm")
+animation_name = "idle"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("6_knx64")]([])
+hitbox_config = Array[ExtResource("5_e5b6x")]([])
+fx_config = null
+
+[sub_resource type="Resource" id="Resource_tdnb5"]
+script = ExtResource("5_kedkm")
+animation_name = "run"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("6_knx64")]([])
+hitbox_config = Array[ExtResource("5_e5b6x")]([])
+fx_config = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vetg5"]
 atlas = ExtResource("8_2pg8m")
@@ -435,7 +496,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vetg5")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 12.0
 }, {
@@ -675,11 +736,8 @@ script = ExtResource("2_xe0p0")
 scale = Vector2(3, 3)
 base = NodePath("../AnimatedSprite2D")
 current_animation = "attack1"
-playing = false
-current_frame = 0
-speed_scale = 2.0
-sound_config = Array[ExtResource("4_c5eqn")]([SubResource("Resource_idksw")])
-hitbox_config = Array[ExtResource("6_hp65l")]([SubResource("Resource_ar5i1"), SubResource("Resource_s7rsg")])
+current_frame = 18
+animes = Array[ExtResource("5_kedkm")]([SubResource("Resource_30yp4"), SubResource("Resource_44pyh"), SubResource("Resource_aewgu"), SubResource("Resource_1djwt"), SubResource("Resource_tdnb5")])
 
 [node name="Button" type="Button" parent="."]
 offset_left = -232.0
@@ -698,6 +756,8 @@ position = Vector2(64, -4)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0ydj5")
 animation = &"attack1"
+frame = 18
+frame_progress = 1.0
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",

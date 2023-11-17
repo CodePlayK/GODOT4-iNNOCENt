@@ -8,7 +8,10 @@ var has_animation:bool = true
 @export var loop:bool = false
 @export_group("音效配置")
 @export var sound_config:Array[AnimeSoundConfig]
-@export_group("hitbox配置")
+@export_group("战斗配置")
+@export_subgroup("hitbox配置")
 @export var hitbox_config:Array[AnimeHitBoxConfig]
-@export_group("FX配置")
+@export_subgroup("霸体配置")
+@export var bati_config:Array[AnimeBatiConfig]
+@export_subgroup("FX配置")
 @export var fx_config:Array[AnimeFxConfig]

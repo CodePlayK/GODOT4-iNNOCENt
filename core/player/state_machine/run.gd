@@ -5,10 +5,6 @@ func enter():
 	EventBus._play_SE_LOOP("running-in-grass",true,1)
 	PlayerState.double_jump_able=true
 	return null
-	
-func exit(state:BaseState):
-	super.exit(state)
-	EventBus._play_SE_LOOP("running-in-grass",false)
 
 func physics_process(delta: float) -> BaseState:
 	move = get_movement_input_x()
@@ -29,3 +25,7 @@ func physics_process(delta: float) -> BaseState:
 	if player.velocity.x==0 and move==0:
 		return idle_state
 	return null
+	
+func exit(state:BaseState):
+	super.exit(state)
+	EventBus._play_SE_LOOP("running-in-grass",false)

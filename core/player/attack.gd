@@ -13,8 +13,8 @@ class_name PlayerAttackState
 @export_range(0,5.0) var after_attack_stiff_time:float = .5
 ##攻击后可以切换到下一段攻击的时间
 @export_range(0,2.0) var listen_next_attack_time:float = 1
-##攻击动画名,默认为状态名
-@export var ani_name:String
+###攻击动画名,默认为状态名
+#@export var ani_name:String
 ##声音
 @export var sound_name:String = "slash7"
 @export_group("运动配置")
@@ -32,13 +32,14 @@ func _ready() -> void:
 	if attack_timer:
 		attack_timer.timeout.connect(_on_attack_timer_timeout)
 
-func init_var():
-	if !ani_name:
-		ani_name = self.name
+#func init_var():
+	#if !ani_name:
+		#ani_name = self.name
 
 func input(event: InputEvent) -> BaseState:
 	if event.is_action_pressed("attack"):
 		if attack_timer.time_left>(attack_timer.wait_time+after_attack_stiff_time)*to_next_attack_threshold:
+			Debug.dprinterr("[攻击]状态收到input")
 			to_next_attack = true
 	if moveable:
 		if player.is_on_floor() and(Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light")):
@@ -51,6 +52,7 @@ func enter():
 	player.hit_box.disable_shape()
 	player.hit_box.damage = damage
 	super.enter()
+	state_manager.listener.reset()
 	to_next_attack = false
 	state_manager.attack_reset = false
 	move = 0
@@ -86,11 +88,9 @@ func exit(state:BaseState):
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时
 	#开启监听
 	if !to_next_attack and next_attack or !state is PlayerAttackState:
+		Debug.dprinterr("[攻击]状态启动监听")
 		state_manager.listener.listen_to_state(next_attack,listen_next_attck,listen_next_attack_time,self)
-	#如果没有配置下一段攻击,且没有执行切换下一段,重置攻击
-	elif !to_next_attack  and !next_attack:
-		state_manager.attack_reset = true
-		PlayerState.attacking = false
+
 		
 ##是否在攻击动画结束后,且在listener中监听结束前按下攻击		
 func listen_next_attck(event):
@@ -99,13 +99,15 @@ func listen_next_attck(event):
 
 ##攻击动画结束,包括僵直		
 func _on_attack_timer_timeout() -> void:
-	#如果当前处于硬化状态则跳过
-	if state_manager.current_state in [dense_state]:
+	#如果当前处于硬化状态或者已经切换到其他状态则跳过
+	if state_manager.current_state != self:
 		return
 	#正在攻击动画中按下且有下一段攻击时则直接切换
 	if to_next_attack and next_attack:
 		state_manager.state2state(next_attack,self)
-	else:#否则为结束攻击,切换到上一个正常状态,重置攻击状态
+	elif !to_next_attack and next_attack:#如果未主动切换下一攻击且当前有下一攻击,则切换到上一个正常状态
 		state_manager.state2state(PlayerState.get_last_normal_state(),self)	
-		state_manager.attack_reset = true
+	elif !next_attack:#如果为终结攻击,则切换到上一正常状态,且重置player攻击标记与攻击序列重置标记
+		state_manager.state2state(PlayerState.get_last_normal_state(),self)	
 		PlayerState.attacking = false
+		state_manager.attack_reset = true

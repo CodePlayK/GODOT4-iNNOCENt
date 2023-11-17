@@ -5,10 +5,6 @@ class_name PlayerLightable
 var last_state:bool=false
 var last_bright:float=0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass 
-	
 func _process(delta: float) -> void:
 	if area.has_overlapping_areas() and (!last_state or area.get_overlapping_areas()[0].bright!=last_bright):
 		last_bright=area.get_overlapping_areas()[0].bright

@@ -4,12 +4,10 @@ extends Node
 @onready var dense_cooldown_bar=$DenseCooldownBar
 @onready var light_bar=$LightBar
 @onready var light_cooldown_bar: ProgressBar = $LightBar/LightCooldownBar
-
 @onready var light_timer=%lightTimer
 @onready var light_cooldown_timer: Timer = %lightCooldownTimer
 @onready var stiff_timer=%StiffTimer
 @onready var stiff_bar=$StiffBar
-@onready var tl_2: Label = %TL2
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var health_bar_back: ProgressBar = $HealthBar/HealthBarBack
 @onready var health_bar_back_timer: Timer = $HealthBarBackTimer
@@ -31,9 +29,6 @@ func _process(delta):
 	light_cooldown_bar.value=light_cooldown_timer.time_left
 	stiff_bar.value=stiff_timer.time_left
 
-func _on_timer_timeout() -> void:
-	tl_2.text=str(int(tl_2.text)+1)
-
 func player_on_fighting_changed(f:bool):
 	if f:
 		fighting_delay_timer.stop()
@@ -53,7 +48,6 @@ func on_health_changed() -> void:
 	health_bar_tween.tween_property(health_bar,"value",PlayerState.health,.2)
 	await health_bar_tween.finished
 	health_bar_tween.kill()
-	#player.ui.health_bar.value = PlayerState.health
 	if health_bar_back_timer.is_stopped():
 		player.ui.health_bar_back.value = PlayerState.last_health
 		health_bar_back_timer.start(health_bar_back_delay_time)

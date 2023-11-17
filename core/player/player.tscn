@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=128 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
@@ -31,26 +31,41 @@
 [ext_resource type="Script" path="res://core/player/state_machine/landing.gd" id="14_ovtxq"]
 [ext_resource type="Script" path="res://core/player/state_machine/interactive.gd" id="15_6i115"]
 [ext_resource type="Script" path="res://core/player/state_machine/climb.gd" id="16_gh0lk"]
+[ext_resource type="Script" path="res://core/player/Test.gd" id="16_nv5uw"]
 [ext_resource type="Script" path="res://core/player/toptrans.gd" id="17_d13l0"]
 [ext_resource type="Script" path="res://core/player/state_machine/talk.gd" id="17_sh2bg"]
 [ext_resource type="Script" path="res://core/player/state_machine/combat.gd" id="18_3qeih"]
 [ext_resource type="FontFile" uid="uid://cth46tmy4cprv" path="res://core/resource/font/DinkieBitmap-9pxDemo.ttf" id="18_ayrpq"]
 [ext_resource type="Script" path="res://core/player/state_machine/hard.gd" id="19_lsxjt"]
 [ext_resource type="Script" path="res://core/player/state_machine/behit.gd" id="20_yn2ld"]
-[ext_resource type="Script" path="res://core/room/common/anime/AnimeHitBoxConfig.gd" id="22_t8cpf"]
+[ext_resource type="Resource" uid="uid://1ysnrpmrqqt" path="res://core/player/anime config/idle.tres" id="22_0arrf"]
 [ext_resource type="Script" path="res://core/player/state_machine/safed.gd" id="22_vpmtv"]
 [ext_resource type="Script" path="res://core/player/state_machine/damaged.gd" id="23_t1hct"]
+[ext_resource type="Resource" uid="uid://crx2in5sq0gu7" path="res://core/player/anime config/walk.tres" id="26_lvqfx"]
 [ext_resource type="Script" path="res://core/player/attack1.gd" id="27_45d83"]
 [ext_resource type="Script" path="res://core/player/UI.gd" id="27_cru4u"]
+[ext_resource type="Resource" uid="uid://dn788fef37grm" path="res://core/player/anime config/run.tres" id="28_57tf0"]
 [ext_resource type="Script" path="res://core/player/attack0.gd" id="28_xf5em"]
 [ext_resource type="Script" path="res://core/player/attack.gd" id="29_orn37"]
+[ext_resource type="Resource" uid="uid://cv1p1wlmc0841" path="res://core/player/anime config/fastrun.tres" id="30_4n7na"]
 [ext_resource type="Script" path="res://core/player/attack2.gd" id="30_r8cot"]
 [ext_resource type="Script" path="res://core/player/SaveDataCollector.gd" id="31_s4hwe"]
 [ext_resource type="Script" path="res://core/player/attack3.gd" id="32_l8rk1"]
+[ext_resource type="Resource" uid="uid://cmcb4cfer23dr" path="res://core/player/anime config/dash.tres" id="32_qnls6"]
 [ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
 [ext_resource type="Script" path="res://core/player/listener.gd" id="36_s8yav"]
+[ext_resource type="Resource" uid="uid://cchyy1j0ghbw8" path="res://core/player/anime config/lift.tres" id="36_usgpy"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
-[ext_resource type="Script" path="res://core/room/common/anime/AnimeFxConfig.gd" id="49_kfo7e"]
+[ext_resource type="Resource" uid="uid://bodq7le0rhp6b" path="res://core/player/anime config/toptrans.tres" id="38_84arb"]
+[ext_resource type="Resource" uid="uid://cjlt5bonh66k5" path="res://core/player/anime config/fall.tres" id="40_l6bbb"]
+[ext_resource type="Script" path="res://core/player/behitBati.gd" id="42_sdlf1"]
+[ext_resource type="Resource" uid="uid://dpbk5awy5kwll" path="res://core/player/anime config/attack0.tres" id="45_2mu37"]
+[ext_resource type="Resource" uid="uid://b5ebvwpskb3ff" path="res://core/player/anime config/attack1.tres" id="47_cw157"]
+[ext_resource type="Resource" uid="uid://dllofbm03x76p" path="res://core/player/anime config/behitDenseSafed.tres" id="48_tul6t"]
+[ext_resource type="Resource" uid="uid://belrn2aa7sad8" path="res://core/player/anime config/attack2.tres" id="49_hlne1"]
+[ext_resource type="Resource" uid="uid://cup354umfpxw2" path="res://core/player/anime config/behitDamaged.tres" id="50_fenya"]
+[ext_resource type="Resource" uid="uid://dcb1b64286e4o" path="res://core/player/anime config/attack3.tres" id="51_r5vis"]
+[ext_resource type="Script" path="res://core/player/Stacking.gd" id="52_3cfft"]
 
 [sub_resource type="Resource" id="Resource_j7uql"]
 script = ExtResource("5_qhscb")
@@ -68,8 +83,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_j7uql")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_1bf2d"]
 script = ExtResource("4_2r7s4")
@@ -78,8 +94,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_355he"]
 script = ExtResource("4_2r7s4")
@@ -88,8 +105,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_7lvg1"]
 script = ExtResource("4_2r7s4")
@@ -98,8 +116,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_yy111"]
 script = ExtResource("4_2r7s4")
@@ -108,8 +127,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_w246x"]
 script = ExtResource("4_2r7s4")
@@ -118,8 +138,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_g3kvc"]
 script = ExtResource("4_2r7s4")
@@ -128,8 +149,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_pohfn"]
 script = ExtResource("4_2r7s4")
@@ -138,8 +160,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_5qiie"]
 script = ExtResource("4_2r7s4")
@@ -148,8 +171,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_l65jf"]
 script = ExtResource("4_2r7s4")
@@ -158,8 +182,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_s085c"]
 script = ExtResource("4_2r7s4")
@@ -168,8 +193,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_w5wk7"]
 script = ExtResource("4_2r7s4")
@@ -178,8 +204,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_4t8ty"]
 script = ExtResource("4_2r7s4")
@@ -188,8 +215,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_g4en5"]
 script = ExtResource("4_2r7s4")
@@ -198,8 +226,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_8ch2k"]
 script = ExtResource("4_2r7s4")
@@ -208,8 +237,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_shs07"]
 script = ExtResource("4_2r7s4")
@@ -218,8 +248,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_gk8s2"]
 script = ExtResource("4_2r7s4")
@@ -228,8 +259,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_6cuqn"]
 script = ExtResource("4_2r7s4")
@@ -238,8 +270,9 @@ speed_scale = 1.0
 backward = false
 loop = true
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_kx7pr"]
 script = ExtResource("4_2r7s4")
@@ -248,8 +281,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_87kvp"]
 script = ExtResource("4_2r7s4")
@@ -258,8 +292,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_ey4vi"]
 script = ExtResource("4_2r7s4")
@@ -268,8 +303,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_n30ba"]
 script = ExtResource("4_2r7s4")
@@ -278,8 +314,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_uohmr"]
 script = ExtResource("4_2r7s4")
@@ -288,8 +325,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_xtf3c"]
 script = ExtResource("4_2r7s4")
@@ -298,8 +336,9 @@ speed_scale = 1.0
 backward = false
 loop = true
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_tykuy"]
 script = ExtResource("4_2r7s4")
@@ -308,8 +347,9 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Shader" id="Shader_ko2lk"]
 code = "shader_type canvas_item;
@@ -501,265 +541,6 @@ anti_aliasing = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
 size = Vector2(34, 77)
-
-[sub_resource type="Resource" id="Resource_ocvln"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = true
-sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_6qiw6"]
-script = ExtResource("5_qhscb")
-se_name = "running-in-grass"
-start_frame = 0
-end_frame = 0
-se_speed = 0.7
-se_pitch = 10.0
-stop_on_exit_state = true
-
-[sub_resource type="Resource" id="Resource_7wlf8"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = true
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_6qiw6")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_asrmf"]
-script = ExtResource("5_qhscb")
-se_name = "running-in-grass"
-start_frame = 0
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = true
-
-[sub_resource type="Resource" id="Resource_clj7s"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = true
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_asrmf")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_fk2k2"]
-script = ExtResource("5_qhscb")
-se_name = "NA"
-start_frame = 0
-end_frame = 0
-se_speed = 1.3
-se_pitch = 1.0
-stop_on_exit_state = true
-
-[sub_resource type="Resource" id="Resource_qf5tv"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = true
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_fk2k2")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_jnhdx"]
-script = ExtResource("5_qhscb")
-se_name = "lazer"
-start_frame = 0
-end_frame = 0
-se_speed = 1.0
-se_pitch = -15.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_loi7o"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_jnhdx")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_mmxem"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = true
-sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_1w6hl"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_w5k0p"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = true
-sound_config = Array[ExtResource("5_qhscb")]([])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_7oppr"]
-script = ExtResource("5_qhscb")
-se_name = "steel_clash"
-start_frame = 0
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_bsjdi"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_7oppr")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_mosan"]
-script = ExtResource("5_qhscb")
-se_name = "be_hit_by_body"
-start_frame = 0
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_tog1h"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_mosan")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_gao3c"]
-script = ExtResource("22_t8cpf")
-collision_index = 0
-hit_start_frame = 1
-hit_end_frame = 3
-
-[sub_resource type="Resource" id="Resource_838pa"]
-script = ExtResource("5_qhscb")
-se_name = "slash7"
-start_frame = 1
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_7l1iw"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.5
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_838pa")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_gao3c")])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_h47wd"]
-script = ExtResource("22_t8cpf")
-collision_index = 1
-hit_start_frame = 0
-hit_end_frame = 2
-
-[sub_resource type="Resource" id="Resource_xl4fv"]
-script = ExtResource("5_qhscb")
-se_name = "slash1"
-start_frame = 0
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_78hrk"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_xl4fv")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_h47wd")])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_cj6jy"]
-script = ExtResource("22_t8cpf")
-collision_index = 2
-hit_start_frame = 0
-hit_end_frame = 2
-
-[sub_resource type="Resource" id="Resource_ru668"]
-script = ExtResource("5_qhscb")
-se_name = "slash4"
-start_frame = 0
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_y0dw7"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_ru668")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_cj6jy")])
-fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_ds5yf"]
-script = ExtResource("49_kfo7e")
-launch_obj_name = "SwordWind"
-start_frame = 1
-
-[sub_resource type="Resource" id="Resource_y725a"]
-script = ExtResource("22_t8cpf")
-collision_index = 3
-hit_start_frame = 1
-hit_end_frame = 3
-
-[sub_resource type="Resource" id="Resource_gbglk"]
-script = ExtResource("5_qhscb")
-se_name = "slash2"
-start_frame = 1
-end_frame = 0
-se_speed = 1.0
-se_pitch = 1.0
-stop_on_exit_state = false
-
-[sub_resource type="Resource" id="Resource_nie2s"]
-script = ExtResource("4_2r7s4")
-animation_name = "NA"
-speed_scale = 1.0
-backward = false
-loop = false
-sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_gbglk")])
-hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_y725a")])
-fx_config = Array[ExtResource("49_kfo7e")]([SubResource("Resource_ds5yf")])
 
 [sub_resource type="Animation" id="Animation_ine36"]
 resource_name = "attack0"
@@ -1160,10 +941,8 @@ script = ExtResource("2_lm5ts")
 base = NodePath("../Sprite")
 current_animation = "attack0"
 playing = false
+current_frame = 4
 animes = Array[ExtResource("4_2r7s4")]([SubResource("Resource_bxh3r"), SubResource("Resource_1bf2d"), SubResource("Resource_355he"), SubResource("Resource_7lvg1"), SubResource("Resource_yy111"), SubResource("Resource_w246x"), SubResource("Resource_g3kvc"), SubResource("Resource_pohfn"), SubResource("Resource_5qiie"), SubResource("Resource_l65jf"), SubResource("Resource_s085c"), SubResource("Resource_w5wk7"), SubResource("Resource_4t8ty"), SubResource("Resource_g4en5"), SubResource("Resource_8ch2k"), SubResource("Resource_shs07"), SubResource("Resource_gk8s2"), SubResource("Resource_6cuqn"), SubResource("Resource_kx7pr"), SubResource("Resource_87kvp"), SubResource("Resource_ey4vi"), SubResource("Resource_n30ba"), SubResource("Resource_uohmr"), SubResource("Resource_xtf3c"), SubResource("Resource_tykuy")])
-print_sound = false
-print_fx = false
-print_hitbox = false
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Animation"]
 light_mask = 33
@@ -1171,7 +950,7 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack0"
+animation = &"attack3"
 autoplay = "idle"
 offset = Vector2(16.7778, -4.44444)
 
@@ -1353,18 +1132,21 @@ one_shot = true
 [node name="HealthBarBackTimer" type="Timer" parent="UI"]
 one_shot = true
 
-[node name="TestLabel" type="Label" parent="UI"]
+[node name="Test" type="Node2D" parent="UI"]
+script = ExtResource("16_nv5uw")
+
+[node name="TestLabel" type="Label" parent="UI/Test"]
 unique_name_in_owner = true
-visible = false
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -14.0
+offset_top = -40.0
 offset_right = 20.0
-offset_bottom = 11.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("18_ayrpq")
@@ -1373,29 +1155,8 @@ text = "测试"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="gravity" type="Label" parent="UI"]
+[node name="RunningTime" type="Label" parent="UI/Test"]
 unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = 2.0
-offset_right = -5.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 10
-text = "重量"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TL2" type="Label" parent="UI"]
-unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1413,28 +1174,8 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="UI/TL2"]
+[node name="Timer" type="Timer" parent="UI/Test/RunningTime"]
 autostart = true
-
-[node name="TestLabel3" type="Label" parent="UI"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -31.0
-offset_right = 20.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 10
-text = "测试"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Rays" type="Node2D" parent="."]
 z_index = 1
@@ -1474,6 +1215,7 @@ script = ExtResource("13_3dp3u")
 [node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
 script = ExtResource("3_5tfn6")
 starting_node = NodePath("base/idle")
+debug_change_state = true
 
 [node name="base" type="Node" parent="state_manager"]
 unique_name_in_owner = true
@@ -1481,7 +1223,7 @@ script = ExtResource("4_cfiqb")
 
 [node name="idle" type="Node" parent="state_manager/base"]
 script = ExtResource("5_vfcpx")
-anime_config = SubResource("Resource_ocvln")
+anime_config = ExtResource("22_0arrf")
 
 [node name="jump" type="Node" parent="state_manager/base"]
 script = ExtResource("6_i3ary")
@@ -1491,21 +1233,21 @@ script = ExtResource("7_dbdva")
 
 [node name="walk" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("8_m3e85")
-anime_config = SubResource("Resource_7wlf8")
+anime_config = ExtResource("26_lvqfx")
 
 [node name="run" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("9_oqdiy")
-anime_config = SubResource("Resource_clj7s")
+anime_config = ExtResource("28_57tf0")
 
 [node name="fastrun" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("13_63inm")
-anime_config = SubResource("Resource_qf5tv")
+anime_config = ExtResource("30_4n7na")
 
 [node name="dash" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("10_otd3s")
 dash_time = 0.2
 is_normal_state = false
-anime_config = SubResource("Resource_loi7o")
+anime_config = ExtResource("32_qnls6")
 
 [node name="Timer" type="Timer" parent="state_manager/base/ground/dash"]
 one_shot = true
@@ -1519,15 +1261,15 @@ script = ExtResource("11_xgemw")
 
 [node name="lift" type="Node" parent="state_manager/base/air"]
 script = ExtResource("12_n7puq")
-anime_config = SubResource("Resource_mmxem")
+anime_config = ExtResource("36_usgpy")
 
 [node name="toptrans" type="Node" parent="state_manager/base/air"]
 script = ExtResource("17_d13l0")
-anime_config = SubResource("Resource_1w6hl")
+anime_config = ExtResource("38_84arb")
 
 [node name="fall" type="Node" parent="state_manager/base/air"]
 script = ExtResource("13_jcu6v")
-anime_config = SubResource("Resource_w5k0p")
+anime_config = ExtResource("40_l6bbb")
 
 [node name="interactive" type="Node" parent="state_manager/base"]
 script = ExtResource("15_6i115")
@@ -1537,15 +1279,12 @@ script = ExtResource("16_gh0lk")
 
 [node name="talk" type="Node" parent="state_manager/base/interactive"]
 script = ExtResource("17_sh2bg")
-is_normal_state = false
 
 [node name="combat" type="Node" parent="state_manager/base"]
 script = ExtResource("18_3qeih")
-is_normal_state = false
 
 [node name="dense" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("19_lsxjt")
-sprite_color = Color(1, 0.6, 0, 1)
 is_normal_state = false
 
 [node name="DenseTimer" type="Timer" parent="state_manager/base/combat/dense"]
@@ -1564,20 +1303,28 @@ is_normal_state = false
 
 [node name="behitDenseSafed" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("22_vpmtv")
-sprite_color = Color(1, 1, 1, 1)
 is_normal_state = false
-anime_config = SubResource("Resource_bsjdi")
+anime_config = ExtResource("48_tul6t")
 
 [node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("23_t1hct")
 stiff_time = 1.0
 protect_time = 0.0
+change_animation = false
 change_sprite_color = true
-sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
+sprite_color = Color(0.815686, 0, 0, 1)
 is_normal_state = false
-anime_config = SubResource("Resource_tog1h")
+anime_config = ExtResource("50_fenya")
 
 [node name="ProtectTimer" type="Timer" parent="state_manager/base/combat/behit/behitDamaged"]
+one_shot = true
+
+[node name="beitbati" type="Node" parent="state_manager/base/combat/behit/behitDamaged"]
+script = ExtResource("42_sdlf1")
+is_normal_state = false
+is_stacking_state = true
+
+[node name="ProtectTimer" type="Timer" parent="state_manager/base/combat/behit/behitDamaged/beitbati"]
 one_shot = true
 
 [node name="StiffTimer" type="Timer" parent="state_manager/base/combat/behit"]
@@ -1588,6 +1335,7 @@ one_shot = true
 [node name="light" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("8_wvdtr")
 light_gravity_scale = 5.0
+change_animation = false
 is_normal_state = false
 
 [node name="lightTimer" type="Timer" parent="state_manager/base/combat/light"]
@@ -1602,6 +1350,7 @@ one_shot = true
 
 [node name="_attack" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("29_orn37")
+is_normal_state = false
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack"]
 one_shot = true
@@ -1610,11 +1359,11 @@ one_shot = true
 script = ExtResource("28_xf5em")
 damage = 2.0
 next_attack = NodePath("../attack1")
-to_next_attack_threshold = 0.0
+to_next_attack_threshold = 0.241
 after_attack_stiff_time = 0.0
-listen_next_attack_time = 0.211
+listen_next_attack_time = 0.331
 is_normal_state = false
-anime_config = SubResource("Resource_7l1iw")
+anime_config = ExtResource("45_2mu37")
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack0"]
 one_shot = true
@@ -1624,11 +1373,11 @@ script = ExtResource("27_45d83")
 damage = 4.0
 next_attack = NodePath("../attack2")
 after_attack_stiff_time = 0.0
-listen_next_attack_time = 0.5
+listen_next_attack_time = 0.321
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
 is_normal_state = false
-anime_config = SubResource("Resource_78hrk")
+anime_config = ExtResource("47_cw157")
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack1"]
 one_shot = true
@@ -1639,10 +1388,11 @@ damage = 6.0
 next_attack = NodePath("../attack3")
 to_next_attack_threshold = 0.405
 after_attack_stiff_time = 0.1
+listen_next_attack_time = 0.688
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
 is_normal_state = false
-anime_config = SubResource("Resource_y0dw7")
+anime_config = ExtResource("49_hlne1")
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack2"]
 one_shot = true
@@ -1656,16 +1406,19 @@ sound_name = "slash2"
 change_face_able = false
 move_speed_scale_to_walk = 0.1
 is_normal_state = false
-anime_config = SubResource("Resource_nie2s")
+anime_config = ExtResource("51_r5vis")
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack3"]
 one_shot = true
 
-[node name="listener" type="Node" parent="state_manager"]
+[node name="AttackListener" type="Node" parent="state_manager"]
 script = ExtResource("36_s8yav")
 
-[node name="Timer" type="Timer" parent="state_manager/listener"]
+[node name="Timer" type="Timer" parent="state_manager/AttackListener"]
 one_shot = true
+
+[node name="Stacking" type="Node" parent="state_manager"]
+script = ExtResource("52_3cfft")
 
 [node name="SaveDataCollector" type="Node" parent="."]
 script = ExtResource("31_s4hwe")
@@ -1707,13 +1460,14 @@ autoplay = "idle"
 [connection signal="timeout" from="Timer/UpdateTimer" to="." method="_on_update_timer_timeout"]
 [connection signal="timeout" from="UI/FightingDelayTimer" to="UI" method="_on_fighting_delay_timer_timeout"]
 [connection signal="timeout" from="UI/HealthBarBackTimer" to="UI" method="_on_health_bar_back_timer_timeout"]
-[connection signal="timeout" from="UI/TL2/Timer" to="UI" method="_on_timer_timeout"]
+[connection signal="timeout" from="UI/Test/RunningTime/Timer" to="UI/Test" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/ground/dash/Timer" to="state_manager/base/ground/dash" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseTimer" to="state_manager/base/combat/dense" method="_on_dense_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseCooldownTimer" to="state_manager/base/combat/dense" method="_on_dense_cooldown_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/behit/behitDamaged/ProtectTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/behit/behitDamaged/beitbati/ProtectTimer" to="state_manager/base/combat/behit/behitDamaged/beitbati" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDenseSafed" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightTimer" to="state_manager/base/combat/light" method="_on_light_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightCooldownTimer" to="state_manager/base/combat/light" method="_on_light_cooldown_timer_timeout"]
-[connection signal="timeout" from="state_manager/listener/Timer" to="state_manager/listener" method="_on_timer_timeout"]
+[connection signal="timeout" from="state_manager/AttackListener/Timer" to="state_manager/AttackListener" method="_on_timer_timeout"]

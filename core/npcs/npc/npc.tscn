@@ -1222,6 +1222,7 @@ unique_name_in_owner = true
 script = ExtResource("2_h4pdk")
 
 [node name="NpcShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 38.5)
 shape = SubResource("RectangleShape2D_coq3i")
 

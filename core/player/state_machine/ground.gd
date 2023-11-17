@@ -24,11 +24,4 @@ func input(event: InputEvent) -> BaseState:
 		return climb_state
 	return null
 
-func pre_physics_process(delta:float)-> BaseState:
-	return null
-
-func exit(state:BaseState):
-	super.exit(state)
-	pass
-
 

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="AnimeConfig" load_steps=10 format=3 uid="uid://dcb1b64286e4o"]
+
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeHitBoxConfig.gd" id="1_2cwox"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeBatiConfig.gd" id="1_fbonb"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_y2445"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeFxConfig.gd" id="2_2rfg2"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeSoundConfig.gd" id="3_o3mio"]
+
+[sub_resource type="Resource" id="Resource_y6qvg"]
+script = ExtResource("1_fbonb")
+bati_start_frame = 0
+bati_end_frame = 1
+
+[sub_resource type="Resource" id="Resource_qaqme"]
+script = ExtResource("2_2rfg2")
+launch_obj_name = "SwordWind"
+start_frame = 1
+
+[sub_resource type="Resource" id="Resource_ve56s"]
+script = ExtResource("1_2cwox")
+collision_index = 3
+hit_start_frame = 1
+hit_end_frame = 2
+
+[sub_resource type="Resource" id="Resource_4mlmh"]
+script = ExtResource("3_o3mio")
+se_name = "slash2"
+start_frame = 1
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[resource]
+script = ExtResource("1_y2445")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("3_o3mio")]([SubResource("Resource_4mlmh")])
+hitbox_config = Array[ExtResource("1_2cwox")]([SubResource("Resource_ve56s")])
+bati_config = Array[ExtResource("1_fbonb")]([SubResource("Resource_y6qvg")])
+fx_config = Array[ExtResource("2_2rfg2")]([SubResource("Resource_qaqme")])

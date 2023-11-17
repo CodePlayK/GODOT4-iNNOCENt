@@ -12,7 +12,6 @@ func pre_enter() -> bool:
 func enter():
 	super.enter()
 	timer.start(dash_cooldown)
-	EventBus._play_SE("lazer",1,-15)
 	enable = false
 	player.hurt_box.disable_hit()
 	current_dash_time = dash_time
@@ -39,15 +38,12 @@ func physics_process(delta: float) -> BaseState:
 	player.move_and_slide()
 	if current_dash_time<=0:
 		return PlayerState.get_last_normal_state()
-	#if  player.velocity.x==0:
-		#return idle_state
 	return null
 
 func exit(state:BaseState):
 	super.exit(state)
 	player.velocity.x = 0
 	player.hurt_box.enable_hit()
-	
 
 func _on_timer_timeout() -> void:
 	enable = true

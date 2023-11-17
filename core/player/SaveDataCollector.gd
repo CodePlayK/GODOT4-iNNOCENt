@@ -1,5 +1,5 @@
 extends PlayerSaveDataCollector
-@onready var test_label: Label = %TL2
+@onready var test_label: Label = %TestLabel
 
 #配置要写入存档的数据
 func custom_data():

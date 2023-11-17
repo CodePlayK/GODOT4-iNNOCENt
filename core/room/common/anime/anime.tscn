@@ -4,6 +4,3 @@
 
 [node name="Anime" type="Node2D"]
 script = ExtResource("1_jn0c5")
-print_sound = null
-print_fx = null
-print_hitbox = null

@@ -1,6 +1,7 @@
 extends Node
 ##Player状态机的base状态
 class_name BaseState
+#region import node
 @onready var jump_state: BaseState
 @onready var walk_state: BaseState
 @onready var run_state: BaseState
@@ -27,6 +28,8 @@ class_name BaseState
 @onready var attack2_state: BaseState
 @onready var attack3_state: BaseState
 @onready var toptrans_state: BaseState
+@onready var behitbati_state: BaseState
+#endregion
 
 ##当前状态是否要转换sprite
 @export var change_animation:bool=true
@@ -36,13 +39,16 @@ class_name BaseState
 @export var sprite_color:Color
 ##当前state是否为普通state,即能够在hit或者dense等临时状态后切回
 @export var is_normal_state:bool=true
+@export var is_stacking_state:bool=false
 @export_category("Anime")
 @export var anime_config:AnimeConfig
+
 ##将要赋予的角色
 var player: Player
 var move:int
 var state_manager:PlayerStateManager
 var anime:Anime
+
 ##初始化事件
 func init(all_states) -> void:
 	var property_list:Array[Dictionary] = self.get_script().get_script_property_list()
@@ -69,16 +75,15 @@ func enter() -> BaseState:
 #退出该状态的方法，每次进入都会执行，在physics_process之后进行
 func exit(state:BaseState):
 	pass
-
+	
+##通用退出方法,在exit()在之后
 func common_exit():
 	if anime_config:
 		for c in anime_config.sound_config:
-			if c.stop_on_exit_state:
+			if c.stop_on_exit_state:#将所有需要在退出状态时停止的音效停止
 				state_manager.anime.stop_sound(c)
-		for hb in anime_config.hitbox_config:
+		for hb in anime_config.hitbox_config:#将所有hitbox在退出状态时失效
 				state_manager.anime.dis_all_hitbox(hb)
-func is_animation_play()-> bool:
-	return change_animation
 
 #有输入事件的方法,不确定与物理帧方法的顺序。慎用
 func input(event: InputEvent) -> BaseState:
@@ -132,18 +137,17 @@ func apply_acceleration_fastrun(v,delta):
 	player.velocity.x=move_toward(player.velocity.x,player.max_speed_fast_run*v,player.acceleration_run*delta)
 func apply_acceleration_dash(v,delta):
 	player.velocity.x=move_toward(player.velocity.x,player.max_speed_dash*v,player.acceleration_dash*delta)
-func apply_climb_acceleration_y(delta):
-	player.velocity.y=move_toward(player.velocity.y,-player.max_speed_run,player.climb_speed*delta)
-func apply_climb_acceleration_x(delta):
-	player.velocity.x=move_toward(player.velocity.x,-player.max_speed_run,player.climb_speed*delta)
+	
 func min_jump_force(velocity:Vector2,delta)->Vector2:
 	if velocity.y<-player.min_jump_fource and velocity.y<0 and Input.is_action_just_released("jump"):
 		velocity.y=-player.jump_speed/player.click_jump_force_limit
 	return velocity
+	
 func is_on_ladder()->bool:
 	if not player.ladder_checker.is_colliding():return false
 	var clollider=player.ladder_checker.get_collider()
 	return true
+	
 func get_movement_input_x() -> int:
 	var a= Input.get_axis("move_left","move_right")
 	if a==0:
@@ -152,12 +156,14 @@ func get_movement_input_x() -> int:
 		return 1
 	else:
 		return -1
+		
 func is_player_change_moving_direction()->bool:
 	if Input.is_action_pressed("move_left") and player.velocity.x>0:
 		return true
 	if Input.is_action_pressed("move_right") and player.velocity.x<0:
 		return true
 	return false
+	
 func get_palyer_move_direction_x()->int:
 		if  player.velocity.x>0:
 			return 1
@@ -165,11 +171,7 @@ func get_palyer_move_direction_x()->int:
 			return 0
 		else :
 			return -1
-func get_player_faced_direction():
-	if player.base.flip_h == false:
-		return -1
-	else:
-		return 1
+		
 func is_player_blocked()->bool:
 	if player.block_checker_right.is_colliding() or player.block_checker_right.is_colliding():
 		return true
@@ -186,7 +188,6 @@ func change_animation_color(flag:bool=false):
 	player.base.material.set_shader_parameter("colored",flag)
 	if flag:
 		player.base.pause()
-
 		
 #region 状态机切换默认音效配置
 ##[音效1[开始时间,[音效名,速度,音调]],音效2[开始时间,[音效名,速度,音调]]]
@@ -200,6 +201,11 @@ func change_animation_color(flag:bool=false):
 			#EventBus._play_SE(s_config.se_name,s_config.se_speed,s_config.se_pitch,str(player.get_instance_id()+get_instance_id()),false)		
 
 #endregion
+##
+func is_animation_play()-> bool:
+	return change_animation
+	
+##组装每一个state的anime配置
 func get_anime_config():
 	if anime_config:
 		if anime_config.animation_name=="NA":

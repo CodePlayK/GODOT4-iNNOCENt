@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="AnimeConfig" load_steps=2 format=3 uid="uid://cd3awvptfe05s"]
+[gd_resource type="Resource" script_class="AnimeConfig" load_steps=2 format=3 uid="uid://bodq7le0rhp6b"]
 
-[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_13eh8"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_aw70x"]
 
 [resource]
-script = ExtResource("1_13eh8")
-animation_name = ""
+script = ExtResource("1_aw70x")
+animation_name = "NA"
 speed_scale = 1.0
 backward = false
 loop = false

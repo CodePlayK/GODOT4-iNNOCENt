@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="AnimeConfig" load_steps=6 format=3 uid="uid://b5ebvwpskb3ff"]
+
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeHitBoxConfig.gd" id="1_1t4il"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_d2w1h"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeSoundConfig.gd" id="3_e2mas"]
+
+[sub_resource type="Resource" id="Resource_tqdnw"]
+script = ExtResource("1_1t4il")
+collision_index = 1
+hit_start_frame = 1
+hit_end_frame = 2
+
+[sub_resource type="Resource" id="Resource_cte7m"]
+script = ExtResource("3_e2mas")
+se_name = "slash1"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[resource]
+script = ExtResource("1_d2w1h")
+animation_name = "NA"
+speed_scale = 1.2
+backward = false
+loop = false
+sound_config = Array[ExtResource("3_e2mas")]([SubResource("Resource_cte7m")])
+hitbox_config = Array[ExtResource("1_1t4il")]([SubResource("Resource_tqdnw")])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])

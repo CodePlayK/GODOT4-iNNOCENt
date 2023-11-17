@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="AnimeConfig" load_steps=2 format=3 uid="uid://cd3awvptfe05s"]
+[gd_resource type="Resource" script_class="AnimeConfig" load_steps=2 format=3 uid="uid://cchyy1j0ghbw8"]
 
-[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_13eh8"]
+[ext_resource type="Script" path="res://core/room/common/anime/AnimeConfig.gd" id="1_8muon"]
 
 [resource]
-script = ExtResource("1_13eh8")
-animation_name = ""
+script = ExtResource("1_8muon")
+animation_name = "NA"
 speed_scale = 1.0
 backward = false
-loop = false
+loop = true
 sound_config = Array[Resource("res://core/room/common/anime/AnimeSoundConfig.gd")]([])
 hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
 bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])

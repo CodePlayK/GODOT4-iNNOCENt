@@ -8,20 +8,22 @@ var enable:bool
 
 ##在限定时间内判断某个动作为真,则会主动切换到某状态
 func listen_to_state(to_state1:BaseState,trigger1:Callable,time:float,from_state1:BaseState):
+	enable = true
 	to_state = to_state1
 	from_state = from_state1
 	trigger = trigger1
 	timer.start(time)
 	state_manager.attack_reset = false#重置攻击状态
-	enable = true
 	
 func input(event: InputEvent) -> bool:
-	if !enable and !PlayerState.attacking:return false
+	Debug.dprinterr("[监听]收到input")
+	if !enable :return false
 	if trigger.call(event):
-		#print("监听切换到[%s]",to_state)
+		Debug.dprinterr("[监听]开始执行")
 		if to_state:
 			state_manager.state2state(to_state,to_state)
-			reset()
+			enable = false
+			to_state = null
 			return true
 		else :
 			state_manager.attack_reset = true

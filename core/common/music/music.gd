@@ -192,4 +192,4 @@ func set_se_audio_player(effect_name,k_name,speed:float=1.0,effect_volume:float=
 	SE_player[k_name].set_volume_db(effect_volume)
 	if SE_dic.get(effect_name).size()>1 and effect_volume==0:
 		SE_player[k_name].set_volume_db(SE_dic.get(effect_name)[1])	
-	#SE_player[k_name].play()
+	SE_player[k_name].play(0)

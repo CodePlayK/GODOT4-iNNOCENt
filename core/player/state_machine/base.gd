@@ -42,7 +42,7 @@ class_name BaseState
 var player: Player
 var move:int
 var state_manager:PlayerStateManager
-var aniplayer
+var anime:Anime
 ##初始化事件
 func init(all_states) -> void:
 	var property_list:Array[Dictionary] = self.get_script().get_script_property_list()
@@ -71,11 +71,12 @@ func exit(state:BaseState):
 	pass
 
 func common_exit():
-	if anime_config and anime_config.sound_config:
+	if anime_config:
 		for c in anime_config.sound_config:
 			if c.stop_on_exit_state:
 				state_manager.anime.stop_sound(c)
-
+		for hb in anime_config.hitbox_config:
+				state_manager.anime.dis_all_hitbox(hb)
 func is_animation_play()-> bool:
 	return change_animation
 
@@ -106,13 +107,11 @@ func after_physics_process(delta: float)->BaseState:
 func player_faced(moves):
 	if moves < 0:
 		player.base.scale.x = -abs(player.base.scale.x)
-		player.front_base.scale.x = -abs(player.front_base.scale.x)
 		player.hit_box.scale.x=-abs(player.hit_box.scale.x)
 		PlayerState.face_left=true
 	elif moves > 0:
 		player.hit_box.scale.x=abs(player.hit_box.scale.x)
 		player.base.scale.x = abs(player.base.scale.x)
-		player.front_base.scale.x = abs(player.front_base.scale.x)
 		PlayerState.face_left=false
 
 ##重力		
@@ -187,8 +186,7 @@ func change_animation_color(flag:bool=false):
 	player.base.material.set_shader_parameter("colored",flag)
 	if flag:
 		player.base.pause()
-	else:
-		player.base.play()
+
 		
 #region 状态机切换默认音效配置
 ##[音效1[开始时间,[音效名,速度,音调]],音效2[开始时间,[音效名,速度,音调]]]
@@ -206,6 +204,7 @@ func get_anime_config():
 	if anime_config:
 		if anime_config.animation_name=="NA":
 			anime_config.animation_name = self.name
+		anime_config.has_animation = is_animation_play()
 		for se in anime_config.sound_config:
 			se.sound_obj_prefix = se.sound_obj_prefix+str(get_instance_id())
 		return anime_config

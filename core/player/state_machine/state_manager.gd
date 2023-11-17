@@ -2,13 +2,15 @@ extends Node
 ##[必须挂在于Player下] 玩家状态机
 class_name PlayerStateManager
 @export var starting_node:Node
-@export var debug_print:bool
+@export_group("Debug")
+@export var debug_change_state:bool
+@export var debug_common_input:bool
+@export var debug_state2state:bool
 @onready var player: Player = $".."
 @onready var starting_state: BaseState = starting_node
 @onready var test_label=%TestLabel
 @onready var base_state:BaseState=%base
 @onready var listener: Node = $listener
-@onready var aniplayer: AnimationPlayer = $Aniplayer
 @onready var anime: Anime = $"../Animation/Anime"
 
 ##重置攻击到attack0
@@ -17,8 +19,6 @@ var current_state: BaseState
 var all_states: Array
 
 func change_state(new_state: BaseState) -> void:
-	if new_state == base_state.behit_state:
-		pass
 	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
 		current_state.exit(new_state)
 		current_state.common_exit()
@@ -29,8 +29,6 @@ func change_state(new_state: BaseState) -> void:
 		PlayerState.current_state=current_state
 		new_state.load_var()
 		if new_state.is_animation_play():
-			if new_state==base_state.attack1_state:
-				pass
 			new_state.play_animation()
 		new_state.change_animation_color(new_state.change_sprite_color)
 		var temp_state= await current_state.enter()
@@ -52,7 +50,7 @@ func init(player: Player) -> void:
 	for state:BaseState in all_states:
 		state.player = player
 		state.state_manager=self
-		state.aniplayer=aniplayer
+		state.anime=anime
 		state.init(all_states)
 		state.init_var()
 		init_var(state)
@@ -62,7 +60,7 @@ func init(player: Player) -> void:
 	change_state(starting_state)
 
 func physics_process(delta: float) -> void:
-	#var temp_state=common_state()
+	#var temp_state=input_common_state()
 	#if temp_state!=null:
 		#change_state(temp_state)
 	var new_state = current_state.pre_physics_process(delta)
@@ -80,9 +78,8 @@ func physics_process(delta: float) -> void:
 func input(event: InputEvent) -> void:
 	if listener.enable:
 		if listener.input(event):return
-		#listener.input(event)
 	var new_state
-	var common_input = common_state(event)
+	var common_input = input_common_state(event)
 	if common_input:
 		change_state(common_input)
 		return
@@ -104,7 +101,7 @@ func get_childen_node(node:Node):
 			get_childen_node(child)
 			
 func print_state_change(a,b):
-	if !debug_print:return
+	if !debug_change_state:return
 	var format_string = "「Player」状态机切换: [%s] --> [%s]"
 	var format_string1 = "[%s]->[%s]"
 	var actual_string = format_string % [a, b]
@@ -122,18 +119,19 @@ func _on_player_control_lock(state):
 	else :
 		change_state(base_state.idle_state)
 		
-func common_state(event:InputEvent):
+func input_common_state(event:InputEvent):
 	if PlayerState.player_control_lcok:return null
 	if attack_reset and event.is_action_pressed("attack"):
-		#Debug.dprinterr("[Player][common_state]切换到[light_state]")
+		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[light_state]")
 		return base_state.attack0_state
 	if event.is_action_pressed("light"):
-		#Debug.dprinterr("[Player][common_state]切换到[light_state]")
+		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[light_state]")
 		return base_state.light_state
 	if event.is_action_pressed("dense")&&PlayerState.denseable_flag:
-		#Debug.dprinterr("[Player][common_state]切换到[dense_state]")
+		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[dense_state]")
 		return base_state.dense_state
 	if event.is_action_pressed("dash"):
+		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[dash_state]")
 		return base_state.dash_state
 	return null		
 	
@@ -146,5 +144,5 @@ func on_hurt(obj:Area2D):
 		return
 	PlayerState.player_be_hitting=true
 	if !PlayerState.dense_flag and !PlayerState.dense_success_flag:
-		#Debug.dprinterr("[Player][common_state]切换到[behitDamaged_state]")
+		#Debug.dprinterr("[Player][input_common_state]切换到[behitDamaged_state]")
 		change_state(base_state.behitDamaged_state)

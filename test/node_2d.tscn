@@ -51,7 +51,7 @@ backward = false
 loop = true
 sound_config = Array[ExtResource("6_knx64")]([SubResource("Resource_gda6r"), SubResource("Resource_pd8e8")])
 hitbox_config = Array[ExtResource("5_e5b6x")]([SubResource("Resource_cca51"), SubResource("Resource_kx8wp")])
-fx_config = null
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_44pyh"]
 script = ExtResource("5_kedkm")
@@ -61,7 +61,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("6_knx64")]([])
 hitbox_config = Array[ExtResource("5_e5b6x")]([])
-fx_config = null
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_aewgu"]
 script = ExtResource("5_kedkm")
@@ -71,7 +71,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("6_knx64")]([])
 hitbox_config = Array[ExtResource("5_e5b6x")]([])
-fx_config = null
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_1djwt"]
 script = ExtResource("5_kedkm")
@@ -81,7 +81,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("6_knx64")]([])
 hitbox_config = Array[ExtResource("5_e5b6x")]([])
-fx_config = null
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="Resource" id="Resource_tdnb5"]
 script = ExtResource("5_kedkm")
@@ -91,7 +91,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("6_knx64")]([])
 hitbox_config = Array[ExtResource("5_e5b6x")]([])
-fx_config = null
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vetg5"]
 atlas = ExtResource("8_2pg8m")
@@ -738,6 +738,9 @@ base = NodePath("../AnimatedSprite2D")
 current_animation = "attack1"
 current_frame = 18
 animes = Array[ExtResource("5_kedkm")]([SubResource("Resource_30yp4"), SubResource("Resource_44pyh"), SubResource("Resource_aewgu"), SubResource("Resource_1djwt"), SubResource("Resource_tdnb5")])
+print_sound = null
+print_fx = null
+print_hitbox = null
 
 [node name="Button" type="Button" parent="."]
 offset_left = -232.0

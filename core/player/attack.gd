@@ -52,12 +52,11 @@ func enter():
 	player.hit_box.damage = damage
 	super.enter()
 	to_next_attack = false
+	state_manager.attack_reset = false
 	move = 0
-	attack_timer.start(aniplayer.get_animation(ani_name).length/aniplayer.speed_scale+after_attack_stiff_time)
+	attack_timer.start(anime.current_animation_length+after_attack_stiff_time)
 	PlayerState.attacking=true
 	PlayerState.hitting=true
-	#EventBus._play_SE(sound_name)
-	#aniplayer.play(ani_name)
 
 func physics_process(delta: float) -> BaseState:
 	if change_face_able:
@@ -80,17 +79,13 @@ func physics_process(delta: float) -> BaseState:
 	
 func exit(state:BaseState):
 	super.exit(state)
-	#aniplayer.stop()
 	player.hit_box.disable_shape()
 	player.hit_box.damage = 0
 	attack_timer.stop()
-	#for c in sound_config:
-		#stop_sound(c.se_name)
 	PlayerState.hitting=false
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时
 	#开启监听
 	if !to_next_attack and next_attack or !state is PlayerAttackState:
-		state_manager.attack_reset = false
 		state_manager.listener.listen_to_state(next_attack,listen_next_attck,listen_next_attack_time,self)
 	#如果没有配置下一段攻击,且没有执行切换下一段,重置攻击
 	elif !to_next_attack  and !next_attack:

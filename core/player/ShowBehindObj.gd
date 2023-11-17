@@ -8,13 +8,3 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func on_obj_ready() -> void:
-	obj.base.frame_changed.connect(on_base_frame_changed)
-
-	pass
-func on_base_frame_changed() -> void:
-	if obj.front_base.animation != obj.base.animation:
-		obj.front_base.animation = obj.base.animation
-	obj.front_base.frame = obj.base.frame
-	pass

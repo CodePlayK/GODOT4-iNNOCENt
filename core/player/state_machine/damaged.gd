@@ -12,7 +12,6 @@ func enter():
 	super.enter()
 	PlayerState.health-=1
 	enable = false
-	#EventBus._play_SE("be_hit_by_body")
 	stiff_timer.start(stiff_time)
 	return null
 

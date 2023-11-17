@@ -2,6 +2,7 @@ extends Resource
 class_name AnimeConfig
 @export_group("动画配置")
 @export var animation_name:String = "NA"
+var has_animation:bool = true
 @export var speed_scale:float = 1
 @export var backward:bool = false
 @export var loop:bool = false

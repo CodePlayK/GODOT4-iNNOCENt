@@ -26,13 +26,11 @@ class_name Player extends CharacterBody2D
 @export var click_jump_force_limit:=5
 ##最低跳跃速度
 @export var min_jump_fource:=70
-@onready var dialogue_position: Marker2D = $Marker/DialoguePosition
-var dialogue_names:Array =["伊芙利特","伊芙芙"]
 var on_ready=false
 var start_position
+#region @onready
+@onready var dialogue_position: Marker2D = $Marker/DialoguePosition
 @onready var base: AnimatedSprite2D = $Animation/Sprite
-@onready var front_base: AnimatedSprite2D = $Animation/TopSprite
-@onready var reflection: AnimatedSprite2D = $Animation/Reflection
 @onready var states: = $state_manager
 @onready var ladder_checker: RayCast2D = $Rays/ladderChecker
 @onready var ground_checker: RayCast2D = $Rays/groundChecker
@@ -45,6 +43,7 @@ var start_position
 @onready var sound_effect: SoundEffect = $Component/SoundEffect
 @onready var anime: Anime = $Animation/Anime
 @onready var fx: Node2D = $Animation/FX
+#endregion
 
 
 func _ready() -> void:
@@ -52,10 +51,8 @@ func _ready() -> void:
 	EventBus.change_player_position.connect(_on_change_player_position)
 	EventBus.change_player_visiable.connect(_on_change_player_visiable)
 	EventBus.player_face_left.connect(_on_player_face_left)
-	EventBus.dialogue_player_position_update.connect(_on_dialogue_player_position_update)
 	start_position=get_position()
 	states.init(self)
-	reflection.hide()
 	on_ready=true
 	PlayerState.on_player_ready(self)
 
@@ -79,32 +76,19 @@ func _process(delta: float) -> void:
 func _on_world_player_is_dead():
 	player_is_dead()
 
-func is_reset_player_position():
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		set_position(start_position)
-
 func player_is_dead():
 	if dead_switch:
 		Global.playerDeadTimes+=1
 		set_position(start_position)
-
-func _on_player_enter_bathroom() -> void:
-	reflection.show()
-	pass
 	
 func _on_change_player_visiable()->void:
 	self.hide()
-
-func _on_player_leave_bathroom() -> void:
-	reflection.hide()
-	pass
 
 func _on_change_player_position(player_position) -> void:
 	self.global_position=player_position
 	if !player_camera.is_node_ready():
 		await player_camera.ready
 	player_camera.reset_smoothing()
-	pass
 	
 func _on_get_player_position():
 	return global_position
@@ -118,15 +102,7 @@ func _on_player_face_left(state) -> void:
 		hit_box.set_scale(Vector2(1,1))
 		base.scale.x = abs(base.scale.x)
 		PlayerState.face_left=false
-	pass
 
-func _on_dialogue_player_position_update():
-	update_dialogue_position()
-	
-func update_dialogue_position():
-	for dialogue_name in dialogue_names:
-		DialogueState.dic_sprite_talk_position[dialogue_name]=get_dialogue_position()
-		
 func get_dialogue_position():
 	return dialogue_position.global_position
 
@@ -134,7 +110,6 @@ func _on_update_timer_timeout():
 	PlayerState.player_global_position=global_position
 	if ground_checker.is_colliding():
 		PlayerState.current_height = ground_checker.get_collision_point().y - global_position.y
-	pass 
 
 func is_player_interact_being_locked():
 	if PlayerState.player_lock_interact_obj.is_empty():

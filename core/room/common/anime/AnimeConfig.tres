@@ -10,3 +10,4 @@ backward = false
 loop = false
 sound_config = Array[Resource("res://core/room/common/anime/AnimeSoundConfig.gd")]([])
 hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])

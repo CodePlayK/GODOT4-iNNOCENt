@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=142 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
@@ -50,7 +50,6 @@
 [ext_resource type="Script" path="res://core/player/Player_Saver.gd" id="32_xf8id"]
 [ext_resource type="Script" path="res://core/player/listener.gd" id="36_s8yav"]
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
-[ext_resource type="Script" path="res://test/anima/sound_effect_config.gd" id="41_wirj6"]
 [ext_resource type="Script" path="res://core/room/common/anime/AnimeFxConfig.gd" id="49_kfo7e"]
 
 [sub_resource type="Resource" id="Resource_j7uql"]
@@ -70,7 +69,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_j7uql")])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_1bf2d"]
 script = ExtResource("4_2r7s4")
@@ -80,7 +79,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_355he"]
 script = ExtResource("4_2r7s4")
@@ -90,7 +89,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_7lvg1"]
 script = ExtResource("4_2r7s4")
@@ -100,7 +99,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_yy111"]
 script = ExtResource("4_2r7s4")
@@ -110,7 +109,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_w246x"]
 script = ExtResource("4_2r7s4")
@@ -120,7 +119,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_g3kvc"]
 script = ExtResource("4_2r7s4")
@@ -130,7 +129,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_pohfn"]
 script = ExtResource("4_2r7s4")
@@ -140,7 +139,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_5qiie"]
 script = ExtResource("4_2r7s4")
@@ -150,7 +149,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_l65jf"]
 script = ExtResource("4_2r7s4")
@@ -160,7 +159,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_s085c"]
 script = ExtResource("4_2r7s4")
@@ -170,7 +169,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_w5wk7"]
 script = ExtResource("4_2r7s4")
@@ -180,7 +179,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_4t8ty"]
 script = ExtResource("4_2r7s4")
@@ -190,7 +189,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_g4en5"]
 script = ExtResource("4_2r7s4")
@@ -200,7 +199,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_8ch2k"]
 script = ExtResource("4_2r7s4")
@@ -210,7 +209,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_shs07"]
 script = ExtResource("4_2r7s4")
@@ -220,7 +219,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_gk8s2"]
 script = ExtResource("4_2r7s4")
@@ -230,7 +229,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_6cuqn"]
 script = ExtResource("4_2r7s4")
@@ -240,7 +239,7 @@ backward = false
 loop = true
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_kx7pr"]
 script = ExtResource("4_2r7s4")
@@ -250,7 +249,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_87kvp"]
 script = ExtResource("4_2r7s4")
@@ -260,7 +259,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_ey4vi"]
 script = ExtResource("4_2r7s4")
@@ -270,7 +269,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_n30ba"]
 script = ExtResource("4_2r7s4")
@@ -280,7 +279,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_uohmr"]
 script = ExtResource("4_2r7s4")
@@ -290,7 +289,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_xtf3c"]
 script = ExtResource("4_2r7s4")
@@ -300,7 +299,7 @@ backward = false
 loop = true
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Resource" id="Resource_tykuy"]
 script = ExtResource("4_2r7s4")
@@ -310,7 +309,7 @@ backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[ExtResource("22_t8cpf")]([])
-fx_config = null
+fx_config = Array[ExtResource("49_kfo7e")]([])
 
 [sub_resource type="Shader" id="Shader_ko2lk"]
 code = "shader_type canvas_item;
@@ -503,388 +502,6 @@ anti_aliasing = false
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
 size = Vector2(34, 77)
 
-[sub_resource type="Animation" id="Animation_ine36"]
-resource_name = "attack0"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Animation/Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack0", &"attack0"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Animation/Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../Area/HitBox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("../Area/HitBox/attack0:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Area/HitBox")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_enable"
-}, {
-"args": [false],
-"method": &"set_enable"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Animation/TopSprite:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Animation/TopSprite:animation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack0"]
-}
-
-[sub_resource type="Animation" id="Animation_0acqj"]
-resource_name = "attack1"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Animation/Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack1", &"attack1"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Animation/Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../Area/HitBox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("../Area/HitBox/attack1:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Area/HitBox")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_enable"
-}, {
-"args": [false],
-"method": &"set_enable"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Animation/TopSprite:animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack1", &"attack1"]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Animation/TopSprite:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 3]
-}
-
-[sub_resource type="Animation" id="Animation_xgok5"]
-resource_name = "attack2"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Animation/Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack2", &"attack2"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Animation/Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../Area/HitBox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("../Area/HitBox/attack2:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Area/HitBox")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.2, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_enable"
-}, {
-"args": [false],
-"method": &"set_enable"
-}]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Animation/TopSprite:animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack2", &"attack2"]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Animation/TopSprite:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-
-[sub_resource type="Animation" id="Animation_6efy6"]
-resource_name = "attack3"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Animation/Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack3", &"attack3"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Animation/Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Animation/FX")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["SwordWind"],
-"method": &"launch_obj"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Area/HitBox")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true],
-"method": &"set_enable"
-}, {
-"args": [false],
-"method": &"set_enable"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("../Area/HitBox/attack3:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Animation/TopSprite:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Animation/TopSprite:animation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"attack3", &"attack3"]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bg4au"]
-_data = {
-"attack0": SubResource("Animation_ine36"),
-"attack1": SubResource("Animation_0acqj"),
-"attack2": SubResource("Animation_xgok5"),
-"attack3": SubResource("Animation_6efy6")
-}
-
 [sub_resource type="Resource" id="Resource_ocvln"]
 script = ExtResource("4_2r7s4")
 animation_name = "NA"
@@ -1052,24 +669,17 @@ start_frame = 1
 end_frame = 0
 se_speed = 1.0
 se_pitch = 1.0
-stop_on_exit_state = true
+stop_on_exit_state = false
 
 [sub_resource type="Resource" id="Resource_7l1iw"]
 script = ExtResource("4_2r7s4")
 animation_name = "NA"
-speed_scale = 1.0
+speed_scale = 1.5
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_838pa")])
 hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_gao3c")])
 fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_ngj6c"]
-script = ExtResource("41_wirj6")
-start_time = 0.0
-se_name = "slash7"
-se_speed = 1.0
-se_pitch = 1.0
 
 [sub_resource type="Resource" id="Resource_h47wd"]
 script = ExtResource("22_t8cpf")
@@ -1096,13 +706,6 @@ sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_xl4fv")])
 hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_h47wd")])
 fx_config = Array[ExtResource("49_kfo7e")]([])
 
-[sub_resource type="Resource" id="Resource_yqrky"]
-script = ExtResource("41_wirj6")
-start_time = 0.0
-se_name = "slash1"
-se_speed = 1.0
-se_pitch = 1.0
-
 [sub_resource type="Resource" id="Resource_cj6jy"]
 script = ExtResource("22_t8cpf")
 collision_index = 2
@@ -1127,13 +730,6 @@ loop = false
 sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_ru668")])
 hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_cj6jy")])
 fx_config = Array[ExtResource("49_kfo7e")]([])
-
-[sub_resource type="Resource" id="Resource_64uwp"]
-script = ExtResource("41_wirj6")
-start_time = 0.0
-se_name = "slash4"
-se_speed = 1.0
-se_pitch = 1.0
 
 [sub_resource type="Resource" id="Resource_ds5yf"]
 script = ExtResource("49_kfo7e")
@@ -1165,12 +761,387 @@ sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_gbglk")])
 hitbox_config = Array[ExtResource("22_t8cpf")]([SubResource("Resource_y725a")])
 fx_config = Array[ExtResource("49_kfo7e")]([SubResource("Resource_ds5yf")])
 
-[sub_resource type="Resource" id="Resource_5kwbh"]
-script = ExtResource("41_wirj6")
-start_time = 0.0
-se_name = "slash2"
-se_speed = 1.0
-se_pitch = 1.0
+[sub_resource type="Animation" id="Animation_ine36"]
+resource_name = "attack0"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Animation/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack0", &"attack0"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Animation/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../Area/HitBox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("../Area/HitBox/attack0:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area/HitBox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Trash/TopSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Trash/TopSprite:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack0"]
+}
+
+[sub_resource type="Animation" id="Animation_0acqj"]
+resource_name = "attack1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Animation/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack1", &"attack1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Animation/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../Area/HitBox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("../Area/HitBox/attack1:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area/HitBox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Trash/TopSprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack1", &"attack1"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Trash/TopSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xgok5"]
+resource_name = "attack2"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Animation/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack2", &"attack2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Animation/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../Area/HitBox:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("../Area/HitBox/attack2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area/HitBox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Trash/TopSprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack2", &"attack2"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Trash/TopSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+
+[sub_resource type="Animation" id="Animation_6efy6"]
+resource_name = "attack3"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Animation/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack3", &"attack3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Animation/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Animation/FX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["SwordWind"],
+"method": &"launch_obj"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Area/HitBox")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_enable"
+}, {
+"args": [false],
+"method": &"set_enable"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("../Area/HitBox/attack3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Trash/TopSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Trash/TopSprite:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"attack3", &"attack3"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bg4au"]
+_data = {
+"attack0": SubResource("Animation_ine36"),
+"attack1": SubResource("Animation_0acqj"),
+"attack2": SubResource("Animation_xgok5"),
+"attack3": SubResource("Animation_6efy6")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -1188,24 +1159,14 @@ script = ExtResource("2_lm5ts")
 [node name="Anime" parent="Animation" node_paths=PackedStringArray("base") instance=ExtResource("3_s4ej5")]
 base = NodePath("../Sprite")
 current_animation = "attack0"
+playing = false
 animes = Array[ExtResource("4_2r7s4")]([SubResource("Resource_bxh3r"), SubResource("Resource_1bf2d"), SubResource("Resource_355he"), SubResource("Resource_7lvg1"), SubResource("Resource_yy111"), SubResource("Resource_w246x"), SubResource("Resource_g3kvc"), SubResource("Resource_pohfn"), SubResource("Resource_5qiie"), SubResource("Resource_l65jf"), SubResource("Resource_s085c"), SubResource("Resource_w5wk7"), SubResource("Resource_4t8ty"), SubResource("Resource_g4en5"), SubResource("Resource_8ch2k"), SubResource("Resource_shs07"), SubResource("Resource_gk8s2"), SubResource("Resource_6cuqn"), SubResource("Resource_kx7pr"), SubResource("Resource_87kvp"), SubResource("Resource_ey4vi"), SubResource("Resource_n30ba"), SubResource("Resource_uohmr"), SubResource("Resource_xtf3c"), SubResource("Resource_tykuy")])
+print_sound = false
+print_fx = false
+print_hitbox = false
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Animation"]
 light_mask = 33
-material = SubResource("ShaderMaterial_nktfc")
-position = Vector2(0, 38)
-scale = Vector2(2.1, 2.1)
-sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack3"
-autoplay = "idle"
-frame = 3
-offset = Vector2(16.7778, -4.44444)
-
-[node name="TopSprite" type="AnimatedSprite2D" parent="Animation"]
-visible = false
-modulate = Color(1, 1, 1, 0.0784314)
-light_mask = 33
-z_index = 10
 material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
@@ -1239,12 +1200,6 @@ sprite_frames = SubResource("SpriteFrames_hqefk")
 animation = &"sword-wind"
 autoplay = "sword-wind"
 frame_progress = 0.988256
-
-[node name="Reflection" type="AnimatedSprite2D" parent="Animation"]
-visible = false
-sprite_frames = ExtResource("3_yowp4")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="Area" type="Node2D" parent="."]
 
@@ -1519,13 +1474,6 @@ script = ExtResource("13_3dp3u")
 [node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
 script = ExtResource("3_5tfn6")
 starting_node = NodePath("base/idle")
-debug_print = true
-
-[node name="Aniplayer" type="AnimationPlayer" parent="state_manager"]
-libraries = {
-"": SubResource("AnimationLibrary_bg4au")
-}
-speed_scale = 4.0
 
 [node name="base" type="Node" parent="state_manager"]
 unique_name_in_owner = true
@@ -1622,6 +1570,7 @@ anime_config = SubResource("Resource_bsjdi")
 
 [node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("23_t1hct")
+stiff_time = 1.0
 protect_time = 0.0
 change_sprite_color = true
 sprite_color = Color(0.941176, 0.0196078, 0.305882, 1)
@@ -1661,11 +1610,11 @@ one_shot = true
 script = ExtResource("28_xf5em")
 damage = 2.0
 next_attack = NodePath("../attack1")
+to_next_attack_threshold = 0.0
 after_attack_stiff_time = 0.0
-listen_next_attack_time = 0.2
+listen_next_attack_time = 0.211
 is_normal_state = false
 anime_config = SubResource("Resource_7l1iw")
-sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_ngj6c")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack0"]
 one_shot = true
@@ -1675,12 +1624,11 @@ script = ExtResource("27_45d83")
 damage = 4.0
 next_attack = NodePath("../attack2")
 after_attack_stiff_time = 0.0
-listen_next_attack_time = 0.2
+listen_next_attack_time = 0.5
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
 is_normal_state = false
 anime_config = SubResource("Resource_78hrk")
-sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_yqrky")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack1"]
 one_shot = true
@@ -1689,12 +1637,12 @@ one_shot = true
 script = ExtResource("30_r8cot")
 damage = 6.0
 next_attack = NodePath("../attack3")
+to_next_attack_threshold = 0.405
 after_attack_stiff_time = 0.1
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
 is_normal_state = false
 anime_config = SubResource("Resource_y0dw7")
-sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_64uwp")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack2"]
 one_shot = true
@@ -1709,7 +1657,6 @@ change_face_able = false
 move_speed_scale_to_walk = 0.1
 is_normal_state = false
 anime_config = SubResource("Resource_nie2s")
-sound_config = Array[ExtResource("41_wirj6")]([SubResource("Resource_5kwbh")])
 
 [node name="attackTimer" type="Timer" parent="state_manager/base/combat/_attack/attack3"]
 one_shot = true
@@ -1725,6 +1672,34 @@ script = ExtResource("31_s4hwe")
 
 [node name="Saver" type="Node" parent="SaveDataCollector"]
 script = ExtResource("32_xf8id")
+
+[node name="Trash" type="Node" parent="."]
+
+[node name="Aniplayer" type="AnimationPlayer" parent="Trash"]
+root_node = NodePath("../../state_manager")
+libraries = {
+"": SubResource("AnimationLibrary_bg4au")
+}
+speed_scale = 4.0
+
+[node name="TopSprite" type="AnimatedSprite2D" parent="Trash"]
+visible = false
+modulate = Color(1, 1, 1, 0.0784314)
+light_mask = 33
+z_index = 10
+material = SubResource("ShaderMaterial_nktfc")
+position = Vector2(0, 38)
+scale = Vector2(2.1, 2.1)
+sprite_frames = ExtResource("3_o7jyy")
+animation = &"attack0"
+autoplay = "idle"
+offset = Vector2(16.7778, -4.44444)
+
+[node name="Reflection" type="AnimatedSprite2D" parent="Trash"]
+visible = false
+sprite_frames = ExtResource("3_yowp4")
+animation = &"idle"
+autoplay = "idle"
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="area_entered" from="Area/PlayerLightable" to="Area/PlayerLightable" method="_on_area_entered"]

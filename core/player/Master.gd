@@ -1,3 +1,4 @@
+@icon("res://core/resource/icon/ReflectionProbe.svg")
 extends Node
 class_name Master
 @onready var obj: Node = $".."

@@ -19,6 +19,7 @@ const clazz_name = "Npcs"
 @onready var time_2_last_attack_timer: Timer = $Timer/time2LastAttackTimer
 @onready var patrol_weight_machine: WeightMachine = $WeightMachine/PatrolWeightMachine
 @onready var chase_weight_machine: WeightMachine = $WeightMachine/ChaseWeightMachine
+@onready var damage_num: Node2D = $UI/HurtFX/DamageNum
 
 @export_category("配置")
 ##初始化时进入的首个节点(并不会运行)
@@ -31,7 +32,13 @@ var on_ready=false
 @export var patrol_right:Marker2D
 ##巡逻范围左边界
 @export var patrol_left:Marker2D
-@export var life:int
+@export var last_health:int
+@export var health:int:
+	set(i):
+		last_health = health
+		health = i
+		if damage_num and last_health > health:
+			damage_num.emit_num(last_health - health)
 var current_state
 var being_hit:bool = false
 var on_combat:bool=false

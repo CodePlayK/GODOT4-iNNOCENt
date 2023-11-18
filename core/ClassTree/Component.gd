@@ -1,3 +1,4 @@
+@icon("res://core/resource/icon/BTComposite.svg")
 extends Node
 ##工具类
 class_name Component

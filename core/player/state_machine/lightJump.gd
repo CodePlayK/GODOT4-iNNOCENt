@@ -4,7 +4,7 @@ extends BaseState
 @export var light_gravity_scale:float=3
 @export var light_time:float = 3.0
 @export var light_cooldown:float = 5.0
-@onready var light_cooldown_timer: Timer = %lightCooldownTimer
+@onready var light_cooldown_timer: Timer = $lightCooldownTimer
 
 func pre_enter() -> bool:
 	if PlayerState.lightable_flag and !PlayerState.ability_lock:

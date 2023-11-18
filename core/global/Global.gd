@@ -11,7 +11,7 @@ var last_room:int=Global.rooms.ROOM_1
 
 var playing_transition:bool=false
 var door_locked:bool=false
-
+var current_main_layer:Node2D
 var room_transition:Dictionary={}
 var ground_lines:Array
 enum ScreenShakeType {

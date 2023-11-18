@@ -1,3 +1,4 @@
+@icon("res://core/resource/icon/FSMState.svg")
 extends Node
 ##Player状态机的base状态
 class_name BaseState
@@ -35,11 +36,11 @@ class_name BaseState
 @export var change_animation:bool=true
 ##当前状态是否要颜色覆盖sprite
 @export var change_sprite_color:bool=false
+@export var pause_on_change_sprite_color:bool=true
 ##要覆盖sprite的颜色
 @export var sprite_color:Color
 ##当前state是否为普通state,即能够在hit或者dense等临时状态后切回
 @export var is_normal_state:bool=true
-@export var is_stacking_state:bool=false
 @export_category("Anime")
 @export var anime_config:AnimeConfig
 
@@ -183,10 +184,10 @@ func play_animation():
 	#player.base.play(self.get_name())
 	#player.front_base.play(self.get_name())
 
-func change_animation_color(flag:bool=false):
+func change_animation_color(flag:bool=false,pause_on_change_sprite_color:bool = true):
 	player.base.material.set_shader_parameter("color",sprite_color)
 	player.base.material.set_shader_parameter("colored",flag)
-	if flag:
+	if flag and pause_on_change_sprite_color:
 		player.base.pause()
 		
 #region 状态机切换默认音效配置

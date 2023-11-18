@@ -11,6 +11,7 @@ extends Node
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var health_bar_back: ProgressBar = $HealthBar/HealthBarBack
 @onready var health_bar_back_timer: Timer = $HealthBarBackTimer
+@onready var damage_num: Node2D = $HurtFX/DamageNum
 
 @onready var fighting_delay_timer: Timer = $FightingDelayTimer
 @export var fighting_off_delay_time:float
@@ -41,6 +42,7 @@ func _on_fighting_delay_timer_timeout() -> void:
 	health_bar.hide()
 	health_bar_back.hide()
 
+##血量改变时
 func on_health_changed() -> void:
 	var health_bar_tween = health_bar.create_tween() 
 	health_bar_tween.set_trans(Tween.TRANS_CUBIC)
@@ -51,6 +53,10 @@ func on_health_changed() -> void:
 	if health_bar_back_timer.is_stopped():
 		player.ui.health_bar_back.value = PlayerState.last_health
 		health_bar_back_timer.start(health_bar_back_delay_time)
+	if PlayerState.last_health > PlayerState.health:
+		damage_num.emit_num(PlayerState.last_health-PlayerState.health)
+	
+	
 	
 func _on_health_bar_back_timer_timeout() -> void:
 	var health_bar_back_tween = health_bar_back.create_tween() 

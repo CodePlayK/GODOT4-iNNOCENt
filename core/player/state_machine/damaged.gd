@@ -1,6 +1,6 @@
 extends behit
 class_name BehitDamagedState
-@onready var stiff_timer= $"../StiffTimer"
+@onready var stiff_timer: Timer = %StiffTimer
 @onready var protect_timer: Timer = $ProtectTimer
 @export var stiff_time=.3
 @export_range(0,5.0) var protect_time=.3
@@ -11,7 +11,7 @@ func pre_enter() -> bool:
 
 func enter():
 	super.enter()
-	PlayerState.health-=1
+	PlayerState.health-=state_manager.current_damage
 	enable = false
 	stiff_timer.start(stiff_time)
 	return null

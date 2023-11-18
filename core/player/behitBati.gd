@@ -1,5 +1,10 @@
-extends BehitDamagedState
+extends StackingState
+@export var bati_onhit_color_time:float = .2
+@onready var timer: Timer = $Timer
 
-func _on_protect_timer_timeout() -> void:
-	if state_manager.current_state!=self:return
-	state_manager.state2state(PlayerState.last_state,self)
+func enter():
+	timer.start(bati_onhit_color_time)
+	PlayerState.health-=state_manager.current_damage
+
+func _on_timer_timeout() -> void:
+	change_animation_color(false,false)

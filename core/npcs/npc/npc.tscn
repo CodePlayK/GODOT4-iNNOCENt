@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://c67d7gy1g6tty"]
+[gd_scene load_steps=89 format=3 uid="uid://c67d7gy1g6tty"]
 
 [ext_resource type="Script" path="res://core/npcs/npc/script/npc.gd" id="1_g6t10"]
 [ext_resource type="Script" path="res://core/npcs/npc/Vpn.gd" id="2_h4pdk"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c8rgcfsokceb2" path="res://core/resource/Asset/DARK - FX Pack/Sprite Sheets/All.png" id="6_7ppra"]
 [ext_resource type="PackedScene" uid="uid://cssd4crw3cmet" path="res://core/room/common/hurt box/HurtBox.tscn" id="6_vavpv"]
 [ext_resource type="PackedScene" uid="uid://ddpp81a4o3kqg" path="res://core/room/common/hit box/HitBox.tscn" id="7_qdiri"]
+[ext_resource type="PackedScene" uid="uid://3kg1kqmqyc8y" path="res://core/room/common/damage num/damage num.tscn" id="9_lm82i"]
 [ext_resource type="PackedScene" uid="uid://sff6u1l8p3lm" path="res://core/room/common/sprite bright/sprite bright.tscn" id="10_738th"]
 [ext_resource type="Script" path="res://core/component/FaceDirection.gd" id="13_68mjx"]
 [ext_resource type="Script" path="res://core/component/NpcDialogueDefault.gd" id="13_jp4cx"]
@@ -1297,6 +1298,15 @@ theme = SubResource("Theme_su1jv")
 value = 50.0
 show_percentage = false
 
+[node name="HurtFX" type="Node2D" parent="UI"]
+
+[node name="DamageNum" parent="UI/HurtFX" instance=ExtResource("9_lm82i")]
+z_index = 2
+num_size_px = 9
+
+[node name="Marker" parent="UI/HurtFX/DamageNum" instance=ExtResource("3_f1vvk")]
+position = Vector2(-36, -64)
+
 [node name="Animation" type="Node2D" parent="."]
 position = Vector2(-1, -16)
 scale = Vector2(2.5, 2.5)
@@ -1379,6 +1389,7 @@ shape = SubResource("RectangleShape2D_x6a11")
 collision_layer = 256
 collision_mask = 512
 monitoring = true
+damage = 2.0
 signal_node_list = [NodePath("../../../NpcStateManager")]
 
 [node name="attack0" type="CollisionShape2D" parent="Animation/Area/HitBox"]
@@ -1536,6 +1547,7 @@ one_shot = true
 
 [node name="attack1" type="Node" parent="NpcStateManager/base/combat/_attack"]
 script = ExtResource("38_rm5q8")
+damage = 3.0
 after_attack_stiff_time = 0.1
 on_combat = true
 on_fighting = true

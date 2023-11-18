@@ -8,12 +8,13 @@
 [sub_resource type="Resource" id="Resource_wugt5"]
 script = ExtResource("1_yoq8c")
 bati_start_frame = 0
-bati_end_frame = 1
+bati_end_frame = 2
 
 [sub_resource type="Resource" id="Resource_wufqq"]
 script = ExtResource("1_47fjp")
 collision_index = 0
-hit_start_frame = 1
+damage = 1.0
+hit_start_frame = 0
 hit_end_frame = 2
 
 [sub_resource type="Resource" id="Resource_ymink"]
@@ -28,7 +29,7 @@ stop_on_exit_state = false
 [resource]
 script = ExtResource("1_r1v08")
 animation_name = "NA"
-speed_scale = 1.5
+speed_scale = 1.7
 backward = false
 loop = false
 sound_config = Array[ExtResource("2_m28eq")]([SubResource("Resource_ymink")])

@@ -1806,7 +1806,7 @@ sources/1 = SubResource("TileSetAtlasSource_kb4pt")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q6vc"]
 shader = ExtResource("37_ewc7c")
 shader_parameter/player_position = Vector2(0.5, 0.5)
-shader_parameter/circle_radius = 182.93
+shader_parameter/circle_radius = 300.0
 shader_parameter/inner_circle_radius_scale = 0.505
 shader_parameter/strength = 2.54
 
@@ -2115,9 +2115,10 @@ color = Color(0, 0.207843, 0, 1)
 energy = 1.84
 texture = ExtResource("6_4vevn")
 
-[node name="Parallax" type="Node2D" parent="."]
+[node name="Parallax" type="Node2D" parent="." node_paths=PackedStringArray("parallax_main_layer")]
 z_index = 1
 script = ExtResource("7_lmsci")
+parallax_main_layer = NodePath("ParallaxLayer_5")
 
 [node name="ParallaxLayer_0" type="Node2D" parent="Parallax"]
 
@@ -2548,13 +2549,14 @@ script = ExtResource("31_xwi51")
 [node name="Npcs" type="Node2D" parent="Parallax/ParallaxLayer_5"]
 
 [node name="Npc" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("26_sk6hw")]
+visible = false
 position = Vector2(151, 184)
 starting_state = "idle"
 starting1_state = "lock"
 running_state = "birth"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
-life = 1000
+health = 30
 npc_name = "npc_sen"
 
 [node name="Npc2" parent="Parallax/ParallaxLayer_5/Npcs" node_paths=PackedStringArray("patrol_right", "patrol_left") instance=ExtResource("26_sk6hw")]
@@ -2564,7 +2566,6 @@ starting1_state = "idle"
 running_state = "patrol"
 patrol_right = NodePath("../../Marker/PortrolRightMarker")
 patrol_left = NodePath("../../Marker/PortrolLeftMarker")
-life = 99999
 npc_name = "npcsen2"
 
 [node name="Player" parent="Parallax/ParallaxLayer_5" instance=ExtResource("3_yf427")]

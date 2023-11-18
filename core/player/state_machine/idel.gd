@@ -6,9 +6,9 @@ func enter():
 	PlayerState.double_jump_able=true
 	return null
 func input(event: InputEvent) -> BaseState:
-	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light"):
+	if event.is_action_pressed("jump") or event.is_action_pressed("light"):
 		return jump_state
-	elif Input.is_action_just_pressed("dash"):
+	elif event.is_action_pressed("dash"):
 		return dash_state
 	return null
 

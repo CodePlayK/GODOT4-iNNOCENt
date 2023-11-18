@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=132 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
@@ -30,14 +30,17 @@
 [ext_resource type="Script" path="res://core/player/state_machine/fall.gd" id="13_jcu6v"]
 [ext_resource type="Script" path="res://core/player/state_machine/landing.gd" id="14_ovtxq"]
 [ext_resource type="Script" path="res://core/player/state_machine/interactive.gd" id="15_6i115"]
+[ext_resource type="PackedScene" uid="uid://3kg1kqmqyc8y" path="res://core/room/common/damage num/damage num.tscn" id="16_d8yll"]
 [ext_resource type="Script" path="res://core/player/state_machine/climb.gd" id="16_gh0lk"]
 [ext_resource type="Script" path="res://core/player/Test.gd" id="16_nv5uw"]
 [ext_resource type="Script" path="res://core/player/toptrans.gd" id="17_d13l0"]
+[ext_resource type="PackedScene" uid="uid://bp1610uuwvi47" path="res://core/room/common/marker/marker.tscn" id="17_k0wgb"]
 [ext_resource type="Script" path="res://core/player/state_machine/talk.gd" id="17_sh2bg"]
 [ext_resource type="Script" path="res://core/player/state_machine/combat.gd" id="18_3qeih"]
 [ext_resource type="FontFile" uid="uid://cth46tmy4cprv" path="res://core/resource/font/DinkieBitmap-9pxDemo.ttf" id="18_ayrpq"]
 [ext_resource type="Script" path="res://core/player/state_machine/hard.gd" id="19_lsxjt"]
 [ext_resource type="Script" path="res://core/player/state_machine/behit.gd" id="20_yn2ld"]
+[ext_resource type="Script" path="res://core/player/behitbati.gd" id="21_21nq3"]
 [ext_resource type="Resource" uid="uid://1ysnrpmrqqt" path="res://core/player/anime config/idle.tres" id="22_0arrf"]
 [ext_resource type="Script" path="res://core/player/state_machine/safed.gd" id="22_vpmtv"]
 [ext_resource type="Script" path="res://core/player/state_machine/damaged.gd" id="23_t1hct"]
@@ -58,7 +61,6 @@
 [ext_resource type="Script" path="res://core/component/Lightable.gd" id="37_ka7u1"]
 [ext_resource type="Resource" uid="uid://bodq7le0rhp6b" path="res://core/player/anime config/toptrans.tres" id="38_84arb"]
 [ext_resource type="Resource" uid="uid://cjlt5bonh66k5" path="res://core/player/anime config/fall.tres" id="40_l6bbb"]
-[ext_resource type="Script" path="res://core/player/behitBati.gd" id="42_sdlf1"]
 [ext_resource type="Resource" uid="uid://dpbk5awy5kwll" path="res://core/player/anime config/attack0.tres" id="45_2mu37"]
 [ext_resource type="Resource" uid="uid://b5ebvwpskb3ff" path="res://core/player/anime config/attack1.tres" id="47_cw157"]
 [ext_resource type="Resource" uid="uid://dllofbm03x76p" path="res://core/player/anime config/behitDenseSafed.tres" id="48_tul6t"]
@@ -542,6 +544,26 @@ anti_aliasing = false
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
 size = Vector2(34, 77)
 
+[sub_resource type="Resource" id="Resource_sdfrs"]
+script = ExtResource("5_qhscb")
+se_name = "knife-stab"
+start_frame = 0
+end_frame = 0
+se_speed = 1.0
+se_pitch = 1.0
+stop_on_exit_state = false
+
+[sub_resource type="Resource" id="Resource_wqv2d"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_sdfrs")])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
+
 [sub_resource type="Animation" id="Animation_ine36"]
 resource_name = "attack0"
 length = 1.5
@@ -950,8 +972,10 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack3"
+animation = &"attack1"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 offset = Vector2(16.7778, -4.44444)
 
 [node name="FX" type="Node2D" parent="Animation"]
@@ -1126,6 +1150,20 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jn07y")
 value = 70.0
 show_percentage = false
 
+[node name="HurtFX" type="Node2D" parent="UI"]
+
+[node name="DamageNum" parent="UI/HurtFX" instance=ExtResource("16_d8yll")]
+z_index = 2
+position = Vector2(0, -7)
+num_size_px = 14
+x_scale = 30.0
+y_scale = 30.0
+num_color = Color(1, 1, 0, 1)
+
+[node name="damageNumMarker" parent="UI/HurtFX/DamageNum" instance=ExtResource("17_k0wgb")]
+visible = false
+position = Vector2(-28, -29)
+
 [node name="FightingDelayTimer" type="Timer" parent="UI"]
 one_shot = true
 
@@ -1137,6 +1175,7 @@ script = ExtResource("16_nv5uw")
 
 [node name="TestLabel" type="Label" parent="UI/Test"]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1149,14 +1188,16 @@ offset_right = 20.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.203922, 1)
 theme_override_fonts/font = ExtResource("18_ayrpq")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 10
 text = "测试"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RunningTime" type="Label" parent="UI/Test"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1215,10 +1256,24 @@ script = ExtResource("13_3dp3u")
 [node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
 script = ExtResource("3_5tfn6")
 starting_node = NodePath("base/idle")
-debug_change_state = true
+
+[node name="stack" type="Node" parent="state_manager"]
+script = ExtResource("52_3cfft")
+
+[node name="behitbati" type="Node" parent="state_manager/stack"]
+script = ExtResource("21_21nq3")
+change_animation = false
+change_sprite_color = true
+pause_on_change_sprite_color = false
+sprite_color = Color(0.909804, 0.643137, 0.101961, 1)
+is_normal_state = false
+anime_config = SubResource("Resource_wqv2d")
+
+[node name="Timer" type="Timer" parent="state_manager/stack/behitbati"]
+wait_time = 0.2
+one_shot = true
 
 [node name="base" type="Node" parent="state_manager"]
-unique_name_in_owner = true
 script = ExtResource("4_cfiqb")
 
 [node name="idle" type="Node" parent="state_manager/base"]
@@ -1306,9 +1361,14 @@ script = ExtResource("22_vpmtv")
 is_normal_state = false
 anime_config = ExtResource("48_tul6t")
 
+[node name="StiffTimer" type="Timer" parent="state_manager/base/combat/behit/behitDenseSafed"]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
 [node name="behitDamaged" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("23_t1hct")
-stiff_time = 1.0
+stiff_time = 0.1
 protect_time = 0.0
 change_animation = false
 change_sprite_color = true
@@ -1317,19 +1377,6 @@ is_normal_state = false
 anime_config = ExtResource("50_fenya")
 
 [node name="ProtectTimer" type="Timer" parent="state_manager/base/combat/behit/behitDamaged"]
-one_shot = true
-
-[node name="beitbati" type="Node" parent="state_manager/base/combat/behit/behitDamaged"]
-script = ExtResource("42_sdlf1")
-is_normal_state = false
-is_stacking_state = true
-
-[node name="ProtectTimer" type="Timer" parent="state_manager/base/combat/behit/behitDamaged/beitbati"]
-one_shot = true
-
-[node name="StiffTimer" type="Timer" parent="state_manager/base/combat/behit"]
-unique_name_in_owner = true
-wait_time = 0.3
 one_shot = true
 
 [node name="light" type="Node" parent="state_manager/base/combat"]
@@ -1359,9 +1406,8 @@ one_shot = true
 script = ExtResource("28_xf5em")
 damage = 2.0
 next_attack = NodePath("../attack1")
-to_next_attack_threshold = 0.241
 after_attack_stiff_time = 0.0
-listen_next_attack_time = 0.331
+listen_next_attack_time = 0.5
 is_normal_state = false
 anime_config = ExtResource("45_2mu37")
 
@@ -1373,7 +1419,7 @@ script = ExtResource("27_45d83")
 damage = 4.0
 next_attack = NodePath("../attack2")
 after_attack_stiff_time = 0.0
-listen_next_attack_time = 0.321
+listen_next_attack_time = 0.5
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
 is_normal_state = false
@@ -1386,9 +1432,9 @@ one_shot = true
 script = ExtResource("30_r8cot")
 damage = 6.0
 next_attack = NodePath("../attack3")
-to_next_attack_threshold = 0.405
+to_next_attack_threshold = 0.18
 after_attack_stiff_time = 0.1
-listen_next_attack_time = 0.688
+listen_next_attack_time = 1.5
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
 is_normal_state = false
@@ -1416,9 +1462,6 @@ script = ExtResource("36_s8yav")
 
 [node name="Timer" type="Timer" parent="state_manager/AttackListener"]
 one_shot = true
-
-[node name="Stacking" type="Node" parent="state_manager"]
-script = ExtResource("52_3cfft")
 
 [node name="SaveDataCollector" type="Node" parent="."]
 script = ExtResource("31_s4hwe")
@@ -1461,13 +1504,13 @@ autoplay = "idle"
 [connection signal="timeout" from="UI/FightingDelayTimer" to="UI" method="_on_fighting_delay_timer_timeout"]
 [connection signal="timeout" from="UI/HealthBarBackTimer" to="UI" method="_on_health_bar_back_timer_timeout"]
 [connection signal="timeout" from="UI/Test/RunningTime/Timer" to="UI/Test" method="_on_timer_timeout"]
+[connection signal="timeout" from="state_manager/stack/behitbati/Timer" to="state_manager/stack/behitbati" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/ground/dash/Timer" to="state_manager/base/ground/dash" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseTimer" to="state_manager/base/combat/dense" method="_on_dense_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/dense/DenseCooldownTimer" to="state_manager/base/combat/dense" method="_on_dense_cooldown_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/behit/behitDenseSafed/StiffTimer" to="state_manager/base/combat/behit/behitDenseSafed" method="_on_stiff_timer_timeout"]
+[connection signal="timeout" from="state_manager/base/combat/behit/behitDenseSafed/StiffTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/behit/behitDamaged/ProtectTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/behit/behitDamaged/beitbati/ProtectTimer" to="state_manager/base/combat/behit/behitDamaged/beitbati" method="_on_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDenseSafed" method="_on_stiff_timer_timeout"]
-[connection signal="timeout" from="state_manager/base/combat/behit/StiffTimer" to="state_manager/base/combat/behit/behitDamaged" method="_on_stiff_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightTimer" to="state_manager/base/combat/light" method="_on_light_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/combat/light/lightCooldownTimer" to="state_manager/base/combat/light" method="_on_light_cooldown_timer_timeout"]
 [connection signal="timeout" from="state_manager/AttackListener/Timer" to="state_manager/AttackListener" method="_on_timer_timeout"]

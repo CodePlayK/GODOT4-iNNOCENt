@@ -1,5 +1,3 @@
-extends Node
-
-func on_bating(hitbox:HitBox,bati_config:AnimeBatiConfig):
-	
-	pass
+@icon("res://core/resource/icon/FSMStateIntegration.svg")
+extends BaseState
+class_name StackingState

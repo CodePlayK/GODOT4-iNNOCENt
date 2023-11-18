@@ -1,3 +1,4 @@
+@icon("res://core/resource/icon/Editor3DHandle.svg")
 extends BaseState
 ##玩家攻击状态
 class_name PlayerAttackState
@@ -23,6 +24,12 @@ class_name PlayerAttackState
 @export var change_face_able:bool = true
 ##攻击状态中的移动速度比率:相对于行走速度
 @export_range(0,2.0) var move_speed_scale_to_walk:float = 1.0
+@export_group("Debug")
+@export var attack_input_receive:bool = false
+@export var start_listener:bool = false
+@export var timeout2attack:bool = false
+@export var timeout_not2attack:bool = false
+
 ##实际的攻击动画耗时,包括僵直
 @onready var attack_timer: Timer = $attackTimer
 ##到下一段攻击
@@ -37,10 +44,12 @@ func _ready() -> void:
 		#ani_name = self.name
 
 func input(event: InputEvent) -> BaseState:
+	if attack_input_receive:Debug.dprinterr("[%s]状态收到input[%s]" %[self.name,event])
 	if event.is_action_pressed("attack"):
-		if attack_timer.time_left>(attack_timer.wait_time+after_attack_stiff_time)*to_next_attack_threshold:
-			Debug.dprinterr("[攻击]状态收到input")
+		if attack_timer.time_left<attack_timer.wait_time*(1-to_next_attack_threshold):
 			to_next_attack = true
+	else :
+		pass
 	if moveable:
 		if player.is_on_floor() and(Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("light")):
 			player.set_up_direction(Vector2.UP)
@@ -87,16 +96,20 @@ func exit(state:BaseState):
 	PlayerState.hitting=false
 	#当没有执行切换到下一段攻击,且有配置下一段攻击,或者退出的下一个状态不是攻击状态时
 	#开启监听
+	if !next_attack:
+		PlayerState.attacking = false
+		state_manager.attack_reset = true
 	if !to_next_attack and next_attack or !state is PlayerAttackState:
-		Debug.dprinterr("[攻击]状态启动监听")
+		if start_listener:Debug.dprinterr("[%s]状态启动监听" %self.name)
 		state_manager.listener.listen_to_state(next_attack,listen_next_attck,listen_next_attack_time,self)
 
-		
 ##是否在攻击动画结束后,且在listener中监听结束前按下攻击		
-func listen_next_attck(event):
+func listen_next_attck(event:InputEvent):
 	if event.is_action_pressed("attack"):
 		return true
-
+	else :
+		return false
+		
 ##攻击动画结束,包括僵直		
 func _on_attack_timer_timeout() -> void:
 	#如果当前处于硬化状态或者已经切换到其他状态则跳过
@@ -105,9 +118,11 @@ func _on_attack_timer_timeout() -> void:
 	#正在攻击动画中按下且有下一段攻击时则直接切换
 	if to_next_attack and next_attack:
 		state_manager.state2state(next_attack,self)
+		if timeout2attack:Debug.dprinterr("[%s]时间结束攻击切换" %self.name)
 	elif !to_next_attack and next_attack:#如果未主动切换下一攻击且当前有下一攻击,则切换到上一个正常状态
+		if timeout_not2attack:Debug.dprinterr("[%s]时间结束未收到攻击切换" %self.name)
 		state_manager.state2state(PlayerState.get_last_normal_state(),self)	
 	elif !next_attack:#如果为终结攻击,则切换到上一正常状态,且重置player攻击标记与攻击序列重置标记
-		state_manager.state2state(PlayerState.get_last_normal_state(),self)	
 		PlayerState.attacking = false
 		state_manager.attack_reset = true
+		state_manager.state2state(PlayerState.get_last_normal_state(),self)	

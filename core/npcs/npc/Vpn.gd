@@ -18,3 +18,6 @@ func get_all_children(node:Node):
 			child.call("on_master_ready",self)
 		if child:
 			get_all_children(child)
+
+func on_obj_health_change():
+	pass

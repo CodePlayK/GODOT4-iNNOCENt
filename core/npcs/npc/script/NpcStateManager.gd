@@ -167,6 +167,7 @@ func signal_state2state(npc_name,state_name):
 func on_hurt(area:Area2D):
 	if area.enable and ![base_state.dodge_state,base_state.lock_state,base_state.birth_state,base_state.death_state,base_state.behithard_state].has(current_state) and current_state.on_combat:
 		current_damage = area.damage
+		Debug.dprintwarn("[NpcStateManager]受到伤害:%s" %current_damage)
 		change_state(base_state.behit_state)
 ##受击事件	
 func on_dodge(area:Area2D):

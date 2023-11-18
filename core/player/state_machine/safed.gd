@@ -1,6 +1,6 @@
 extends behit
 @export var stiff_time=.3
-@onready var stiff_timer= $"../StiffTimer"
+@onready var stiff_timer: Timer = $StiffTimer
 
 func enter():
 	super.enter()

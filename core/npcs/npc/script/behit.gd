@@ -16,14 +16,14 @@ func enter():
 	super.enter()
 	npc.being_hit = false
 	enable = false
-	npc.life-=state_manager.current_damage
+	npc.health-=state_manager.current_damage
 	npc.hurt_fx.play_fx(fx_name)
 	var npc_global_position_x:float=npc.global_position.x
 	tween=npc.create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.chain().tween_property(npc,"global_position",Vector2(npc_global_position_x-back_distance*get_relative_position_x_2_player(),npc.global_position.y),stiff_time)
-	if npc.life<=0:
+	if npc.health<=0:
 		tween.chain().tween_interval(.5)
 		await tween.finished
 		tween.kill()

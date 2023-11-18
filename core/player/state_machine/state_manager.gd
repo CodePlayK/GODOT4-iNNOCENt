@@ -1,25 +1,27 @@
+@icon("res://core/resource/icon/FiniteStateMachine.svg")
 extends Node
 ##[必须挂在于Player下] 玩家状态机
 class_name PlayerStateManager
 @export var starting_node:Node
 @export_group("Debug")
-@export var debug_change_state:bool
-@export var debug_common_input:bool
-@export var debug_common_state:bool
-@export var debug_state2state:bool
-@export var debug_listener_input:bool
+@export var changing_state:bool
+@export var common_inputing:bool
+@export var input2current_state:bool
+@export var on_hurt2state:bool
+@export var state2stating:bool
+@export var listener_input:bool
 
 @onready var player: Player = $".."
 @onready var starting_state: BaseState = starting_node
 @onready var test_label=%TestLabel
-@onready var base_state:BaseState=%base
+@onready var base_state:BaseState=$base
 @onready var anime: Anime = $"../Animation/Anime"
-@onready var stacking: Node = $Stacking
 @onready var listener: Node = $AttackListener
 
 ##重置攻击到attack0
 var attack_reset:bool = true
 var current_state: BaseState
+var current_damage: float = 0
 var all_states: Array
 var barting:bool = false
 	
@@ -48,7 +50,7 @@ func init_var(state):
 func input(event: InputEvent) -> void:
 	if listener.enable:
 		if listener.input(event):
-			if debug_listener_input:Debug.dprintinfo("[状态机input进入监听,且收到true")
+			if listener_input:Debug.dprintinfo("[StateManager]input进入监听,且收到true")
 			return
 	var new_state
 	var common_input = input_common_state(event)
@@ -56,24 +58,25 @@ func input(event: InputEvent) -> void:
 		change_state(common_input)
 		return
 	if current_state:
+		if input2current_state:Debug.dprintinfo("[StateManager]input进入%s" %current_state.name)
 		new_state = current_state.input(event)
 	if new_state:
 		change_state(new_state)
 
 func change_state(new_state: BaseState) -> void:
 	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
-		if !new_state.is_stacking_state:
+		if !new_state is StackingState:
 			current_state.exit(new_state)
 			current_state.common_exit()
 			PlayerState.last2_state=PlayerState.last_state
 			PlayerState.last_state=current_state
-			print_state_change(current_state.name,new_state.name)
 			current_state = new_state
 			PlayerState.current_state=current_state
+		print_state_change(current_state.name,new_state.name)
 		new_state.load_var()
 		new_state.play_animation()
-		new_state.change_animation_color(new_state.change_sprite_color)
-		var temp_state= await current_state.enter()
+		new_state.change_animation_color(new_state.change_sprite_color,new_state.pause_on_change_sprite_color)
+		var temp_state= await new_state.enter()
 		if temp_state:
 			change_state(temp_state)
 
@@ -108,7 +111,7 @@ func print_state_change(a,b):
 	var actual_string = format_string % [a, b]
 	var actual_string1 = format_string1 % [a, b]
 	test_label.text=actual_string1
-	if debug_change_state:Debug.dprintinfo(actual_string)
+	if changing_state:Debug.dprintinfo(actual_string)
 	return actual_string
 
 func _on_player_tree_exiting():
@@ -122,35 +125,36 @@ func _on_player_control_lock(state):
 		
 func input_common_state(event:InputEvent):
 	if PlayerState.player_control_lcok:return null
-	if attack_reset and event.is_action_pressed("attack"):
-		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[light_state]")
+	if attack_reset and event.is_action_pressed("attack") and ![base_state.behitDamaged_state].has(current_state):
+		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[attack0]")
 		return base_state.attack0_state
 	if event.is_action_pressed("light"):
-		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[light_state]")
+		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[light_state]")
 		return base_state.light_state
 	if event.is_action_pressed("dense")&&PlayerState.denseable_flag:
-		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[dense_state]")
+		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[dense_state]")
 		return base_state.dense_state
 	if event.is_action_pressed("dash"):
-		if debug_common_input:Debug.dprinterr("[Player][input_common_state]切换到[dash_state]")
+		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[dash_state]")
 		return base_state.dash_state
 	return null		
 	
 func state2state(state,from_state):
-	if debug_state2state:Debug.dprintinfo("[Player][%s]主动切换状态->[%s]" %[from_state.name,state.name])
+	if state2stating:Debug.dprintinfo("[StateManager][%s]主动切换状态->[%s]" %[from_state.name,state.name])
 	change_state(state)
 
 func on_hurt(obj:HitBox):
 	if !obj.enable:
 		return
 	PlayerState.player_be_hitting=true
-	#if current_state.anime_config:
-		#for bati in current_state.anime_config.bati_config:
-			#barting = bati.bating
-			#if barting:
-				#Debug.dprintinfo("baitizhong")
-				#stacking.on_bating(obj,current_state.anime_config.bati_config)
-				#break
+	current_damage = obj.damage
+	if current_state.anime_config:
+		for bati in current_state.anime_config.bati_config:
+			barting = bati.bating
+			if barting:
+				if on_hurt2state:Debug.dprintwarn("[StateManager][input_common_state]切换到[behitDamaged_state]")
+				state2state(base_state.behitbati_state,current_state)
+				return
 	if !PlayerState.dense_flag and !PlayerState.dense_success_flag:
-		if debug_common_state:Debug.dprinterr("[Player][input_common_state]切换到[behitDamaged_state]")
+		if on_hurt2state:Debug.dprintwarn("[StateManager][input_common_state]切换到[behitDamaged_state]")
 		change_state(base_state.behitDamaged_state)

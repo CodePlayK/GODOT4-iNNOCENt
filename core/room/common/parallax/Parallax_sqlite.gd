@@ -7,6 +7,7 @@
 class_name Parallax extends Component
 #此节点下的第一代子节点会作为视差层
 @onready var room = $".."
+@export var parallax_main_layer:Node2D
 @export_category("视差层速度配置")
 @export var parallax_layer_speed_0:=-110
 @export var parallax_layer_speed_1:=-80
@@ -42,6 +43,7 @@ func init_var():
 	clazz_name="Parallax"
 	
 func ready():
+	Global.current_main_layer = parallax_main_layer
 	DB=SQLite.new()
 	DB.path=Global.DB_NAME
 	DB.verbosity_level = VERBOSITY_LEVEL

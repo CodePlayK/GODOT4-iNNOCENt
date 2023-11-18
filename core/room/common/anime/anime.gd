@@ -34,18 +34,17 @@ func import():
 	base_animation_name_array = base.sprite_frames.get_animation_names()
 	
 func play_anime(anime_name:String):
-	if anime_name == "behitDamaged":
-		pass
 	var anime:AnimeConfig = anime_dic[anime_name]
-	current_animation = anime_name
-	current_animation_length = base.sprite_frames.get_frame_count(current_animation) / base.sprite_frames.get_animation_speed(current_animation) / anime.speed_scale
-	base.sprite_frames.set_animation_loop(current_animation,anime.loop)
-	base.speed_scale = anime.speed_scale
 	preset_cache(anime)
-	if !anime.backward:
-		base.play(current_animation)
-	else :
-		base.play_backwards(current_animation)
+	if base.sprite_frames.has_animation(anime_name):
+		current_animation = anime_name
+		current_animation_length = base.sprite_frames.get_frame_count(current_animation) / base.sprite_frames.get_animation_speed(current_animation) / anime.speed_scale
+		base.sprite_frames.set_animation_loop(current_animation,anime.loop)
+		base.speed_scale = anime.speed_scale
+		if !anime.backward:
+			base.play(current_animation)
+		else :
+			base.play_backwards(current_animation)
 
 func _physics_process(delta: float) -> void:
 	if !anime_dic.has(current_animation):return
@@ -70,20 +69,24 @@ func set_hitbox(anime):
 				if hc.hit_start_frame == current_frame:
 					if !check_cache(hc.collision_index+1):continue
 					if print_hitbox:Debug.dprinterr("Anime设置hitbox[%s][%s]" %[current_animation,hc.collision_index])
+					master.obj.hit_box.damage = hc.damage
 					master.obj.hit_box.set_enable(true,hc.collision_index)
 					cache_off(hc.collision_index+1)
 				elif hc.hit_end_frame == current_frame:
 					if !check_cache(hc.collision_index-1):continue
 					if print_hitbox:Debug.dprinterr("Anime取消hitbox[%s][%s]" %[current_animation,hc.collision_index])
+					master.obj.hit_box.damage = 0
 					master.obj.hit_box.set_enable(false,hc.collision_index)
 					cache_off(hc.collision_index-1)
 			else :
 				if hc.hit_start_frame == current_frame:
 					if !check_cache(hc.collision_index-1):continue
+					master.obj.hit_box.damage = 0
 					master.obj.hit_box.set_enable(false,hc.collision_index)
 					cache_off(hc.collision_index+1)
 				elif hc.hit_end_frame == current_frame:
 					if !check_cache(hc.collision_index-1):continue
+					master.obj.hit_box.damage = hc.damage
 					master.obj.hit_box.set_enable(true,hc.collision_index)
 					cache_off(hc.collision_index-1)
 func dis_all_hitbox(hitbox_config:AnimeHitBoxConfig):

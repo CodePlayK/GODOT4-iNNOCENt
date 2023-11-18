@@ -3,8 +3,8 @@ extends Node
 @onready var npc: Npcs = $".."
 
 func _ready():
-	stiff_bar.max_value=npc.life
+	stiff_bar.max_value=npc.health
 
 func _process(delta):
-	stiff_bar.value=npc.life
+	stiff_bar.value=npc.health
 

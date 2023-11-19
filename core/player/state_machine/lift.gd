@@ -1,6 +1,8 @@
 extends AirState
 @export var toptrans_threshold:float = .1
-
+@export_group("debug")
+@export var lift2toptrans:bool = false
+@export var lift2fall:bool = false
 func is_animation_play():
 	if player.velocity.y <= 0 and !player.is_on_floor():
 		return true
@@ -28,7 +30,9 @@ func after_physics_process(delta: float)->BaseState:
 		return landing_state
 	else:
 		if player.velocity.y > -player.max_velocity_y*toptrans_threshold:
+			if lift2toptrans:Debug.dprintwarn("[lift]切换[toptrans_state]")
 			return toptrans_state
 		elif player.velocity.y>0:
+			if lift2fall:Debug.dprintwarn("[lift]切换[fallstate]")
 			return fall_state
 	return null

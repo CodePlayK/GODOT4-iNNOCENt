@@ -15,7 +15,7 @@ stop_on_exit_state = true
 [resource]
 script = ExtResource("1_tecie")
 animation_name = "NA"
-speed_scale = 1.0
+speed_scale = 1.2
 backward = false
 loop = true
 sound_config = Array[ExtResource("2_44hd3")]([SubResource("Resource_7yedt")])

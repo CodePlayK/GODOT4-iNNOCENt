@@ -113,11 +113,13 @@ func after_physics_process(delta: float)->BaseState:
 func player_faced(moves):
 	if moves < 0:
 		player.base.scale.x = -abs(player.base.scale.x)
+		player.base_fx.scale.x = -abs(player.base_fx.scale.x)
 		player.hit_box.scale.x=-abs(player.hit_box.scale.x)
 		PlayerState.face_left=true
 	elif moves > 0:
 		player.hit_box.scale.x=abs(player.hit_box.scale.x)
 		player.base.scale.x = abs(player.base.scale.x)
+		player.base_fx.scale.x = abs(player.base_fx.scale.x)
 		PlayerState.face_left=false
 
 ##重力		

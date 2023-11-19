@@ -1,4 +1,6 @@
 extends AirState
+@export_group("debug")
+@export var toptrans2fall:bool = false
 
 func is_animation_play():
 	if !player.is_on_floor() and player.velocity.y <= 0:
@@ -9,11 +11,14 @@ func enter() -> BaseState:
 	super.enter()
 	if !player.is_on_floor() and player.velocity.y <= 0:
 		await player.base.animation_finished
-		return fall_state
+		if state_manager.current_state == self:
+			if toptrans2fall:Debug.dprintwarn("[toptrans]切换[fall_state]")
+			return fall_state
 	elif player.is_on_floor():
 		return idle_state
-	elif player.velocity.y >= 0:
-		return fall_state
+	#elif player.velocity.y >= 0:
+		#Debug.dprintwarn("[toptrans]切换[fall_state]")
+		#return fall_state
 	return null
 	
 func input(event: InputEvent) -> BaseState:

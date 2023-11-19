@@ -30,7 +30,8 @@ var on_ready=false
 var start_position
 #region @onready
 @onready var dialogue_position: Marker2D = $Marker/DialoguePosition
-@onready var base: AnimatedSprite2D = $Animation/Sprite
+@onready var base: AnimatedSprite2D = $Animation/base
+@onready var base_fx: AnimatedSprite2D = $Animation/baseFX
 @onready var states: = $state_manager
 @onready var ladder_checker: RayCast2D = $Rays/ladderChecker
 @onready var ground_checker: RayCast2D = $Rays/groundChecker
@@ -43,6 +44,7 @@ var start_position
 @onready var sound_effect: SoundEffect = $Component/SoundEffect
 @onready var anime: Anime = $Animation/Anime
 @onready var fx: Node2D = $Animation/FX
+
 #endregion
 
 

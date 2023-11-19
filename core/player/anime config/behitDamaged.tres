@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_iigqh"]
 script = ExtResource("2_2akti")
 se_name = "knife-stab"
-start_frame = 1
+start_frame = 0
 end_frame = 0
 se_speed = 1.0
 se_pitch = 1.0

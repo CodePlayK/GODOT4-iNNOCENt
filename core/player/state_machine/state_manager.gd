@@ -24,7 +24,7 @@ var current_state: BaseState
 var current_damage: float = 0
 var all_states: Array
 var barting:bool = false
-	
+var is_changing_state:bool = false
 func init(player: Player) -> void:
 	anime.animes.clear()
 	EventBus.player_control_lock.connect(_on_player_control_lock)
@@ -52,11 +52,11 @@ func input(event: InputEvent) -> void:
 		if listener.input(event):
 			if listener_input:Debug.dprintinfo("[StateManager]input进入监听,且收到true")
 			return
-	var new_state
 	var common_input = input_common_state(event)
 	if common_input:
 		change_state(common_input)
 		return
+	var new_state
 	if current_state:
 		if input2current_state:Debug.dprintinfo("[StateManager]input进入%s" %current_state.name)
 		new_state = current_state.input(event)
@@ -65,27 +65,29 @@ func input(event: InputEvent) -> void:
 
 func change_state(new_state: BaseState) -> void:
 	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
+		print_state_change(current_state.name,new_state.name)
 		if !new_state is StackingState:
+			is_changing_state = true
 			current_state.exit(new_state)
 			current_state.common_exit()
 			PlayerState.last2_state=PlayerState.last_state
 			PlayerState.last_state=current_state
 			current_state = new_state
 			PlayerState.current_state=current_state
-		print_state_change(current_state.name,new_state.name)
 		new_state.load_var()
 		new_state.play_animation()
 		new_state.change_animation_color(new_state.change_sprite_color,new_state.pause_on_change_sprite_color)
+		is_changing_state = false
 		var temp_state= await new_state.enter()
 		if temp_state:
 			change_state(temp_state)
 
 func physics_process(delta: float) -> void:
 	var new_state = current_state.pre_physics_process(delta)
-	if !new_state:
+	if !new_state and !is_changing_state:
 		new_state = current_state.physics_process(delta)
 		var new_state2 = current_state.after_physics_process(delta)
-		if new_state2:
+		if new_state2 and !is_changing_state:
 			change_state(new_state2)
 		else:
 			if new_state:
@@ -95,7 +97,7 @@ func physics_process(delta: float) -> void:
 
 func process(delta: float) -> void:
 	var new_state = current_state.process(delta)
-	if new_state:
+	if new_state and !is_changing_state:
 		change_state(new_state)
 
 func get_childen_node(node:Node):

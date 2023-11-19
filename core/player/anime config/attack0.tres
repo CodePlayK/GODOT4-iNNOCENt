@@ -29,7 +29,7 @@ stop_on_exit_state = false
 [resource]
 script = ExtResource("1_r1v08")
 animation_name = "NA"
-speed_scale = 1.7
+speed_scale = 2.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("2_m28eq")]([SubResource("Resource_ymink")])

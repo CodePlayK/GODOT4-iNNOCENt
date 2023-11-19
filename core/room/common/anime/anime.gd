@@ -5,6 +5,7 @@ class_name Anime
 @onready var master: Node = %Master
 @export_group("Anime基础设置")
 @export var base: AnimatedSprite2D
+@export var sprite_list: Array[AnimatedSprite2D]
 @export var current_animation:String
 @export var playing:bool = true:
 	set(f):
@@ -18,11 +19,20 @@ class_name Anime
 @export_group("Anime详细设置")
 @export var animes:Array[AnimeConfig]
 @export var current_animation_length:float
+@export var is_rand_color:bool =false
+@export var fx_color:Color ="ffffff":
+	set(c):
+		fx_color = c
+		on_change_shader()
+@export_range(-2.0, 3.0) var mix_modulate_scale:float=2:
+	set(f):
+		mix_modulate_scale = f
+		on_change_shader()
 @export_group("Debug")
 @export var print_sound:bool = false
 @export var print_fx:bool = false
 @export var print_hitbox:bool = false
-
+var rand_color=[Color.AQUA,Color.RED,Color.YELLOW,Color.CHOCOLATE,Color.BLACK,Color.WHITE]
 var anime_dic:Dictionary
 var cache:Dictionary
 var base_animation_name_array
@@ -36,16 +46,23 @@ func import():
 func play_anime(anime_name:String):
 	var anime:AnimeConfig = anime_dic[anime_name]
 	preset_cache(anime)
+	current_animation = anime_name
+	on_change_shader()
 	if base.sprite_frames.has_animation(anime_name):
-		current_animation = anime_name
 		current_animation_length = base.sprite_frames.get_frame_count(current_animation) / base.sprite_frames.get_animation_speed(current_animation) / anime.speed_scale
 		base.sprite_frames.set_animation_loop(current_animation,anime.loop)
 		base.speed_scale = anime.speed_scale
+		for sprite in sprite_list:
+			sprite.sprite_frames.set_animation_loop(current_animation,anime.loop)
+			sprite.speed_scale = anime.speed_scale
 		if !anime.backward:
 			base.play(current_animation)
+			for sprite in sprite_list:
+				sprite.play(current_animation)
 		else :
 			base.play_backwards(current_animation)
-
+			for sprite in sprite_list:
+				sprite.play_backwards(current_animation)
 func _physics_process(delta: float) -> void:
 	if !anime_dic.has(current_animation):return
 	var anime:AnimeConfig = anime_dic[current_animation]
@@ -94,8 +111,6 @@ func dis_all_hitbox(hitbox_config:AnimeHitBoxConfig):
 	master.obj.hit_box.set_enable(false,hitbox_config.collision_index)
 func set_sound(anime:AnimeConfig):
 	for se in anime.sound_config:
-		if anime.animation_name == "behitDamaged":
-			pass
 		if !anime.backward:
 			if se.start_frame == current_frame or !anime.has_animation:
 				play_se(se)
@@ -115,7 +130,6 @@ func set_fx(anime:AnimeConfig):
 			if print_fx:Debug.dprinterr("Anime发射FX[%s][%s]" %[current_animation,fx.launch_obj_name])
 			master.obj.fx.launch_obj(fx.launch_obj_name)
 			cache[fx.launch_obj_name] = false
-
 func play_se(sound_config:AnimeSoundConfig):
 	if check_cache(sound_config.sound_obj_prefix+sound_config.se_name) == false:return
 	EventBus._play_SE(sound_config.se_name,sound_config.se_speed,sound_config.se_pitch,sound_config.sound_obj_prefix)
@@ -125,7 +139,6 @@ func stop_sound(sound_config:AnimeSoundConfig):
 	EventBus._play_SE(sound_config.se_name,sound_config.se_speed,sound_config.se_pitch,sound_config.sound_obj_prefix,false)	
 	if print_sound:Debug.dprinterr("Anime停止[%s][%s]" %[current_animation,sound_config.se_name])
 	cache_off(sound_config.sound_obj_prefix+sound_config.se_name)		
-	
 #region cache
 func preset_cache(anime:AnimeConfig):
 	for fx in anime.fx_config:
@@ -144,9 +157,22 @@ func check_cache(key):
 	cache[key] = true
 	return cache[key]
 #endregion
-		
 func stop_anime():
 	base.stop()
-
+	for sprite in sprite_list:
+		sprite.stop()
 func pause_anime():
 	base.pause()
+	for sprite in sprite_list:
+		sprite.pause()
+func on_change_shader():
+	for sprite in sprite_list:
+		set_shader(sprite,fx_color,mix_modulate_scale)
+func set_shader(base,color,mix_scale):
+	if is_rand_color:
+		randomize()
+		rand_color.shuffle()
+		base.material.set_shader_parameter("color",rand_color[0])
+	else :
+		base.material.set_shader_parameter("color",fx_color)
+	base.material.set_shader_parameter("mix_modulate_strength",mix_scale)

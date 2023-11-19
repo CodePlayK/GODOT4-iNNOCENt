@@ -972,10 +972,8 @@ material = SubResource("ShaderMaterial_nktfc")
 position = Vector2(0, 38)
 scale = Vector2(2.1, 2.1)
 sprite_frames = ExtResource("3_o7jyy")
-animation = &"attack1"
+animation = &"behitDenseSafed"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 offset = Vector2(16.7778, -4.44444)
 
 [node name="FX" type="Node2D" parent="Animation"]

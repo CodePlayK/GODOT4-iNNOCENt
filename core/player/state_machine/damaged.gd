@@ -11,7 +11,8 @@ func pre_enter() -> bool:
 
 func enter():
 	super.enter()
-	PlayerState.health-=state_manager.current_damage
+	#PlayerState.health-=state_manager.current_damage
+	PlayerState.damage_health(state_manager.current_damage)
 	enable = false
 	stiff_timer.start(stiff_time)
 	return null

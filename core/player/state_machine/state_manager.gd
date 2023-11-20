@@ -64,7 +64,7 @@ func input(event: InputEvent) -> void:
 		change_state(new_state)
 
 func change_state(new_state: BaseState) -> void:
-	if null!=current_state and null!=new_state and current_state!=new_state and new_state.pre_enter():
+	if null!=current_state and null!=new_state and (current_state!=new_state or new_state is StackingState) and new_state.common_pre_enter() and new_state.pre_enter():
 		print_state_change(current_state.name,new_state.name)
 		if !new_state is StackingState:
 			is_changing_state = true
@@ -78,6 +78,7 @@ func change_state(new_state: BaseState) -> void:
 		new_state.play_animation()
 		new_state.change_animation_color(new_state.change_sprite_color,new_state.pause_on_change_sprite_color)
 		is_changing_state = false
+		new_state.common_enter()
 		var temp_state= await new_state.enter()
 		if temp_state:
 			change_state(temp_state)
@@ -128,8 +129,11 @@ func _on_player_control_lock(state):
 func input_common_state(event:InputEvent):
 	if PlayerState.player_control_lcok:return null
 	if attack_reset and event.is_action_pressed("attack") and ![base_state.behitDamaged_state].has(current_state):
-		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[attack0]")
-		return base_state.attack0_state
+		if PlayerState.stamina - base_state.attack0_state.stamina_cost>0:
+			if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[attack0]")
+			return base_state.attack0_state
+		else :
+			state2state(current_state.staminaerror_state,current_state)
 	if event.is_action_pressed("light"):
 		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[light_state]")
 		return base_state.light_state
@@ -137,8 +141,12 @@ func input_common_state(event:InputEvent):
 		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[dense_state]")
 		return base_state.dense_state
 	if event.is_action_pressed("dash"):
-		if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[dash_state]")
-		return base_state.dash_state
+		if PlayerState.stamina - base_state.dash_state.stamina_cost>0:
+			if common_inputing:Debug.dprintwarn("[StateManager][input_common_state]切换到[dash_state]")
+			return base_state.dash_state
+		else :
+			if common_inputing:Debug.dprinterr("[StateManager][input_common_state]切换到[dash_state]")
+			state2state(current_state.staminaerror_state,current_state)
 	return null		
 	
 func state2state(state,from_state):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=309 format=3 uid="uid://dxserb0b4vxf2"]
+[gd_scene load_steps=308 format=3 uid="uid://dxserb0b4vxf2"]
 
 [ext_resource type="Script" path="res://core/player/player.gd" id="1_emear"]
 [ext_resource type="Script" path="res://core/player/Master.gd" id="2_lm5ts"]
@@ -36,6 +36,7 @@
 [ext_resource type="Script" path="res://core/player/state_machine/climb.gd" id="16_gh0lk"]
 [ext_resource type="Script" path="res://core/player/Test.gd" id="16_nv5uw"]
 [ext_resource type="Script" path="res://core/player/toptrans.gd" id="17_d13l0"]
+[ext_resource type="PackedScene" uid="uid://osw374to73sm" path="res://core/room/common/ui bar/ui_bar.tscn" id="17_g8h1d"]
 [ext_resource type="PackedScene" uid="uid://bp1610uuwvi47" path="res://core/room/common/marker/marker.tscn" id="17_k0wgb"]
 [ext_resource type="Script" path="res://core/player/state_machine/talk.gd" id="17_sh2bg"]
 [ext_resource type="Script" path="res://core/player/state_machine/combat.gd" id="18_3qeih"]
@@ -47,6 +48,7 @@
 [ext_resource type="Script" path="res://core/player/state_machine/safed.gd" id="22_vpmtv"]
 [ext_resource type="Script" path="res://core/player/state_machine/damaged.gd" id="23_t1hct"]
 [ext_resource type="Resource" uid="uid://crx2in5sq0gu7" path="res://core/player/anime config/walk.tres" id="26_lvqfx"]
+[ext_resource type="Script" path="res://core/player/staminaerror.gd" id="27_6sro2"]
 [ext_resource type="Script" path="res://core/player/attack1.gd" id="27_45d83"]
 [ext_resource type="Script" path="res://core/player/UI.gd" id="27_cru4u"]
 [ext_resource type="Resource" uid="uid://dn788fef37grm" path="res://core/player/anime config/run.tres" id="28_57tf0"]
@@ -2378,37 +2380,6 @@ anti_aliasing = false
 ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lubfn"]
-bg_color = Color(0, 1, 0, 0.937255)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_top = 1.0
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_o685y"]
-ProgressBar/styles/background = SubResource("StyleBoxEmpty_lx3nq")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_xxxn1")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1i65"]
-bg_color = Color(1, 1, 1, 0.352941)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_top = 1.0
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn07y"]
-bg_color = Color(1, 0, 0, 0.482353)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_top = 1.0
-anti_aliasing = false
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7aw"]
 size = Vector2(34, 77)
 
@@ -2428,6 +2399,17 @@ speed_scale = 1.0
 backward = false
 loop = false
 sound_config = Array[ExtResource("5_qhscb")]([SubResource("Resource_sdfrs")])
+hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
+bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
+fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
+
+[sub_resource type="Resource" id="Resource_s1v4p"]
+script = ExtResource("4_2r7s4")
+animation_name = "NA"
+speed_scale = 1.0
+backward = false
+loop = false
+sound_config = Array[ExtResource("5_qhscb")]([])
 hitbox_config = Array[Resource("res://core/room/common/anime/AnimeHitBoxConfig.gd")]([])
 bati_config = Array[Resource("res://core/room/common/anime/AnimeBatiConfig.gd")]([])
 fx_config = Array[Resource("res://core/room/common/anime/AnimeFxConfig.gd")]([])
@@ -2834,7 +2816,6 @@ current_animation = "attack0"
 playing = false
 current_frame = 4
 animes = Array[ExtResource("4_2r7s4")]([SubResource("Resource_bxh3r"), SubResource("Resource_1bf2d"), SubResource("Resource_355he"), SubResource("Resource_7lvg1"), SubResource("Resource_yy111"), SubResource("Resource_w246x"), SubResource("Resource_g3kvc"), SubResource("Resource_pohfn"), SubResource("Resource_5qiie"), SubResource("Resource_l65jf"), SubResource("Resource_s085c"), SubResource("Resource_w5wk7"), SubResource("Resource_4t8ty"), SubResource("Resource_g4en5"), SubResource("Resource_8ch2k"), SubResource("Resource_shs07"), SubResource("Resource_gk8s2"), SubResource("Resource_6cuqn"), SubResource("Resource_kx7pr"), SubResource("Resource_87kvp"), SubResource("Resource_ey4vi"), SubResource("Resource_n30ba"), SubResource("Resource_uohmr"), SubResource("Resource_xtf3c"), SubResource("Resource_tykuy")])
-fx_color = Color(1, 1, 1, 1)
 mix_modulate_scale = 3.0
 
 [node name="base" type="AnimatedSprite2D" parent="Animation"]
@@ -3020,31 +3001,11 @@ theme = SubResource("Theme_xmfd2")
 value = 50.0
 show_percentage = false
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
-visible = false
-modulate = Color(1, 1, 1, 0.854902)
-light_mask = 0
-offset_left = -17.0
-offset_top = -7.0
-offset_right = 17.0
-offset_bottom = -5.0
-theme = SubResource("Theme_xmfd2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lubfn")
-value = 50.0
-show_percentage = false
-
-[node name="HealthBarBack" type="ProgressBar" parent="UI/HealthBar"]
-modulate = Color(1, 1, 1, 0.854902)
-show_behind_parent = true
-light_mask = 0
-layout_mode = 0
-offset_right = 34.0
-offset_bottom = 2.0
-theme = SubResource("Theme_o685y")
-theme_override_styles/background = SubResource("StyleBoxFlat_x1i65")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jn07y")
-value = 70.0
-show_percentage = false
+[node name="HealthBar" parent="UI" instance=ExtResource("17_g8h1d")]
+modulate = Color(1, 1, 1, 1)
+back_bar_delay_time = 1.0
+back_bar_animation_time = 0.5
+bar_color = Color(0, 0.905882, 0.00392157, 1)
 
 [node name="HurtFX" type="Node2D" parent="UI"]
 
@@ -3061,9 +3022,6 @@ visible = false
 position = Vector2(-28, -29)
 
 [node name="FightingDelayTimer" type="Timer" parent="UI"]
-one_shot = true
-
-[node name="HealthBarBackTimer" type="Timer" parent="UI"]
 one_shot = true
 
 [node name="Test" type="Node2D" parent="UI"]
@@ -3152,6 +3110,7 @@ script = ExtResource("13_3dp3u")
 [node name="state_manager" type="Node" parent="." node_paths=PackedStringArray("starting_node")]
 script = ExtResource("3_5tfn6")
 starting_node = NodePath("base/idle")
+common_inputing = true
 
 [node name="stack" type="Node" parent="state_manager"]
 script = ExtResource("52_3cfft")
@@ -3168,6 +3127,10 @@ anime_config = SubResource("Resource_wqv2d")
 [node name="Timer" type="Timer" parent="state_manager/stack/behitbati"]
 wait_time = 0.2
 one_shot = true
+
+[node name="staminaerror" type="Node" parent="state_manager/stack"]
+script = ExtResource("27_6sro2")
+anime_config = SubResource("Resource_s1v4p")
 
 [node name="base" type="Node" parent="state_manager"]
 script = ExtResource("4_cfiqb")
@@ -3197,6 +3160,8 @@ anime_config = ExtResource("30_4n7na")
 [node name="dash" type="Node" parent="state_manager/base/ground"]
 script = ExtResource("10_otd3s")
 dash_time = 0.2
+stamina_cost = 30
+need_stamina = true
 is_normal_state = false
 anime_config = ExtResource("32_qnls6")
 
@@ -3236,6 +3201,7 @@ script = ExtResource("18_3qeih")
 
 [node name="dense" type="Node" parent="state_manager/base/combat"]
 script = ExtResource("19_lsxjt")
+dense_time = 0.3
 is_normal_state = false
 
 [node name="DenseTimer" type="Timer" parent="state_manager/base/combat/dense"]
@@ -3254,6 +3220,8 @@ is_normal_state = false
 
 [node name="behitDenseSafed" type="Node" parent="state_manager/base/combat/behit"]
 script = ExtResource("22_vpmtv")
+stiff_time = 0.5
+stamina_cost = -100
 is_normal_state = false
 anime_config = ExtResource("48_tul6t")
 
@@ -3304,6 +3272,8 @@ damage = 2.0
 next_attack = NodePath("../attack1")
 after_attack_stiff_time = 0.0
 listen_next_attack_time = 0.5
+stamina_cost = 15
+need_stamina = true
 is_normal_state = false
 anime_config = ExtResource("45_2mu37")
 
@@ -3318,6 +3288,8 @@ after_attack_stiff_time = 0.0
 listen_next_attack_time = 0.5
 sound_name = "slash1"
 move_speed_scale_to_walk = 0.64
+stamina_cost = 15
+need_stamina = true
 is_normal_state = false
 anime_config = ExtResource("47_cw157")
 
@@ -3326,13 +3298,15 @@ one_shot = true
 
 [node name="attack2" type="Node" parent="state_manager/base/combat/_attack" node_paths=PackedStringArray("next_attack")]
 script = ExtResource("30_r8cot")
-damage = 6.0
+damage = 4.0
 next_attack = NodePath("../attack3")
 to_next_attack_threshold = 0.18
 after_attack_stiff_time = 0.1
 listen_next_attack_time = 1.5
 sound_name = "slash4"
 move_speed_scale_to_walk = 0.392
+stamina_cost = 20
+need_stamina = true
 is_normal_state = false
 anime_config = ExtResource("49_hlne1")
 
@@ -3341,12 +3315,14 @@ one_shot = true
 
 [node name="attack3" type="Node" parent="state_manager/base/combat/_attack"]
 script = ExtResource("32_l8rk1")
-damage = 10.0
+damage = 5.0
 after_attack_stiff_time = 0.3
 listen_next_attack_time = 0.0
 sound_name = "slash2"
 change_face_able = false
 move_speed_scale_to_walk = 0.1
+stamina_cost = 30
+need_stamina = true
 is_normal_state = false
 anime_config = ExtResource("51_r5vis")
 
@@ -3409,7 +3385,6 @@ offset = Vector2(16.7778, -4.44444)
 [connection signal="area_exited" from="Area/PlayerLightable" to="Area/PlayerLightable" method="_on_area_exited"]
 [connection signal="timeout" from="Timer/UpdateTimer" to="." method="_on_update_timer_timeout"]
 [connection signal="timeout" from="UI/FightingDelayTimer" to="UI" method="_on_fighting_delay_timer_timeout"]
-[connection signal="timeout" from="UI/HealthBarBackTimer" to="UI" method="_on_health_bar_back_timer_timeout"]
 [connection signal="timeout" from="UI/Test/RunningTime/Timer" to="UI/Test" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/stack/behitbati/Timer" to="state_manager/stack/behitbati" method="_on_timer_timeout"]
 [connection signal="timeout" from="state_manager/base/ground/dash/Timer" to="state_manager/base/ground/dash" method="_on_timer_timeout"]

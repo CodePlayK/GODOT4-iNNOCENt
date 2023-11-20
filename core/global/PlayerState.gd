@@ -29,16 +29,27 @@ var is_player_on_fighting:bool=false:
 
 ##正在与玩家战斗的对象{对象名,对象}
 var player_on_fighting:Dictionary
-var max_health:int = 10
-var last_health:int = 10
-var health:int = 10:
+var max_health:float = 10
+var last_health:float = 10
+var health_recover_speed:float =1
+var health:float = 10:
 	set(h):
 		last_health = health
 		if h <= 0:h = max_health
-		health = h
-		if player:
-			player.ui.on_health_changed()
-
+		health = min(h,max_health)
+var max_stamina:float = 100
+var last_stamina:float = 100
+var stamina_recover_speed:float =10
+var stamina:float = 100:
+	set(h):
+		var e = clamp(h,0,max_stamina)
+		if e == max_stamina:
+			EventBus._player_on_fighting_changed(false)
+			stamina = e
+			return
+		EventBus._player_on_fighting_changed(true)
+		last_stamina = stamina
+		stamina = e
 ##玩家状态历史
 var player_state_history:Array=[]
 ##不允许回退的状态list
@@ -132,8 +143,26 @@ func remove_player_lock_interact_obj(obj):
 	if !player_lock_interact_obj.keys().has(obj.name):
 		return
 	player_lock_interact_obj.erase(obj.name)
-
 func on_player_ready(player1:Player):
 	player = player1
-	player.ui.health_bar.max_value = max_health
-	player.ui.health_bar_back.max_value = max_health
+	stamina_recover_speed = player1.stamina_recovered_speed
+	
+func _physics_process(delta: float) -> void:
+	healing(health_recover_speed*delta)
+	stamina_recover(stamina_recover_speed*delta)
+	
+func damage_health(damage,update:bool = true):
+	health-=damage
+	player.ui.on_health_damaged()
+func healing(heal,update:bool = true):
+	health+=heal
+	if player:player.ui.on_health_healed()
+	
+func stamina_recover(recover,update:bool = true):
+	stamina+=recover
+	if player:player.ui.on_stamina_recovered()
+	
+func damage_stamina(damage,update:bool = true):
+	stamina-=damage
+	if player:player.ui.on_stamina_damaged()
+	

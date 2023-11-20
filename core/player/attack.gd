@@ -47,7 +47,10 @@ func input(event: InputEvent) -> BaseState:
 	if attack_input_receive:Debug.dprinterr("[%s]状态收到input[%s]" %[self.name,event])
 	if event.is_action_pressed("attack"):
 		if attack_timer.time_left<attack_timer.wait_time*(1-to_next_attack_threshold):
-			to_next_attack = true
+			if need_stamina and PlayerState.stamina-stamina_cost >0:
+				to_next_attack = true
+			else :
+				state_manager.state2state(staminaerror_state,self)
 	else :
 		pass
 	if moveable:
@@ -106,7 +109,11 @@ func exit(state:BaseState):
 ##是否在攻击动画结束后,且在listener中监听结束前按下攻击		
 func listen_next_attck(event:InputEvent):
 	if event.is_action_pressed("attack"):
-		return true
+		if need_stamina and PlayerState.stamina-stamina_cost >0:
+			return true
+		else :
+			state_manager.state2state(staminaerror_state,self)
+			return false
 	else :
 		return false
 		

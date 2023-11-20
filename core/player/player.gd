@@ -1,6 +1,7 @@
 ##玩家控制对象
 class_name Player extends CharacterBody2D
 @export_category("配置")
+@export_group("运动")
 @export var dead_switch: bool=true
 ##重力
 @export_group("运动")
@@ -26,9 +27,13 @@ class_name Player extends CharacterBody2D
 @export var click_jump_force_limit:=5
 ##最低跳跃速度
 @export var min_jump_fource:=70
+@export_group("战斗")
+@export var stamina_recovered_speed:float = 20:
+	set(f):
+		stamina_recovered_speed = f
+		PlayerState.on_player_ready(self)
 var on_ready=false
 var start_position
-var stamina:int
 #region @onready
 @onready var dialogue_position: Marker2D = $Marker/DialoguePosition
 @onready var base: AnimatedSprite2D = $Animation/base
@@ -45,7 +50,6 @@ var stamina:int
 @onready var sound_effect: SoundEffect = $Component/SoundEffect
 @onready var anime: Anime = $Animation/Anime
 @onready var fx: Node2D = $Animation/FX
-
 #endregion
 
 

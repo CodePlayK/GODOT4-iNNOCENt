@@ -1,6 +1,9 @@
 @tool
 extends Node
-
+##player
+signal player_stamina_damaged
+signal player_stamina_recovered
+signal player_on_fighting_changed
 #game
 signal player_save_game
 signal player_load_game
@@ -216,3 +219,9 @@ func _move_2_vec2(name:String,pos:Vector2,time:float=1):
 	move_2_vec2.emit(name,pos,time)
 func _change_npc_state(npc_name:String,state_name:String):
 	change_npc_state.emit(npc_name,state_name)
+func _player_stamina_damaged():
+	player_stamina_damaged.emit()
+func _player_stamina_recovered():
+	player_stamina_recovered.emit()
+func _player_on_fighting_changed(flag:bool=false):
+	player_on_fighting_changed.emit(flag)

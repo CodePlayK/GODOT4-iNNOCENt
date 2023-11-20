@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://ceekqjitbldg0"]
+[gd_scene load_steps=100 format=3 uid="uid://ceekqjitbldg0"]
 
 [ext_resource type="Texture2D" uid="uid://bx7m38jelwh4m" path="res://core/room/room_1/resource/world.png" id="1_4x3q3"]
 [ext_resource type="Script" path="res://core/room/room_1/room_1.gd" id="1_tq5ce"]
@@ -47,6 +47,8 @@
 [ext_resource type="Shader" path="res://test/transparent.gdshader" id="37_ewc7c"]
 [ext_resource type="PackedScene" uid="uid://ccwjpeftahknr" path="res://core/room/common/auto transparent/auto_transparent.tscn" id="38_6x0u2"]
 [ext_resource type="Texture2D" uid="uid://f43xgsp028ru" path="res://core/resource/light_texture/player light-front.png" id="40_h3d26"]
+[ext_resource type="Script" path="res://core/room/common/user interface/user interface.gd" id="44_4go0m"]
+[ext_resource type="PackedScene" uid="uid://osw374to73sm" path="res://core/room/common/ui bar/ui_bar.tscn" id="45_0uy0g"]
 [ext_resource type="Resource" uid="uid://c51b6w1od8403" path="res://core/common/dialogue/room/room1.dialogue" id="46_vvwl6"]
 [ext_resource type="PackedScene" uid="uid://dcc7bu2anjt2v" path="res://addons/Cutscener/clazz/node/Cutscener/CutscenerRunner.tscn" id="47_dxuou"]
 
@@ -2754,6 +2756,37 @@ theme = ExtResource("27_lkbv0")
 theme_override_font_sizes/font_size = 10
 text = "过场"
 
+[node name="UI" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1837.0
+offset_bottom = -1008.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+script = ExtResource("44_4go0m")
+
+[node name="VBC" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="CanvasLayer/UI/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="StaminaBar" parent="CanvasLayer/UI/VBC/HBC" instance=ExtResource("45_0uy0g")]
+layout_mode = 2
+back_bar_enable = false
+current_value = 10.0
+back_bar_delay_time = 2.0
+bar_color = Color(0.890196, 0.85098, 0, 0.937255)
+
+[node name="FightDelyTime" type="Timer" parent="CanvasLayer/UI/VBC/HBC"]
+wait_time = 3.0
+one_shot = true
+
 [node name="background" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -2800,3 +2833,4 @@ cutscener_name = "NA1"
 [connection signal="button_down" from="CanvasLayer/Control/MarginContainer/HBoxContainer/change_room" to="CanvasLayer/Control" method="_on_button_5_button_down"]
 [connection signal="toggled" from="CanvasLayer/Control/MarginContainer/HBoxContainer/cutscene_camera" to="CanvasLayer/Control" method="_on_cutscene_camera_toggled"]
 [connection signal="button_down" from="CanvasLayer/Control/MarginContainer/HBoxContainer/play_cutscene" to="CanvasLayer/Control" method="_on_play_cutscene_button_down"]
+[connection signal="timeout" from="CanvasLayer/UI/VBC/HBC/FightDelyTime" to="CanvasLayer/UI" method="_on_fight_dely_time_timeout"]

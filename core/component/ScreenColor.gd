@@ -46,6 +46,5 @@ func _get_screen_color():
 				b+=color.b
 				a+=color.a
 				i+=1
-			pass
 	screen_color= Color(r/i,g/i,b/i,a/i)
 	screen_color_trans=Color(r/i,g/i,b/i,0)

@@ -1,6 +1,5 @@
 extends Rooms
 
-
 func load_vars():
 	player_z_index_preset=player.z_index
 	Global.room_transition[Global.rooms.ROOM_2]=Global.transition_type.RIGHT_ENTER

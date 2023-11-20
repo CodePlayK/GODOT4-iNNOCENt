@@ -8,8 +8,8 @@ func enter():
 func input(event: InputEvent) -> BaseState:
 	if event.is_action_pressed("jump") or event.is_action_pressed("light"):
 		return jump_state
-	elif event.is_action_pressed("dash"):
-		return dash_state
+	#elif event.is_action_pressed("dash"):
+		#return dash_state
 	return null
 
 func physics_process(delta: float) -> BaseState:

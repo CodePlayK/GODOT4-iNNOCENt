@@ -37,6 +37,8 @@ var SE_dic={
  "forest-ambient":[preload( "res://core/resource/sound/SE/loop/mystic-forest-ambient.mp3" ),-5,false],
  "wind-in-trees":[preload( "res://core/resource/sound/SE/loop/wind-in-trees.mp3" ),-5,false],
  "running-in-grass":[preload( "res://core/resource/sound/SE/loop/running-in-grass.mp3" ),-5,true],
+ "stamina_error":[preload("res://core/resource/sound/SE/error-llargs.mp3")],
+
 }
 #资源，声量，是否在切换场景时停止
 var SE_LOOP_dic={

@@ -30,6 +30,7 @@ class_name BaseState
 @onready var attack3_state: BaseState
 @onready var toptrans_state: BaseState
 @onready var behitbati_state: BaseState
+@onready var staminaerror_state: BaseState
 #endregion
 
 ##当前状态是否要转换sprite
@@ -39,6 +40,9 @@ class_name BaseState
 @export var pause_on_change_sprite_color:bool=true
 ##要覆盖sprite的颜色
 @export var sprite_color:Color
+@export_group("战斗")
+@export var stamina_cost:int
+@export var need_stamina:bool = false
 ##当前state是否为普通state,即能够在hit或者dense等临时状态后切回
 @export var is_normal_state:bool=true
 @export_category("Anime")
@@ -61,6 +65,9 @@ func init(all_states) -> void:
 ##进入该状态的方法，每次进入都会执行，在pre_physics_process之前进行
 func pre_enter() -> bool:
 	return true
+func common_pre_enter() -> bool:
+	return true
+	#return need_stamina and PlayerState.stamina>0
 	
 ##在init之后执行的方法,只会在初始化时执行一次,适用于state的静态标记变量	
 func init_var():
@@ -72,6 +79,9 @@ func load_var():
 ##进入该状态的方法，每次进入都会执行，在pre_physics_process之前进行
 func enter() -> BaseState:
 	return null
+	
+func common_enter():
+	PlayerState.damage_stamina(stamina_cost)
 	
 #退出该状态的方法，每次进入都会执行，在physics_process之后进行
 func exit(state:BaseState):

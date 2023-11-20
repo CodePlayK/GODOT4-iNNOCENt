@@ -4,6 +4,3 @@
 
 [node name="Anime" type="Node2D"]
 script = ExtResource("1_jn0c5")
-is_rand_color = null
-fx_color = null
-mix_modulate_scale = null

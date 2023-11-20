@@ -4,7 +4,7 @@ extends StackingState
 
 func enter():
 	timer.start(bati_onhit_color_time)
-	PlayerState.health-=state_manager.current_damage
+	PlayerState.damage_health(state_manager.current_damage)
 
 func _on_timer_timeout() -> void:
 	change_animation_color(false,false)

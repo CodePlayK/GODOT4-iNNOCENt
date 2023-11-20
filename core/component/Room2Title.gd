@@ -27,7 +27,6 @@ func _title_transition_completed():
 	tween.chain().tween_property(trans_color_rect,"color",title_room.room_color_trans,.3)
 	tween.tween_interval(.5)
 	tween.tween_callback(transaction_end)
-	pass
 	
 ##收到[signal EventBus.to_title_screen]切换到[TitleRoom]后的方法,在此处暂停游戏
 func _to_title_screen():

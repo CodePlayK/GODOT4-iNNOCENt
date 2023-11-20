@@ -28,6 +28,7 @@ class_name Player extends CharacterBody2D
 @export var min_jump_fource:=70
 var on_ready=false
 var start_position
+var stamina:int
 #region @onready
 @onready var dialogue_position: Marker2D = $Marker/DialoguePosition
 @onready var base: AnimatedSprite2D = $Animation/base
